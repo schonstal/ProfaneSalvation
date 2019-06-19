@@ -4,7 +4,7 @@
 [ext_resource path="res://Enemies/EnemyHeadRough.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12.1349, 12.1866 )
+extents = Vector2( 50.4394, 56.4297 )
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 8

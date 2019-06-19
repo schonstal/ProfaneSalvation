@@ -3,6 +3,9 @@ extends Node
 onready var parent = $'..'
 onready var enemy = $'../Enemy'
 
+var bullet_scene = preload("res://Enemies/Projectiles/Projectile.tscn")
+onready var shoot_timer = $ShootTimer
+
 export var frequency = Vector2(1, 1)
 export var amplitude = Vector2(1, 1)
 export var stun_time = 1.0
@@ -13,6 +16,7 @@ var stun_timer:Timer
 var original_position = Vector2(0,0)
 
 func _ready():
+  shoot_timer.connect("timeout", self, "_on_ShootTimer_timeout")
   stun_timer = Timer.new()
   stun_timer.one_shot = true
   stun_timer.connect("timeout", self, "_on_StunTimer_timeout")
@@ -43,3 +47,9 @@ func _on_StunTimer_timeout():
 
 func _on_Enemy_died():
   queue_free()
+
+func _on_ShootTimer_timeout():
+  if !stunned:
+    var bullet = bullet_scene.instance()
+    Game.scene.projectiles.add_child(bullet)
+    bullet.global_position = enemy.global_position

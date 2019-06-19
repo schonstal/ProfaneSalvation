@@ -1,8 +1,8 @@
 extends Area2D
 
-export var speed = 150
+export var speed = 1000
 export var direction = -1
-export var vertical = false
+export var vertical = true
 
 export var damage = 1
 
@@ -32,8 +32,4 @@ func flip():
   $Sprite.flip_h = !$Sprite.flip_h
 
 func _on_body_enter(body):
-  if body.get_name() == "Player":
-    body.hurt(damage)
-
-  if $'..' is Enemy:
-    $'..'.hurt(1000)
+  body.hurt(damage)

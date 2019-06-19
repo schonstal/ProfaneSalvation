@@ -8,6 +8,7 @@ var player:Node
 var explosions:Node
 var sound:Node
 var particles:Node
+var projectiles:Node
 
 onready var game_over = false
 
@@ -21,6 +22,7 @@ func _enter_tree():
   explosions = $Explosions
   sound = $Sound
   particles = $Particles
+  projectiles = $Projectiles
 
   Game.initialize()
 

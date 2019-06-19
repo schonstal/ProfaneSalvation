@@ -1,8 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Projectile/Projectile.gd" type="Script" id=1]
-[ext_resource path="res://Projectile/projectile.png" type="Texture" id=2]
-
+[ext_resource path="res://Projectile.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Projectiles/FireballRough.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Flash"
@@ -22,23 +21,25 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 5.19398, 1.3448 )
+extents = Vector2( 9.36326, 9.83828 )
 
 [node name="Projectile" type="Area2D"]
+rotation = 1.5708
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 1 )
-speed = 140
+direction = 1
+damage = 2
 
 [node name="Sprite" type="Sprite" parent="."]
+rotation = -1.5708
 texture = ExtResource( 2 )
-hframes = 2
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "Flash"
 anims/Flash = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 5.08381, 0.391041 )
 shape = SubResource( 2 )
 

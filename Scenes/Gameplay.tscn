@@ -44,10 +44,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Projectiles" type="Node2D" parent="."]
+
 [node name="HUD" parent="." instance=ExtResource( 6 )]
 
 [node name="Sound" type="Node" parent="."]
 script = ExtResource( 7 )
-
-[node name="Bullets" type="Node2D" parent="."]
 

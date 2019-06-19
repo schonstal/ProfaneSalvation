@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/FireballRough.png-937cff9128b16e949aae622dc3064e1c.stex"
+path="res://.import/FireballRough.png-7c6ddd4592fbe58725caf79ad1c246d7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FireballRough.png"
-dest_files=[ "res://.import/FireballRough.png-937cff9128b16e949aae622dc3064e1c.stex" ]
+source_file="res://Enemies/Projectiles/FireballRough.png"
+dest_files=[ "res://.import/FireballRough.png-7c6ddd4592fbe58725caf79ad1c246d7.stex" ]
 
 [params]
 

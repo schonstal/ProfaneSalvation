@@ -3,13 +3,9 @@ extends KinematicBody2D
 const UP = Vector2(0, -1)
 const DOWN = Vector2(0, 1)
 
-const MOVE_ACCELERATION = 4000
-const JUMP_AMOUNT = 400
-const LEDGE_FORGIVENESS = 0.05
 const FLASH_INTERVAL = 0.04
 const SUPER_MASK = Color(3, 4, 4, 1)
 const HURT_MASK = Color(0, 0, 0, 0)
-const MAX_DOUBLE_JUMPS = 2
 const TERMINAL_VELOCITY = 1000
 
 const RIGHT = -1
@@ -46,6 +42,11 @@ onready var animation = $'Sprite/AnimationPlayer'
 signal hurt(health)
 
 func _ready():
+  InputMap.action_set_deadzone("ui_up", 0.2)
+  InputMap.action_set_deadzone("ui_down", 0.2)
+  InputMap.action_set_deadzone("ui_left", 0.2)
+  InputMap.action_set_deadzone("ui_right", 0.2)
+
   iframe_timer.connect("timeout", self, "_on_Iframe_timer_timeout")
   dash.connect("tween_completed", self, "_on_Dash_tween_completed")
 
@@ -54,7 +55,6 @@ func _physics_process(delta):
     return
 
   handle_movement()
-  handle_attack()
 
   velocity.y += acceleration.y * delta
   velocity.x += acceleration.x * delta
@@ -126,29 +126,12 @@ func handle_rotation():
       ).angle() + \
       PI/2
 
-func handle_attack():
-  if Input.is_action_pressed("attack"):
-    # spawn bullet
-    print("attack")
-
 func handle_movement():
-  if !is_stunned && !dashing:
-    acceleration.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-    acceleration.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-
-    if acceleration.length_squared() > 0:
-      acceleration = acceleration.normalized()
-      acceleration.x *= MOVE_ACCELERATION * (4 if sign(velocity.x) != sign(acceleration.x) else 1)
-      acceleration.y *= MOVE_ACCELERATION * (4 if sign(velocity.y) != sign(acceleration.y) else 1)
-    else:
-      if velocity.length_squared() < 20000:
-        acceleration.x = 0
-        acceleration.y = 0
-        velocity.x = 0
-        velocity.y = 0
-      else:
-        var normal = velocity.normalized()
-        acceleration = -normal * MOVE_ACCELERATION * 2
+  velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+  velocity.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+  if velocity.length_squared() > 1:
+    velocity = velocity.normalized()
+  velocity *= TERMINAL_VELOCITY
 
 func get_stunned():
   return stun_count > 0

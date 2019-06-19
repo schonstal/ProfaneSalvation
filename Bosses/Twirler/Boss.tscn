@@ -15,3 +15,7 @@ frequency = Vector2( 2, 1 )
 amplitude = Vector2( 100, 50 )
 stun_time = 0.2
 
+[node name="ShootTimer" type="Timer" parent="Twirler" index="0"]
+wait_time = 0.2
+autostart = true
+
