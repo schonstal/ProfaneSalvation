@@ -40,6 +40,7 @@ onready var iframe_timer = $IframeTimer
 onready var dash = $Dash
 onready var sprite = $Sprite
 onready var hitbox = $CollisionShape2D
+onready var bullet_spawn = $BulletSpawn
 onready var animation = $'Sprite/AnimationPlayer'
 
 signal hurt(health)
