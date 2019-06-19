@@ -118,6 +118,13 @@ func die():
   Game.scene.remove_child(self)
   Game.scene.game_over()
 
+func handle_rotation():
+  rotation = Vector2(
+      Input.get_action_strength("look_right") - Input.get_action_strength("look_left"),
+      Input.get_action_strength("look_down") - Input.get_action_strength("look_up")
+      ).angle() + \
+      PI/2
+
 func handle_attack():
   if Input.is_action_pressed("attack"):
     # spawn bullet
@@ -125,7 +132,6 @@ func handle_attack():
 
 func handle_movement():
   if !is_stunned && !dashing:
-
     acceleration.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
     acceleration.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 
