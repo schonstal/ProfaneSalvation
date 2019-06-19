@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Enemies/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Chase/bat.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/Chase/Chase.gd" type="Script" id=3]
+[ext_resource path="res://Enemies/Projectile/Projectile.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 6.83307, 8.54071 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 5.10017, 5.67482 )
+
+[node name="Enemy" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 16
+script = ExtResource( 1 )
+health = 1
+points = 50
+max_speed = Vector2( 100, 100 )
+
+[node name="Sprite" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 2 )
+hframes = 6
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+autoplay = "idle"
+anims/idle = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Chase" type="Node" parent="."]
+script = ExtResource( 3 )
+speed = 150
+
+[node name="HurtBox" type="Area2D" parent="."]
+editor/display_folded = true
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 4 )
+speed = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource( 3 )
+
+[node name="Node" type="Node" parent="."]
+
