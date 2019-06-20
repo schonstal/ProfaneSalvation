@@ -56,7 +56,7 @@ func _on_Tween_tween_completed(object, key):
 func _on_Enemy_died():
   for i in range(0, bullet_count):
     var bullet = bullet_scene.instance()
-    Game.scene.projectiles.add_child(bullet)
+    Game.scene.projectiles.call_deferred("add_child", bullet)
     bullet.global_position = enemy.global_position
     bullet.velocity = Vector2(
         cos(PI * 2 * i / bullet_count),
