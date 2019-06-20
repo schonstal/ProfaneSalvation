@@ -57,6 +57,6 @@ func score(points):
 func reset_score():
   score = 0
 
-func shake(duration = 0.5, frequency = 60, amplitude = 5):
+func shake(duration = 0.5, frequency = 60, amplitude = 25):
   if camera != null:
     camera.shake(duration, frequency, amplitude)
