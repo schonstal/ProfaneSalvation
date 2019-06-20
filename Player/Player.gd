@@ -71,8 +71,8 @@ func _process(delta):
   if dead:
     return
 
-  #if !is_stunned && !dashing:
-  #  animation.play("Idle")
+  if !is_stunned && !dashing:
+    animation.play("Idle")
 
   update_flash(delta)
 
