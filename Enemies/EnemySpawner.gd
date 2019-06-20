@@ -11,7 +11,6 @@ export var group_max = 1
 
 var current_time setget set_current_time,get_current_time
 var spawn_timer:Timer
-onready var zone = $SpawnZone
 
 export(Resource) var enemy_scene
 
@@ -45,10 +44,5 @@ func spawn():
 
   for i in range(0, group_size):
     var enemy = enemy_scene.instance()
-
-    if zone != null:
-      enemy.position = Vector2(
-          zone.position.x + randf() * zone.width,
-          zone.position.y + randf() * zone.height)
 
     add_child(enemy)
