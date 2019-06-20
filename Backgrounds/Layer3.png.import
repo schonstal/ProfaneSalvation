@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EnemyHeadRough.png-d72ccb86f076f47639efaafb2d0112e3.stex"
+path="res://.import/Layer3.png-300a32976908a5a250060846563397fc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/EnemyHeadRough.png"
-dest_files=[ "res://.import/EnemyHeadRough.png-d72ccb86f076f47639efaafb2d0112e3.stex" ]
+source_file="res://Backgrounds/Layer3.png"
+dest_files=[ "res://.import/Layer3.png-300a32976908a5a250060846563397fc.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false

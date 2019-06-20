@@ -228,7 +228,5 @@ volume_db = -20.0
 [node name="BulletSpawn" type="Node2D" parent="."]
 position = Vector2( 0.531738, -30.8387 )
 script = ExtResource( 4 )
-
-[node name="ShootTime" type="Timer" parent="BulletSpawn"]
-wait_time = 0.2
+shoot_rate = 0.1
 
