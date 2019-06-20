@@ -29,8 +29,14 @@ var dashing = false
 
 var flash_time = 0
 var flashing = false
+var attacking = false
 
 var death_scene = preload("res://Player/Death/Death.tscn")
+
+export var shoot_rate = 0.2
+var shoot_time = 0
+
+var bullet_scene = preload("res://Player/Projectiles/Projectile.tscn")
 
 onready var iframe_timer = $IframeTimer
 onready var dash = $Dash
@@ -38,6 +44,7 @@ onready var sprite = $Sprite
 onready var hitbox = $CollisionShape2D
 onready var bullet_spawn = $BulletSpawn
 onready var animation = $'Sprite/AnimationPlayer'
+onready var wings_animation = $'Wings/AnimationPlayer'
 
 signal hurt(health)
 
@@ -49,6 +56,7 @@ func _ready():
 
   iframe_timer.connect("timeout", self, "_on_Iframe_timer_timeout")
   dash.connect("tween_completed", self, "_on_Dash_tween_completed")
+  animation.connect("animation_finished", self, "_on_SpriteAnimationPlayer_finished")
 
 func _physics_process(delta):
   if dead:
@@ -71,8 +79,15 @@ func _process(delta):
   if dead:
     return
 
-  if !is_stunned && !dashing:
+  shoot_time += delta
+
+  if !attacking && Input.is_action_pressed("attack"):
+    attacking = true
+    animation.play("ShootStartup")
+
+  if !is_stunned && !dashing && !attacking:
     animation.play("Idle")
+    wings_animation.play("Idle")
 
   update_flash(delta)
 
@@ -152,6 +167,22 @@ func set_iframes(duration = 0.5):
 
 func _on_Iframe_timer_timeout():
   invulnerable = false
+
+func _on_SpriteAnimationPlayer_finished(name):
+  if name == "ShootStartup":
+    animation.play("Shoot")
+  elif name == "Shoot":
+    var bullet = bullet_scene.instance()
+    Game.scene.projectiles.call_deferred("add_child", bullet)
+    bullet.global_position = bullet_spawn.global_position
+    shoot_time = 0
+
+    if Input.is_action_pressed("attack"):
+      animation.play("Shoot")
+    else:
+      animation.play("ShootRecover")
+  elif name == "ShootRecover":
+    attacking = false
 
 func _on_Dash_tween_completed(object, key):
   dashing = false

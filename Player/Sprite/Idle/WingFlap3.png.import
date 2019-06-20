@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/AngelIdle_3.png-2897e42fdd980dd0ce309562ca5cdf1a.stex"
+path="res://.import/WingFlap3.png-02ece05cc362996a41995e9f15d4015b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprite/Idle/AngelIdle_3.png"
-dest_files=[ "res://.import/AngelIdle_3.png-2897e42fdd980dd0ce309562ca5cdf1a.stex" ]
+source_file="res://Player/Sprite/Idle/WingFlap3.png"
+dest_files=[ "res://.import/WingFlap3.png-02ece05cc362996a41995e9f15d4015b.stex" ]
 
 [params]
 
