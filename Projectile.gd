@@ -24,6 +24,8 @@ func _physics_process(delta):
   if position.x > 2020:
     self.queue_free()
 
+  rotation = velocity.angle()
+
 func _on_body_enter(body):
   body.hurt(damage)
 
