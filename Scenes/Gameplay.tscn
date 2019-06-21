@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Gameplay.gd" type="Script" id=1]
 [ext_resource path="res://Util/Screen.gd" type="Script" id=2]
@@ -6,9 +6,10 @@
 [ext_resource path="res://Bosses/Twirler/Boss.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemies/EnemySpawner.gd" type="Script" id=5]
 [ext_resource path="res://Enemies/Bomber/Bomber.tscn" type="PackedScene" id=6]
-[ext_resource path="res://UI/HUD/HUD.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Util/SoundManager.gd" type="Script" id=8]
-[ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies/Spiral/Spiral.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/HUD/HUD.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Util/SoundManager.gd" type="Script" id=9]
+[ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=10]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -38,6 +39,12 @@ max_time = 8
 group_max = 3
 enemy_scene = ExtResource( 6 )
 
+[node name="Spiral" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 1328.04, 294.604 )
+
+[node name="Spiral2" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 529.73, 294.604 )
+
 [node name="Explosions" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
@@ -49,11 +56,12 @@ __meta__ = {
 }
 
 [node name="Projectiles" type="Node2D" parent="."]
+z_index = 2
 
-[node name="HUD" parent="." instance=ExtResource( 7 )]
+[node name="HUD" parent="." instance=ExtResource( 8 )]
 
 [node name="Sound" type="Node" parent="."]
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 9 )]
+[node name="ParallaxBackground" parent="." instance=ExtResource( 10 )]
 

@@ -6,7 +6,7 @@ const DOWN = Vector2(0, 1)
 const FLASH_INTERVAL = 0.04
 const SUPER_MASK = Color(3, 4, 4, 1)
 const HURT_MASK = Color(0, 0, 0, 0)
-const TERMINAL_VELOCITY = 1000
+const TERMINAL_VELOCITY = 800
 
 const RIGHT = -1
 const LEFT = 1
@@ -45,6 +45,11 @@ onready var hitbox = $CollisionShape2D
 onready var bullet_spawn = $BulletSpawn
 onready var animation = $'Sprite/AnimationPlayer'
 onready var wings_animation = $'Wings/AnimationPlayer'
+onready var shield = $Shield
+
+var deflect_buffer = 0
+export var deflect_buffer_time = 0.2
+var deflect_pressed = false
 
 signal hurt(health)
 
@@ -81,9 +86,8 @@ func _process(delta):
 
   shoot_time += delta
 
-  if !attacking && Input.is_action_pressed("attack"):
-    attacking = true
-    animation.play("ShootStartup")
+  handle_attack(delta)
+  handle_defend(delta)
 
   if !is_stunned && !dashing && !attacking:
     animation.play("Idle")
@@ -134,19 +138,32 @@ func die():
   Game.scene.remove_child(self)
   Game.scene.game_over()
 
-func handle_rotation():
-  rotation = Vector2(
-      Input.get_action_strength("look_right") - Input.get_action_strength("look_left"),
-      Input.get_action_strength("look_down") - Input.get_action_strength("look_up")
-      ).angle() + \
-      PI/2
+func handle_defend(delta):
+  deflect_buffer += delta
+
+  if Input.is_action_just_pressed("deflect"):
+    deflect_pressed = true
+    deflect_buffer = 0
+
+  if !attacking && deflect_pressed && deflect_buffer < deflect_buffer_time:
+    shield.deflect()
+    deflect_pressed = false
+
+func handle_attack(delta):
+  if !attacking && Input.is_action_pressed("attack"):
+    attacking = true
+    animation.play("ShootStartup")
 
 func handle_movement():
   velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
   velocity.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
   if velocity.length_squared() > 1:
     velocity = velocity.normalized()
-  velocity *= TERMINAL_VELOCITY
+
+  if attacking:
+    velocity *= TERMINAL_VELOCITY / 2
+  else:
+    velocity *= TERMINAL_VELOCITY
 
 func get_stunned():
   return stun_count > 0

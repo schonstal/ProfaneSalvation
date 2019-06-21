@@ -1,13 +1,42 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var sprite = $Sprite
+onready var animation = $Sprite/AnimationPlayer
+onready var area = $Area2D
+onready var collision = $Area2D/CollisionShape2D
+onready var buffer = $InputBuffer
 
-# Called when the node enters the scene tree for the first time.
+var deflecting = false
+var deflect_attempt = false
+
 func _ready():
-	pass # Replace with function body.
+  area.connect("area_entered", self, "_on_Area2D_area_entered")
+  animation.connect("animation_finished", self, "_on_SpriteAnimationPlayer_finished")
+  buffer.connect("timeout", self, "_on_InputBuffer_timeout")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+  collision.disabled = true
+
+func _process(delta):
+  if !deflecting && deflect_attempt:
+    animation.stop()
+    animation.play("Deflect")
+    collision.disabled = false
+    deflecting = true
+
+func deflect():
+  deflect_attempt = true
+  buffer.start()
+
+func _on_Area2D_area_entered(area):
+  if area.has_method("deflect"):
+    area.deflect()
+
+func _on_SpriteAnimationPlayer_finished(name):
+  if name == "Deflect":
+    collision.disabled = true
+    animation.play("DeflectRecover")
+  else:
+    deflecting = false
+
+func _on_InputBuffer_timeout():
+  deflect_attempt = false

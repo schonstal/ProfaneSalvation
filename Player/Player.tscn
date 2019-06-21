@@ -1,12 +1,16 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Player/wings.png" type="Texture" id=2]
-[ext_resource path="res://Player/player.png" type="Texture" id=3]
-[ext_resource path="res://Player/hurt.wav" type="AudioStream" id=4]
-[ext_resource path="res://Player/BulletSpawn.gd" type="Script" id=5]
-[ext_resource path="res://Player/Shield.gd" type="Script" id=6]
-[ext_resource path="res://Player/Death/death.png" type="Texture" id=7]
+[ext_resource path="res://Player/Sprite/AngelIdleGlow.png" type="Texture" id=2]
+[ext_resource path="res://Player/wings.png" type="Texture" id=3]
+[ext_resource path="res://Player/player.png" type="Texture" id=4]
+[ext_resource path="res://Player/hurt.wav" type="AudioStream" id=5]
+[ext_resource path="res://Player/BulletSpawn.gd" type="Script" id=6]
+[ext_resource path="res://Player/Shield.gd" type="Script" id=7]
+[ext_resource path="res://Player/Death/death.png" type="Texture" id=8]
+
+[sub_resource type="CanvasItemMaterial" id=12]
+blend_mode = 1
 
 [sub_resource type="Animation" id=5]
 resource_name = "Idle"
@@ -145,8 +149,8 @@ format = 1
 stereo = true
 
 [sub_resource type="Animation" id=3]
-resource_name = "deflect"
-length = 0.6
+resource_name = "Deflect"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -154,11 +158,30 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 4, 5, 6, 7, 8, 9 ]
+"values": [ 4, 5, 6 ]
 }
+
+[sub_resource type="Animation" id=11]
+resource_name = "DeflectRecover"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 8, 9 ]
+}
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 116.493
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 320, 128 )
@@ -166,8 +189,13 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource( 1 )
 
-[node name="Wings" type="Sprite" parent="."]
+[node name="AngelIdleGlow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.360784 )
+material = SubResource( 12 )
 texture = ExtResource( 2 )
+
+[node name="Wings" type="Sprite" parent="."]
+texture = ExtResource( 3 )
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Wings"]
@@ -175,7 +203,7 @@ playback_speed = 0.7
 anims/Idle = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 hframes = 4
 frame = 2
 
@@ -199,7 +227,7 @@ one_shot = true
 one_shot = true
 
 [node name="HurtSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = -5.0
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
@@ -208,18 +236,33 @@ volume_db = -20.0
 
 [node name="BulletSpawn" type="Node2D" parent="."]
 position = Vector2( 0.531738, -30.8387 )
-script = ExtResource( 5 )
-
-[node name="Shield" type="Node2D" parent="."]
 script = ExtResource( 6 )
 
+[node name="Shield" type="Node2D" parent="."]
+editor/display_folded = true
+script = ExtResource( 7 )
+
 [node name="Sprite" type="Sprite" parent="Shield"]
+editor/display_folded = true
 scale = Vector2( 4, 4 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 hframes = 10
 frame = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shield/Sprite"]
 playback_speed = 2.0
-anims/deflect = SubResource( 3 )
+anims/Deflect = SubResource( 3 )
+anims/DeflectRecover = SubResource( 11 )
+
+[node name="Area2D" type="Area2D" parent="Shield"]
+editor/display_folded = true
+collision_layer = 3
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield/Area2D"]
+shape = SubResource( 10 )
+
+[node name="InputBuffer" type="Timer" parent="Shield"]
+wait_time = 0.2
+one_shot = true
 

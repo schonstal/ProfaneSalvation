@@ -4,6 +4,8 @@ export var velocity = Vector2(0, -1000)
 
 export var damage = 1
 
+onready var explosion_scene = preload("res://Enemies/Explosion/Explosion.tscn")
+
 func _ready():
   connect("body_entered", self, "_on_body_enter")
 
@@ -24,3 +26,9 @@ func _physics_process(delta):
 
 func _on_body_enter(body):
   body.hurt(damage)
+
+func deflect():
+  var explosion = explosion_scene.instance()
+  explosion.global_position = global_position
+  Game.scene.explosions.call_deferred("add_child", explosion)
+  queue_free()
