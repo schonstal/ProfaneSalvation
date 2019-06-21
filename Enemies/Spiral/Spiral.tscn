@@ -5,11 +5,13 @@
 
 [node name="Spiral" type="Node2D"]
 script = ExtResource( 1 )
-bullet_count = 16
+bullet_count = 12
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
+max_health = 10
+points = 200
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.1
 autostart = true
 
