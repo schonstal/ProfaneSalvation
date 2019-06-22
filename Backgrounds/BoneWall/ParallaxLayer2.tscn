@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Backgrounds/ParallaxLayer.gd" type="Script" id=1]
+[ext_resource path="res://Backgrounds/BoneWall/BoneWallDarker.png" type="Texture" id=2]
+
+[node name="ParallaxLayer2" type="ParallaxLayer"]
+editor/display_folded = true
+motion_mirroring = Vector2( 0, 384 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+speed = 1500
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 120, 0 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="BoneWallDarker5" type="Sprite" parent="."]
+position = Vector2( 1800, 0 )
+scale = Vector2( -0.8, 0.8 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="BoneWallDarker2" type="Sprite" parent="."]
+position = Vector2( 120, 384 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="BoneWallDarker4" type="Sprite" parent="."]
+position = Vector2( 1800, 384 )
+scale = Vector2( -0.8, 0.8 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="BoneWallDarker3" type="Sprite" parent="."]
+position = Vector2( 120, 768 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="BoneWallDarker6" type="Sprite" parent="."]
+position = Vector2( 1800, 768 )
+scale = Vector2( -0.8, 0.8 )
+texture = ExtResource( 2 )
+centered = false
+
