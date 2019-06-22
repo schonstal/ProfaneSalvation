@@ -26,17 +26,17 @@ func _on_Timer_timeout():
   cluster_count += 1
 
   if spawn:
-    offset -= offset_increment * PI * 2
+    offset -= offset_increment * TAU
   else:
-    offset += offset_increment * PI * 2
+    offset += offset_increment * TAU
 
   for i in range(0, bullet_count):
     var bullet = bullet_scene.instance()
     Game.scene.projectiles.call_deferred("add_child", bullet)
     bullet.global_position = enemy.global_position
     bullet.velocity = Vector2(
-        cos(PI * 2 * i / bullet_count + offset),
-        sin(PI * 2 * i / bullet_count + offset)
+        cos(TAU * i / bullet_count + offset),
+        sin(TAU * i / bullet_count + offset)
     ) * 300
 
 func _on_Enemy_died():
