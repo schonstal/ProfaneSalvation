@@ -1,61 +1,181 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Backgrounds/ParallaxBackground.gd" type="Script" id=1]
 [ext_resource path="res://Backgrounds/ParallaxLayer.gd" type="Script" id=2]
-[ext_resource path="res://Backgrounds/Layer3.png" type="Texture" id=3]
-[ext_resource path="res://Shaders/White.png" type="Texture" id=4]
-[ext_resource path="res://Backgrounds/Layer2.png" type="Texture" id=5]
-[ext_resource path="res://Backgrounds/Layer1.png" type="Texture" id=6]
+[ext_resource path="res://Backgrounds/BoneWall/Background.png" type="Texture" id=3]
+[ext_resource path="res://Backgrounds/BoneWall/BoneWallDarkest.png" type="Texture" id=4]
+[ext_resource path="res://Shaders/White.png" type="Texture" id=5]
+[ext_resource path="res://Backgrounds/BoneWall/BoneWallDarker.png" type="Texture" id=6]
+[ext_resource path="res://Backgrounds/BoneWall/BoneWall.png" type="Texture" id=7]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
-editor/display_folded = true
 script = ExtResource( 1 )
 
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 0, 1080 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
-speed = 500
+speed = 375
 
-[node name="Sprite" type="Sprite" parent="ParallaxLayer3"]
+[node name="Background" type="Sprite" parent="ParallaxLayer4"]
 texture = ExtResource( 3 )
 centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+editor/display_folded = true
+motion_mirroring = Vector2( 0, 307 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
+speed = 750
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer3"]
+position = Vector2( 240, 0 )
+scale = Vector2( 0.64, 0.64 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Sprite5" type="Sprite" parent="ParallaxLayer3"]
+position = Vector2( 1680, 0 )
+scale = Vector2( -0.64, 0.64 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Sprite2" type="Sprite" parent="ParallaxLayer3"]
+position = Vector2( 240, 307.84 )
+scale = Vector2( 0.64, 0.64 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Sprite8" type="Sprite" parent="ParallaxLayer3"]
+position = Vector2( 1680, 307.84 )
+scale = Vector2( -0.64, 0.64 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Sprite4" type="Sprite" parent="ParallaxLayer3"]
+position = Vector2( 240, 923.52 )
+scale = Vector2( 0.64, 0.64 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Sprite6" type="Sprite" parent="ParallaxLayer3"]
+position = Vector2( 1680, 923.52 )
+scale = Vector2( -0.64, 0.64 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Sprite3" type="Sprite" parent="ParallaxLayer3"]
+position = Vector2( 240, 615.68 )
+scale = Vector2( 0.64, 0.64 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Sprite7" type="Sprite" parent="ParallaxLayer3"]
+position = Vector2( 1680, 615.68 )
+scale = Vector2( -0.64, 0.64 )
+texture = ExtResource( 4 )
+centered = false
 
 [node name="White" type="Sprite" parent="."]
 visible = false
 position = Vector2( 956.871, 1560.37 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 0, 384 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
-speed = 1000
+speed = 1500
 
 [node name="Sprite" type="Sprite" parent="ParallaxLayer2"]
-texture = ExtResource( 5 )
+position = Vector2( 120, 0 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 6 )
 centered = false
-__meta__ = {
-"_edit_lock_": true
-}
+
+[node name="BoneWallDarker5" type="Sprite" parent="ParallaxLayer2"]
+position = Vector2( 1800, 0 )
+scale = Vector2( -0.8, 0.8 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="BoneWallDarker2" type="Sprite" parent="ParallaxLayer2"]
+position = Vector2( 120, 384 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="BoneWallDarker4" type="Sprite" parent="ParallaxLayer2"]
+position = Vector2( 1800, 384 )
+scale = Vector2( -0.8, 0.8 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="BoneWallDarker3" type="Sprite" parent="ParallaxLayer2"]
+position = Vector2( 120, 768 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="BoneWallDarker6" type="Sprite" parent="ParallaxLayer2"]
+position = Vector2( 1800, 768 )
+scale = Vector2( -0.8, 0.8 )
+texture = ExtResource( 6 )
+centered = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 0, 481 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
 speed = 3000
 
+[node name="BoneWall" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 0, 481 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BoneWall2" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 0, 962 )
+texture = ExtResource( 7 )
+centered = false
+
 [node name="Sprite" type="Sprite" parent="ParallaxLayer"]
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BoneWall3" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 1920.1, 481 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BoneWall4" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 1920, 962 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="Sprite2" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 1920, 0 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 7 )
 centered = false
 __meta__ = {
 "_edit_lock_": true
