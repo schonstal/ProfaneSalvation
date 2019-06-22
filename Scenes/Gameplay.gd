@@ -9,6 +9,8 @@ var explosions:Node
 var sound:Node
 var particles:Node
 var projectiles:Node
+var wave_manager:Node
+var current_wave:Node
 
 onready var game_over = false
 
@@ -23,6 +25,7 @@ func _enter_tree():
   sound = $Sound
   particles = $Particles
   projectiles = $Projectiles
+  wave_manager = $WaveManagerr
 
   Game.initialize()
 

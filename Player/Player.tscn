@@ -196,6 +196,7 @@ material = SubResource( 12 )
 texture = ExtResource( 2 )
 
 [node name="Wings" type="Sprite" parent="."]
+editor/display_folded = true
 texture = ExtResource( 3 )
 hframes = 4
 
@@ -204,6 +205,7 @@ playback_speed = 0.7
 anims/Idle = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
+editor/display_folded = true
 texture = ExtResource( 4 )
 hframes = 4
 frame = 2
