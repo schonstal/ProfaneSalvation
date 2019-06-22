@@ -68,10 +68,11 @@ editor/display_folded = true
 [node name="Wave" parent="WaveManager" instance=ExtResource( 8 )]
 scene = ExtResource( 9 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HUDLayer" type="CanvasLayer" parent="."]
 editor/display_folded = true
+layer = 3
 
-[node name="HUD" parent="CanvasLayer" instance=ExtResource( 10 )]
+[node name="HUD" parent="HUDLayer" instance=ExtResource( 10 )]
 
 [node name="Walls" type="Node2D" parent="."]
 editor/display_folded = true

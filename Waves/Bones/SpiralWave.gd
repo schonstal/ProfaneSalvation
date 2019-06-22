@@ -14,4 +14,4 @@ func _ready():
 func _on_Child_died():
   dead_children += 1
   if dead_children >= child_count:
-    print("we done boys")
+    EventBus.emit_signal("wave_completed", name)

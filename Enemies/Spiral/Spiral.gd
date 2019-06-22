@@ -12,6 +12,8 @@ var offset = 0
 var cluster_count = 0
 var spawn = true
 
+signal died
+
 export(Resource) var bullet_scene = preload("res://Enemies/Projectiles/PinkProjectile.tscn")
 
 func _ready():
@@ -40,4 +42,5 @@ func _on_Timer_timeout():
     ) * 300
 
 func _on_Enemy_died():
+  emit_signal("died")
   queue_free()
