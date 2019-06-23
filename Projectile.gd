@@ -28,6 +28,7 @@ func _physics_process(delta):
 
 func _on_body_enter(body):
   body.hurt(damage)
+  queue_free()
 
 func deflect():
   var explosion = explosion_scene.instance()
