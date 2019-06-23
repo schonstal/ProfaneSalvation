@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>spritesheet-only</string>
         <key>textureFileName</key>
-        <filename></filename>
+        <filename>../EnemyFireball.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
