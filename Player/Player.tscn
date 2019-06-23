@@ -217,10 +217,10 @@ anims/Shoot = SubResource( 4 )
 anims/ShootRecover = SubResource( 5 )
 anims/ShootStartup = SubResource( 6 )
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="HitIndicator" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
-[node name="HitIndicator" type="Sprite" parent="Node2D"]
+[node name="HitIndicator" type="Sprite" parent="HitIndicator"]
 position = Vector2( 0.528229, 0.0587006 )
 texture = ExtResource( 6 )
 

@@ -114,6 +114,8 @@ func update_flash(delta):
       $Sprite.modulate = Color(1, 1, 1, 1)
       flashing = false
 
+  $Wings.modulate = $Sprite.modulate
+
 func hurt(damage):
   if invulnerable && damage < 100:
     return
