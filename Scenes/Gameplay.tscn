@@ -8,7 +8,7 @@
 [ext_resource path="res://Backgrounds/BoneWall/ParallaxLayer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Waves/WaveManager.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Waves/Wave.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Waves/Bones/Spiral.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Waves/Bones/BallerWave.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/HUD/HUD.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -63,9 +63,8 @@ scroll_ignore_camera_zoom = true
 editor/display_folded = false
 
 [node name="WaveManager" parent="." instance=ExtResource( 7 )]
-editor/display_folded = true
 
-[node name="Wave" parent="WaveManager" instance=ExtResource( 8 )]
+[node name="Baller" parent="WaveManager" instance=ExtResource( 8 )]
 scene = ExtResource( 9 )
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]

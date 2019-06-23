@@ -21,7 +21,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 21.1321
+radius = 20.0
 
 [node name="Projectile" type="Area2D"]
 rotation = 1.5708
@@ -35,7 +35,6 @@ damage = 2
 rotation = -1.5708
 texture = ExtResource( 2 )
 hframes = 5
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "Flash"

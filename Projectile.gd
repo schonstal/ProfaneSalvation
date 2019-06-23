@@ -31,7 +31,7 @@ func _on_body_enter(body):
   queue_free()
 
 func deflect():
-  var explosion = explosion_scene.instance()
-  explosion.global_position = global_position
-  Game.scene.explosions.call_deferred("add_child", explosion)
+  #var explosion = explosion_scene.instance()
+  #explosion.global_position = global_position
+  #Game.scene.explosions.call_deferred("add_child", explosion)
   queue_free()
