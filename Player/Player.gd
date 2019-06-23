@@ -43,6 +43,7 @@ onready var dash = $Dash
 onready var sprite = $Sprite
 onready var hitbox = $CollisionShape2D
 onready var bullet_spawn = $BulletSpawn
+onready var hit_indicator = $HitIndicator
 onready var animation = $'Sprite/AnimationPlayer'
 onready var wings_animation = $'Wings/AnimationPlayer'
 onready var shield = $Shield
@@ -188,6 +189,7 @@ func _on_Iframe_timer_timeout():
 func _on_SpriteAnimationPlayer_finished(name):
   if name == "ShootStartup":
     animation.play("Shoot")
+    hit_indicator.visible = false
   elif name == "Shoot":
     var bullet = bullet_scene.instance()
     Game.scene.projectiles.call_deferred("add_child", bullet)
@@ -198,6 +200,7 @@ func _on_SpriteAnimationPlayer_finished(name):
       animation.play("Shoot")
     else:
       animation.play("ShootRecover")
+      hit_indicator.visible = true
   elif name == "ShootRecover":
     attacking = false
 
