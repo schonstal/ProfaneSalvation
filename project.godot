@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 Game="*res://Game.gd"
 EventBus="*res://EventBus.gd"
+MusicPlayer="*res://MusicPlayer.gd"
 
 [display]
 
