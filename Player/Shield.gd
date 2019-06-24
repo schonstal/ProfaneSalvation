@@ -34,6 +34,7 @@ func _process(delta):
     deflecting = true
     sprite.visible = true
     halo_sprite.modulate = Color(1, 1, 1, 1)
+    visible = true
 
 func deflect():
   deflect_attempt = true
@@ -50,6 +51,7 @@ func _on_SpriteAnimationPlayer_finished(name):
 func _on_FadeTween_tween_completed(object, key):
   deflecting = false
   collision.disabled = true
+  visible = false
 
 func _on_InputBuffer_timeout():
   deflect_attempt = false

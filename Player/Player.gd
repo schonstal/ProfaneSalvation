@@ -47,6 +47,7 @@ onready var hit_indicator = $HitIndicator
 onready var animation = $'Sprite/AnimationPlayer'
 onready var wings_animation = $'Wings/AnimationPlayer'
 onready var shield = $Shield
+onready var muzzle_flare = $MuzzleFlare
 
 var deflect_buffer = 0
 export var deflect_buffer_time = 0.2
@@ -198,6 +199,7 @@ func _on_SpriteAnimationPlayer_finished(name):
     bullet.global_position = bullet_spawn.global_position
     bullet.rotation = -PI / 2
     shoot_time = 0
+    muzzle_flare.shoot()
 
     if Input.is_action_pressed("attack"):
       animation.play("Shoot")

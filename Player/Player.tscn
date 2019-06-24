@@ -1,16 +1,17 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Sprite/AngelIdleGlow.png" type="Texture" id=2]
 [ext_resource path="res://Player/wings.png" type="Texture" id=3]
 [ext_resource path="res://Player/player.png" type="Texture" id=4]
-[ext_resource path="res://Player/HitIndicator.gd" type="Script" id=5]
-[ext_resource path="res://Player/HaloHitBoxLarge.png" type="Texture" id=6]
-[ext_resource path="res://Player/hurt.wav" type="AudioStream" id=7]
-[ext_resource path="res://Player/BulletSpawn.gd" type="Script" id=8]
-[ext_resource path="res://Player/Shield.gd" type="Script" id=9]
-[ext_resource path="res://Player/Sprite/Deflect/DeflectHalo.png" type="Texture" id=10]
-[ext_resource path="res://Player/Sprite/Deflect/Deflect.png" type="Texture" id=11]
+[ext_resource path="res://Player/Projectiles/MuzzleFlare.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/HitIndicator.gd" type="Script" id=6]
+[ext_resource path="res://Player/HaloHitBoxLarge.png" type="Texture" id=7]
+[ext_resource path="res://Player/hurt.wav" type="AudioStream" id=8]
+[ext_resource path="res://Player/BulletSpawn.gd" type="Script" id=9]
+[ext_resource path="res://Player/Shield.gd" type="Script" id=10]
+[ext_resource path="res://Player/Sprite/Deflect/DeflectHalo.png" type="Texture" id=11]
+[ext_resource path="res://Player/Sprite/Deflect/Deflect.png" type="Texture" id=12]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -218,14 +219,20 @@ anims/Shoot = SubResource( 4 )
 anims/ShootRecover = SubResource( 5 )
 anims/ShootStartup = SubResource( 6 )
 
+[node name="MuzzleFlare" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -30 )
+
 [node name="HitIndicator" type="Node2D" parent="."]
-script = ExtResource( 5 )
+editor/display_folded = true
+visible = false
+script = ExtResource( 6 )
 
 [node name="HitIndicator" type="Sprite" parent="HitIndicator"]
 position = Vector2( 0.528229, 0.0587006 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -0.407628, -0.179662 )
 shape = SubResource( 7 )
 
@@ -239,7 +246,7 @@ one_shot = true
 one_shot = true
 
 [node name="HurtSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = -5.0
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
@@ -247,26 +254,28 @@ stream = SubResource( 8 )
 volume_db = -20.0
 
 [node name="BulletSpawn" type="Node2D" parent="."]
-position = Vector2( 0.531738, -30.8387 )
-script = ExtResource( 8 )
+position = Vector2( 0, -30 )
+script = ExtResource( 9 )
 
 [node name="Shield" type="Node2D" parent="."]
-script = ExtResource( 9 )
+editor/display_folded = true
+visible = false
+script = ExtResource( 10 )
 fade_duration = 0.25
 active_time = 0.1
 
 [node name="Halo" type="Node2D" parent="Shield"]
 editor/display_folded = true
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 angular_velocity = -1.0
 
 [node name="Halo" type="Sprite" parent="Shield/Halo"]
 position = Vector2( -0.294281, 2.20721 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="Sprite" type="Sprite" parent="Shield"]
 visible = false
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 hframes = 5
 frame = 4
 

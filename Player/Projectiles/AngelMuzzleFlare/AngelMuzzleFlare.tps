@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>spritesheet-only</string>
         <key>textureFileName</key>
-        <filename>Deflect.png</filename>
+        <filename>AngelMuzzleFlare.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -56,7 +56,7 @@
         <key>jxrCompressionLevel</key>
         <uint>0</uint>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">NearestNeighbour</enum>
+        <enum type="SettingsBase::DitherType">PngQuantLow</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -82,7 +82,7 @@
         <key>atfFormats</key>
         <string></string>
         <key>textureFormat</key>
-        <enum type="SettingsBase::TextureFormat">png</enum>
+        <enum type="SettingsBase::TextureFormat">png8</enum>
         <key>borderPadding</key>
         <uint>0</uint>
         <key>maxTextureSize</key>
@@ -175,31 +175,29 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">AngelDefelctEffect_1.png</key>
-            <key type="filename">AngelDefelctEffect_2.png</key>
-            <key type="filename">AngelDefelctEffect_3.png</key>
-            <key type="filename">AngelDefelctEffect_4.png</key>
-            <key type="filename">AngelDefelctEffect_5.png</key>
+            <key type="filename">AngelMuzzleFlare1.png</key>
+            <key type="filename">AngelMuzzleFlare2.png</key>
+            <key type="filename">AngelMuzzleFlare3.png</key>
+            <key type="filename">AngelMuzzleFlare4.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>38,38,75,75</rect>
+                <rect>15,21,30,41</rect>
                 <key>scale9Paddings</key>
-                <rect>38,38,75,75</rect>
+                <rect>15,21,30,41</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>AngelDefelctEffect_1.png</filename>
-            <filename>AngelDefelctEffect_2.png</filename>
-            <filename>AngelDefelctEffect_3.png</filename>
-            <filename>AngelDefelctEffect_4.png</filename>
-            <filename>AngelDefelctEffect_5.png</filename>
+            <filename>AngelMuzzleFlare1.png</filename>
+            <filename>AngelMuzzleFlare2.png</filename>
+            <filename>AngelMuzzleFlare3.png</filename>
+            <filename>AngelMuzzleFlare4.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
