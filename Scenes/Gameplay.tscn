@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Gameplay.gd" type="Script" id=1]
 [ext_resource path="res://Util/Screen.gd" type="Script" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Util/SoundManager.gd" type="Script" id=4]
-[ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Waves/WaveManager.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Waves/Wave.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Waves/Bones/BallerWave.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Waves/WaveManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Waves/Wave.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Waves/Bones/BallerWave.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/HUD/HUD.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/Pause/Pause.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 273.197, 1454.69 )
@@ -51,20 +52,14 @@ z_index = 2
 [node name="Sound" type="Node" parent="."]
 script = ExtResource( 4 )
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
-
-[node name="WaveManager" parent="." instance=ExtResource( 6 )]
-
-[node name="Baller" parent="WaveManager" instance=ExtResource( 7 )]
-scene = ExtResource( 8 )
-
-[node name="HUDLayer" type="CanvasLayer" parent="."]
+[node name="WaveManager" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
-layer = 3
 
-[node name="HUD" parent="HUDLayer" instance=ExtResource( 9 )]
+[node name="Baller" parent="WaveManager" instance=ExtResource( 6 )]
+scene = ExtResource( 7 )
 
 [node name="Walls" type="Node2D" parent="."]
+editor/display_folded = true
 visible = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
@@ -98,5 +93,26 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
 shape = SubResource( 1 )
 
-[node name="Background" type="Node2D" parent="."]
+[node name="ParallaxBackground" parent="." instance=ExtResource( 8 )]
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
+layer = 3
+
+[node name="HUD" parent="HUDLayer" instance=ExtResource( 9 )]
+
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Pause" type="Control" parent="PauseLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+
+[node name="Overlay" type="ColorRect" parent="PauseLayer/Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.784314 )
 
