@@ -196,6 +196,7 @@ func _on_SpriteAnimationPlayer_finished(name):
     var bullet = bullet_scene.instance()
     Game.scene.projectiles.call_deferred("add_child", bullet)
     bullet.global_position = bullet_spawn.global_position
+    bullet.rotation = -PI / 2
     shoot_time = 0
 
     if Input.is_action_pressed("attack"):
