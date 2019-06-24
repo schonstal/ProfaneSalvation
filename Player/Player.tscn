@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Sprite/AngelIdleGlow.png" type="Texture" id=2]
@@ -9,7 +9,8 @@
 [ext_resource path="res://Player/hurt.wav" type="AudioStream" id=7]
 [ext_resource path="res://Player/BulletSpawn.gd" type="Script" id=8]
 [ext_resource path="res://Player/Shield.gd" type="Script" id=9]
-[ext_resource path="res://Player/Death/death.png" type="Texture" id=10]
+[ext_resource path="res://Player/Sprite/Deflect/DeflectHalo.png" type="Texture" id=10]
+[ext_resource path="res://Player/Sprite/Deflect/Deflect.png" type="Texture" id=11]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -151,7 +152,7 @@ format = 1
 stereo = true
 
 [sub_resource type="Animation" id=9]
-length = 0.4
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -159,10 +160,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 4, 5, 6 ]
+"values": [ 0, 1, 2, 3, 4 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -182,7 +183,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=11]
-radius = 116.493
+radius = 66.309
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 320, 128 )
@@ -250,24 +251,31 @@ position = Vector2( 0.531738, -30.8387 )
 script = ExtResource( 8 )
 
 [node name="Shield" type="Node2D" parent="."]
-editor/display_folded = true
 script = ExtResource( 9 )
+fade_duration = 0.25
+active_time = 0.1
+
+[node name="Halo" type="Node2D" parent="Shield"]
+editor/display_folded = true
+script = ExtResource( 5 )
+angular_velocity = -1.0
+
+[node name="Halo" type="Sprite" parent="Shield/Halo"]
+position = Vector2( -0.294281, 2.20721 )
+texture = ExtResource( 10 )
 
 [node name="Sprite" type="Sprite" parent="Shield"]
-editor/display_folded = true
-scale = Vector2( 4, 4 )
-texture = ExtResource( 10 )
-hframes = 10
-frame = 9
+visible = false
+texture = ExtResource( 11 )
+hframes = 5
+frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shield/Sprite"]
-playback_speed = 2.0
 anims/Deflect = SubResource( 9 )
 anims/DeflectRecover = SubResource( 10 )
 
 [node name="Area2D" type="Area2D" parent="Shield"]
 editor/display_folded = true
-visible = false
 collision_layer = 3
 collision_mask = 12
 
@@ -276,5 +284,12 @@ shape = SubResource( 11 )
 
 [node name="InputBuffer" type="Timer" parent="Shield"]
 wait_time = 0.2
+one_shot = true
+
+[node name="FadeTween" type="Tween" parent="Shield"]
+
+[node name="RevealTween" type="Tween" parent="Shield"]
+
+[node name="ShieldTimer" type="Timer" parent="Shield"]
 one_shot = true
 

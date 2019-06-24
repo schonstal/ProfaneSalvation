@@ -148,7 +148,7 @@ func handle_defend(delta):
     deflect_pressed = true
     deflect_buffer = 0
 
-  if !attacking && deflect_pressed && deflect_buffer < deflect_buffer_time:
+  if deflect_pressed && deflect_buffer < deflect_buffer_time:
     shield.deflect()
     deflect_pressed = false
 
