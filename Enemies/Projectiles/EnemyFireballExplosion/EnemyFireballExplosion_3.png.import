@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/FireballRough.png-7c6ddd4592fbe58725caf79ad1c246d7.stex"
+path="res://.import/EnemyFireballExplosion_3.png-3557f6f72f67b5e1d37ccbce25ee8a28.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Projectiles/FireballRough.png"
-dest_files=[ "res://.import/FireballRough.png-7c6ddd4592fbe58725caf79ad1c246d7.stex" ]
+source_file="res://Enemies/Projectiles/EnemyFireballExplosion/EnemyFireballExplosion_3.png"
+dest_files=[ "res://.import/EnemyFireballExplosion_3.png-3557f6f72f67b5e1d37ccbce25ee8a28.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

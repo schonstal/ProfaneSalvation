@@ -258,7 +258,6 @@ position = Vector2( 0, -30 )
 script = ExtResource( 9 )
 
 [node name="Shield" type="Node2D" parent="."]
-editor/display_folded = true
 visible = false
 script = ExtResource( 10 )
 fade_duration = 0.25
@@ -274,6 +273,7 @@ position = Vector2( -0.294281, 2.20721 )
 texture = ExtResource( 11 )
 
 [node name="Sprite" type="Sprite" parent="Shield"]
+editor/display_folded = true
 visible = false
 texture = ExtResource( 12 )
 hframes = 5

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Circle.png-4d7974fe84fe03728a09a1e57267d428.stex"
+path="res://.import/EnemyFireballExplosion_2.png-9f746df62c5a9d88a1915fcfe127d22b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Projectiles/Circle.png"
-dest_files=[ "res://.import/Circle.png-4d7974fe84fe03728a09a1e57267d428.stex" ]
+source_file="res://Enemies/Projectiles/EnemyFireballExplosion/EnemyFireballExplosion_2.png"
+dest_files=[ "res://.import/EnemyFireballExplosion_2.png-9f746df62c5a9d88a1915fcfe127d22b.stex" ]
 
 [params]
 

@@ -9,7 +9,7 @@ export var angular_velocity = 0.5
 
 signal died
 
-export(Resource) var bullet_scene = preload("res://Enemies/Projectiles/BlueProjectile.tscn")
+export(Resource) var bullet_scene = preload("res://Enemies/Projectiles/Projectile.tscn")
 
 func _ready():
   enemy.connect("died", self, "_on_Enemy_died")
