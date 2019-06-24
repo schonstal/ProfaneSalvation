@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/Fonts/Pirata_One-128.tres" type="DynamicFont" id=1]
+
+[node name="MenuButton" type="Button"]
+margin_right = 1680.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 360, 160 )
+flat = true
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "Label"
+align = 1
+
