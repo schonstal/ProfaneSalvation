@@ -5,6 +5,6 @@ func _ready():
 
   if File.new().file_exists(audio_file):
     self.stream = load(audio_file)
-    self.play()
+    # self.play()
   else:
     print("Music file not found.")
