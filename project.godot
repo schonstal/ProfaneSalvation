@@ -21,9 +21,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Game="*res://Game.gd"
-EventBus="*res://EventBus.gd"
-MusicPlayer="*res://MusicPlayer.gd"
+Game="*res://Autoload/Game.gd"
+EventBus="*res://Autoload/EventBus.gd"
+MusicPlayer="*res://Autoload/MusicPlayer.tscn"
 
 [display]
 
