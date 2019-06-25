@@ -8,6 +8,7 @@ export(Resource) var explosion_scene = preload("res://Enemies/Projectiles/EnemyF
 
 func _ready():
   connect("body_entered", self, "_on_body_enter")
+  connect("area_entered", self, "_on_body_enter")
 
 func _physics_process(delta):
   position += velocity * delta
@@ -28,8 +29,9 @@ func _process(delta):
   rotation = velocity.angle()
 
 func _on_body_enter(body):
-  body.hurt(damage)
-  die()
+  if body.has_method("hurt"):
+    body.hurt(damage)
+    die()
 
 func deflect():
   die()
