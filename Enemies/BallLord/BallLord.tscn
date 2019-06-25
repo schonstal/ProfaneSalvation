@@ -24,7 +24,7 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=2]
 radius = 55.9913
 
-[node name="Exploder" type="Node2D"]
+[node name="BallLord" type="Node2D"]
 script = ExtResource( 1 )
 bullet_count = 16
 speed = 300
