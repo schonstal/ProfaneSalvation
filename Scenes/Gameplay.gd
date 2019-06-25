@@ -12,6 +12,7 @@ var projectiles:Node
 var wave_manager:Node
 var current_wave:Node
 var items:Node
+var game_over_layer:Node
 
 onready var game_over = false
 
@@ -28,6 +29,7 @@ func _enter_tree():
   projectiles = $Projectiles
   wave_manager = $WaveManagerr
   items = $Items
+  game_over_layer = $GameOverLayer
 
   Game.initialize()
 
@@ -39,7 +41,7 @@ func _ready():
 func game_over():
   var game_over_scene = preload("res://UI/GameOver/GameOver.tscn")
   var game_over_node = game_over_scene.instance()
-  add_child(game_over_node)
+  game_over_layer.add_child(game_over_node)
 
 func get_difficulty():
   return min(score / TARGET_SCORE, 1)

@@ -103,11 +103,16 @@ shape = SubResource( 1 )
 [node name="ParallaxBackground" parent="." instance=ExtResource( 8 )]
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = 3
 
 [node name="HUD" parent="HUDLayer" instance=ExtResource( 9 )]
 
+[node name="GameOverLayer" type="CanvasLayer" parent="."]
+layer = 10
+
 [node name="PauseLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = 100
 
 [node name="Pause" type="Control" parent="PauseLayer"]
