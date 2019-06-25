@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://UI/Score.gd" type="Script" id=2]
-[ext_resource path="res://UI/HUD/FPS.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://UI/Fonts/Pirata_One/PirataOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = SubResource( 1 )
 
 [node name="HUD" type="Control"]
 margin_right = 40.0
@@ -22,20 +28,6 @@ script = ExtResource( 2 )
 [node name="Label" type="Label" parent="Points"]
 margin_right = 439.0
 margin_bottom = 89.0
-text = "0"
-
-[node name="FPS" type="Control" parent="."]
-margin_left = 25.475
-margin_top = 2.75409
-margin_right = 65.475
-margin_bottom = 42.7541
-script = ExtResource( 3 )
-
-[node name="Label" type="Label" parent="FPS"]
-margin_left = 0.688354
-margin_top = 64.7205
-margin_right = 439.688
-margin_bottom = 153.72
-custom_colors/font_color = Color( 0.960784, 0.815686, 0.0313726, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "0"
 

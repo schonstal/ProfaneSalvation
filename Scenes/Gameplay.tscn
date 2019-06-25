@@ -103,7 +103,6 @@ shape = SubResource( 1 )
 [node name="ParallaxBackground" parent="." instance=ExtResource( 8 )]
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
-editor/display_folded = true
 layer = 3
 
 [node name="HUD" parent="HUDLayer" instance=ExtResource( 9 )]
