@@ -28,10 +28,6 @@ export(Resource) var die_sound = preload("res://Enemies/enemyDie.wav")
 signal died
 signal hurt(health, max_health)
 
-func _process(delta):
-  if global_position.y > 1200:
-    queue_free()
-
 func _physics_process(delta):
   velocity.y += acceleration.y * delta
   velocity.x += acceleration.x * delta
@@ -103,6 +99,7 @@ func spawn_halos():
 func explode():
   var explosion = explosion_scene.instance()
   explosion.global_position = global_position
+  explosion.rotation = rotation
   Game.scene.explosions.add_child(explosion)
 
 func flash():

@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>spritesheet-only</string>
         <key>textureFileName</key>
-        <filename>../BallLord.png</filename>
+        <filename>BallLordDeath.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -175,27 +175,29 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">BallLordBite_1.png</key>
-            <key type="filename">BallLordBite_2.png</key>
-            <key type="filename">BallLordBite_3.png</key>
+            <key type="filename">BallLordDeath_1.png</key>
+            <key type="filename">BallLordDeath_2.png</key>
+            <key type="filename">BallLordDeath_3.png</key>
+            <key type="filename">BallLordDeath_4.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>38,38,75,75</rect>
+                <rect>44,44,87,87</rect>
                 <key>scale9Paddings</key>
-                <rect>38,38,75,75</rect>
+                <rect>44,44,87,87</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>BallLordBite_1.png</filename>
-            <filename>BallLordBite_2.png</filename>
-            <filename>BallLordBite_3.png</filename>
+            <filename>BallLordDeath_1.png</filename>
+            <filename>BallLordDeath_2.png</filename>
+            <filename>BallLordDeath_3.png</filename>
+            <filename>BallLordDeath_4.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

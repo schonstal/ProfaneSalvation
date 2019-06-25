@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Enemies/Exploder/Exploder.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=2]
-[ext_resource path="res://Enemies/Exploder/BallLord.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/Exploder/BallLordDeath.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/Exploder/BallLord.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=2]
 resource_name = "Bite"
@@ -38,10 +39,11 @@ points = 50
 flash_time = 1.0
 stun_time = 0.0
 max_speed = Vector2( 10000, 10000 )
+explosion_scene = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Enemy"]
 rotation = 0.0174533
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 hframes = 3
 frame = 1
 
