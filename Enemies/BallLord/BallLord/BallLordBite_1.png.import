@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BallLordBite_3.png-7b218c72ad993e4ed0240f21da809223.stex"
+path="res://.import/BallLordBite_1.png-12f1153a0e1082a259a953e549f0e5e1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Exploder/BallLord/BallLordBite_3.png"
-dest_files=[ "res://.import/BallLordBite_3.png-7b218c72ad993e4ed0240f21da809223.stex" ]
+source_file="res://Enemies/BallLord/BallLord/BallLordBite_1.png"
+dest_files=[ "res://.import/BallLordBite_1.png-12f1153a0e1082a259a953e549f0e5e1.stex" ]
 
 [params]
 

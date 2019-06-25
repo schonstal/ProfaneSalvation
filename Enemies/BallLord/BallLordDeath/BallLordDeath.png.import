@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BallLordDeath_2.png-623581799732c2465b5e50a92ac59d2e.stex"
+path="res://.import/BallLordDeath.png-cc2bcb43632fcc43e4d4129bfdd4937d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Exploder/BallLordDeath/BallLordDeath_2.png"
-dest_files=[ "res://.import/BallLordDeath_2.png-623581799732c2465b5e50a92ac59d2e.stex" ]
+source_file="res://Enemies/BallLord/BallLordDeath/BallLordDeath.png"
+dest_files=[ "res://.import/BallLordDeath.png-cc2bcb43632fcc43e4d4129bfdd4937d.stex" ]
 
 [params]
 
