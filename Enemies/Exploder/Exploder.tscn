@@ -38,8 +38,6 @@ points = 50
 flash_time = 1.0
 stun_time = 0.0
 max_speed = Vector2( 10000, 10000 )
-hurt_sound = null
-die_sound = null
 
 [node name="Sprite" type="Sprite" parent="Enemy"]
 rotation = 0.0174533

@@ -6,7 +6,7 @@ export var max_health = 2
 export var points = 100
 export var flash_time = 0.1
 export var stun_time = 0.5
-export var halos = 3
+export var halos = 2
 export var max_speed = Vector2(200, 200)
 
 var alive = true
@@ -27,6 +27,10 @@ export(Resource) var die_sound = preload("res://Enemies/enemyDie.wav")
 
 signal died
 signal hurt(health, max_health)
+
+func _process(delta):
+  if global_position.y > 1200:
+    queue_free()
 
 func _physics_process(delta):
   velocity.y += acceleration.y * delta
@@ -82,7 +86,19 @@ func die():
   explode()
   Game.scene.sound.play(die_sound)
   emit_signal("died")
+  spawn_halos()
   queue_free()
+
+func spawn_halos():
+  for i in range(0, halos):
+    var halo = halo_scene.instance()
+    var rotation = randf() * TAU
+    Game.scene.items.call_deferred("add_child", halo)
+    halo.global_position = global_position
+    halo.velocity = Vector2(
+        cos(rotation),
+        sin(rotation)
+    ) * 500
 
 func explode():
   var explosion = explosion_scene.instance()

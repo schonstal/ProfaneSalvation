@@ -11,9 +11,9 @@ collision_layer = 4
 collision_mask = 2
 script = ExtResource( 1 )
 speed = 300
-velocity = Vector2( 0, 100 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.439216, 0.439216, 0.439216, 1 )
 position = Vector2( 1.05739, 0.925217 )
 texture = ExtResource( 2 )
 
