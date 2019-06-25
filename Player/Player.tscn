@@ -223,8 +223,6 @@ anims/ShootStartup = SubResource( 6 )
 position = Vector2( 0, -30 )
 
 [node name="HitIndicator" type="Node2D" parent="."]
-editor/display_folded = true
-visible = false
 script = ExtResource( 6 )
 
 [node name="HitIndicator" type="Sprite" parent="HitIndicator"]

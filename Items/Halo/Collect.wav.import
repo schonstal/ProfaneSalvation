@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Collect.wav-d6bf062bb62e00c54436a4b2099e66af.sample"
+
+[deps]
+
+source_file="res://Items/Halo/Collect.wav"
+dest_files=[ "res://.import/Collect.wav-d6bf062bb62e00c54436a4b2099e66af.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
