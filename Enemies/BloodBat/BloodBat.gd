@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var enemy = $Enemy
+onready var animation = $Enemy/Sprite/AnimationPlayer
 
 var shoot_timer:Timer
 
@@ -56,12 +57,14 @@ func _on_ShootTimer_timeout():
   shooting = !shooting
 
   if shooting:
+    # animation.play("Attack")
     if position.y > 0:
       pattern = bullet_pattern.instance()
       call_deferred("add_child", pattern)
 
     shoot_timer.start(shoot_time)
   else:
+    # animation.play("Fly")
     if pattern != null:
       pattern.queue_free()
     shoot_timer.start(PI / move_rate)
