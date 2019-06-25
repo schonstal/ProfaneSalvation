@@ -22,8 +22,8 @@ var acceleration = Vector2()
 
 var halo_scene = preload("res://Items/Halo/Halo.tscn")
 export(Resource) var explosion_scene = preload("res://Enemies/Explosion/Explosion.tscn")
-export(Resource) var hurt_sound = preload("res://Enemies/enemyHurt.wav")
-export(Resource) var die_sound = preload("res://Enemies/enemyDie.wav")
+export(Resource) var hurt_sound = preload("res://Enemies/EnemyHurt.wav")
+export(Resource) var die_sound = preload("res://Enemies/EnemyDeath.wav")
 
 signal died
 signal hurt(health, max_health)

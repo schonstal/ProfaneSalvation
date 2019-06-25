@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/sword.wav-d29f0f54dff2f971614b2bd980d15cfb.sample"
+path="res://.import/EnemyDeath.wav-25eec86c28bb10bcddb0e08f5cfec21d.sample"
 
 [deps]
 
-source_file="res://Player/sword.wav"
-dest_files=[ "res://.import/sword.wav-d29f0f54dff2f971614b2bd980d15cfb.sample" ]
+source_file="res://Enemies/EnemyDeath.wav"
+dest_files=[ "res://.import/EnemyDeath.wav-25eec86c28bb10bcddb0e08f5cfec21d.sample" ]
 
 [params]
 

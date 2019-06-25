@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player/Death/Death.gd" type="Script" id=1]
 [ext_resource path="res://Player/Death/death.png" type="Texture" id=2]
-[ext_resource path="res://Player/Death/die.wav" type="AudioStream" id=3]
+[ext_resource path="res://Player/Death/PlayerDeath.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Die"
@@ -49,5 +49,6 @@ anims/Die = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = 10.0
 autoplay = true
 
