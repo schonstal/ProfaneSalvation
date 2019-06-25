@@ -6,6 +6,7 @@ export var max_health = 2
 export var points = 100
 export var flash_time = 0.1
 export var stun_time = 0.5
+export var halos = 3
 export var max_speed = Vector2(200, 200)
 
 var alive = true
@@ -19,9 +20,10 @@ var stunned = false
 var velocity = Vector2(0, 0)
 var acceleration = Vector2()
 
-onready var explosion_scene = preload("res://Enemies/Explosion/Explosion.tscn")
-onready var hurt_sound = preload("res://Enemies/enemyHurt.wav")
-onready var die_sound = preload("res://Enemies/enemyDie.wav")
+var halo_scene = preload("res://Items/Halo/Halo.tscn")
+export(Resource) var explosion_scene = preload("res://Enemies/Explosion/Explosion.tscn")
+export(Resource) var hurt_sound = preload("res://Enemies/enemyHurt.wav")
+export(Resource) var die_sound = preload("res://Enemies/enemyDie.wav")
 
 signal died
 signal hurt(health, max_health)
