@@ -61,6 +61,7 @@ __meta__ = {
 script = ExtResource( 4 )
 
 [node name="WaveManager" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
 
 [node name="BloodBats" parent="WaveManager" instance=ExtResource( 6 )]
 scene = ExtResource( 7 )

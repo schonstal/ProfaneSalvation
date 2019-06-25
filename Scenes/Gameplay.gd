@@ -42,6 +42,7 @@ func game_over():
   var game_over_scene = preload("res://UI/GameOver/GameOver.tscn")
   var game_over_node = game_over_scene.instance()
   game_over_layer.add_child(game_over_node)
+  MusicPlayer.stop()
 
 func get_difficulty():
   return min(score / TARGET_SCORE, 1)
