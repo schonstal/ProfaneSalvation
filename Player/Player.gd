@@ -48,6 +48,7 @@ onready var animation = $'Sprite/AnimationPlayer'
 onready var wings_animation = $'Wings/AnimationPlayer'
 onready var shield = $Shield
 onready var muzzle_flare = $MuzzleFlare
+onready var shoot_sound = $ShootSound
 
 var deflect_buffer = 0
 export var deflect_buffer_time = 0.2
@@ -200,6 +201,7 @@ func _on_SpriteAnimationPlayer_finished(name):
     bullet.rotation = -PI / 2
     shoot_time = 0
     muzzle_flare.shoot()
+    shoot_sound.play()
 
     if Input.is_action_pressed("attack"):
       animation.play("Shoot")
