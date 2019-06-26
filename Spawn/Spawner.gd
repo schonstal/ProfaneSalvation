@@ -10,7 +10,7 @@ onready var summon_circle = $SummonCircle
 onready var black_hole = $BlackHole
 onready var black_hole_animation = $BlackHole/AnimationPlayer
 
-var cleanup = false
+var finished = false
 
 func _ready():
   summon_timer.connect("timeout", self, "_on_SummonTimer_timeout")
@@ -35,15 +35,23 @@ func _on_SummonTimer_timeout():
   black_hole.visible = true
   black_hole_animation.play("Spawn")
 
+func _on_SummonCircle_fade_finished():
+  if finished:
+    queue_free()
+
 func _on_BlackHole_animation_finished(name):
   if name == "Spawn":
     black_hole_animation.play("Fade")
-    summon_circle.fade_out()
 
     if spawn_scene != null:
       var scene = spawn_scene.instance()
       scene.global_position = global_position
       Game.scene.current_wave.call_deferred('add_child', scene)
 
+  # summon_circle.modulate = Color(100, 100, 100, 1)
+
   if name == "Fade":
-    queue_free()
+    # summon_circle.modulate = Color(1, 1, 1, 1)
+    summon_circle.fade_out()
+    finished = true
+    black_hole.queue_free()

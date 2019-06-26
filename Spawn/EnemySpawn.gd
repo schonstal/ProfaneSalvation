@@ -1,39 +1,44 @@
 extends Node2D
 
-export var flash_time = 0.1
+export var flash_time = 0.025
+export var spawn_time = 0.3
 
 export(Resource) var enemy_scene
 
 onready var placeholder = $Placeholder
+onready var fade_tween = $FadeTween
+onready var flash_tween = $FadeTween
 
 var flashed = false
 var flash_timer:Timer
+var spawn_timer:Timer
 
 func _ready():
-  flash_timer = Timer.new()
-  flash_timer.one_shot = true
-  flash_timer.connect("timeout", self, "_on_Flash_timer_timeout")
-  flash_timer.set_name("FlashTimer")
-  add_child(flash_timer)
+  spawn_timer = Timer.new()
+  spawn_timer.one_shot = true
+  spawn_timer.connect("timeout", self, "_on_Spawn_timer_timeout")
+  spawn_timer.set_name("SpawnTimer")
+  add_child(spawn_timer)
 
-  flash_timer.start(flash_time)
+  spawn_timer.start(spawn_time)
 
-  placeholder.modulate = Color(100, 100, 100, 1)
+  placeholder.modulate = Color(100, 100, 100, 0.5)
 
-func _on_Flash_timer_timeout():
-  if flashed:
-    placeholder.modulate = Color(1, 1, 1, 0)
-    flashed = false
-  else:
-    placeholder.modulate = Color(100, 100, 100, 1)
-    flashed = true
+  fade_tween.interpolate_property(
+      placeholder,
+      "modulate",
+      Color(100, 100, 100, 1),
+      Color(10, 10, 10, 0.5),
+      spawn_time,
+      Tween.TRANS_QUART,
+      Tween.EASE_IN)
 
-  flash_time *= 0.9
+  fade_tween.start()
 
-  if flash_time > 0.01:
-    flash_timer.start(flash_time)
-  else:
-    if enemy_scene != null:
-      var enemy = enemy_scene.instance()
-      enemy.global_position = global_position
-      Game.scene.current_wave.call_deferred('add_child', enemy)
+func _on_Spawn_timer_timeout():
+  if enemy_scene != null:
+    var enemy = enemy_scene.instance()
+    enemy.global_position = global_position
+    Game.scene.current_wave.call_deferred('add_child', enemy)
+
+  queue_free()

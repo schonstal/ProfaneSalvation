@@ -4,7 +4,7 @@ const UP = Vector2(0, -1)
 
 export var max_health = 2
 export var points = 100
-export var flash_time = 0.1
+export var flash_time = 0.05
 export var stun_time = 0.5
 export var halos = 2
 export var max_speed = Vector2(200, 200)
