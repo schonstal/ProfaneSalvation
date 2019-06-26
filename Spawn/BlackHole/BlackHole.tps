@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>spritesheet-only</string>
         <key>textureFileName</key>
-        <filename>../BloodBat.png</filename>
+        <filename></filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -175,31 +175,41 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">BlooBatFly_1.png</key>
-            <key type="filename">BlooBatFly_2.png</key>
-            <key type="filename">BlooBatFly_3.png</key>
-            <key type="filename">BlooBatFly_4.png</key>
-            <key type="filename">BlooBatFly_5.png</key>
+            <key type="filename">BlackHole_1.png</key>
+            <key type="filename">BlackHole_10.png</key>
+            <key type="filename">BlackHole_2.png</key>
+            <key type="filename">BlackHole_3.png</key>
+            <key type="filename">BlackHole_4.png</key>
+            <key type="filename">BlackHole_5.png</key>
+            <key type="filename">BlackHole_6.png</key>
+            <key type="filename">BlackHole_7.png</key>
+            <key type="filename">BlackHole_8.png</key>
+            <key type="filename">BlackHole_9.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>50,31,100,63</rect>
+                <rect>38,38,75,75</rect>
                 <key>scale9Paddings</key>
-                <rect>50,31,100,63</rect>
+                <rect>38,38,75,75</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>BlooBatFly_1.png</filename>
-            <filename>BlooBatFly_2.png</filename>
-            <filename>BlooBatFly_3.png</filename>
-            <filename>BlooBatFly_4.png</filename>
-            <filename>BlooBatFly_5.png</filename>
+            <filename>BlackHole_1.png</filename>
+            <filename>BlackHole_2.png</filename>
+            <filename>BlackHole_3.png</filename>
+            <filename>BlackHole_4.png</filename>
+            <filename>BlackHole_5.png</filename>
+            <filename>BlackHole_6.png</filename>
+            <filename>BlackHole_7.png</filename>
+            <filename>BlackHole_8.png</filename>
+            <filename>BlackHole_9.png</filename>
+            <filename>BlackHole_10.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
