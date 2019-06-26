@@ -1,9 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Items/Halo/Halo.gd" type="Script" id=1]
-[ext_resource path="res://Items/Halo/Halo.png" type="Texture" id=2]
+[ext_resource path="res://Items/Halo/HaloCollectable/HaloCollectable.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="Animation" id=1]
+resource_name = "Spin"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
 radius = 43.5477
 
 [node name="Halo" type="Area2D"]
@@ -16,9 +33,13 @@ speed = 300
 modulate = Color( 0.439216, 0.439216, 0.439216, 1 )
 position = Vector2( 1.05739, 0.925217 )
 texture = ExtResource( 2 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/Spin = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }

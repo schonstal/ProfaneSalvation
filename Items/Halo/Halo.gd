@@ -3,10 +3,12 @@ extends Area2D
 const UP = Vector2(0, -1)
 
 onready var sprite = $Sprite
+onready var animation = $Sprite/AnimationPlayer
 
 export var speed = 600
 export var angular_velocity = 0.5
 export var target_velocity = Vector2(0, 100)
+export var points = 25
 
 var velocity = Vector2(-300, -500)
 
@@ -16,6 +18,9 @@ export(Resource) var collect_sound = preload("res://Items/Halo/Collect.wav")
 
 func _ready():
   connect("body_entered", self, "_on_body_entered")
+  rotation = randf() * PI * 2
+  animation.play("Spin")
+  animation.advance(randf() * 0.4)
 
 func _process(delta):
   rotation += PI * 2 * delta * angular_velocity
@@ -36,5 +41,6 @@ func _on_body_entered(body):
   die()
 
 func die():
+  Game.scene.score(points)
   Game.scene.sound.play(collect_sound)
   queue_free()
