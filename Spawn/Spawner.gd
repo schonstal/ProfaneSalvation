@@ -1,13 +1,24 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var summon_time = 2.0
 
-# Called when the node enters the scene tree for the first time.
+onready var summon_timer = $SummonTimer
+onready var summon_circle = $SummonCircle
+onready var black_hole = $BlackHole
+onready var black_hole_animation = $BlackHole/AnimationPlayer
+
 func _ready():
-	pass # Replace with function body.
+  summon_timer.start(summon_time)
+  summon_timer.connect("timeout", self, "_on_SummonTimer_timeout")
+  black_hole_animation.connect("animation_finished", self, "_on_BlackHole_animation_finished")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_SummonTimer_timeout():
+  black_hole.visible = true
+  black_hole_animation.play("Spawn")
+
+func _on_BlackHole_animation_finished(name):
+  if name == "Spawn":
+    black_hole_animation.play("Fade")
+    print("spawning enemy now...")
+  if name == "Fade":
+    queue_free()
