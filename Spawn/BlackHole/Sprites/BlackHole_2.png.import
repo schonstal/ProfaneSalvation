@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BlackHole_6.png-33eed057449bdbb700051c6fd1cda39b.stex"
+path="res://.import/BlackHole_2.png-64d990a060428ae70dac04586cb61ac7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Spawn/BlackHole/BlackHole_6.png"
-dest_files=[ "res://.import/BlackHole_6.png-33eed057449bdbb700051c6fd1cda39b.stex" ]
+source_file="res://Spawn/BlackHole/Sprites/BlackHole_2.png"
+dest_files=[ "res://.import/BlackHole_2.png-64d990a060428ae70dac04586cb61ac7.stex" ]
 
 [params]
 
