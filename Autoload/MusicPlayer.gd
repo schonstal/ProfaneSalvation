@@ -12,8 +12,6 @@ func _ready():
 
   AudioServer.add_bus_effect(bus_index, bus_effect, effect_index)
 
-  # play_file("res://Music/bones.ogg")
-
 func _input(event):
   if event.is_action_pressed("pause"):
     if get_tree().paused:
