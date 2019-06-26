@@ -77,8 +77,7 @@ func hurt(damage):
 
 func die():
   alive = false
-  Game.scene.combo += 1
-  Game.scene.score(points * Game.scene.combo)
+  Game.scene.score(points)
   explode()
   Game.scene.sound.play(die_sound)
   emit_signal("died")
