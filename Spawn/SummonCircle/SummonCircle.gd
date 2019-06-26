@@ -13,6 +13,7 @@ signal fade_finished
 
 func _ready():
   fade_tween.connect("tween_completed", self, "_on_FadeTween_tween_completed")
+  modulate = Color(1, 1, 1, 0)
 
 func _process(delta):
   theta += delta * angular_velocity * TAU

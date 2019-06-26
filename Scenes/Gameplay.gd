@@ -27,7 +27,8 @@ func _enter_tree():
   sound = $Sound
   particles = $Particles
   projectiles = $Projectiles
-  wave_manager = $WaveManagerr
+  wave_manager = $WaveManager
+  current_wave = $CurrentWave
   items = $Items
   game_over_layer = $GameOverLayer
 

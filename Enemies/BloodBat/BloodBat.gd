@@ -37,7 +37,7 @@ func _process(delta):
   if !shooting:
     time += delta
 
-  position.x = original_position.x + sin(time * move_rate) * movement.x
+  position.x = original_position.x + (sin(time * move_rate) + 1) * movement.x
   position.y = original_position.y + abs(cos(time * move_rate)) * movement.y
 
   if !shooting:
