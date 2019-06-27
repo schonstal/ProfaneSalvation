@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Player/Death/Death.gd" type="Script" id=1]
-[ext_resource path="res://Player/Death/death.png" type="Texture" id=2]
-[ext_resource path="res://Player/Death/PlayerDeath.wav" type="AudioStream" id=3]
+[ext_resource path="res://Player/Death/PlayerDeath.gd" type="Script" id=1]
+[ext_resource path="res://Player/Death/Feather.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Death/AngelDeath/AngelDeath.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/Explosion/Explosion.gd" type="Script" id=4]
+[ext_resource path="res://Player/Death/PlayerDeath.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Die"
-length = 2.0
+resource_name = "Explode"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -14,41 +16,31 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimationPlayer:playback_speed")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 3.0 ]
+"values": [ 0, 1, 2, 3 ]
 }
 
-[node name="Death" type="Node2D"]
+[node name="PlayerDeath" type="Node2D"]
 script = ExtResource( 1 )
+feather_scene = ExtResource( 2 )
+feather_count = 48
+
+[node name="Feathers" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="."]
-editor/display_folded = true
-scale = Vector2( 6, 6 )
-texture = ExtResource( 2 )
-hframes = 10
-frame = 4
+texture = ExtResource( 3 )
+hframes = 4
+frame = 3
+script = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-autoplay = "Die"
-playback_speed = 3.0
-anims/Die = SubResource( 1 )
+autoplay = "Explode"
+playback_speed = 2.0
+anims/Explode = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-volume_db = 10.0
+stream = ExtResource( 5 )
 autoplay = true
 
