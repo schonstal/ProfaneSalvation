@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Projectile.gd" type="Script" id=1]
-[ext_resource path="res://Enemies/Projectiles/BatFireball/BatFireball.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/Projectiles/BatFireball/BatFireballExplosion/BatFireballExplosion.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/Projectiles/BatFireball/BatFireball.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Flash"
@@ -31,10 +32,11 @@ collision_mask = 2
 script = ExtResource( 1 )
 velocity = Vector2( 0, 1000 )
 damage = 2
+explosion_scene = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = -1.5708
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 hframes = 3
 frame = 2
 
