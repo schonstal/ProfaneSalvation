@@ -1,16 +1,32 @@
 extends Control
 
 var pause_menu = preload("res://UI/Pause/PauseMenu.tscn")
+var pause_scene
 
 func _input(event):
-  if event.is_action_pressed("pause"):
-    var paused = !get_tree().paused
-    get_tree().paused = paused
-    visible = paused
+  if Game.scene.game_over:
+    return
 
-    var pause_scene = pause_menu.instance()
+  if event.is_action_pressed("pause"):
+    var paused = get_tree().paused
 
     if paused:
-      add_child(pause_scene)
+      unpause()
     else:
-      pause_scene.queue_free()
+      pause()
+
+func pause():
+  get_tree().paused = true
+  visible = true
+
+  if pause_scene == null:
+    pause_scene = pause_menu.instance()
+    add_child(pause_scene)
+
+  MusicPlayer.enable_filter()
+  pause_scene.focus()
+
+func unpause():
+  MusicPlayer.disable_filter()
+  get_tree().paused = false
+  visible = false

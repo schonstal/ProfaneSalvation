@@ -12,13 +12,6 @@ func _ready():
 
   AudioServer.add_bus_effect(bus_index, bus_effect, effect_index)
 
-func _input(event):
-  if event.is_action_pressed("pause"):
-    if get_tree().paused:
-      bus_effect.cutoff_hz = 200
-    else:
-      bus_effect.cutoff_hz = 22000
-
 func play_file(audio_file):
   if File.new().file_exists(audio_file):
     self.stream = load(audio_file)
@@ -26,3 +19,8 @@ func play_file(audio_file):
   else:
     print("Music file not found.")
 
+func disable_filter():
+  bus_effect.cutoff_hz = 22000
+
+func enable_filter():
+  bus_effect.cutoff_hz = 200
