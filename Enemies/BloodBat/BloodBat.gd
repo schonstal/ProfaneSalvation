@@ -9,6 +9,7 @@ var started = false
 var time = PI / 2
 var original_position:Vector2
 var shooting = false
+var flying = true
 var pattern = null
 
 export var movement = Vector2(100, 100)
@@ -29,19 +30,18 @@ func _ready():
   add_child(shoot_timer)
 
   shoot_timer.connect("timeout", self, "_on_ShootTimer_timeout")
+  animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
 
   enemy.connect("died", self, "_on_Enemy_died")
   original_position = position
 
 func _process(delta):
-  if !shooting:
+  if flying:
     time += delta
+    original_position += velocity * delta
 
   position.x = original_position.x + (sin(time * move_rate) + 1) * movement.x
   position.y = original_position.y + abs(cos(time * move_rate)) * movement.y
-
-  if !shooting:
-    original_position += velocity * delta
 
   if enemy.global_position.y > 1120:
     die()
@@ -57,14 +57,25 @@ func _on_ShootTimer_timeout():
   shooting = !shooting
 
   if shooting:
-    # animation.play("Attack")
+    flying = false
+    animation.play("AttackStart")
+  else:
+    animation.play("AttackEnd")
+    if pattern != null:
+      pattern.queue_free()
+
+
+func _on_AnimationPlayer_animation_finished(name):
+  print("animation complete", name)
+  if name == "AttackStart":
+    animation.play("Attack")
     if position.y > 0:
       pattern = bullet_pattern.instance()
       call_deferred("add_child", pattern)
 
     shoot_timer.start(shoot_time)
-  else:
-    # animation.play("Fly")
-    if pattern != null:
-      pattern.queue_free()
+
+  if name == "AttackEnd":
+    flying = true
+    animation.play("Fly")
     shoot_timer.start(PI / move_rate)
