@@ -16,5 +16,5 @@ func _on_ResumeButton_pressed():
 func _on_ExitButton_pressed():
   MusicPlayer.disable_filter()
   MusicPlayer.stop()
-  get_tree().change_scene("res://TitleScreen/TitleScreen.tscn")
+  Game.change_scene("res://TitleScreen/TitleScreen.tscn")
   get_tree().paused = false

@@ -10,7 +10,7 @@ func _ready():
   quit.connect("pressed", self, "_on_QuitButton_pressed")
 
 func _on_NewGameButton_pressed():
-  get_tree().change_scene("res://Scenes/Gameplay.tscn")
+  Game.change_scene("res://Scenes/Gameplay.tscn")
 
 func _on_QuitButton_pressed():
   get_tree().quit()

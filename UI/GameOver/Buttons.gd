@@ -13,4 +13,4 @@ func _on_TryAgainButton_pressed():
   Game.reset()
 
 func _on_ExitButton_pressed():
-  get_tree().change_scene("res://TitleScreen/TitleScreen.tscn")
+  Game.change_scene("res://TitleScreen/TitleScreen.tscn")

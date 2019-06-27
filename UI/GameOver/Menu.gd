@@ -36,7 +36,7 @@ func _on_ExitButton_pressed():
   no.grab_focus()
 
 func _on_YesButton_pressed():
-  get_tree().change_scene("res://TitleScreen/TitleScreen.tscn")
+  Game.change_scene("res://TitleScreen/TitleScreen.tscn")
 
 func _on_NoButton_pressed():
   try_again.visible = true
