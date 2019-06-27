@@ -10,7 +10,7 @@ onready var score = $Score
 var label_text = ""
 
 func _ready():
-  try_again.grab_focus()
+  try_again.initialize_focus()
 
   try_again.connect("pressed", self, "_on_TryAgainButton_pressed")
   exit.connect("pressed", self, "_on_ExitButton_pressed")
@@ -33,7 +33,7 @@ func _on_ExitButton_pressed():
 
   label.text = "Are You Sure?"
 
-  no.grab_focus()
+  no.initialize_focus()
 
 func _on_YesButton_pressed():
   Game.change_scene("res://TitleScreen/TitleScreen.tscn")
@@ -48,4 +48,4 @@ func _on_NoButton_pressed():
 
   label.text = label_text
 
-  try_again.grab_focus()
+  try_again.initialize_focus()

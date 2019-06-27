@@ -35,7 +35,7 @@ func _enter_tree():
   Game.initialize()
 
 func _ready():
-  MusicPlayer.play_file("res://Music/bones.ogg")
+  MusicPlayer.play_file("res://Music/gameplay.ogg")
   Engine.time_scale = 1
   reset_combo()
   reset_score()

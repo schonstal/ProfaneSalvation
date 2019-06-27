@@ -21,9 +21,11 @@ func reset():
 func change_scene(scene):
   target_scene = scene
   Overlay.fade(Color(0, 0, 0, 0), Color(0, 0, 0, 1), 0.3)
+  MusicPlayer.fade(0, -80, 0.3)
 
 func _on_Overlay_fade_complete():
   if target_scene != null:
     get_tree().change_scene(target_scene)
     target_scene = null
     Overlay.fade(Color(0, 0, 0, 1), Color(0, 0, 0, 0), 0.3)
+    MusicPlayer.fade(-80, 0, 0.2)

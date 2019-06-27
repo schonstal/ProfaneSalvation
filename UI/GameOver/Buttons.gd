@@ -4,7 +4,7 @@ onready var try_again = $TryAgainButton
 onready var exit = $ExitButton
 
 func _ready():
-  try_again.grab_focus()
+  try_again.initialize_focus()
   try_again.connect("pressed", self, "_on_TryAgainButton_pressed")
 
   exit.connect("pressed", self, "_on_ExitButton_pressed")

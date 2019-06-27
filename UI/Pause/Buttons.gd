@@ -8,7 +8,7 @@ func _ready():
   exit.connect("pressed", self, "_on_ExitButton_pressed")
 
 func focus():
-  resume.grab_focus()
+  resume.initialize_focus()
 
 func _on_ResumeButton_pressed():
   $'..'.unpause()

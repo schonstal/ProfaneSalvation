@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Sprite/AngelIdleGlow.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Player/Sprite/Deflect/DeflectHalo.png" type="Texture" id=11]
 [ext_resource path="res://Player/Sprite/Deflect/Deflect.png" type="Texture" id=12]
 [ext_resource path="res://Player/PlayerSingleShot.wav" type="AudioStream" id=13]
+[ext_resource path="res://Player/PlayerReturn.wav" type="AudioStream" id=14]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -305,4 +306,8 @@ one_shot = true
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 volume_db = -5.0
+
+[node name="Spawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+autoplay = true
 
