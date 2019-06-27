@@ -40,6 +40,5 @@ func _on_Enemy_died():
   queue_free()
 
 func _on_body_entered(body):
-  print("hi")
   if body.has_method("hurt"):
     body.hurt(1)

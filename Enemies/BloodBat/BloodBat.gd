@@ -66,7 +66,6 @@ func _on_ShootTimer_timeout():
 
 
 func _on_AnimationPlayer_animation_finished(name):
-  print("animation complete", name)
   if name == "AttackStart":
     animation.play("Attack")
     if position.y > 0:
