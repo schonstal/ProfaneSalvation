@@ -20,7 +20,7 @@ var flash_mask = SUPER_MASK
 
 var invulnerable = false
 var stamina = 100
-var health = 6
+var health = 3
 
 var stun_count = 0
 var is_stunned setget ,get_stunned
