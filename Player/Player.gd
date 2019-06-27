@@ -134,6 +134,8 @@ func hurt(damage):
   else:
     $HurtSound.play()
 
+  Overlay.fade(Color(1, 1, 1, 0.4), Color(1, 1, 1, 0), 0.3)
+
   emit_signal("hurt", health)
 
 func die():

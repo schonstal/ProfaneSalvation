@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
 [ext_resource path="res://Spawn/Spawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/BallLord/BallLord.tscn" type="PackedScene" id=3]
 
 [node name="BloodBatWave" type="Node2D"]
 z_index = -1
@@ -36,4 +37,10 @@ summon_time = 1.0
 position = Vector2( 950, 400 )
 summon_time = 0.5
 delay = 0.5
+
+[node name="BallLord" parent="." instance=ExtResource( 3 )]
+position = Vector2( 727, -898.533 )
+
+[node name="BallLord2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1200, -900 )
 

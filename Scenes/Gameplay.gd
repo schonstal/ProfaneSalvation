@@ -16,6 +16,9 @@ var game_over_layer:Node
 
 onready var game_over = false
 
+var game_over_scene = preload("res://UI/GameOver/GameOver.tscn")
+var game_over_node
+
 var score = 0
 var combo setget set_combo,get_combo
 var difficulty setget ,get_difficulty
@@ -40,12 +43,20 @@ func _ready():
   reset_combo()
   reset_score()
 
+func _process(delta):
+  if Engine.time_scale < 1:
+    Engine.time_scale += delta * 3
+  if Engine.time_scale > 1:
+    Engine.time_scale = 1
+
+  if game_over_node == null && game_over && Engine.time_scale >= 1:
+    game_over_node = game_over_scene.instance()
+    game_over_layer.add_child(game_over_node)
+
 func game_over():
   game_over = true
-  var game_over_scene = preload("res://UI/GameOver/GameOver.tscn")
-  var game_over_node = game_over_scene.instance()
-  game_over_layer.add_child(game_over_node)
-  MusicPlayer.stop()
+  Engine.time_scale = 0.1
+  MusicPlayer.enable_filter()
 
 func get_difficulty():
   return min(score / TARGET_SCORE, 1)
