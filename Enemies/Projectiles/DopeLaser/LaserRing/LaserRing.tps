@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>spritesheet-only</string>
         <key>textureFileName</key>
-        <filename>PitLordFireball.png</filename>
+        <filename>LaserRing.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -56,7 +56,7 @@
         <key>jxrCompressionLevel</key>
         <uint>0</uint>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">PngQuantLow</enum>
+        <enum type="SettingsBase::DitherType">NearestNeighbour</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -82,7 +82,7 @@
         <key>atfFormats</key>
         <string></string>
         <key>textureFormat</key>
-        <enum type="SettingsBase::TextureFormat">png8</enum>
+        <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
         <uint>0</uint>
         <key>maxTextureSize</key>
@@ -175,29 +175,27 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">PitLordFireball_1.png</key>
-            <key type="filename">PitLordFireball_2.png</key>
-            <key type="filename">PitLordFireball_3.png</key>
-            <key type="filename">PitLordFireball_4.png</key>
+            <key type="filename">LaserRing_1.png</key>
+            <key type="filename">LaserRing_2.png</key>
+            <key type="filename">LaserRing_3.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>11,12,21,24</rect>
+                <rect>64,8,129,17</rect>
                 <key>scale9Paddings</key>
-                <rect>11,12,21,24</rect>
+                <rect>64,8,129,17</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>PitLordFireball_1.png</filename>
-            <filename>PitLordFireball_2.png</filename>
-            <filename>PitLordFireball_3.png</filename>
-            <filename>PitLordFireball_4.png</filename>
+            <filename>LaserRing_1.png</filename>
+            <filename>LaserRing_2.png</filename>
+            <filename>LaserRing_3.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

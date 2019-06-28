@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>spritesheet-only</string>
         <key>textureFileName</key>
-        <filename>PitLordFireball.png</filename>
+        <filename>DopeLaser.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -88,9 +88,9 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>2048</int>
+            <int>4096</int>
             <key>height</key>
-            <int>2048</int>
+            <int>4096</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -175,36 +175,56 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">PitLordFireball_1.png</key>
-            <key type="filename">PitLordFireball_2.png</key>
-            <key type="filename">PitLordFireball_3.png</key>
-            <key type="filename">PitLordFireball_4.png</key>
+            <key type="filename">DopeLaser_0001.png</key>
+            <key type="filename">DopeLaser_0002.png</key>
+            <key type="filename">DopeLaser_0003.png</key>
+            <key type="filename">DopeLaser_0004.png</key>
+            <key type="filename">DopeLaser_0005.png</key>
+            <key type="filename">DopeLaser_0006.png</key>
+            <key type="filename">DopeLaser_0007.png</key>
+            <key type="filename">DopeLaser_0008.png</key>
+            <key type="filename">DopeLaser_0009.png</key>
+            <key type="filename">DopeLaser_0010.png</key>
+            <key type="filename">DopeLaser_0011.png</key>
+            <key type="filename">DopeLaser_0012.png</key>
+            <key type="filename">DopeLaser_0013.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>11,12,21,24</rect>
+                <rect>64,270,129,540</rect>
                 <key>scale9Paddings</key>
-                <rect>11,12,21,24</rect>
+                <rect>64,270,129,540</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>PitLordFireball_1.png</filename>
-            <filename>PitLordFireball_2.png</filename>
-            <filename>PitLordFireball_3.png</filename>
-            <filename>PitLordFireball_4.png</filename>
+            <filename>DopeLaser_0001.png</filename>
+            <filename>DopeLaser_0002.png</filename>
+            <filename>DopeLaser_0003.png</filename>
+            <filename>DopeLaser_0004.png</filename>
+            <filename>DopeLaser_0005.png</filename>
+            <filename>DopeLaser_0006.png</filename>
+            <filename>DopeLaser_0007.png</filename>
+            <filename>DopeLaser_0008.png</filename>
+            <filename>DopeLaser_0009.png</filename>
+            <filename>DopeLaser_0010.png</filename>
+            <filename>DopeLaser_0011.png</filename>
+            <filename>DopeLaser_0012.png</filename>
+            <filename>DopeLaser_0013.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>
         <array/>
         <key>ignoredWarnings</key>
-        <array/>
+        <array>
+            <string>large-max-texture-size</string>
+        </array>
         <key>commonDivisorX</key>
         <uint>1</uint>
         <key>commonDivisorY</key>
