@@ -7,7 +7,7 @@ onready var shimmer = $Shimmer
 onready var shimmer_animation = $Shimmer/AnimationPlayer
 
 var bar_length = 0
-var active = true
+var active = false
 
 func _ready():
   bar_length = bar.margin_bottom - bar.margin_top

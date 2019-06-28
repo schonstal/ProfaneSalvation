@@ -7,10 +7,11 @@ func _ready():
   var children = get_children()
 
   for i in range(0, Game.scene.player.max_mana):
-    print(i)
     children[i].visible = true
     if Game.scene.player.mana <= i:
       children[i].deactivate()
+    else:
+      children[i].activate()
 
 func _on_halo_collected():
   var children = get_children()
