@@ -13,7 +13,7 @@ func _ready():
   bar_length = bar.margin_bottom - bar.margin_top
   shimmer_animation.connect("animation_finished", self, "_on_Shimmer_animation_finished")
 
-func deactivate():
+func deactivate(flash = false):
   bar.margin_top = bar.margin_bottom
   active = false
 

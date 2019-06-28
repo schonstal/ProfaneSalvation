@@ -13,7 +13,7 @@ const LEFT = 1
 
 export var max_health = 3
 export var max_mana = 3
-export var halos_per_pip = 25
+export var halos_per_pip = 4
 
 var dead = false
 
@@ -60,6 +60,7 @@ export var deflect_buffer_time = 0.2
 var deflect_pressed = false
 
 signal hurt(health)
+signal mana_spent(mana)
 
 func _ready():
   InputMap.action_set_deadzone("ui_up", 0.2)
@@ -160,8 +161,11 @@ func handle_defend(delta):
     deflect_buffer = 0
 
   if deflect_pressed && deflect_buffer < deflect_buffer_time:
-    shield.deflect()
-    deflect_pressed = false
+    if mana > 0:
+      mana -= 1
+      emit_signal("mana_spent", mana)
+      shield.deflect()
+      deflect_pressed = false
 
 func handle_attack(delta):
   if !attacking && Input.is_action_pressed("attack"):

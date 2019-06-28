@@ -28,5 +28,5 @@ func _on_halo_collected():
 func _on_Player_mana_spent(mana):
   var children = get_children()
   children[mana].deactivate()
-  children[Game.scene.player.mana].update_bar(Game.scene.player.halos)
-  children[Game.scene.player.mana + 1].update_bar(0)
+  children[mana].update_bar(Game.scene.player.halos)
+  children[mana + 1].update_bar(0)
