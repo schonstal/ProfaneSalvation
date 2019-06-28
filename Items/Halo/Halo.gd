@@ -43,4 +43,5 @@ func _on_body_entered(body):
 func die():
   Game.scene.score(points)
   Game.scene.sound.play(collect_sound)
+  EventBus.emit_signal("halo_collected")
   queue_free()

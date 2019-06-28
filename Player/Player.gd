@@ -13,6 +13,7 @@ const LEFT = 1
 
 export var max_health = 3
 export var max_mana = 2
+export var halos_per_pip = 25
 
 var dead = false
 
@@ -23,7 +24,8 @@ var flash_mask = SUPER_MASK
 
 var invulnerable = false
 var health = max_health
-var mana = max_mana
+var mana = 1
+var halos = 0
 
 var stun_count = 0
 var is_stunned setget ,get_stunned
@@ -64,6 +66,8 @@ func _ready():
   InputMap.action_set_deadzone("ui_down", 0.2)
   InputMap.action_set_deadzone("ui_left", 0.2)
   InputMap.action_set_deadzone("ui_right", 0.2)
+
+  EventBus.connect("halo_collected", self, "_on_halo_collected")
 
   iframe_timer.connect("timeout", self, "_on_Iframe_timer_timeout")
   dash.connect("tween_completed", self, "_on_Dash_tween_completed")
@@ -191,6 +195,16 @@ func set_iframes(duration = 0.5):
 
   invulnerable = true
   iframe_timer.start(duration)
+
+func _on_halo_collected():
+  if mana >= max_mana:
+    halos = 0
+    return
+
+  halos += 1
+  if halos >= halos_per_pip:
+    halos = 0
+    mana += 1
 
 func _on_Iframe_timer_timeout():
   invulnerable = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/HUD/Reference.png" type="Texture" id=1]
 [ext_resource path="res://UI/HUD/HUDDetail.png" type="Texture" id=2]
@@ -6,11 +6,11 @@
 [ext_resource path="res://UI/HUD/HealthPip/HealthPip.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/HUD/ManaPips.gd" type="Script" id=5]
 [ext_resource path="res://UI/HUD/ManaPip/ManaPip.tscn" type="PackedScene" id=6]
-[ext_resource path="res://UI/HUD/HealthPip/HUDHealthFull.png" type="Texture" id=7]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Reference" type="Sprite" parent="."]
+visible = false
 position = Vector2( 163.457, 762.172 )
 scale = Vector2( 0.617128, 0.617128 )
 texture = ExtResource( 1 )
@@ -21,17 +21,30 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="HealthPips" type="Node2D" parent="HUDDetail"]
-position = Vector2( 144, -800 )
+position = Vector2( 143, 212 )
 script = ExtResource( 3 )
 
 [node name="HealthPip" parent="HUDDetail/HealthPips" instance=ExtResource( 4 )]
 
+[node name="HealthPip2" parent="HUDDetail/HealthPips" instance=ExtResource( 4 )]
+position = Vector2( 47, 0 )
+
+[node name="HealthPip3" parent="HUDDetail/HealthPips" instance=ExtResource( 4 )]
+position = Vector2( 94, 0 )
+
 [node name="ManaPips" type="Node2D" parent="HUDDetail"]
+position = Vector2( 57, 74 )
 script = ExtResource( 5 )
 
 [node name="ManaPip" parent="HUDDetail/ManaPips" instance=ExtResource( 6 )]
 
-[node name="HUDHealthFull" type="Sprite" parent="."]
-position = Vector2( 238, 1011.5 )
-texture = ExtResource( 7 )
+[node name="ManaPip2" parent="HUDDetail/ManaPips" instance=ExtResource( 6 )]
+position = Vector2( 0, -112 )
+
+[node name="ManaPip3" parent="HUDDetail/ManaPips" instance=ExtResource( 6 )]
+position = Vector2( 0, -224 )
+
+[node name="ManaPip4" parent="HUDDetail/ManaPips" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 0, -336 )
 
