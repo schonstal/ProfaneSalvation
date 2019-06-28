@@ -36,3 +36,7 @@ func _process(delta):
   if Game.scene != null && Game.scene.player != null:
     if overlaps_body(Game.scene.player):
       Game.scene.player.hurt(1)
+
+# Kill particles
+func hurt(damage):
+  pass
