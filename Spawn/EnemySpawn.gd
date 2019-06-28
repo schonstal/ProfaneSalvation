@@ -13,6 +13,8 @@ var flashed = false
 var flash_timer:Timer
 var spawn_timer:Timer
 
+signal spawn
+
 func _ready():
   spawn_timer = Timer.new()
   spawn_timer.one_shot = true
@@ -36,9 +38,5 @@ func _ready():
   fade_tween.start()
 
 func _on_Spawn_timer_timeout():
-  if enemy_scene != null:
-    var enemy = enemy_scene.instance()
-    enemy.global_position = global_position
-    Game.scene.current_wave.call_deferred('add_child', enemy)
-
+  emit_signal("spawn")
   queue_free()

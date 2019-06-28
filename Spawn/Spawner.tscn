@@ -66,6 +66,7 @@ script = ExtResource( 1 )
 spawn_scene = ExtResource( 2 )
 
 [node name="BlackHole" type="Sprite" parent="."]
+editor/display_folded = true
 modulate = Color( 1, 1, 1, 0 )
 texture = ExtResource( 3 )
 hframes = 10

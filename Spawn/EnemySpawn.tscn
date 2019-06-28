@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Spawn/EnemySpawn.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Enemies/BloodBat/BloodBat.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/BloodBat/BloodBatFly/1BlooBatFly_3.png" type="Texture" id=3]
 [ext_resource path="res://Spawn/Bat_Appears.wav" type="AudioStream" id=4]
 
 [node name="EnemySpawn" type="Node2D"]
@@ -12,8 +12,6 @@ enemy_scene = ExtResource( 2 )
 
 [node name="Placeholder" type="Sprite" parent="."]
 texture = ExtResource( 3 )
-vframes = 11
-frame = 2
 
 [node name="FadeTween" type="Tween" parent="."]
 

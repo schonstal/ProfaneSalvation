@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Spawn/Spawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/BloodBat/BloodBatFly/1BlooBatFly_3.png" type="Texture" id=3]
+
+[node name="BatSpawner" instance=ExtResource( 1 )]
+enemy_scene = ExtResource( 2 )
+
+[node name="Placeholder" type="Sprite" parent="." index="4"]
+modulate = Color( 1, 1, 1, 0.792157 )
+texture = ExtResource( 3 )
+
