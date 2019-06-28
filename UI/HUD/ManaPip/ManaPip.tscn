@@ -39,7 +39,6 @@ texture = ExtResource( 3 )
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shimmer"]
-playback_speed = 1.5
 anims/Shimmer = SubResource( 1 )
 
 [node name="Frame" type="Sprite" parent="."]

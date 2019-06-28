@@ -12,7 +12,7 @@ const RIGHT = -1
 const LEFT = 1
 
 export var max_health = 3
-export var max_mana = 2
+export var max_mana = 3
 export var halos_per_pip = 25
 
 var dead = false
