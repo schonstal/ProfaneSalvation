@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PitLord_Death.wav-3e3c9af4e8d30870b264ffd5912beb1a.sample"
+
+[deps]
+
+source_file="res://Enemies/PitLord/PitLord_Death.wav"
+dest_files=[ "res://.import/PitLord_Death.wav-3e3c9af4e8d30870b264ffd5912beb1a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Summoning_Circle_2.wav-c4edf0b01159d8a3eede79c1c5beb865.sample"
+
+[deps]
+
+source_file="res://Spawn/Summoning_Circle_2.wav"
+dest_files=[ "res://.import/Summoning_Circle_2.wav-c4edf0b01159d8a3eede79c1c5beb865.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

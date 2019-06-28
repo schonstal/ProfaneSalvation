@@ -25,11 +25,8 @@ func play_file(audio_file):
 
   current_file = audio_file
 
-  if File.new().file_exists(audio_file):
-    self.stream = load(audio_file)
-    self.play()
-  else:
-    print("Music file not found.")
+  self.stream = load(audio_file)
+  self.play()
 
 func disable_filter():
   bus_effect.cutoff_hz = 22000
