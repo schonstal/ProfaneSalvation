@@ -12,4 +12,5 @@ func _on_wave_completed(name):
 
 func spawn():
   scene_instance = scene.instance()
-  Game.scene.call_deferred("add_child", scene_instance)
+  Game.scene.current_wave.call_deferred("add_child", scene_instance)
+  Game.scene.wave_manager.current_wave = scene_instance.name

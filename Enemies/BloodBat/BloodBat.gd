@@ -13,11 +13,12 @@ var flying = true
 var pattern = null
 
 export var movement = Vector2(100, 100)
-export var velocity = Vector2(0, 200)
+export var velocity = Vector2(0, 0)
 export var move_rate = 1
 export var shoot_time = 0.5
 
 export(Resource) var bullet_pattern = preload("res://BulletPatterns/Lines.tscn")
+export(Resource) var movement_pattern = preload("res://Enemies/Movement/Movement.tscn")
 export(Resource) var attack_sound_scene = preload("res://Enemies/BloodBat/AttackSound.tscn")
 
 signal died
@@ -39,7 +40,6 @@ func _ready():
 func _process(delta):
   if flying:
     time += delta
-    original_position += velocity * delta
 
   position.x = original_position.x + (sin(time * move_rate) + 1) * movement.x
   position.y = original_position.y + abs(cos(time * move_rate)) * movement.y

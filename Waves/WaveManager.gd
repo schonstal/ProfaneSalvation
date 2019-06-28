@@ -2,6 +2,7 @@ extends Node2D
 
 var waves = []
 var wave_index = 0
+var current_wave
 
 func _ready():
   EventBus.connect("wave_completed", self, "_on_wave_completed")

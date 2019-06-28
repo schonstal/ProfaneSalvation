@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Enemies/BloodBat/BloodBat.gd" type="Script" id=1]
 [ext_resource path="res://BulletPatterns/Twist.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Enemies/BloodBat/BloodBatDeath.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemies/BloodBat/BloodBat.png" type="Texture" id=5]
 [ext_resource path="res://Enemies/BloodBat/AttackSound.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/Movement/Movement.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Attack"
@@ -290,4 +291,6 @@ rotation = 1.5708
 shape = SubResource( 5 )
 
 [node name="AttackSound" parent="." instance=ExtResource( 6 )]
+
+[node name="Movement" parent="." instance=ExtResource( 7 )]
 

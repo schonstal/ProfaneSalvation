@@ -73,6 +73,9 @@ scene = ExtResource( 8 )
 [node name="BatWave" parent="WaveManager" instance=ExtResource( 6 )]
 scene = ExtResource( 9 )
 
+[node name="BallWave2" parent="WaveManager" instance=ExtResource( 6 )]
+scene = ExtResource( 8 )
+
 [node name="Walls" type="Node2D" parent="."]
 editor/display_folded = true
 visible = false
