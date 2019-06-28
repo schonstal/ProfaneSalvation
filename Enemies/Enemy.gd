@@ -8,6 +8,7 @@ export var flash_time = 0.05
 export var stun_time = 0.5
 export var halos = 2
 export var max_speed = Vector2(200, 200)
+export var halo_force = 400
 
 var alive = true
 var health = 100
@@ -93,7 +94,7 @@ func spawn_halos():
     halo.velocity = Vector2(
         cos(rotation),
         sin(rotation)
-    ) * 500
+    ) * (250 + randf() * halo_force)
 
 func explode():
   var explosion = explosion_scene.instance()

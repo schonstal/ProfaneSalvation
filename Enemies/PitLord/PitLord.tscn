@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Enemies/PitLord/PitLord.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://Enemies/PitLord/PitLordDeath/PitLordDeath.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/PitLord/Sprite/PitLord.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 53.302
+height = 187.18
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 17.253
+height = 81.1892
+
+[sub_resource type="CapsuleShape2D" id=5]
+height = 23.4118
+
+[node name="PitLord" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Enemy" type="Area2D" parent="."]
+collision_layer = 12
+collision_mask = 18
+script = ExtResource( 2 )
+max_health = 10
+points = 100000
+stun_time = 0.0
+halos = 150
+max_speed = Vector2( 10000, 10000 )
+halo_force = 2000
+explosion_scene = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Enemy"]
+rotation = 0.0174533
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 6
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy/Sprite"]
+autoplay = "Idle"
+anims/Attack = SubResource( 1 )
+anims/Idle = SubResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+visible = false
+position = Vector2( -0.880142, 1.4669 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Enemy"]
+visible = false
+position = Vector2( 63.1155, -39.5649 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Enemy"]
+visible = false
+position = Vector2( -63.1155, -19.7825 )
+shape = SubResource( 5 )
+
