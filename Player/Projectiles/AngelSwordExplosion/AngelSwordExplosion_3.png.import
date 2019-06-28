@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/explosion.png-facc7952e7b3583a192617d1f2abde1c.stex"
+path="res://.import/AngelSwordExplosion_3.png-49991c931acc6012854a091dd4a61bba.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Explosion/explosion.png"
-dest_files=[ "res://.import/explosion.png-facc7952e7b3583a192617d1f2abde1c.stex" ]
+source_file="res://Player/Projectiles/AngelSwordExplosion/AngelSwordExplosion_3.png"
+dest_files=[ "res://.import/AngelSwordExplosion_3.png-49991c931acc6012854a091dd4a61bba.stex" ]
 
 [params]
 
