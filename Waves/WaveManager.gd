@@ -1,9 +1,17 @@
 extends Node2D
 
+var waves = []
+var wave_index = 0
+
 func _ready():
   EventBus.connect("wave_completed", self, "_on_wave_completed")
-  get_children()[0].spawn()
+  waves = get_children()
+  waves[0].spawn()
 
 func _on_wave_completed(name):
-  print("spawn")
-  get_children()[0].spawn()
+  wave_index += 1
+
+  if wave_index < waves.size():
+    waves[wave_index].spawn()
+  else:
+    EventBus.emit_signal("chapter_complete")

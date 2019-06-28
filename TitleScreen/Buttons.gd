@@ -12,6 +12,7 @@ func _ready():
   MusicPlayer.play_file("res://Music/menu.ogg")
 
 func _on_NewGameButton_pressed():
+  Game.chapter = 0
   Game.change_scene("res://Scenes/Gameplay.tscn")
 
 func _on_QuitButton_pressed():

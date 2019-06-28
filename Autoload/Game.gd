@@ -3,6 +3,7 @@ extends Node
 
 var scene:Node
 
+var chapter = 0
 var high_score = 0
 var target_scene
 
@@ -14,6 +15,7 @@ func _ready():
   initialize()
   randomize()
   Overlay.connect("fade_complete", self, "_on_Overlay_fade_complete")
+  EventBus.connect("chapter_complete", self, "_on_chapter_complete")
 
 func reset():
   Game.change_scene("res://Scenes/Gameplay.tscn", false)
@@ -32,3 +34,6 @@ func _on_Overlay_fade_complete():
     Overlay.fade(Color(0, 0, 0, 1), Color(0, 0, 0, 0), 0.3)
     MusicPlayer.fade(MusicPlayer.music_volume, 0, 0.2)
     MusicPlayer.disable_filter()
+
+func _on_Chapter_complete():
+  chapter += 1
