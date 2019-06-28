@@ -11,6 +11,9 @@ const TERMINAL_VELOCITY = 800
 const RIGHT = -1
 const LEFT = 1
 
+export var max_health = 3
+export var max_mana = 2
+
 var dead = false
 
 var velocity = Vector2()
@@ -19,8 +22,8 @@ var acceleration = Vector2()
 var flash_mask = SUPER_MASK
 
 var invulnerable = false
-var stamina = 100
-var health = 3
+var health = max_health
+var mana = max_mana
 
 var stun_count = 0
 var is_stunned setget ,get_stunned
