@@ -7,9 +7,10 @@
 [ext_resource path="res://UI/HUD/ManaPip/ManaPip.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
+scale = Vector2( 0.8, 0.8 )
 
 [node name="HUDDetail" type="Sprite" parent="."]
-position = Vector2( 0, 800 )
+position = Vector2( 0, 1070 )
 texture = ExtResource( 1 )
 centered = false
 
