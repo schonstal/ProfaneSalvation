@@ -6,6 +6,7 @@ var streams = {}
 
 func play(stream, name = null):
   if name && streams.has(name):
+    streams[name].seek(0)
     return
 
   var player = player_scene.instance()
@@ -20,6 +21,7 @@ func play(stream, name = null):
 
 func play_scene(scene, name = null):
   if name && streams.has(name):
+    streams[name].seek(0)
     return
 
   var player = scene.instance()
