@@ -18,6 +18,7 @@ export var move_rate = 1
 export var shoot_time = 0.5
 
 export(Resource) var bullet_pattern = preload("res://BulletPatterns/Lines.tscn")
+export(Resource) var attack_sound_scene = preload("res://Enemies/BloodBat/AttackSound.tscn")
 
 signal died
 
@@ -67,6 +68,7 @@ func _on_ShootTimer_timeout():
 
 func _on_AnimationPlayer_animation_finished(name):
   if name == "AttackStart":
+    Game.scene.sound.play_scene(attack_sound_scene, "bat_attack")
     animation.play("Attack")
     if position.y > 0:
       pattern = bullet_pattern.instance()
