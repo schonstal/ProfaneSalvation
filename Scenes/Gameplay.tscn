@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Gameplay.gd" type="Script" id=1]
 [ext_resource path="res://Util/Screen.gd" type="Script" id=2]
@@ -8,10 +8,14 @@
 [ext_resource path="res://Waves/ChapterOne/IntroWave.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Waves/ChapterOne/IntroBatWave.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Waves/ChapterOne/IntroBallWave.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Util/SoundManager.gd" type="Script" id=9]
-[ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=10]
-[ext_resource path="res://UI/HUD/HUD.tscn" type="PackedScene" id=11]
-[ext_resource path="res://UI/Pause/Pause.gd" type="Script" id=12]
+[ext_resource path="res://Waves/ChapterOne/SecondBatWave.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Waves/ChapterOne/FullBallLine.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Waves/ChapterOne/StaggeredBatWaveOne.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Waves/ChapterOne/BallLine.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Util/SoundManager.gd" type="Script" id=13]
+[ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=14]
+[ext_resource path="res://UI/HUD/HUD.tscn" type="PackedScene" id=15]
+[ext_resource path="res://UI/Pause/Pause.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 273.197, 1454.69 )
@@ -46,8 +50,29 @@ scene = ExtResource( 6 )
 [node name="BatWave" parent="WaveManager" instance=ExtResource( 5 )]
 scene = ExtResource( 7 )
 
-[node name="BallWave2" parent="WaveManager" instance=ExtResource( 5 )]
+[node name="BallWave" parent="WaveManager" instance=ExtResource( 5 )]
 scene = ExtResource( 8 )
+
+[node name="SecondBatWave" parent="WaveManager" instance=ExtResource( 5 )]
+scene = ExtResource( 9 )
+
+[node name="FullBallLine" parent="WaveManager" instance=ExtResource( 5 )]
+scene = ExtResource( 10 )
+
+[node name="StaggeredBatWave" parent="WaveManager" instance=ExtResource( 5 )]
+scene = ExtResource( 11 )
+
+[node name="BallLine" parent="WaveManager" instance=ExtResource( 5 )]
+scene = ExtResource( 12 )
+
+[node name="BallLine2" parent="WaveManager" instance=ExtResource( 5 )]
+scene = ExtResource( 12 )
+
+[node name="BallLine3" parent="WaveManager" instance=ExtResource( 5 )]
+scene = ExtResource( 12 )
+
+[node name="BallLine4" parent="WaveManager" instance=ExtResource( 5 )]
+scene = ExtResource( 12 )
 
 [node name="CurrentWave" type="Node2D" parent="."]
 __meta__ = {
@@ -71,7 +96,7 @@ __meta__ = {
 }
 
 [node name="Sound" type="Node" parent="."]
-script = ExtResource( 9 )
+script = ExtResource( 13 )
 
 [node name="Walls" type="Node2D" parent="."]
 editor/display_folded = true
@@ -108,13 +133,13 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
 shape = SubResource( 1 )
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 10 )]
+[node name="ParallaxBackground" parent="." instance=ExtResource( 14 )]
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 editor/display_folded = true
 layer = 3
 
-[node name="HUD" parent="HUDLayer" instance=ExtResource( 11 )]
+[node name="HUD" parent="HUDLayer" instance=ExtResource( 15 )]
 
 [node name="GameOverLayer" type="CanvasLayer" parent="."]
 layer = 10
@@ -128,7 +153,7 @@ pause_mode = 2
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 12 )
+script = ExtResource( 16 )
 
 [node name="Overlay" type="ColorRect" parent="PauseLayer/Pause"]
 anchor_right = 1.0

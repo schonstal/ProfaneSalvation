@@ -3,7 +3,7 @@ extends Node2D
 onready var enemy = $Enemy
 
 export var bullet_count = 12
-export var speed = 600
+export var speed = Vector2(0, 200)
 export var bullet_speed = 500
 export var angular_velocity = 0.5
 
@@ -14,7 +14,8 @@ export(Resource) var bullet_scene = preload("res://Enemies/Projectiles/Projectil
 func _ready():
   enemy.connect("died", self, "_on_Enemy_died")
   enemy.connect("body_entered", self, "_on_body_entered")
-  enemy.velocity.y = speed
+  enemy.velocity.y = speed.y
+  enemy.velocity.x = speed.x
 
 func _process(delta):
   enemy.rotation += PI * 2 * delta * angular_velocity

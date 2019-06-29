@@ -7,24 +7,22 @@
 [node name="BloodBatWave" type="Node2D"]
 z_index = -1
 script = ExtResource( 1 )
-complete_time = 8.0
 
 [node name="BatSpawner" parent="." instance=ExtResource( 2 )]
-position = Vector2( 640, 386.339 )
+position = Vector2( 640, 200 )
 summon_time = 1.5
 
 [node name="Enemy" parent="BatSpawner" instance=ExtResource( 3 )]
-movement = Vector2( 50, 0 )
+movement = Vector2( 320, 0 )
 velocity = Vector2( 0, 0 )
-shoot_time = 0.175
+shoot_time = 0.2
 
 [node name="BatSpawner2" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
-position = Vector2( 1280, 386.339 )
+position = Vector2( 1280, 400 )
 summon_time = 1.5
 
 [node name="Enemy" parent="BatSpawner2" instance=ExtResource( 3 )]
-movement = Vector2( -50, 0 )
+movement = Vector2( -320, 0 )
 velocity = Vector2( 0, 0 )
-shoot_time = 0.175
+shoot_time = 0.2
 

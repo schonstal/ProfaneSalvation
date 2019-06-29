@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Spawn/BatSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Spawn/BallLordSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/BallLord/BallLord.tscn" type="PackedScene" id=5]
+
+[node name="BloodBatWave" type="Node2D"]
+z_index = -1
+script = ExtResource( 1 )
+complete_time = 8.0
+
+[node name="BatSpawner" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 640, 385 )
+delay = 2.0
+
+[node name="Enemy" parent="BatSpawner" instance=ExtResource( 3 )]
+movement = Vector2( -50, 50 )
+velocity = Vector2( 0, 0 )
+shoot_time = 0.2
+
+[node name="BatSpawner2" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 1280, 385 )
+delay = 2.0
+
+[node name="Enemy" parent="BatSpawner2" instance=ExtResource( 3 )]
+movement = Vector2( 50, 50 )
+velocity = Vector2( 0, 0 )
+shoot_time = 0.2
+
+[node name="BallLordSpawner" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+position = Vector2( 860, 540 )
+
+[node name="Enemy" parent="BallLordSpawner" instance=ExtResource( 5 )]
+speed = Vector2( -200, 200 )
+
+[node name="BallLordSpawner3" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+position = Vector2( 1060, 540 )
+
+[node name="Enemy" parent="BallLordSpawner3" instance=ExtResource( 5 )]
+speed = Vector2( 200, 200 )
+
+[node name="BallLordSpawner4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 960, 400 )
+
+[node name="Enemy" parent="BallLordSpawner4" instance=ExtResource( 5 )]
+speed = Vector2( 0, 400 )
+
