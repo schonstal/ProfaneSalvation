@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Spawn/BallLordSpawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Spawn/Spawner.gd" type="Script" id=2]
+[ext_resource path="res://Enemies/BallLord/BallLordSpawn.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/BallLord/BallLord.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/BallLord/BallLord.gd" type="Script" id=5]
+
+[node name="LeftBall" type="Node2D"]
+editor/display_folded = true
+
+[node name="BallLordSpawner2" type="Node2D" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+script = ExtResource( 2 )
+summon_time = 1.0
+spawn_scene = ExtResource( 3 )
+enemy_scene = ExtResource( 4 )
+
+[node name="Enemy" type="Node2D" parent="BallLordSpawner2" instance=ExtResource( 4 )]
+script = ExtResource( 5 )
+speed = Vector2( -300, 5 )
+bullet_speed = 400
+

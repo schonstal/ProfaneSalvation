@@ -4,9 +4,9 @@
 [ext_resource path="res://Waves/ChapterOne/Despawner.gd" type="Script" id=2]
 [ext_resource path="res://Enemies/BallLord/BallLord.tscn" type="PackedScene" id=3]
 
-[node name="BallerWave" type="Node2D"]
+[node name="BallLine" type="Node2D"]
 script = ExtResource( 1 )
-complete_time = 4.0
+complete_time = 3.0
 enemy_count = 10
 
 [node name="Despawner" type="Node2D" parent="."]

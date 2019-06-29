@@ -2,6 +2,7 @@ extends Node2D
 
 export var summon_time = 2.0
 export var delay = 0.0
+
 export(Resource) var spawn_scene
 export(Resource) var enemy_scene
 

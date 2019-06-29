@@ -6,8 +6,7 @@ var current_wave
 
 func _ready():
   EventBus.connect("wave_completed", self, "_on_wave_completed")
-  waves = get_children()
-  waves[0].spawn()
+  load_chapter(Game.chapter)
 
 func _on_wave_completed(name):
   wave_index += 1
@@ -16,3 +15,7 @@ func _on_wave_completed(name):
     waves[wave_index].spawn()
   else:
     EventBus.emit_signal("chapter_complete")
+
+func load_chapter(chapter):
+  waves = get_children()[chapter].get_children()
+  waves[0].spawn()

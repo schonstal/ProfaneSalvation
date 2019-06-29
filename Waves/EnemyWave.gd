@@ -26,7 +26,6 @@ func _on_enemy_died(wave, name):
   dead_enemies += 1
   if dead_enemies >= enemy_count:
     complete()
-    queue_free()
 
 func complete():
   if completed:

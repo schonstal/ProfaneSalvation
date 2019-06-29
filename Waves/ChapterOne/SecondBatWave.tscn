@@ -6,30 +6,29 @@
 [ext_resource path="res://Spawn/BallLordSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemies/BallLord/BallLord.tscn" type="PackedScene" id=5]
 
-[node name="BloodBatWave" type="Node2D"]
+[node name="SecondBatWave" type="Node2D"]
 z_index = -1
 script = ExtResource( 1 )
 complete_time = 8.0
+enemy_count = 2
 
 [node name="BatSpawner" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 position = Vector2( 640, 385 )
 delay = 2.0
 
 [node name="Enemy" parent="BatSpawner" instance=ExtResource( 3 )]
-movement = Vector2( -50, 50 )
+movement = Vector2( 50, 50 )
 velocity = Vector2( 0, 0 )
-shoot_time = 0.2
+shoot_time = 0.1
 
 [node name="BatSpawner2" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 position = Vector2( 1280, 385 )
 delay = 2.0
 
 [node name="Enemy" parent="BatSpawner2" instance=ExtResource( 3 )]
-movement = Vector2( 50, 50 )
+movement = Vector2( -50, 50 )
 velocity = Vector2( 0, 0 )
-shoot_time = 0.2
+shoot_time = 0.1
 
 [node name="BallLordSpawner" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true

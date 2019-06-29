@@ -11,11 +11,12 @@ var original_position:Vector2
 var shooting = false
 var flying = true
 var pattern = null
+var move_rate = 3
 
 export var movement = Vector2(100, 100)
 export var velocity = Vector2(0, 0)
-export var move_rate = 1
 export var shoot_time = 0.5
+export var shoot_immediately = false
 
 export(Resource) var bullet_pattern = preload("res://BulletPatterns/Lines.tscn")
 export(Resource) var movement_pattern = preload("res://Enemies/Movement/Movement.tscn")
@@ -26,7 +27,10 @@ signal died
 func _ready():
   shoot_timer = Timer.new()
   shoot_timer.set_name("ShootTimer")
-  shoot_timer.wait_time = PI / move_rate
+  if shoot_immediately:
+    shoot_timer.wait_time = 0.01
+  else:
+    shoot_timer.wait_time = PI / move_rate
   shoot_timer.one_shot = true
   shoot_timer.start()
   add_child(shoot_timer)
@@ -53,6 +57,7 @@ func die():
   queue_free()
 
 func _on_Enemy_died():
+  EventBus.emit_signal("enemy_died", enemy.wave_name, name)
   die()
 
 func _on_ShootTimer_timeout():

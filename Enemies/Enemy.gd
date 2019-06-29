@@ -84,7 +84,6 @@ func die():
   explode()
   Game.scene.sound.play(die_sound)
   emit_signal("died")
-  EventBus.emit_signal("enemy_died", wave_name, name)
   spawn_halos()
   queue_free()
 

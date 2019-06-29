@@ -4,10 +4,11 @@
 [ext_resource path="res://Spawn/BatSpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=3]
 
-[node name="BloodBatWave" type="Node2D"]
+[node name="IntroBatWave" type="Node2D"]
 z_index = -1
 script = ExtResource( 1 )
-complete_time = 8.0
+complete_time = 10.0
+enemy_count = 2
 
 [node name="BatSpawner" parent="." instance=ExtResource( 2 )]
 position = Vector2( 640, 386.339 )

@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Spawn/BatSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://BulletPatterns/Lines.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Waves/InfiniteSpawn.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/BallLord/RightBall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/BallLord/LeftBall.tscn" type="PackedScene" id=7]
+
+[node name="ShootyBats" type="Node2D"]
+z_index = -1
+script = ExtResource( 1 )
+complete_time = 30.0
+enemy_count = 4
+
+[node name="BatSpawner3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1120, 200 )
+
+[node name="Enemy" parent="BatSpawner3" instance=ExtResource( 3 )]
+movement = Vector2( 0, -100 )
+velocity = Vector2( 0, 0 )
+shoot_time = 0.1
+bullet_pattern = ExtResource( 4 )
+
+[node name="BatSpawner5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 480, 200 )
+
+[node name="Enemy" parent="BatSpawner5" instance=ExtResource( 3 )]
+movement = Vector2( 0, -100 )
+velocity = Vector2( 0, 0 )
+shoot_time = 0.1
+bullet_pattern = ExtResource( 4 )
+
+[node name="BatSpawner4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 800, 200 )
+
+[node name="Enemy" parent="BatSpawner4" instance=ExtResource( 3 )]
+movement = Vector2( 0, 100 )
+velocity = Vector2( 0, 0 )
+shoot_time = 0.1
+bullet_pattern = ExtResource( 4 )
+
+[node name="BatSpawner6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1440, 200 )
+
+[node name="Enemy" parent="BatSpawner6" instance=ExtResource( 3 )]
+movement = Vector2( 0, 100 )
+velocity = Vector2( 0, 0 )
+shoot_time = 0.1
+bullet_pattern = ExtResource( 4 )
+
+[node name="InfiniteSpawn" parent="." instance=ExtResource( 5 )]
+position = Vector2( 320, 500 )
+scene = ExtResource( 6 )
+
+[node name="InfiniteSpawn2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1600, 500 )
+scene = ExtResource( 7 )
+
