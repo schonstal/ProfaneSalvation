@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PitLord_Dissappears.wav-ba57e2162372c61f3eb477918bbfa0ad.sample"
+
+[deps]
+
+source_file="res://Enemies/PitLord/PitLord_Dissappears.wav"
+dest_files=[ "res://.import/PitLord_Dissappears.wav-ba57e2162372c61f3eb477918bbfa0ad.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

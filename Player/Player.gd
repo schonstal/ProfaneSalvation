@@ -13,7 +13,7 @@ const LEFT = 1
 
 export var max_health = 3
 export var max_mana = 2
-export var halos_per_pip = 50
+export var halos_per_pip = 25
 
 var dead = false
 
@@ -54,6 +54,9 @@ onready var wings_animation = $'Wings/AnimationPlayer'
 onready var shield = $Shield
 onready var muzzle_flare = $MuzzleFlare
 onready var shoot_sound = $ShootSound
+onready var shield_activate_sound = $ShieldActivate
+onready var shield_failure_sound = $ShieldFailure
+onready var shield_full_sound = $ShieldFull
 
 var deflect_buffer = 0
 export var deflect_buffer_time = 0.2
@@ -166,6 +169,10 @@ func handle_defend(delta):
       emit_signal("mana_spent", mana)
       shield.deflect()
       deflect_pressed = false
+      shield_activate_sound.play()
+    else:
+      shield_failure_sound.play()
+      EventBus.emit_signal("shield_failure")
 
 func handle_attack(delta):
   if !attacking && Input.is_action_pressed("attack"):
@@ -209,6 +216,7 @@ func _on_halo_collected():
   if halos >= halos_per_pip:
     halos = 0
     mana += 1
+    shield_full_sound.play()
 
 func _on_Iframe_timer_timeout():
   invulnerable = false

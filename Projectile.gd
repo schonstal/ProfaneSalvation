@@ -6,6 +6,7 @@ export var damage = 1
 
 export(Resource) var explosion_scene = preload("res://Enemies/Projectiles/EnemyFireballExplosion/EnemyFireballExplosion.tscn")
 var halo_scene = preload("res://Items/Halo/Halo.tscn")
+var deflect_sound = preload("res://Player/DeflectSound.tscn")
 
 func _ready():
   connect("body_entered", self, "_on_body_enter")
@@ -36,6 +37,7 @@ func _on_body_enter(body):
     die()
 
 func deflect():
+  Game.scene.sound.play_scene(deflect_sound, "deflect")
   die()
 
 func die():

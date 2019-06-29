@@ -5,6 +5,7 @@ onready var max_amount = Game.scene.player.halos_per_pip
 
 onready var shimmer = $Shimmer
 onready var shimmer_animation = $Shimmer/AnimationPlayer
+onready var frame = $Frame
 
 var bar_length = 0
 var active = false
@@ -23,6 +24,7 @@ func activate():
 
   shimmer.visible = true
   shimmer_animation.play("Shimmer")
+  frame.flash()
   bar.margin_top = bar.margin_bottom - bar_length
   active = true
 

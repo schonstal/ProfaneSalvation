@@ -16,7 +16,7 @@ var wait_timer = 0
 
 signal died
 
-export(Resource) var collect_sound = preload("res://Items/Halo/Collect.wav")
+export(Resource) var collect_sound = preload("res://Items/Halo/CollectSound.tscn")
 
 func _ready():
   connect("body_entered", self, "_on_body_entered")
@@ -45,6 +45,6 @@ func _on_body_entered(body):
 
 func die():
   Game.scene.score(points)
-  Game.scene.sound.play(collect_sound)
+  Game.scene.sound.play_scene(collect_sound, "halo")
   EventBus.emit_signal("halo_collected")
   queue_free()

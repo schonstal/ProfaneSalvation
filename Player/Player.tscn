@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Sprite/AngelIdleGlow.png" type="Texture" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://Player/Sprite/Deflect/Deflect.png" type="Texture" id=12]
 [ext_resource path="res://Player/PlayerSingleShot.wav" type="AudioStream" id=13]
 [ext_resource path="res://Player/PlayerReturn.wav" type="AudioStream" id=14]
+[ext_resource path="res://Player/Shield_Activate.wav" type="AudioStream" id=15]
+[ext_resource path="res://Player/Shield_Failure.wav" type="AudioStream" id=16]
+[ext_resource path="res://Player/Shield_Full.wav" type="AudioStream" id=17]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -310,4 +313,13 @@ volume_db = -5.0
 [node name="Spawn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
 autoplay = true
+
+[node name="ShieldActivate" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+
+[node name="ShieldFailure" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+
+[node name="ShieldFull" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
 
