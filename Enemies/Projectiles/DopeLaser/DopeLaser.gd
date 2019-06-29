@@ -8,6 +8,9 @@ onready var ring_animation = $Body/Ring/AnimationPlayer
 export var aim_time = 0.5
 export var active_time = 3.0
 
+export(Resource) var charge_up_sound = preload("res://Enemies/Projectiles/DopeLaser/ChargeUpSound.tscn")
+export(Resource) var shut_down_sound = preload("res://Enemies/Projectiles/DopeLaser/ShutDownSound.tscn")
+
 func _ready():
   aim_timer.connect("timeout", self, "_on_AimTimer_timeout")
   active_timer.connect("timeout", self, "_on_ActiveTimer_timeout")
@@ -18,14 +21,18 @@ func _ready():
   aim_timer.start(aim_time)
 
 func _on_AimTimer_timeout():
+  Game.scene.sound.play_scene(charge_up_sound, "chargelaser")
   animation.play("Startup")
   ring_animation.play("Poof")
 
 func _on_ActiveTimer_timeout():
+  Game.scene.sound.play_scene(shut_down_sound, "shutdownlaser")
+  $Wobble.stop()
   animation.play("Recovery")
 
 func _on_Body_animation_finished(name):
   if name == "Startup":
+    $Wobble.play()
     animation.play("Active")
     active_timer.start(active_time)
 
