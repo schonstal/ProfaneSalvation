@@ -256,7 +256,7 @@ tracks/3/keys = {
 radius = 36.0
 height = 125.0
 
-[node name="BloodBat" type="Node2D"]
+[node name="Enemy" type="Node2D"]
 script = ExtResource( 1 )
 movement = Vector2( 150, 50 )
 velocity = Vector2( 0, 50 )

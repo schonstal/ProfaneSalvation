@@ -35,16 +35,17 @@ func _ready():
   animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
 
   enemy.connect("died", self, "_on_Enemy_died")
-  original_position = position
+  original_position = global_position
 
 func _process(delta):
   if flying:
     time += delta
+    original_position += velocity * delta
 
-  position.x = original_position.x + (sin(time * move_rate) + 1) * movement.x
-  position.y = original_position.y + abs(cos(time * move_rate)) * movement.y
+  global_position.x = original_position.x + ((sin(time * move_rate) + 1) * movement.x)
+  global_position.y = original_position.y + (abs(cos(time * move_rate)) * movement.y)
 
-  if enemy.global_position.y > 1120:
+  if global_position.y > 1120:
     die()
 
 func die():

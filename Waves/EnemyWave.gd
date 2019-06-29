@@ -8,8 +8,6 @@ var time = 0.0
 
 export var enemy_count = 0
 
-signal wave_completed
-
 func _ready():
   if enemy_count == 0:
     enemy_count = get_child_count()

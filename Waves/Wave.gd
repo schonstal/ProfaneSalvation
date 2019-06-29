@@ -7,8 +7,7 @@ func _ready():
   EventBus.connect("wave_completed", self, "_on_wave_completed")
 
 func _on_wave_completed(name):
-  if scene_instance != null && name == scene_instance.name:
-    pass
+  pass
 
 func spawn():
   scene_instance = scene.instance()
