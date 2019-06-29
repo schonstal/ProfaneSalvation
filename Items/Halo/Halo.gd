@@ -9,8 +9,10 @@ export var speed = 600
 export var angular_velocity = 0.5
 export var target_velocity = Vector2(0, 100)
 export var points = 25
+export var wait_time = 0.1
 
 var velocity = Vector2(-300, -500)
+var wait_timer = 0
 
 signal died
 
@@ -23,12 +25,13 @@ func _ready():
   animation.advance(randf() * 0.4)
 
 func _process(delta):
+  wait_timer += delta
   rotation += PI * 2 * delta * angular_velocity
   if global_position.y > 1200:
     queue_free()
 
 func _physics_process(delta):
-  if Game.scene.player.attacking || Game.scene.player.dead:
+  if Game.scene.player.attacking || Game.scene.player.dead || wait_timer < wait_time:
     velocity.x += (target_velocity.x - velocity.x) * 0.1
     velocity.y += (target_velocity.y - velocity.y) * 0.1
   else:

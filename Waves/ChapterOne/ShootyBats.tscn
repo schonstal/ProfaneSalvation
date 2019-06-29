@@ -53,8 +53,10 @@ bullet_pattern = ExtResource( 4 )
 [node name="InfiniteSpawn" parent="." instance=ExtResource( 5 )]
 position = Vector2( 320, 500 )
 scene = ExtResource( 6 )
+spawn_rate = 4.0
 
 [node name="InfiniteSpawn2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1600, 500 )
 scene = ExtResource( 7 )
+spawn_rate = 4.0
 

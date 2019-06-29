@@ -17,6 +17,10 @@ func _ready():
   Overlay.connect("fade_complete", self, "_on_Overlay_fade_complete")
   EventBus.connect("chapter_complete", self, "_on_chapter_complete")
 
+func _on_chapter_complete():
+  Overlay.fade(Color(1, 1, 1, 0.3), Color(1, 1, 1, 0), 0.5)
+  chapter += 1
+
 func reset():
   Game.change_scene("res://Scenes/Gameplay.tscn", false)
 

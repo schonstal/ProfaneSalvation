@@ -21,6 +21,7 @@ var stunned = false
 var velocity = Vector2(0, 0)
 var acceleration = Vector2()
 var wave_name = ""
+var despawned = false
 
 var halo_scene = preload("res://Items/Halo/Halo.tscn")
 export(Resource) var explosion_scene = preload("res://Enemies/Explosion/Explosion.tscn")
@@ -61,7 +62,13 @@ func _ready():
   stun_timer.set_name("StunTimer")
   add_child(stun_timer)
 
+  EventBus.connect("chapter_complete", self, "_on_chapter_complete")
+
   wave_name = Game.scene.wave_manager.current_wave
+
+func _on_chapter_complete():
+  despawned = true
+  die()
 
 func hurt(damage):
   if !alive:
@@ -78,12 +85,16 @@ func hurt(damage):
 
   emit_signal("hurt", health, max_health)
 
-func die():
+func die(killed = true):
   alive = false
-  Game.scene.score(points)
-  explode()
-  Game.scene.sound.play(die_sound)
+
+  if !despawned:
+    Game.scene.score(points)
+    explode()
+    Game.scene.sound.play(die_sound)
+
   emit_signal("died")
+
   spawn_halos()
   queue_free()
 

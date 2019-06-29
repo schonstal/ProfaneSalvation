@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/Fonts/Pirata.tres" type="DynamicFont" id=1]
-[ext_resource path="res://UI/Fonts/Pirata_One-128.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/GameOver/Score.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fade"
@@ -31,32 +31,32 @@ margin_right = 1600.0
 margin_bottom = 1080.0
 alignment = 1
 
-[node name="VerseNumber" type="Label" parent="VBoxContainer"]
-margin_top = 944.0
+[node name="VerseComplete" type="Label" parent="VBoxContainer"]
+margin_top = 980.0
 margin_right = 3200.0
-margin_bottom = 1038.0
+margin_bottom = 1074.0
 custom_fonts/font = ExtResource( 1 )
-text = "Verse One"
+text = "Verse Complete"
 align = 1
 valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-margin_top = 1042.0
+margin_top = 1078.0
 margin_right = 3200.0
-margin_bottom = 1046.0
+margin_bottom = 1082.0
 rect_pivot_offset = Vector2( 4100, -1242 )
 
-[node name="VerseName" type="Label" parent="VBoxContainer"]
-margin_top = 1050.0
+[node name="Score" type="Label" parent="VBoxContainer"]
+margin_top = 1086.0
 margin_right = 3200.0
-margin_bottom = 1215.0
-custom_fonts/font = ExtResource( 2 )
+margin_bottom = 1180.0
+custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0.576471, 0, 0, 1 )
 custom_constants/shadow_offset_y = 4
-text = "Pandæmonium"
+text = "Score:"
 align = 1
 valign = 1
+script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Fade"

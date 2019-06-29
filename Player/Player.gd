@@ -13,7 +13,7 @@ const LEFT = 1
 
 export var max_health = 3
 export var max_mana = 2
-export var halos_per_pip = 25
+export var halos_per_pip = 50
 
 var dead = false
 

@@ -5,5 +5,5 @@
 [node name="IntroWave" instance=ExtResource( 1 )]
 
 [node name="TitleCard" parent="." index="0"]
-title = "Genesis"
+verse = "Verse Two"
 

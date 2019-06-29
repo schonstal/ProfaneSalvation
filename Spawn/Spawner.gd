@@ -14,6 +14,9 @@ onready var black_hole_animation = $BlackHole/AnimationPlayer
 onready var placeholder = $Placeholder
 onready var enemy = $Enemy
 
+var halo_scene = preload("res://Items/Halo/Halo.tscn")
+var halos = 6
+
 var finished = false
 
 func _ready():
@@ -34,6 +37,21 @@ func _ready():
     delay_timer.start(delay)
 
   summon_circle.connect("fade_finished", self, "_on_SummonCircle_fade_finished")
+
+  EventBus.connect("chapter_complete", self, "_on_chapter_complete")
+
+func _on_chapter_complete():
+  for i in range(0, halos):
+    var halo = halo_scene.instance()
+    var rotation = randf() * TAU
+    Game.scene.items.call_deferred("add_child", halo)
+    halo.global_position = global_position
+    halo.velocity = Vector2(
+        cos(rotation),
+        sin(rotation)
+    ) * (250 + randf() * 400)
+
+    queue_free()
 
 func _on_DelayTimer_timeout():
   begin()
