@@ -55,7 +55,3 @@ func _on_Enemy_died():
     ) * bullet_speed
 
   queue_free()
-
-func _on_body_entered(body):
-  if body.has_method("hurt"):
-    body.hurt(1)

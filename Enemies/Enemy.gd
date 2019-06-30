@@ -134,3 +134,7 @@ func _on_Flash_timer_timeout():
     $Sprite.modulate = Color(10, 10, 10, 1)
     flashed = true
     flash_timer.start(flash_time)
+
+func _on_body_entered(body):
+  if body.has_method("hurt"):
+    body.hurt(1)

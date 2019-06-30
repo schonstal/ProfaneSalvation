@@ -11,6 +11,8 @@ export var active_time = 3.0
 export(Resource) var charge_up_sound = preload("res://Enemies/Projectiles/DopeLaser/ChargeUpSound.tscn")
 export(Resource) var shut_down_sound = preload("res://Enemies/Projectiles/DopeLaser/ShutDownSound.tscn")
 
+signal attack_finished
+
 func _ready():
   aim_timer.connect("timeout", self, "_on_AimTimer_timeout")
   active_timer.connect("timeout", self, "_on_ActiveTimer_timeout")
@@ -37,6 +39,7 @@ func _on_Body_animation_finished(name):
     active_timer.start(active_time)
 
   if name == "Recovery":
+    emit_signal("attack_finished")
     queue_free()
 
 func _process(delta):

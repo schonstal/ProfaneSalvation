@@ -13,6 +13,7 @@ var wave_manager:Node
 var current_wave:Node
 var items:Node
 var game_over_layer:Node
+var lasers:Node
 
 onready var game_over = false
 
@@ -34,6 +35,7 @@ func _enter_tree():
   current_wave = $CurrentWave
   items = $Items
   game_over_layer = $GameOverLayer
+  lasers = $Lasers
 
   Game.initialize()
 
