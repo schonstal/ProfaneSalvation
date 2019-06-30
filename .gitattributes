@@ -71,3 +71,5 @@
 *.py text
 *.sh text
 Content/*.psd filter=lfs diff=lfs merge=lfs -text
+
+*.tps linguist-vendored
