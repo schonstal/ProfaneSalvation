@@ -1,3 +1,5 @@
-# Summer Slow Jams June 2019
+# Profane Salvation
 
-Game made for summer slow jams
+Made for Summer Slow Jams 2019
+
+Theme: Arcade | Occult Classic
