@@ -2,6 +2,7 @@ extends Node2D
 
 export(Resource) var scene
 export var spawn_rate = 3.0
+export var spawn_offset = 1.0
 
 onready var timer = $Timer
 
@@ -12,15 +13,20 @@ func _ready():
   timer.connect("timeout", self, "_on_Timer_timeout")
 
   timer.wait_time = spawn_rate
-  timer.start()
 
-  spawn()
+  if spawn_offset <= 0:
+    spawn()
+    timer.start()
+  else:
+    timer.start(spawn_offset)
+
 
 func _on_wave_completed(name):
   queue_free()
 
 func _on_Timer_timeout():
   spawn()
+  timer.start(spawn_rate)
 
 func spawn():
   var scene_instance = scene.instance()

@@ -3,7 +3,7 @@ extends Node
 
 var scene:Node
 
-var chapter = 0
+var chapter = 1
 var high_score = 0
 var target_scene
 

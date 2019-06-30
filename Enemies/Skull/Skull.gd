@@ -3,8 +3,9 @@ extends Node2D
 export var bob_amount = 4
 export var bob_frequency = 0.5
 export var laser_active_time = 3.0
-export var fade = true
+export var fade_out = true
 export var shoot_time = 0.5
+export var fade_in = true
 
 onready var enemy = $Enemy
 onready var laser_spawn = $Enemy/LaserSpawn
@@ -26,6 +27,9 @@ func _ready():
 
   shoot_timer.start(shoot_time)
 
+  if fade_in:
+    animation.play("FadeIn")
+
   $Enemy/Placeholder.visible = false
 
 func _process(delta):
@@ -46,13 +50,14 @@ func _on_ShootTimer_timeout():
   var laser = laser_scene.instance()
   laser.global_position = laser_spawn.global_position
   laser.rotation = rotation
+  laser.active_time = shoot_time
   laser.connect("attack_finished", self, "_on_attack_finished")
   Game.scene.lasers.call_deferred("add_child", laser)
 
   animation.play("Attack")
 
 func _on_attack_finished():
-  if fade:
+  if fade_out:
     animation.play("Fade")
   else:
     shoot_timer.start(shoot_time)

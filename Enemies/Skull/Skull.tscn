@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Enemies/Skull/Skull.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=2]
@@ -74,6 +74,45 @@ tracks/2/keys = {
 "values": [ 2, 3, 0 ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [sub_resource type="Animation" id=2]
 resource_name = "Idle"
 tracks/0/type = "value"
@@ -100,6 +139,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 33.5674
@@ -107,13 +158,14 @@ height = 43.955
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource( 1 )
+laser_active_time = 1.0
 
 [node name="Enemy" type="Area2D" parent="."]
 collision_layer = 12
 collision_mask = 18
 script = ExtResource( 2 )
-max_health = 20
-halos = 10
+max_health = 100
+halos = 20
 explosion_scene = ExtResource( 3 )
 
 [node name="LaserSpawn" type="Node2D" parent="Enemy"]
@@ -124,6 +176,7 @@ position = Vector2( -3.12662, 543.962 )
 texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Enemy"]
+modulate = Color( 1, 1, 1, 0 )
 texture = ExtResource( 5 )
 hframes = 4
 
@@ -131,6 +184,7 @@ hframes = 4
 autoplay = "Idle"
 anims/Attack = SubResource( 5 )
 anims/Fade = SubResource( 4 )
+anims/FadeIn = SubResource( 6 )
 anims/Idle = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]

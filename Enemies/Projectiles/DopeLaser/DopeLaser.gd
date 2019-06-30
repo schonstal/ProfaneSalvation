@@ -5,7 +5,7 @@ onready var active_timer = $ActiveTimer
 onready var animation = $Body/AnimationPlayer
 onready var ring_animation = $Body/Ring/AnimationPlayer
 
-export var aim_time = 0.5
+export var aim_time = 0.25
 export var active_time = 3.0
 
 export(Resource) var charge_up_sound = preload("res://Enemies/Projectiles/DopeLaser/ChargeUpSound.tscn")

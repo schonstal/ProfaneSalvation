@@ -9,6 +9,7 @@ func _ready():
   load_chapter(Game.chapter)
 
 func _on_wave_completed(name):
+  print(name, " completed")
   wave_index += 1
 
   if wave_index < waves.size():
