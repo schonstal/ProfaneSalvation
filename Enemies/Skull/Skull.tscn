@@ -176,7 +176,6 @@ position = Vector2( -3.12662, 543.962 )
 texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Enemy"]
-modulate = Color( 1, 1, 1, 0 )
 texture = ExtResource( 5 )
 hframes = 4
 

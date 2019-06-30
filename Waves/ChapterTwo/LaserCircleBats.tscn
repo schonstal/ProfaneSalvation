@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/BallLord/BallLord.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Spawn/BatSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Waves/InfiniteSpawn.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/Skull/RightSkull.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/Skull/LeftSkull.tscn" type="PackedScene" id=7]
+
+[node name="LaserCircleBats" type="Node2D"]
+z_index = -1
+script = ExtResource( 1 )
+complete_time = 14.0
+enemy_count = 2
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 400, -316 )
+speed = Vector2( 30, 200 )
+
+[node name="Enemy9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1519.06, -315.062 )
+speed = Vector2( -30, 200 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 400, -444 )
+speed = Vector2( 20, 200 )
+
+[node name="Enemy8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1519.06, -443.062 )
+speed = Vector2( -20, 200 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 400, -188 )
+speed = Vector2( 40, 200 )
+
+[node name="Enemy7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1519.06, -187.062 )
+speed = Vector2( -40, 200 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 400, -60 )
+speed = Vector2( 50, 200 )
+
+[node name="Enemy6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1519.06, -59.0625 )
+speed = Vector2( -50, 200 )
+
+[node name="BatSpawner" parent="." instance=ExtResource( 3 )]
+position = Vector2( 760, 400 )
+
+[node name="Enemy" parent="BatSpawner" instance=ExtResource( 4 )]
+movement = Vector2( 200, -200 )
+velocity = Vector2( 0, 0 )
+shoot_time = 0.4
+
+[node name="BatSpawner3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 960, 400 )
+
+[node name="Enemy" parent="BatSpawner3" instance=ExtResource( 4 )]
+movement = Vector2( 0, 0 )
+velocity = Vector2( 0, 0 )
+shoot_time = 1.0
+shoot_immediately = true
+
+[node name="InfiniteSpawn" parent="." instance=ExtResource( 5 )]
+position = Vector2( 600, 550 )
+scene = ExtResource( 6 )
+spawn_rate = 4.0
+
+[node name="InfiniteSpawn2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1320, 698.951 )
+scene = ExtResource( 7 )
+spawn_rate = 4.0
+spawn_offset = 0.0
+
+[node name="BatSpawner2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1160, 400 )
+
+[node name="Enemy" parent="BatSpawner2" instance=ExtResource( 4 )]
+movement = Vector2( -200, 200 )
+velocity = Vector2( 0, 0 )
+shoot_time = 0.4
+

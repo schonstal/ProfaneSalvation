@@ -1,13 +1,68 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var collision = $Enemy/CollisionShape2D
+onready var appear_sound = $AppearSound
+onready var disappear_sound = $DisappearSound
+onready var attack_sound = $AttackSound
+onready var idle_timer = $IdleTimer
+onready var fade_tween = $FadeTween
+onready var fade_in_tween = $FadeInTween
+onready var animation = $Enemy/Sprite/AnimationPlayer
 
-# Called when the node enters the scene tree for the first time.
+export var idle_time = 2.0
+export var fade_duration = 0.3
+export var one_shot = false
+
 func _ready():
-	pass # Replace with function body.
+  fade_tween.connect("tween_completed", self, "_on_FadeTween_tween_completed")
+  fade_in_tween.connect("tween_completed", self, "_on_FadeInTween_tween_completed")
+  idle_timer.connect("timeout", self, "_on_IdleTimer_timeout")
+  animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+  fade_in()
+
+func _on_FadeTween_tween_completed(object, key):
+  collision.disabled = true
+  if one_shot:
+    queue_free()
+
+func _on_FadeInTween_tween_completed(object, key):
+  animation.play("Attack")
+
+func _on_IdleTimer_timeout():
+  fade_out()
+  # Spawn boss wave
+
+func _on_AnimationPlayer_animation_finished(name):
+  if name == "Attack":
+    idle_timer.start(idle_time)
+    animation.play("Idle")
+
+func fade_in():
+  animation.play("Idle")
+  collision.disabled = false
+  appear_sound.play()
+  fade_in_tween.interpolate_property(
+      self,
+      "modulate",
+      Color(1, 1, 1, 0),
+      Color(1, 1, 1, 1),
+      fade_duration,
+      Tween.TRANS_QUART,
+      Tween.EASE_OUT)
+
+  fade_in_tween.start()
+
+func fade_out():
+  disappear_sound.play()
+  fade_tween.interpolate_property(
+      self,
+      "modulate",
+      Color(1, 1, 1, 1),
+      Color(1, 1, 1, 0),
+      fade_duration,
+      Tween.TRANS_QUART,
+      Tween.EASE_OUT)
+
+  fade_tween.start()
+

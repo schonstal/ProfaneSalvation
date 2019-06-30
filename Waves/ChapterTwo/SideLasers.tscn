@@ -10,7 +10,7 @@
 [node name="LaserBats" type="Node2D"]
 z_index = -1
 script = ExtResource( 1 )
-complete_time = 15.0
+complete_time = 30.0
 enemy_count = 4
 
 [node name="BatSpawner3" parent="." instance=ExtResource( 2 )]

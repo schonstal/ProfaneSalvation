@@ -6,8 +6,9 @@
 [node name="PitLordWave" type="Node2D"]
 z_index = -1
 script = ExtResource( 1 )
-complete_time = 120.0
 
 [node name="PitLord" parent="." instance=ExtResource( 2 )]
-position = Vector2( 900, 300 )
+position = Vector2( 960, 300 )
+idle_time = 1.0
+one_shot = true
 

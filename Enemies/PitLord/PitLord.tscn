@@ -1,9 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Enemies/PitLord/PitLord.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Enemies/PitLord/PitLordDeath/PitLordDeath.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Enemies/PitLord/Sprite/PitLord.png" type="Texture" id=4]
+[ext_resource path="res://Enemies/PitLord/PitLord_Death.wav" type="AudioStream" id=4]
+[ext_resource path="res://Enemies/PitLord/Sprite/PitLord.png" type="Texture" id=5]
+[ext_resource path="res://Enemies/PitLord/PitLord_Appears.wav" type="AudioStream" id=6]
+[ext_resource path="res://Enemies/PitLord/PitLord_Dissappears.wav" type="AudioStream" id=7]
+[ext_resource path="res://Enemies/PitLord/PitLord_Fire.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Attack"
@@ -21,7 +25,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "Idle"
 length = 0.8
 loop = true
@@ -42,13 +46,6 @@ tracks/0/keys = {
 radius = 53.302
 height = 187.18
 
-[sub_resource type="CapsuleShape2D" id=4]
-radius = 17.253
-height = 81.1892
-
-[sub_resource type="CapsuleShape2D" id=5]
-height = 23.4118
-
 [node name="PitLord" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -63,31 +60,37 @@ halos = 150
 max_speed = Vector2( 10000, 10000 )
 halo_force = 2000
 explosion_scene = ExtResource( 3 )
+die_sound = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Enemy"]
 rotation = 0.0174533
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 vframes = 2
 hframes = 6
-frame = 4
+frame = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy/Sprite"]
 autoplay = "Idle"
 anims/Attack = SubResource( 1 )
-anims/Idle = SubResource( 6 )
+anims/Idle = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-visible = false
 position = Vector2( -0.880142, 1.4669 )
 shape = SubResource( 3 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Enemy"]
-visible = false
-position = Vector2( 63.1155, -39.5649 )
-shape = SubResource( 4 )
+[node name="FadeTween" type="Tween" parent="."]
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Enemy"]
-visible = false
-position = Vector2( -63.1155, -19.7825 )
-shape = SubResource( 5 )
+[node name="FadeInTween" type="Tween" parent="."]
+
+[node name="AppearSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="DisappearSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="IdleTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 
