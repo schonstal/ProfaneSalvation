@@ -133,7 +133,6 @@ func hurt(damage):
   if invulnerable && damage < 100:
     return
 
-  Game.scene.reset_combo()
   Game.scene.shake(0.25)
   flash_mask = HURT_MASK
   set_iframes(0.5)

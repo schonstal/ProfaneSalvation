@@ -1,8 +1,5 @@
 extends Node2D
 
-const MAX_COMBO = 10
-const TARGET_SCORE = 100000
-
 var camera:Node
 var player:Node
 var explosions:Node
@@ -21,8 +18,6 @@ var game_over_scene = preload("res://UI/GameOver/GameOver.tscn")
 var game_over_node
 
 var score = 0
-var combo setget set_combo,get_combo
-var difficulty setget ,get_difficulty
 
 func _enter_tree():
   camera = $Camera
@@ -42,7 +37,6 @@ func _enter_tree():
 func _ready():
   MusicPlayer.play_file("res://Music/gameplay.ogg")
   Engine.time_scale = 1
-  reset_combo()
   reset_score()
 
 func _process(delta):
@@ -60,20 +54,8 @@ func game_over():
   Engine.time_scale = 0.1
   MusicPlayer.enable_filter()
 
-func get_difficulty():
-  return min(score / TARGET_SCORE, 1)
-
-func set_combo(value):
-  combo = min(value, MAX_COMBO)
-
-func get_combo():
-  return combo
-
-func reset_combo():
-  combo = 0
-
 func score(points):
-  score += points
+  score += points * (Game.chapter + 1)
 
   if score > Game.high_score:
     Game.high_score = score

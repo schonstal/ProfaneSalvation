@@ -1,6 +1,4 @@
-extends Control
-
-onready var label = $Label
+extends Label
 
 func _process(delta):
-  label.text = "%d" % Game.scene.score
+  self.text = "%d" % Game.scene.score
