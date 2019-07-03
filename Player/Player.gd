@@ -30,8 +30,6 @@ var halos = 0
 var stun_count = 0
 var is_stunned setget ,get_stunned
 
-var dashing = false
-
 var flash_time = 0
 var flashing = false
 var attacking = false
@@ -44,7 +42,6 @@ var shoot_time = 0
 var bullet_scene = preload("res://Projectiles/AngelSword/AngelSword.tscn")
 
 onready var iframe_timer = $IframeTimer
-onready var dash = $Dash
 onready var sprite = $Sprite
 onready var hitbox = $CollisionShape2D
 onready var bullet_spawn = $BulletSpawn
@@ -74,7 +71,6 @@ func _ready():
   EventBus.connect("halo_collected", self, "_on_halo_collected")
 
   iframe_timer.connect("timeout", self, "_on_Iframe_timer_timeout")
-  dash.connect("tween_completed", self, "_on_Dash_tween_completed")
   animation.connect("animation_finished", self, "_on_SpriteAnimationPlayer_finished")
 
 func _physics_process(delta):
@@ -85,12 +81,10 @@ func _physics_process(delta):
 
   velocity.y += acceleration.y * delta
   velocity.x += acceleration.x * delta
-
-  if !dashing:
-    velocity.x = min(velocity.x, TERMINAL_VELOCITY)
-    velocity.x = max(velocity.x, -TERMINAL_VELOCITY)
-    velocity.y = min(velocity.y, TERMINAL_VELOCITY)
-    velocity.y = max(velocity.y, -TERMINAL_VELOCITY)
+  velocity.x = min(velocity.x, TERMINAL_VELOCITY)
+  velocity.x = max(velocity.x, -TERMINAL_VELOCITY)
+  velocity.y = min(velocity.y, TERMINAL_VELOCITY)
+  velocity.y = max(velocity.y, -TERMINAL_VELOCITY)
 
   velocity = move_and_slide(velocity, UP)
 
@@ -103,7 +97,7 @@ func _process(delta):
   handle_attack(delta)
   handle_defend(delta)
 
-  if !is_stunned && !dashing && !attacking:
+  if !is_stunned && !attacking:
     animation.play("Idle")
     wings_animation.play("Idle")
 
@@ -240,22 +234,3 @@ func _on_SpriteAnimationPlayer_finished(name):
       hit_indicator.visible = true
   elif name == "ShootRecover":
     attacking = false
-
-func _on_Dash_tween_completed(object, key):
-  dashing = false
-
-func _on_dash(speed, duration, target_speed):
-  velocity.y = 0
-  acceleration.y = 0
-
-  dashing = true
-  dash.interpolate_property(
-      self,
-      "velocity",
-      speed,
-      target_speed,
-      duration,
-      Tween.TRANS_QUART,
-      Tween.EASE_OUT)
-
-  dash.start()

@@ -239,12 +239,6 @@ visible = false
 position = Vector2( -0.407628, -0.179662 )
 shape = SubResource( 7 )
 
-[node name="Dash" type="Tween" parent="."]
-
-[node name="JumpBuffer" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-
 [node name="IframeTimer" type="Timer" parent="."]
 one_shot = true
 
