@@ -6,7 +6,7 @@ onready var animation = $Enemy/Sprite/AnimationPlayer
 var shoot_timer:Timer
 
 var started = false
-var theta = PI / 2
+var theta =  PI + PI / 2
 var original_position:Vector2
 var shooting = false
 var flying = true
