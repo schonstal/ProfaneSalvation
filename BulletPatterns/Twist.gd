@@ -7,7 +7,7 @@ export var spawn_time = 0.1
 
 var offset = 0
 
-export(Resource) var bullet_scene = preload("res://Enemies/Projectiles/Projectile.tscn")
+export(Resource) var bullet_scene = preload("res://Projectiles/Projectile.tscn")
 
 var spawn_timer:Timer
 

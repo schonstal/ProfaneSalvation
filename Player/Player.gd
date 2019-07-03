@@ -41,7 +41,7 @@ var death_scene = preload("res://Player/Death/Death.tscn")
 export var shoot_rate = 0.2
 var shoot_time = 0
 
-var bullet_scene = preload("res://Player/Projectiles/Projectile.tscn")
+var bullet_scene = preload("res://Projectiles/AngelSword/AngelSword.tscn")
 
 onready var iframe_timer = $IframeTimer
 onready var dash = $Dash
@@ -163,7 +163,7 @@ func handle_defend(delta):
     deflect_buffer = 0
 
   if deflect_pressed && deflect_buffer < deflect_buffer_time:
-    if mana > 0:
+    if mana > -1000:
       mana -= 1
       emit_signal("mana_spent", mana)
       shield.deflect()

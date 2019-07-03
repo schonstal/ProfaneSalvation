@@ -4,7 +4,7 @@ export var spawn_count = 6
 export var bullet_speed = 250
 export var spawn_time = 0.1
 
-export(Resource) var bullet_scene = preload("res://Enemies/Projectiles/Projectile.tscn")
+export(Resource) var bullet_scene = preload("res://Projectiles/Projectile.tscn")
 
 var spawn_timer:Timer
 

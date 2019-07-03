@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+load_path = "res://.import/AngelMuzzleFlare.png-965190cadecc7ae43daedbd791c95586.stex"
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Sprite
+
+onready var animation = $AnimationPlayer
+
+func _ready():
+  animation.connect(\"animation_finished\", self, \"_on_AnimationPlayer_finished\")
+
+func shoot():
+  visible = true
+  animation.stop()
+  animation.play(\"Shoot\")
+
+func _on_AnimationPlayer_finished(name):
+  visible = false
+"
+
+[sub_resource type="Animation" id=2]
+resource_name = "Shoot"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="MuzzleFlare" type="Sprite"]
+visible = false
+texture = SubResource( 3 )
+hframes = 4
+frame = 2
+script = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 6.0
+anims/Shoot = SubResource( 2 )
+

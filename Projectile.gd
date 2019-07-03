@@ -4,9 +4,9 @@ export var velocity = Vector2(0, -1000)
 
 export var damage = 1
 
-export(Resource) var explosion_scene = preload("res://Enemies/Projectiles/EnemyFireballExplosion/EnemyFireballExplosion.tscn")
+export(Resource) var explosion_scene = preload("res://Projectiles/BlueFireball/EnemyFireballExplosion/EnemyFireballExplosion.tscn")
 var halo_scene = preload("res://Items/Halo/Halo.tscn")
-var deflect_sound = preload("res://Player/DeflectSound.tscn")
+var deflect_sound = preload("res://Player/SFX/DeflectSound.tscn")
 
 func _ready():
   connect("body_entered", self, "_on_body_enter")

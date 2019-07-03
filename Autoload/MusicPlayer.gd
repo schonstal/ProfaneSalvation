@@ -26,7 +26,7 @@ func play_file(audio_file):
   current_file = audio_file
 
   self.stream = load(audio_file)
-  self.play()
+  # self.play()
 
 func disable_filter():
   bus_effect.cutoff_hz = 22000

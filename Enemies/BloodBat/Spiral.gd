@@ -14,7 +14,7 @@ var spawn = true
 
 signal died
 
-export(Resource) var bullet_scene = preload("res://Enemies/Projectiles/Projectile.tscn")
+export(Resource) var bullet_scene = preload("res://Projectiles/Projectile.tscn")
 
 func _ready():
   timer.connect("timeout", self, "_on_Timer_timeout")

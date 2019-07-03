@@ -15,7 +15,7 @@ onready var shoot_timer = $ShootTimer
 var attacking = false
 var bob_time = 0
 
-var laser_scene = preload("res://Enemies/Projectiles/DopeLaser/DopeLaser.tscn")
+var laser_scene = preload("res://Projectiles/DopeLaser/DopeLaser.tscn")
 var laser:Node
 
 signal died

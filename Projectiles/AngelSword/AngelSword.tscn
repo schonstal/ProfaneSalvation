@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Projectile.gd" type="Script" id=1]
+[ext_resource path="res://Projectiles/AngelSword/AngelSwordExplosion/AngelSwordExplosion.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Projectiles/AngelSword/AngelSword.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Flash"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 6.52524, 45.5032 )
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 16
+collision_mask = 8
+script = ExtResource( 1 )
+explosion_scene = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
+texture = ExtResource( 3 )
+hframes = 4
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+autoplay = "Flash"
+anims/Flash = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 2 )
+

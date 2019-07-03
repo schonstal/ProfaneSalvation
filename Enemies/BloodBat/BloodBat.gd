@@ -11,7 +11,7 @@ var original_position:Vector2
 var shooting = false
 var flying = true
 var pattern = null
-var move_rate = 3
+var move_rate = PI
 
 export var movement = Vector2(100, 100)
 export var velocity = Vector2(0, 0)

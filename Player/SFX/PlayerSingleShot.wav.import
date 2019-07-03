@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PlayerSingleShot.wav-13a039beaf1f84a402e8fe9354a21de0.sample"
+
+[deps]
+
+source_file="res://Player/SFX/PlayerSingleShot.wav"
+dest_files=[ "res://.import/PlayerSingleShot.wav-13a039beaf1f84a402e8fe9354a21de0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
