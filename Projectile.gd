@@ -29,7 +29,8 @@ func _physics_process(delta):
     self.queue_free()
 
 func _process(delta):
-  rotation = velocity.angle()
+  if velocity.length_squared() > 0:
+    rotation = velocity.angle()
 
 func _on_body_enter(body):
   if body.has_method("hurt"):
