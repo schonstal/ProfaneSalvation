@@ -163,7 +163,7 @@ func handle_defend(delta):
     deflect_buffer = 0
 
   if deflect_pressed && deflect_buffer < deflect_buffer_time:
-    if mana > -1000:
+    if mana > 0:
       mana -= 1
       emit_signal("mana_spent", mana)
       shield.deflect()
