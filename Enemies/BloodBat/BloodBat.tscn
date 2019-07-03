@@ -260,7 +260,6 @@ height = 125.0
 script = ExtResource( 1 )
 movement = Vector2( 150, 50 )
 velocity = Vector2( 0, 50 )
-move_rate = 3
 bullet_pattern = ExtResource( 2 )
 
 [node name="Enemy" type="Area2D" parent="."]
