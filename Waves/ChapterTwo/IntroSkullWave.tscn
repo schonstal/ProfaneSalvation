@@ -27,11 +27,11 @@ summon_time = 1.5
 fade_in = false
 
 [node name="BatSpawner" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
 position = Vector2( 960, 250 )
 summon_time = 1.5
 
 [node name="Enemy" parent="BatSpawner" instance=ExtResource( 5 )]
+movement = Vector2( 0, 0 )
 shoot_time = 100.0
 shoot_immediately = true
 

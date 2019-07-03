@@ -11,6 +11,7 @@ var original_position:Vector2
 var shooting = false
 var flying = true
 var pattern = null
+var full_period = false
 
 export var period = 2.0
 export var movement = Vector2(100, 100)
@@ -66,6 +67,13 @@ func _on_ShootTimer_timeout():
   if shooting:
     flying = false
     animation.play("AttackStart")
+
+    if full_period:
+      theta = PI + PI / 2
+    else:
+      theta = PI / 2
+
+    full_period = !full_period
   else:
     animation.play("AttackEnd")
     if pattern != null:
