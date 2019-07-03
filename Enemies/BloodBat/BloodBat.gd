@@ -41,7 +41,7 @@ func _ready():
   enemy.connect("died", self, "_on_Enemy_died")
   original_position = global_position
 
-func _process(delta):
+func _physics_process(delta):
   if flying:
     time += delta
     original_position += velocity * delta
