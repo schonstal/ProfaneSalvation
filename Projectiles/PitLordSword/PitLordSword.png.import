@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PitLordSword_1_4x1.png-a4921b095411f147e6fe326c14ab93e7.stex"
+path="res://.import/PitLordSword.png-332a62623b5a8e79ea212c1db27ad9c9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Projectiles/PitLordSword/PitLordSword_1_4x1.png"
-dest_files=[ "res://.import/PitLordSword_1_4x1.png-a4921b095411f147e6fe326c14ab93e7.stex" ]
+source_file="res://Projectiles/PitLordSword/PitLordSword.png"
+dest_files=[ "res://.import/PitLordSword.png-332a62623b5a8e79ea212c1db27ad9c9.stex" ]
 
 [params]
 
