@@ -3,24 +3,18 @@ extends KinematicBody2D
 const UP = Vector2(0, -1)
 const DOWN = Vector2(0, 1)
 
-const FLASH_INTERVAL = 0.04
-const SUPER_MASK = Color(3, 4, 4, 1)
-const HURT_MASK = Color(0, 0, 0, 0)
-const TERMINAL_VELOCITY = 800
-
-const RIGHT = -1
-const LEFT = 1
-
+export var max_speed = 800
 export var max_health = 3
 export var max_mana = 2
 export var halos_per_pip = 25
+export var shoot_rate = 0.2
+export var deflect_buffer_time = 0.2
+export var flash_interval = 0.04
 
 var dead = false
 
 var velocity = Vector2()
 var acceleration = Vector2()
-
-var flash_mask = SUPER_MASK
 
 var invulnerable = false
 var health = max_health
@@ -34,12 +28,10 @@ var flash_time = 0
 var flashing = false
 var attacking = false
 
-var death_scene = preload("res://Player/Death/Death.tscn")
+var deflect_buffer = 0
+var deflect_pressed = false
 
-export var shoot_rate = 0.2
 var shoot_time = 0
-
-var bullet_scene = preload("res://Projectiles/AngelSword/AngelSword.tscn")
 
 onready var iframe_timer = $IframeTimer
 onready var sprite = $Sprite
@@ -55,9 +47,8 @@ onready var shield_activate_sound = $ShieldActivate
 onready var shield_failure_sound = $ShieldFailure
 onready var shield_full_sound = $ShieldFull
 
-var deflect_buffer = 0
-export var deflect_buffer_time = 0.2
-var deflect_pressed = false
+var death_scene = preload("res://Player/Death/Death.tscn")
+var bullet_scene = preload("res://Projectiles/AngelSword/AngelSword.tscn")
 
 signal hurt(health)
 signal mana_spent(mana)
@@ -81,10 +72,10 @@ func _physics_process(delta):
 
   velocity.y += acceleration.y * delta
   velocity.x += acceleration.x * delta
-  velocity.x = min(velocity.x, TERMINAL_VELOCITY)
-  velocity.x = max(velocity.x, -TERMINAL_VELOCITY)
-  velocity.y = min(velocity.y, TERMINAL_VELOCITY)
-  velocity.y = max(velocity.y, -TERMINAL_VELOCITY)
+  velocity.x = min(velocity.x, max_speed)
+  velocity.x = max(velocity.x, -max_speed)
+  velocity.y = min(velocity.y, max_speed)
+  velocity.y = max(velocity.y, -max_speed)
 
   velocity = move_and_slide(velocity, UP)
 
@@ -107,10 +98,10 @@ func update_flash(delta):
   if invulnerable:
     flash_time -= delta
     if flash_time <= 0:
-      flash_time = FLASH_INTERVAL
+      flash_time = flash_interval
       flashing = !flashing
       if flashing:
-        $Sprite.modulate = flash_mask
+        $Sprite.modulate = Color(1, 1, 1, 0.1)
       else:
         $Sprite.modulate = Color(1, 1, 1, 1)
 
@@ -128,7 +119,6 @@ func hurt(damage):
     return
 
   Game.scene.shake(0.25)
-  flash_mask = HURT_MASK
   set_iframes(0.5)
 
   health -= damage
@@ -179,9 +169,9 @@ func handle_movement():
     velocity = velocity.normalized()
 
   if attacking:
-    velocity *= TERMINAL_VELOCITY / 2
+    velocity *= max_speed / 2
   else:
-    velocity *= TERMINAL_VELOCITY
+    velocity *= max_speed
 
 func get_stunned():
   return stun_count > 0
