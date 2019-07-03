@@ -6,13 +6,13 @@ onready var animation = $Enemy/Sprite/AnimationPlayer
 var shoot_timer:Timer
 
 var started = false
-var time = PI / 2
+var theta = PI / 2
 var original_position:Vector2
 var shooting = false
 var flying = true
 var pattern = null
-var move_rate = PI
 
+export var period = 2.0
 export var movement = Vector2(100, 100)
 export var velocity = Vector2(0, 0)
 export var shoot_time = 0.5
@@ -30,7 +30,7 @@ func _ready():
   if shoot_immediately:
     shoot_timer.wait_time = 0.01
   else:
-    shoot_timer.wait_time = PI / move_rate
+    shoot_timer.wait_time = period / 2
   shoot_timer.one_shot = true
   shoot_timer.start()
   add_child(shoot_timer)
@@ -43,11 +43,11 @@ func _ready():
 
 func _physics_process(delta):
   if flying:
-    time += delta
+    theta += (delta * TAU) / period
     original_position += velocity * delta
 
-  global_position.x = original_position.x + ((sin(time * move_rate) + 1) * movement.x)
-  global_position.y = original_position.y + (abs(cos(time * move_rate)) * movement.y)
+  global_position.x = original_position.x + ((sin(theta) + 1) * movement.x)
+  global_position.y = original_position.y + (abs(cos(theta)) * movement.y)
 
   if global_position.y > 1120:
     die()
@@ -85,4 +85,4 @@ func _on_AnimationPlayer_animation_finished(name):
   if name == "AttackEnd":
     flying = true
     animation.play("Fly")
-    shoot_timer.start(PI / move_rate)
+    shoot_timer.start(period / 2)
