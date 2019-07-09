@@ -37,7 +37,6 @@ __meta__ = {
 }
 
 [node name="WaveManager" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
 
 [node name="ChapterOne" parent="WaveManager" instance=ExtResource( 5 )]
 
