@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ChainBlade_1.png-f9dc1a76822dfde072ed689105998014.stex"
+path="res://.import/ChainBlade_3.png-d9998d6db4bdfca622178565c404f467.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/ChainLord/ChainBlade/ChainBlade_1.png"
-dest_files=[ "res://.import/ChainBlade_1.png-f9dc1a76822dfde072ed689105998014.stex" ]
+source_file="res://Projectiles/Chain/ChainBlade/ChainBlade_3.png"
+dest_files=[ "res://.import/ChainBlade_3.png-d9998d6db4bdfca622178565c404f467.stex" ]
 
 [params]
 

@@ -1,13 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Enemies/Skull/Skull.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Enemies/Skull/SkullDeath/SkullDeath.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Projectiles/DopeLaser/Sprites/DopeLaser_0007.png" type="Texture" id=4]
-[ext_resource path="res://Enemies/Skull/Skull.png" type="Texture" id=5]
+[ext_resource path="res://Enemies/Skull/Skull.png" type="Texture" id=4]
 
-
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=1]
 resource_name = "Attack"
 length = 0.1
 tracks/0/type = "value"
@@ -35,7 +33,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "Fade"
 length = 0.3
 tracks/0/type = "value"
@@ -75,7 +73,7 @@ tracks/2/keys = {
 "values": [ 2, 3, 0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "FadeIn"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -114,8 +112,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Idle"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -153,7 +150,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 33.5674
 height = 43.955
 
@@ -172,25 +169,21 @@ explosion_scene = ExtResource( 3 )
 [node name="LaserSpawn" type="Node2D" parent="Enemy"]
 position = Vector2( 1.2563, 36.4465 )
 
-[node name="Placeholder" type="Sprite" parent="Enemy"]
-position = Vector2( -3.12662, 543.962 )
-texture = ExtResource( 4 )
-
 [node name="Sprite" type="Sprite" parent="Enemy"]
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy/Sprite"]
 autoplay = "Idle"
-anims/Attack = SubResource( 5 )
-anims/Fade = SubResource( 4 )
-anims/FadeIn = SubResource( 6 )
-anims/Idle = SubResource( 2 )
+anims/Attack = SubResource( 1 )
+anims/Fade = SubResource( 2 )
+anims/FadeIn = SubResource( 3 )
+anims/Idle = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 position = Vector2( 1.88379, 0.62793 )
 rotation = 1.5708
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="ShootTimer" type="Timer" parent="."]
 one_shot = true

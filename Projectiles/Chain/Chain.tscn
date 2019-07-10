@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Projectiles/Chain/Chain.gd" type="Script" id=1]
+[ext_resource path="res://Projectiles/Chain/ChainBlade/ChainBlade.png" type="Texture" id=2]
+[ext_resource path="res://Projectiles/Chain/ChainLink/ChainRotation.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[node name="Chain" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ChainBlade" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 2 )
+offset = Vector2( 0, -31 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ChainBlade"]
+anims/Idle = SubResource( 1 )
+
+[node name="ChainLinks" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 960, 800 )
+texture = ExtResource( 3 )
+hframes = 4
+region_enabled = true
+region_rect = Rect2( 0, 0, 104, 600 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ChainLinks"]
+anims/Idle = SubResource( 2 )
+
+[node name="ShootTween" type="Tween" parent="."]
+
+[node name="FadeTween" type="Tween" parent="."]
+
