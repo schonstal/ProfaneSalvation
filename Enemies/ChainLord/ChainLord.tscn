@@ -3,7 +3,7 @@
 [ext_resource path="res://Enemies/Skull/Skull.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Enemies/Skull/SkullDeath/SkullDeath.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Enemies/Skull/Skull.png" type="Texture" id=4]
+[ext_resource path="res://Enemies/ChainLord/ChainLord.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Attack"
@@ -150,9 +150,8 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=5]
-radius = 33.5674
-height = 43.955
+[sub_resource type="CircleShape2D" id=5]
+radius = 70.4802
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource( 1 )
@@ -171,7 +170,6 @@ position = Vector2( 1.2563, 36.4465 )
 
 [node name="Sprite" type="Sprite" parent="Enemy"]
 texture = ExtResource( 4 )
-hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy/Sprite"]
 autoplay = "Idle"
@@ -181,8 +179,7 @@ anims/FadeIn = SubResource( 3 )
 anims/Idle = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-position = Vector2( 1.88379, 0.62793 )
-rotation = 1.5708
+position = Vector2( 0.110383, -1.98785 )
 shape = SubResource( 5 )
 
 [node name="ShootTimer" type="Timer" parent="."]
