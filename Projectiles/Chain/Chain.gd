@@ -19,9 +19,6 @@ export(Resource) var explosion_scene = preload("res://Projectiles/Chain/ChainExp
 
 func _ready():
   if !Engine.editor_hint:
-    $'..'.remove_child(self)
-    Game.scene.lasers.add_child(self)
-
     link_animation.play("Idle")
     blade_animation.play("Idle")
 
@@ -40,15 +37,13 @@ func _ready():
     shoot_tween.connect("tween_completed", self, "_on_ShootTween_tween_completed")
     daddy.connect("died", self, "_on_parent_died")
 
-    connect("body_entered", self, "_on_body_enter")
-
 func _process(delta):
   if Engine.editor_hint:
     distance = length
-  else:
-    if Game.scene != null && Game.scene.player != null:
-      if overlaps_body(Game.scene.player):
-        Game.scene.player.hurt(1)
+
+  if Game.scene != null && Game.scene.player != null:
+    if overlaps_body(Game.scene.player):
+      Game.scene.player.hurt(1)
 
   chain_links.region_rect = Rect2(0, 0, 104, distance)
   chain_links.offset.y = -distance / 2
@@ -61,10 +56,6 @@ func _process(delta):
 func _on_ShootTween_tween_completed(object, key):
   pass
 
-func _on_body_enter(body):
-  if body.has_method("hurt"):
-    body.hurt(1)
-
 func _on_parent_died():
   var explosion = explosion_scene.instance()
   explosion.global_position = global_position
@@ -72,3 +63,4 @@ func _on_parent_died():
   explosion.region_rect = Rect2(0, 0, 198, distance)
   explosion.offset = chain_links.offset
   Game.scene.explosions.add_child(explosion)
+  queue_free()
