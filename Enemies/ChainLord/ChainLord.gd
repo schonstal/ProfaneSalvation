@@ -1,66 +1,26 @@
 extends Node2D
 
-export var bob_amount = 4
-export var bob_frequency = 0.5
-export var laser_active_time = 3.0
-export var fade_out = true
-export var shoot_time = 0.5
-export var fade_in = true
-
 onready var enemy = $Enemy
-onready var laser_spawn = $Enemy/LaserSpawn
 onready var animation = $Enemy/Sprite/AnimationPlayer
-onready var shoot_timer = $ShootTimer
-
-var attacking = false
-var bob_time = 0
-
-var laser_scene = preload("res://Projectiles/DopeLaser/DopeLaser.tscn")
-var laser:Node
 
 signal died
 
 func _ready():
   enemy.connect("died", self, "_on_Enemy_died")
   animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
-  shoot_timer.connect("timeout", self, "_on_ShootTimer_timeout")
-
-  shoot_timer.start(shoot_time)
-
-  if fade_in:
-    animation.play("FadeIn")
 
 func _process(delta):
-  bob_time += delta * bob_frequency
+  rotation += delta
+  enemy.global_rotation = 0
 
-  if !attacking:
-    enemy.position.y = sin(bob_time * TAU) * bob_amount
+  if enemy.global_position.y > 1200:
+    queue_free()
 
-  if attacking:
-    enemy.position.y = randf()
-    enemy.position.x = randf()
+  if enemy.global_position.x < 0:
+    queue_free()
 
-func _on_ShootTimer_timeout():
-  return
-
-  attacking = true
-  enemy.position.y = 0
-  enemy.position.x = 0
-
-  var laser = laser_scene.instance()
-  laser.global_position = laser_spawn.global_position
-  laser.rotation = rotation
-  laser.active_time = shoot_time
-  laser.connect("attack_finished", self, "_on_attack_finished")
-  Game.scene.lasers.call_deferred("add_child", laser)
-
-  animation.play("Attack")
-
-func _on_attack_finished():
-  if fade_out:
-    animation.play("Fade")
-  else:
-    shoot_timer.start(shoot_time)
+  if enemy.global_position.x > 1920:
+    queue_free()
 
 func _on_AnimationPlayer_animation_finished(name):
   if name == "Fade":
