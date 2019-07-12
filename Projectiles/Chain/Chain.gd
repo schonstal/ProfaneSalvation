@@ -36,14 +36,11 @@ func _ready():
 
     shoot_tween.connect("tween_completed", self, "_on_ShootTween_tween_completed")
     daddy.connect("died", self, "_on_parent_died")
+    connect("body_entered", self, "_on_body_entered")
 
 func _process(delta):
   if Engine.editor_hint:
     distance = length
-
-  if Game.scene != null && Game.scene.player != null:
-    if overlaps_body(Game.scene.player):
-      Game.scene.player.hurt(1)
 
   chain_links.region_rect = Rect2(0, 0, 104, distance)
   chain_links.offset.y = -distance / 2
@@ -64,3 +61,7 @@ func _on_parent_died():
   explosion.offset = chain_links.offset
   Game.scene.explosions.add_child(explosion)
   queue_free()
+
+func _on_body_entered(body):
+  if body.has_method("hurt"):
+    body.hurt(1)
