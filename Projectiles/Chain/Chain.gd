@@ -66,7 +66,7 @@ func _on_ShootTween_tween_completed(object, key):
 func _on_parent_died():
   var explosion = explosion_scene.instance()
   explosion.global_position = global_position
-  explosion.rotation = rotation
+  explosion.global_rotation = global_rotation
   explosion.region_rect = Rect2(0, 0, 198, distance)
   explosion.offset = chain_links.offset
   Game.scene.explosions.add_child(explosion)
