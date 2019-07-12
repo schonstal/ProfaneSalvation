@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Projectiles/Chain/Chain.gd" type="Script" id=1]
 [ext_resource path="res://Projectiles/Chain/ChainBlade/ChainBlade.png" type="Texture" id=2]
@@ -62,28 +62,41 @@ tracks/1/keys = {
 "values": [ 1.0 ]
 }
 
-[node name="Chain" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 7, 125 )
+
+[node name="Chain" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource( 1 )
+length = 200.0
 
 [node name="ChainBlade" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 0, -200 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -31 )
 hframes = 4
-frame = 3
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ChainBlade"]
 anims/Idle = SubResource( 1 )
 
 [node name="ChainLinks" type="Sprite" parent="."]
+editor/display_folded = true
 texture = ExtResource( 3 )
+offset = Vector2( 0, -100 )
 hframes = 4
+frame = 1
 region_enabled = true
-region_rect = Rect2( 0, 0, 104, 600 )
+region_rect = Rect2( 0, 0, 104, 200 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ChainLinks"]
 anims/Idle = SubResource( 2 )
 
 [node name="ShootTween" type="Tween" parent="."]
 
-[node name="FadeTween" type="Tween" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -125 )
+shape = SubResource( 3 )
 
