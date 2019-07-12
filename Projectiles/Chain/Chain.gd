@@ -5,6 +5,8 @@ export var length = 500.0
 export var shoot_duration = 0.5
 
 var distance = 0.0
+var distance_was = 0.0
+var alternate = false
 
 onready var chain_links = $ChainLinks
 onready var chain_blade = $ChainBlade
@@ -42,13 +44,21 @@ func _process(delta):
   if Engine.editor_hint:
     distance = length
 
+  if Game.scene != null && Game.scene.player != null:
+    if overlaps_body(Game.scene.player):
+      Game.scene.player.hurt(1)
+
   chain_links.region_rect = Rect2(0, 0, 104, distance)
   chain_links.offset.y = -distance / 2
   chain_blade.position.y = chain_links.position.y - distance
   chain_blade.position.x = chain_links.position.x
 
-  collision.shape.extents.y = distance / 2 + 25
-  collision.position.y = -distance / 2 - 25
+  if distance_was != distance && alternate:
+    collision.shape.extents.y = distance / 2 + 25
+    collision.position.y = -distance / 2 - 25
+
+  alternate = !alternate
+  distance_was = distance
 
 func _on_ShootTween_tween_completed(object, key):
   pass
