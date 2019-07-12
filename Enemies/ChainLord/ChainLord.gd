@@ -30,8 +30,6 @@ func _ready():
   if fade_in:
     animation.play("FadeIn")
 
-  $Enemy/Placeholder.visible = false
-
 func _process(delta):
   bob_time += delta * bob_frequency
 
@@ -43,6 +41,8 @@ func _process(delta):
     enemy.position.x = randf()
 
 func _on_ShootTimer_timeout():
+  return
+
   attacking = true
   enemy.position.y = 0
   enemy.position.x = 0
