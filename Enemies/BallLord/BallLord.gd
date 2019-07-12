@@ -36,6 +36,14 @@ func _process(delta):
     queue_free()
 
 func _on_Enemy_died():
+  die()
+
+func _on_body_entered(body):
+  if body.has_method("hurt"):
+    body.hurt(1)
+    die()
+
+func die():
   emit_signal("died")
 
   if disable_bullets:
