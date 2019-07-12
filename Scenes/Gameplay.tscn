@@ -38,8 +38,9 @@ position = Vector2( 705.082, 697.254 )
 
 [node name="Chain" parent="Enemy" instance=ExtResource( 5 )]
 rotation = 0.785398
-z_index = -1
-length = 400.0
+z_index = 1
+z_as_relative = false
+length = 300.0
 
 [node name="Items" type="Node2D" parent="."]
 __meta__ = {
@@ -117,6 +118,7 @@ collision_mask = 3
 shape = SubResource( 1 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 10 )]
+position = Vector2( 3.2124, 7.70984 )
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 editor/display_folded = true
