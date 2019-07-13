@@ -10,7 +10,6 @@ func _ready():
   animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
 
 func _process(delta):
-  rotation += delta
   enemy.global_rotation = 0
 
   if enemy.global_position.y > 1200:

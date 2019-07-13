@@ -1,17 +1,16 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Gameplay.gd" type="Script" id=1]
 [ext_resource path="res://Util/Screen.gd" type="Script" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Enemies/ChainLord/ChainLord.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Projectiles/Chain/Chain.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Waves/WaveManager.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Waves/ChapterOne/ChapterOne.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Waves/ChapterTwo/ChapterTwo.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Util/SoundManager.gd" type="Script" id=9]
-[ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=10]
-[ext_resource path="res://UI/HUD/HUD.tscn" type="PackedScene" id=11]
-[ext_resource path="res://UI/Pause/Pause.gd" type="Script" id=12]
+[ext_resource path="res://Waves/WaveManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Waves/ChapterOne/ChapterOne.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Waves/ChapterTwo/ChapterTwo.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Util/SoundManager.gd" type="Script" id=7]
+[ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/HUD/HUD.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/Pause/Pause.gd" type="Script" id=10]
+[ext_resource path="res://Enemies/FlyLord/FlyLord.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 273.197, 1454.69 )
@@ -33,25 +32,16 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 503.652, 930.193 )
 
-[node name="Enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 705.082, 697.254 )
-
-[node name="Chain" parent="Enemy" instance=ExtResource( 5 )]
-rotation = 0.785398
-z_index = 1
-z_as_relative = false
-length = 300.0
-
 [node name="Items" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="WaveManager" parent="." instance=ExtResource( 6 )]
+[node name="WaveManager" parent="." instance=ExtResource( 4 )]
 
-[node name="ChapterOne" parent="WaveManager" instance=ExtResource( 7 )]
+[node name="ChapterOne" parent="WaveManager" instance=ExtResource( 5 )]
 
-[node name="ChapterTwo" parent="WaveManager" instance=ExtResource( 8 )]
+[node name="ChapterTwo" parent="WaveManager" instance=ExtResource( 6 )]
 
 [node name="Lasers" type="Node2D" parent="."]
 __meta__ = {
@@ -80,7 +70,7 @@ __meta__ = {
 }
 
 [node name="Sound" type="Node" parent="."]
-script = ExtResource( 9 )
+script = ExtResource( 7 )
 
 [node name="Walls" type="Node2D" parent="."]
 editor/display_folded = true
@@ -117,14 +107,14 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
 shape = SubResource( 1 )
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 10 )]
-position = Vector2( 3.2124, 7.70984 )
+[node name="ParallaxBackground" parent="." instance=ExtResource( 8 )]
+position = Vector2( -7.22644, 11.438 )
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 editor/display_folded = true
 layer = 3
 
-[node name="HUD" parent="HUDLayer" instance=ExtResource( 11 )]
+[node name="HUD" parent="HUDLayer" instance=ExtResource( 9 )]
 
 [node name="GameOverLayer" type="CanvasLayer" parent="."]
 layer = 10
@@ -138,10 +128,13 @@ pause_mode = 2
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 12 )
+script = ExtResource( 10 )
 
 [node name="Overlay" type="ColorRect" parent="PauseLayer/Pause"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Enemy" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1279.53, 250.853 )
 
