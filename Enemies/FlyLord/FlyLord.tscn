@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Enemies/FlyLord/FlyLord.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=2]
-[ext_resource path="res://Enemies/BloodBat/BloodBatDeath.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/FlyLord/FlyLordDeath.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/FlyLord/FlyLordWings/FlyLordWings_1_4x1.png" type="Texture" id=4]
 [ext_resource path="res://Enemies/FlyLord/FlyLord.png" type="Texture" id=5]
 [ext_resource path="res://Enemies/BloodBat/AttackSound.tscn" type="PackedScene" id=6]

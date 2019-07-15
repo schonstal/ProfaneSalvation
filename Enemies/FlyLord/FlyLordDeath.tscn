@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Enemies/BloodBat/BatDeath/BatDeath.png" type="Texture" id=1]
+[ext_resource path="res://Enemies/FlyLord/FlyLordDeath.png" type="Texture" id=1]
 [ext_resource path="res://Explosion.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
@@ -19,7 +19,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[node name="BloodBatDeath" type="Sprite"]
+[node name="FlyLordDeath" type="Sprite"]
 texture = ExtResource( 1 )
 hframes = 4
 script = ExtResource( 2 )
