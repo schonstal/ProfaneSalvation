@@ -29,6 +29,7 @@ func _ready():
   add_child(shoot_timer)
 
   shoot_timer.connect("timeout", self, "_on_ShootTimer_timeout")
+  animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
 
   enemy.connect("died", self, "_on_Enemy_died")
 
@@ -48,9 +49,15 @@ func _on_Enemy_died():
 
 func _on_ShootTimer_timeout():
   Game.scene.sound.play_scene(attack_sound_scene, "fly_attack")
-  # animation.play("Attack")
-  if position.y > 0:
-    pattern = bullet_pattern.instance()
-    call_deferred("add_child", pattern)
-
+  animation.play("AttackStart")
   shoot_timer.start(shoot_time)
+
+func _on_AnimationPlayer_animation_finished(name):
+  if name == "AttackStart":
+    if position.y > 0:
+      pattern = bullet_pattern.instance()
+      call_deferred("add_child", pattern)
+      animation.play("Attack")
+
+  if name == "Attack":
+    animation.play("Idle")

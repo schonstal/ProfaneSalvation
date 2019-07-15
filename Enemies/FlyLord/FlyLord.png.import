@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/FlyLordIdleNoWings_3.png-75026458880990d167712f64abad4c84.stex"
+path="res://.import/FlyLord.png-246d7e7ed106988bd9718a5c6cd2fe89.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/FlyLord/FlyLordIdleNoWings/FlyLordIdleNoWings_3.png"
-dest_files=[ "res://.import/FlyLordIdleNoWings_3.png-75026458880990d167712f64abad4c84.stex" ]
+source_file="res://Enemies/FlyLord/FlyLord.png"
+dest_files=[ "res://.import/FlyLord.png-246d7e7ed106988bd9718a5c6cd2fe89.stex" ]
 
 [params]
 
