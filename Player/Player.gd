@@ -190,6 +190,17 @@ func set_iframes(duration = 0.5):
   invulnerable = true
   iframe_timer.start(duration)
 
+func shoot():
+  var bullet = bullet_scene.instance()
+  Game.scene.projectiles.call_deferred("add_child", bullet)
+  bullet.global_position = bullet_spawn.global_position
+  bullet.rotation = -PI / 2
+
+  shoot_time = 0
+
+  muzzle_flare.shoot()
+  shoot_sound.play()
+
 func _on_halo_collected():
   if mana >= max_mana:
     halos = 0
@@ -209,13 +220,7 @@ func _on_SpriteAnimationPlayer_finished(name):
     animation.play("Shoot")
     hit_indicator.visible = false
   elif name == "Shoot":
-    var bullet = bullet_scene.instance()
-    Game.scene.projectiles.call_deferred("add_child", bullet)
-    bullet.global_position = bullet_spawn.global_position
-    bullet.rotation = -PI / 2
-    shoot_time = 0
-    muzzle_flare.shoot()
-    shoot_sound.play()
+    shoot()
 
     if Input.is_action_pressed("attack"):
       animation.play("Shoot")
