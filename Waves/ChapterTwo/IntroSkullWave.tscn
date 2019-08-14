@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
 [ext_resource path="res://Spawn/SkullSpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/Skull/Skull.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Spawn/BatSpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://BulletPatterns/PitBurst.tscn" type="PackedScene" id=4]
 
 [node name="IntroSkullWave" type="Node2D"]
 z_index = -1
@@ -18,6 +17,7 @@ summon_time = 1.5
 
 [node name="Enemy" parent="SkullSpawner" instance=ExtResource( 3 )]
 fade_in = false
+bullet_pattern = ExtResource( 4 )
 
 [node name="SkullSpawner2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1280, 385 )
@@ -25,13 +25,5 @@ summon_time = 1.5
 
 [node name="Enemy" parent="SkullSpawner2" instance=ExtResource( 3 )]
 fade_in = false
-
-[node name="BatSpawner" parent="." instance=ExtResource( 4 )]
-position = Vector2( 960, 250 )
-summon_time = 1.5
-
-[node name="Enemy" parent="BatSpawner" instance=ExtResource( 5 )]
-movement = Vector2( 0, 0 )
-shoot_time = 100.0
-shoot_immediately = true
+bullet_pattern = ExtResource( 4 )
 

@@ -18,6 +18,8 @@ var bob_time = 0
 var laser_scene = preload("res://Projectiles/DopeLaser/DopeLaser.tscn")
 var laser:Node
 
+export(Resource) var bullet_pattern = null
+
 signal died
 
 func _ready():
@@ -53,6 +55,10 @@ func _on_ShootTimer_timeout():
   laser.active_time = shoot_time
   laser.connect("attack_finished", self, "_on_attack_finished")
   Game.scene.lasers.call_deferred("add_child", laser)
+
+  if bullet_pattern != null:
+    var pattern = bullet_pattern.instance()
+    call_deferred("add_child", pattern)
 
   animation.play("Attack")
 
