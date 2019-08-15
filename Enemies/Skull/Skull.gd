@@ -53,7 +53,7 @@ func _on_ShootTimer_timeout():
   laser = laser_scene.instance()
   laser.global_position = laser_spawn.global_position
   laser.rotation = rotation
-  laser.active_time = shoot_time
+  laser.active_time = laser_active_time
   laser.enemy = self
   laser.connect("attack_finished", self, "_on_attack_finished")
   Game.scene.lasers.call_deferred("add_child", laser)
