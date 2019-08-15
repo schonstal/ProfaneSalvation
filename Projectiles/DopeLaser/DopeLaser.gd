@@ -5,6 +5,9 @@ onready var active_timer = $ActiveTimer
 onready var animation = $Body/AnimationPlayer
 onready var ring_animation = $Body/Ring/AnimationPlayer
 
+var enemy = null
+var active = true
+
 export var aim_time = 0.25
 export var active_time = 3.0
 
@@ -18,6 +21,9 @@ func _ready():
   active_timer.connect("timeout", self, "_on_ActiveTimer_timeout")
   animation.connect("animation_finished", self, "_on_Body_animation_finished")
 
+  if enemy != null:
+    enemy.connect("died", self, "_on_enemy_died")
+
   connect("body_entered", self, "_on_body_enter")
 
   aim_timer.start(aim_time)
@@ -28,9 +34,7 @@ func _on_AimTimer_timeout():
   ring_animation.play("Poof")
 
 func _on_ActiveTimer_timeout():
-  Game.scene.sound.play_scene(shut_down_sound, "shutdownlaser")
-  $Wobble.stop()
-  animation.play("Recovery")
+  shut_down()
 
 func _on_Body_animation_finished(name):
   if name == "Startup":
@@ -41,6 +45,15 @@ func _on_Body_animation_finished(name):
   if name == "Recovery":
     emit_signal("attack_finished")
     queue_free()
+
+func _on_enemy_died():
+  shut_down()
+
+func shut_down():
+  active = false
+  Game.scene.sound.play_scene(shut_down_sound, "shutdownlaser")
+  $Wobble.stop()
+  animation.play("Recovery")
 
 func _process(delta):
   if Game.scene != null && Game.scene.player != null:

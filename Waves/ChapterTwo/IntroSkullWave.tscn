@@ -16,6 +16,7 @@ position = Vector2( 640, 385 )
 summon_time = 1.5
 
 [node name="Enemy" parent="SkullSpawner" instance=ExtResource( 3 )]
+laser_active_time = 2.0
 fade_in = false
 bullet_pattern = ExtResource( 4 )
 
