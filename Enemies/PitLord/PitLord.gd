@@ -8,6 +8,7 @@ onready var idle_timer = $IdleTimer
 onready var fade_tween = $FadeTween
 onready var fade_in_tween = $FadeInTween
 onready var animation = $Enemy/Sprite/AnimationPlayer
+onready var enemy = $Enemy
 
 export var idle_time = 2.0
 export var fade_duration = 0.3

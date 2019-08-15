@@ -8,7 +8,7 @@
 [node name="IntroSkullWave" type="Node2D"]
 z_index = -1
 script = ExtResource( 1 )
-complete_time = 10.0
+complete_time = 3.0
 enemy_count = 1
 
 [node name="SkullSpawner" parent="." instance=ExtResource( 2 )]
