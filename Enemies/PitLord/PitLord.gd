@@ -14,6 +14,8 @@ export var idle_time = 2.0
 export var fade_duration = 0.3
 export var one_shot = false
 
+export var brightness = 1.5
+
 func _ready():
   fade_tween.connect("tween_completed", self, "_on_FadeTween_tween_completed")
   fade_in_tween.connect("tween_completed", self, "_on_FadeInTween_tween_completed")
@@ -46,8 +48,8 @@ func fade_in():
   fade_in_tween.interpolate_property(
       self,
       "modulate",
-      Color(1, 1, 1, 0),
-      Color(1, 1, 1, 1),
+      Color(brightness, brightness, brightness, 0),
+      Color(brightness, brightness, brightness, brightness),
       fade_duration,
       Tween.TRANS_QUART,
       Tween.EASE_OUT)
@@ -59,8 +61,8 @@ func fade_out():
   fade_tween.interpolate_property(
       self,
       "modulate",
-      Color(1, 1, 1, 1),
-      Color(1, 1, 1, 0),
+      Color(brightness, brightness, brightness, brightness),
+      Color(brightness, brightness, brightness, 0),
       fade_duration,
       Tween.TRANS_QUART,
       Tween.EASE_OUT)
