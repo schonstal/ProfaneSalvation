@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/BallLord/BallLord.tscn" type="PackedScene" id=2]
+
+[node name="FullBallLine" type="Node2D"]
+script = ExtResource( 1 )
+complete_time = 4.0
+enemy_count = 10
+
+[node name="Exploder" parent="." instance=ExtResource( 2 )]
+position = Vector2( 320, -60 )
+
+[node name="Exploder2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 448, -60 )
+
+[node name="Exploder3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 576, -60 )
+
+[node name="Exploder4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 704, -60 )
+
+[node name="Exploder5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 832, -60 )
+
+[node name="Exploder6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 960, -60 )
+
+[node name="Exploder7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1088, -60 )
+
+[node name="Exploder8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1216, -60 )
+
+[node name="Exploder9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1344, -60 )
+
+[node name="Exploder10" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1472, -60 )
+

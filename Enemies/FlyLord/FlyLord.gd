@@ -9,6 +9,7 @@ var started = false
 var pattern = null
 
 export var velocity = Vector2(0, 0)
+export var acceleration = Vector2(0, 0)
 export var shoot_time = 2
 export var shoot_immediately = false
 
@@ -34,9 +35,19 @@ func _ready():
   enemy.connect("died", self, "_on_Enemy_died")
 
 func _physics_process(delta):
+  velocity += acceleration * delta
   global_position += velocity * delta
 
   if global_position.y > 1120:
+    die()
+
+  if global_position.y < -100:
+    die()
+
+  if global_position.x > 1920:
+    die()
+
+  if global_position.x < 0:
     die()
 
 func die():

@@ -12,15 +12,16 @@ complete_time = 3.0
 enemy_count = 1
 
 [node name="SkullSpawner" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
 position = Vector2( 640, 385 )
 summon_time = 1.5
 
 [node name="Enemy" parent="SkullSpawner" instance=ExtResource( 3 )]
-laser_active_time = 2.0
 fade_in = false
 bullet_pattern = ExtResource( 4 )
 
 [node name="SkullSpawner2" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
 position = Vector2( 1280, 385 )
 summon_time = 1.5
 
