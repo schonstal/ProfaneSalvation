@@ -104,3 +104,7 @@ one_shot = true
 [node name="AttackSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 
+[node name="MoveTween" type="Tween" parent="."]
+
+[node name="MoveShoot" type="Node2D" parent="."]
+
