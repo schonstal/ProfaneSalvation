@@ -12,6 +12,8 @@
 [ext_resource path="res://Enemies/PitLord/PitLord_Fire.wav" type="AudioStream" id=10]
 [ext_resource path="res://Enemies/PitLord/AttackPatterns/MoveShoot/MoveShoot.gd" type="Script" id=11]
 
+
+
 [sub_resource type="Animation" id=1]
 resource_name = "Attack"
 length = 0.4

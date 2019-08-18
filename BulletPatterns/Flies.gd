@@ -15,4 +15,6 @@ func _ready():
     bullet.global_position = global_position + Vector2(
         cos(TAU * i / spawn_count),
         sin(TAU * i / spawn_count)
-    ) * 30
+    ) * rand_range(0, 30)
+
+  queue_free()
