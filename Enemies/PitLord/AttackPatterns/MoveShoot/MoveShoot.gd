@@ -5,8 +5,8 @@ onready var pit_lord = $'..'
 var wait_timer:Timer
 
 export var wait_time = 0.25
-export var bullet_count = 12
-export var distance = 100
+export var bullet_count = 18
+export var distance = 50
 export var offset_increment = 0.1
 export var radius = 30.0
 export var bullet_speed = 250
@@ -31,7 +31,7 @@ func _on_WaitTimer_timeout():
   var direction = Vector2(rand_range(-1, 1), rand_range(-1, 1))
   direction = direction.normalized()
 
-  pit_lord.move_to(center + distance * direction)
+  pit_lord.move_to(center + distance * direction, 1)
 
 func _on_PitLord_move_completed():
   shoot()
