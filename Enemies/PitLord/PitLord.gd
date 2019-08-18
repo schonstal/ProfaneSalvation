@@ -49,7 +49,7 @@ func _on_MoveTween_tween_completed(object, key):
   emit_signal("move_completed")
 
 func move_to(target, duration = 0.5):
-  move_tween.stop()
+  move_tween.stop_all()
   move_tween.interpolate_property(
       self,
       "position",
