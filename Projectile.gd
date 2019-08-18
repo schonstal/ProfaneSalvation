@@ -8,6 +8,8 @@ export(Resource) var explosion_scene = preload("res://Projectiles/BlueFireball/E
 var halo_scene = preload("res://Items/Halo/Halo.tscn")
 var deflect_sound = preload("res://Player/SFX/DeflectSound.tscn")
 
+signal died
+
 func _ready():
   connect("body_entered", self, "_on_body_enter")
   connect("area_entered", self, "_on_body_enter")
@@ -16,17 +18,17 @@ func _ready():
 func _physics_process(delta):
   position += velocity * delta
 
-  if position.y < -100:
-    self.queue_free()
+  if global_position.y < -100:
+    die()
 
-  if position.y > 1200:
-    self.queue_free()
+  if global_position.y > 1200:
+    die()
 
-  if position.x < -100:
-    self.queue_free()
+  if global_position.x < -100:
+    die()
 
-  if position.x > 2020:
-    self.queue_free()
+  if global_position.x > 2020:
+    die()
 
 func _process(delta):
   if velocity.length_squared() > 0:
@@ -45,6 +47,7 @@ func die():
   var explosion = explosion_scene.instance()
   explosion.global_position = global_position
   Game.scene.explosions.call_deferred("add_child", explosion)
+  emit_signal("died")
   queue_free()
 
 func _on_chapter_complete():
