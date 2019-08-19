@@ -50,8 +50,9 @@ func _ready():
       Tween.EASE_OUT)
   move_tween.start()
 
-func _on_Projectile_died():
+func _on_Projectile_died(explosion):
   active = false
+  explosion.rotation = projectile.rotation - PI / 2
 
 func _on_WaitTimer_timeout():
   projectile.velocity = Vector2(

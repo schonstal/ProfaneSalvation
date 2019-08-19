@@ -8,7 +8,7 @@ export(Resource) var explosion_scene = preload("res://Projectiles/BlueFireball/E
 var halo_scene = preload("res://Items/Halo/Halo.tscn")
 var deflect_sound = preload("res://Player/SFX/DeflectSound.tscn")
 
-signal died
+signal died(explosion)
 
 func _ready():
   connect("body_entered", self, "_on_body_enter")
@@ -46,9 +46,8 @@ func deflect():
 func die():
   var explosion = explosion_scene.instance()
   explosion.global_position = global_position
-  explosion.rotation = rotation - PI / 2
   Game.scene.explosions.call_deferred("add_child", explosion)
-  emit_signal("died")
+  emit_signal("died", explosion)
   queue_free()
 
 func _on_chapter_complete():
