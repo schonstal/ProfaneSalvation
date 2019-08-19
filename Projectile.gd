@@ -46,6 +46,7 @@ func deflect():
 func die():
   var explosion = explosion_scene.instance()
   explosion.global_position = global_position
+  explosion.rotation = rotation - PI / 2
   Game.scene.explosions.call_deferred("add_child", explosion)
   emit_signal("died")
   queue_free()
