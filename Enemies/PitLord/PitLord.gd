@@ -68,7 +68,7 @@ func fade_in():
       self,
       "modulate",
       Color(brightness, brightness, brightness, 0),
-      Color(brightness, brightness, brightness, brightness),
+      Color(brightness, brightness, brightness, 1),
       fade_duration,
       Tween.TRANS_QUART,
       Tween.EASE_OUT)
@@ -80,7 +80,7 @@ func fade_out():
   fade_tween.interpolate_property(
       self,
       "modulate",
-      Color(brightness, brightness, brightness, brightness),
+      Color(brightness, brightness, brightness, 1),
       Color(brightness, brightness, brightness, 0),
       fade_duration,
       Tween.TRANS_QUART,
