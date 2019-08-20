@@ -33,16 +33,11 @@ func _on_FadeTween_tween_completed(object, key):
   if one_shot:
     queue_free()
 
-func _on_FadeInTween_tween_completed(object, key):
-  animation.play("Attack")
-
 func _on_IdleTimer_timeout():
-  fade_out()
-  # Spawn boss wave
+  return
 
 func _on_AnimationPlayer_animation_finished(name):
   if name == "Attack":
-    idle_timer.start(idle_time)
     animation.play("Idle")
 
 func _on_MoveTween_tween_completed(object, key):
@@ -59,6 +54,10 @@ func move_to(target, duration = 0.5):
       Tween.TRANS_QUART,
       Tween.EASE_OUT)
   move_tween.start()
+
+func start_attack():
+  animation.play("Attack")
+  attack_sound.play()
 
 func fade_in():
   animation.play("Idle")

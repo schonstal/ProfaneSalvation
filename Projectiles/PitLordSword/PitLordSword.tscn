@@ -69,3 +69,5 @@ shape = SubResource( 3 )
 
 [node name="MoveTween" type="Tween" parent="."]
 
+[node name="FadeTween" type="Tween" parent="."]
+

@@ -5,10 +5,10 @@ onready var pit_lord = $'..'
 var wait_timer:Timer
 
 export var wait_time = 1.0
-export var bullet_count = 6
+export var bullet_count = 7
 export var distance = 50
 export var offset_increment = 0.1
-export var radius = 150.0
+export var radius = 220.0
 export var bullet_speed = 500
 
 var offset = 0.0
@@ -30,6 +30,7 @@ func _on_WaitTimer_timeout():
   pit_lord.move_to(Vector2(Game.scene.player.position.x, pit_lord.position.y))
 
 func _on_PitLord_move_completed():
+  pit_lord.start_attack()
   shoot()
 
 func shoot():
@@ -39,9 +40,10 @@ func shoot():
   for i in range(0, bullet_count):
     var bullet = bullet_scene.instance()
     bullet.global_position = global_position
-    bullet.offset = i * -0.05 - 0.15
-    bullet.delay = i * 0.1
+    bullet.offset = (i + 1.5) * -PI / (bullet_count + 2)
+    bullet.delay = i * 0.025
     bullet.radius = radius
     bullet.speed = bullet_speed
+    bullet.duration = (bullet_count - i) * 0.025 + 0.2
 
     Game.scene.projectiles.call_deferred("add_child", bullet)
