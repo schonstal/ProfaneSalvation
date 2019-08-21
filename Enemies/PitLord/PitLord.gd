@@ -25,6 +25,7 @@ func _ready():
   fade_in_tween.connect("tween_completed", self, "_on_FadeInTween_tween_completed")
   idle_timer.connect("timeout", self, "_on_IdleTimer_timeout")
   animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
+  enemy.connect("hurt", self, "_on_Enemy_hurt")
 
   fade_in()
 
@@ -87,3 +88,5 @@ func fade_out():
 
   fade_tween.start()
 
+func _on_Enemy_hurt(health, max_health):
+  EventBus.emit_signal("boss_hurt", health)

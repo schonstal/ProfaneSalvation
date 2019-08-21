@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://UI/HUD/Container.tscn" type="PackedScene" id=2]
-[ext_resource path="res://UI/HUD/HaloIcon.png" type="Texture" id=3]
-[ext_resource path="res://UI/Score.gd" type="Script" id=4]
+[ext_resource path="res://UI/HUD/BossHP/BossHP.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/HUD/HaloIcon.png" type="Texture" id=4]
+[ext_resource path="res://UI/Score.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://UI/Fonts/Pirata_One/PirataOne-Regular.ttf"
@@ -22,6 +23,9 @@ __meta__ = {
 
 [node name="HUDDetail" parent="." instance=ExtResource( 2 )]
 
+[node name="BossHP" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1860, 540 )
+
 [node name="Points" type="Control" parent="."]
 margin_left = 5.0
 margin_right = 65.475
@@ -32,18 +36,18 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="Points/HBoxContainer"]
-margin_right = 29.0
+margin_right = 35.0
 margin_bottom = 63.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="Points/HBoxContainer"]
-margin_left = 33.0
-margin_right = 54.0
+margin_left = 39.0
+margin_right = 60.0
 margin_bottom = 63.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0.235294, 0.105882, 0.00392157, 1 )
 custom_constants/shadow_offset_y = 3
 text = "0"
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
