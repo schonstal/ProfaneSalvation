@@ -26,6 +26,7 @@ func _ready():
   idle_timer.connect("timeout", self, "_on_IdleTimer_timeout")
   animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
   enemy.connect("hurt", self, "_on_Enemy_hurt")
+  enemy.connect("died", self, "_on_Enemy_died")
 
   fade_in()
 
@@ -90,3 +91,6 @@ func fade_out():
 
 func _on_Enemy_hurt(health, max_health):
   EventBus.emit_signal("boss_hurt", health)
+
+func _on_Enemy_died():
+  queue_free()
