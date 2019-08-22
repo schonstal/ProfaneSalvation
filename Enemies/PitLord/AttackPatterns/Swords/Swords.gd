@@ -12,6 +12,8 @@ export var radius = 220.0
 export var bullet_speed = 500
 
 var offset = 0.0
+var shots = 0
+var max_shots = 2
 
 export(Resource) var bullet_scene = preload("res://Projectiles/PitLordSword/PitLordSword.tscn")
 
@@ -27,6 +29,10 @@ func _ready():
   pit_lord.connect("move_completed", self, "_on_PitLord_move_completed")
 
 func _on_WaitTimer_timeout():
+  if shots >= max_shots:
+    EventBus.emit_signal("boss_pattern_complete")
+    return
+
   pit_lord.move_to(Vector2(Game.scene.player.position.x, pit_lord.position.y))
 
 func _on_PitLord_move_completed():
@@ -37,6 +43,7 @@ func shoot():
   wait_timer.start()
   offset += offset_increment * TAU
 
+  shots += 1
   for i in range(0, bullet_count):
     var bullet = bullet_scene.instance()
     bullet.global_position = global_position

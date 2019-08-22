@@ -40,6 +40,7 @@ func shoot():
   wait_timer.start()
   offset += offset_increment * TAU
 
+  EventBus.emit_signal("boss_pattern_complete")
   for i in range(0, bullet_count):
     var bullet = bullet_scene.instance()
     Game.scene.projectiles.call_deferred("add_child", bullet)

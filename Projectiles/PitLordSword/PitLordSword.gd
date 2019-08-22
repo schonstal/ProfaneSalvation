@@ -102,8 +102,6 @@ func _on_InitTimer_timeout():
   start_tween()
 
 func shoot():
-  animation.play("Spin")
-
   projectile.velocity = Vector2(
       cos(offset),
       sin(offset)
