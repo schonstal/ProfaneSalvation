@@ -67,6 +67,9 @@ func _ready():
   wave_name = Game.scene.wave_manager.current_wave
 
 func _on_chapter_complete():
+  if !alive:
+    return
+
   despawned = true
   die()
 
