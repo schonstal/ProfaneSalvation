@@ -55,7 +55,7 @@ func game_over():
   MusicPlayer.enable_filter()
 
 func score(points):
-  score += points * (Game.chapter + 1)
+  score += points
 
   if score > Game.high_score:
     Game.high_score = score
