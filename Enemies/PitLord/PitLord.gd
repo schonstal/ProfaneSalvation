@@ -14,6 +14,7 @@ onready var appear_sprite = $AppearSprite
 
 export var idle_time = 2.0
 export var fade_duration = 0.3
+export var health = 50
 export var one_shot = false
 
 export var brightness = 1.5
@@ -29,6 +30,7 @@ func _ready():
   enemy.connect("hurt", self, "_on_Enemy_hurt")
   enemy.connect("died", self, "_on_Enemy_died")
   appear_sprite.modulate = Color(1, 1, 1, 10)
+  enemy.health = health
 
   fade_in()
 
