@@ -116,6 +116,7 @@ anims/Idle = SubResource( 2 )
 visible = false
 position = Vector2( -6.60991, -21.0864 )
 shape = SubResource( 3 )
+disabled = true
 
 [node name="FadeTween" type="Tween" parent="."]
 

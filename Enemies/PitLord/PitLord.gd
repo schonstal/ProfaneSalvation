@@ -11,6 +11,7 @@ onready var move_tween = $MoveTween
 onready var animation = $Enemy/Sprite/AnimationPlayer
 onready var enemy = $Enemy
 onready var appear_sprite = $AppearSprite
+onready var wait_timer
 
 export var idle_time = 2.0
 export var fade_duration = 0.3
@@ -32,15 +33,19 @@ func _ready():
   appear_sprite.modulate = Color(1, 1, 1, 10)
   enemy.health = health
 
+  modulate = Color(brightness, brightness, brightness, 0)
+  idle_timer.start(idle_time)
+
+func _on_IdleTimer_timeout():
   fade_in()
+
+func _on_FadeInTween_tween_completed(object, key):
+  EventBus.emit_signal("boss_pattern_complete")
 
 func _on_FadeTween_tween_completed(object, key):
   collision.disabled = true
   if one_shot:
     queue_free()
-
-func _on_IdleTimer_timeout():
-  return
 
 func _on_AnimationPlayer_animation_finished(name):
   if name == "Attack":

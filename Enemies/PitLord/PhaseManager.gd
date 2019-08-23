@@ -8,7 +8,6 @@ var previous_index = -1
 onready var pit_lord = $'..'
 
 func _ready():
-  spawn_pattern()
   EventBus.connect("boss_pattern_complete", self, "_on_boss_pattern_complete")
 
 func spawn_pattern():

@@ -34,6 +34,7 @@ func _on_WaitTimer_timeout():
   pit_lord.move_to(center + distance * direction, 1)
 
 func _on_PitLord_move_completed():
+  pit_lord.start_attack()
   shoot()
 
 func shoot():
