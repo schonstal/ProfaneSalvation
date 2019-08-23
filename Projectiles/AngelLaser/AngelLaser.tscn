@@ -157,7 +157,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.1, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ false, false ]
 }
 
 [sub_resource type="CapsuleShape2D" id=6]
