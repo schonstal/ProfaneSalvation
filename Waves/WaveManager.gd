@@ -1,16 +1,17 @@
 extends Node2D
 
+export var chapter = 0
+
 var waves = []
 var wave_index = 0
 var current_wave
 
 var complete_wave = preload("res://Waves/CompleteWave.tscn")
-var chapter = 1
 
 func _ready():
   EventBus.connect("wave_completed", self, "_on_wave_completed")
   EventBus.connect("chapter_complete", self, "_on_chapter_complete")
-  EventBus.connect("new_game", self, "_on_new_game")
+
   load_chapter(chapter)
 
 func _on_wave_completed(name):
@@ -30,5 +31,6 @@ func load_chapter(chapter):
 func _on_chapter_complete():
   chapter += 1
 
-func _on_new_game():
-  chapter = 0
+  var complete_wave_instance = complete_wave.instance()
+  Game.scene.current_wave.call_deferred("add_child", complete_wave_instance)
+  Game.scene.wave_manager.current_wave = complete_wave_instance.name

@@ -97,4 +97,5 @@ func _on_Enemy_hurt(health, max_health):
   EventBus.emit_signal("boss_hurt", health)
 
 func _on_Enemy_died():
+  EventBus.emit_signal("chapter_complete")
   queue_free()

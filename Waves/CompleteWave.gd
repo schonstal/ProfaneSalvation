@@ -7,9 +7,6 @@ var time = 0.0
 
 signal wave_completed
 
-func _ready():
-  EventBus.emit_signal("chapter_complete")
-
 func _process(delta):
   time += delta
   if time > complete_time:
