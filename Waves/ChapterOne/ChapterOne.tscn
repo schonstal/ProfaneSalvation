@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Waves/Wave.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Waves/ChapterOne/IntroWave.tscn" type="PackedScene" id=2]
@@ -8,8 +8,7 @@
 [ext_resource path="res://Waves/ChapterOne/BallLine.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Waves/ChapterOne/StaggeredBatWave.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Waves/ChapterOne/CircleBats.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Waves/ChapterOne/PitLordWave.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Waves/ChapterOne/ShootyBats.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Waves/ChapterOne/ShootyBats.tscn" type="PackedScene" id=9]
 
 [node name="ChapterOne" type="Node2D"]
 
@@ -34,9 +33,6 @@ scene = ExtResource( 7 )
 [node name="CircleBats" parent="." instance=ExtResource( 1 )]
 scene = ExtResource( 8 )
 
-[node name="PitLord" parent="." instance=ExtResource( 1 )]
-scene = ExtResource( 9 )
-
 [node name="ShootyBats" parent="." instance=ExtResource( 1 )]
-scene = ExtResource( 10 )
+scene = ExtResource( 9 )
 
