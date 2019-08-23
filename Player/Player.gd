@@ -30,6 +30,7 @@ var attacking = false
 
 var deflect_buffer = 0
 var deflect_pressed = false
+var deflecting = false
 
 var shoot_time = 0
 
@@ -40,12 +41,11 @@ onready var bullet_spawn = $BulletSpawn
 onready var hit_indicator = $HitIndicator
 onready var animation = $'Sprite/AnimationPlayer'
 onready var wings_animation = $'Wings/AnimationPlayer'
-onready var shield = $Shield
 onready var muzzle_flare = $MuzzleFlare
 onready var shoot_sound = $ShootSound
-onready var shield_activate_sound = $ShieldActivate
 onready var shield_failure_sound = $ShieldFailure
 onready var shield_full_sound = $ShieldFull
+onready var laser = $Laser
 
 var death_scene = preload("res://Player/Death/Death.tscn")
 var bullet_scene = preload("res://Projectiles/AngelSword/AngelSword.tscn")
@@ -63,6 +63,7 @@ func _ready():
 
   iframe_timer.connect("timeout", self, "_on_Iframe_timer_timeout")
   animation.connect("animation_finished", self, "_on_SpriteAnimationPlayer_finished")
+  laser.connect("attack_finished", self, "_on_Laser_attack_finished")
 
 func _physics_process(delta):
   if dead:
@@ -139,6 +140,9 @@ func die():
   Game.scene.remove_child(self)
   Game.scene.game_over()
 
+func can_shoot():
+  return !deflecting
+
 func handle_defend(delta):
   deflect_buffer += delta
 
@@ -146,13 +150,13 @@ func handle_defend(delta):
     deflect_pressed = true
     deflect_buffer = 0
 
-  if deflect_pressed && deflect_buffer < deflect_buffer_time:
+  if deflect_pressed && deflect_buffer < deflect_buffer_time && !deflecting:
     if mana > 0:
       mana -= 1
       emit_signal("mana_spent", mana)
-      shield.deflect()
       deflect_pressed = false
-      shield_activate_sound.play()
+      EventBus.emit_signal("player_defend")
+      deflecting = true
     else:
       shield_failure_sound.play()
       EventBus.emit_signal("shield_failure")
@@ -191,6 +195,9 @@ func set_iframes(duration = 0.5):
   iframe_timer.start(duration)
 
 func shoot():
+  if !can_shoot():
+    return
+
   var bullet = bullet_scene.instance()
   Game.scene.projectiles.call_deferred("add_child", bullet)
   bullet.global_position = bullet_spawn.global_position
@@ -229,3 +236,6 @@ func _on_SpriteAnimationPlayer_finished(name):
       hit_indicator.visible = true
   elif name == "ShootRecover":
     attacking = false
+
+func _on_Laser_attack_finished():
+  deflecting = false

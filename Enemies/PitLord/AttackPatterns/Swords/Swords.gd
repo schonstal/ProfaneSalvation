@@ -4,7 +4,7 @@ onready var pit_lord = $'..'
 
 var wait_timer:Timer
 
-export var wait_time = 1.0
+export var wait_time = 0.75
 export var bullet_count = 7
 export var distance = 50
 export var offset_increment = 0.1
@@ -13,7 +13,7 @@ export var bullet_speed = 500
 
 var offset = 0.0
 var shots = 0
-var max_shots = 2
+var max_shots = 6
 
 export(Resource) var bullet_scene = preload("res://Projectiles/PitLordSword/PitLordSword.tscn")
 

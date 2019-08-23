@@ -8,3 +8,5 @@ signal shield_failure
 
 signal boss_hurt(new_health)
 signal boss_pattern_complete
+
+signal player_defend

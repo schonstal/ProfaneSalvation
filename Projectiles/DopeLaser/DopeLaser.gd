@@ -7,6 +7,7 @@ onready var ring_animation = $Body/Ring/AnimationPlayer
 
 var enemy = null
 var active = true
+var player_laser = false
 
 export var aim_time = 0.25
 export var active_time = 3.0
@@ -16,10 +17,21 @@ export(Resource) var shut_down_sound = preload("res://Projectiles/DopeLaser/Shut
 
 signal attack_finished
 
+var active_bodies = []
+var damage = 3
+var time_per_hit = 0.05
+var timer = 0
+
 func _ready():
   aim_timer.connect("timeout", self, "_on_AimTimer_timeout")
   active_timer.connect("timeout", self, "_on_ActiveTimer_timeout")
   animation.connect("animation_finished", self, "_on_Body_animation_finished")
+
+  connect("body_entered", self, "_on_body_entered")
+  connect("area_entered", self, "_on_body_entered")
+
+  connect("body_exited", self, "_on_body_exited")
+  connect("area_exited", self, "_on_body_exited")
 
   if enemy != null:
     enemy.connect("died", self, "_on_enemy_died")
@@ -60,6 +72,29 @@ func _process(delta):
     if overlaps_body(Game.scene.player):
       Game.scene.player.hurt(1)
 
+  timer -= delta
+  if timer < 0:
+    for body in active_bodies:
+      body.hurt(damage)
+    timer = time_per_hit
+
 # Kill particles
 func hurt(damage):
   pass
+
+func _on_body_entered(body):
+  if !player_laser:
+    return
+
+  if body.has_method("hurt"):
+    body.hurt(damage)
+    active_bodies.push_front(body)
+
+func _on_body_exited(body):
+  if !player_laser:
+    return
+
+  if body.has_method("hurt"):
+    var index = active_bodies.find(body)
+    if index > -1:
+      active_bodies.remove(index)
