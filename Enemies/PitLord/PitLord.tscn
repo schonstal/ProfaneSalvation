@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Enemies/PitLord/PitLord.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Enemies/PitLord/PitLord_Appears.wav" type="AudioStream" id=8]
 [ext_resource path="res://Enemies/PitLord/PitLord_Dissappears.wav" type="AudioStream" id=9]
 [ext_resource path="res://Enemies/PitLord/PitLord_Fire.wav" type="AudioStream" id=10]
+[ext_resource path="res://Enemies/PitLord/PitLordAppear/PitLordAppear.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Attack"
@@ -48,6 +49,34 @@ tracks/0/keys = {
 radius = 53.302
 height = 187.18
 
+[sub_resource type="Animation" id=4]
+resource_name = "Appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
 [node name="PitLord" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -58,7 +87,7 @@ script = ExtResource( 2 )
 max_health = 100
 points = 1000
 stun_time = 0.0
-halos = 150
+halos = 50
 max_speed = Vector2( 10000, 10000 )
 halo_force = 2000
 explosion_scene = ExtResource( 3 )
@@ -71,7 +100,6 @@ script = ExtResource( 6 )
 float_amount = 10
 
 [node name="Sprite" type="Sprite" parent="Enemy"]
-rotation = 0.0174533
 texture = ExtResource( 7 )
 vframes = 2
 hframes = 6
@@ -85,7 +113,8 @@ anims/Attack = SubResource( 1 )
 anims/Idle = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-position = Vector2( -6.89198, 2.32576 )
+visible = false
+position = Vector2( -6.60991, -21.0864 )
 shape = SubResource( 3 )
 
 [node name="FadeTween" type="Tween" parent="."]
@@ -105,4 +134,14 @@ one_shot = true
 stream = ExtResource( 10 )
 
 [node name="MoveTween" type="Tween" parent="."]
+
+[node name="AppearSprite" type="Sprite" parent="."]
+position = Vector2( -1.41037, -27.0791 )
+texture = ExtResource( 11 )
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AppearSprite"]
+autoplay = "Appear"
+playback_speed = 1.5
+anims/Appear = SubResource( 4 )
 

@@ -10,6 +10,7 @@ onready var fade_in_tween = $FadeInTween
 onready var move_tween = $MoveTween
 onready var animation = $Enemy/Sprite/AnimationPlayer
 onready var enemy = $Enemy
+onready var appear_sprite = $AppearSprite
 
 export var idle_time = 2.0
 export var fade_duration = 0.3
@@ -27,6 +28,7 @@ func _ready():
   animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
   enemy.connect("hurt", self, "_on_Enemy_hurt")
   enemy.connect("died", self, "_on_Enemy_died")
+  appear_sprite.modulate = Color(1, 1, 1, 10)
 
   fade_in()
 
