@@ -4,6 +4,7 @@ var dead_enemies = 0
 var completed = false
 
 export var complete_time = 2.0
+export var final = false
 var time = 0.0
 
 export var enemy_count = 0
@@ -32,4 +33,8 @@ func complete():
     return
 
   completed = true
-  EventBus.emit_signal("wave_completed", name)
+
+  if final:
+    EventBus.emit_signal("chapter_complete")
+  else:
+    EventBus.emit_signal("wave_completed", name)

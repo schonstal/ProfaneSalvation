@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
 [ext_resource path="res://Spawn/BatSpawner.tscn" type="PackedScene" id=2]
@@ -7,15 +7,13 @@
 [ext_resource path="res://Waves/InfiniteSpawn.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/BallLord/RightBall.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/BallLord/LeftBall.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Enemies/PitLord/PitLord.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Enemies/PitLord/PhaseManager.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Enemies/PitLord/AttackPatterns/MoveShoot/MoveShoot.tscn" type="PackedScene" id=10]
 
 [node name="ShootyBats" type="Node2D"]
 z_index = -1
 script = ExtResource( 1 )
-complete_time = 90.0
-enemy_count = 10
+complete_time = 60.0
+final = true
+enemy_count = 4
 
 [node name="BatSpawner3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1120, 200 )
@@ -62,11 +60,4 @@ spawn_rate = 4.0
 position = Vector2( 1600, 500 )
 scene = ExtResource( 7 )
 spawn_rate = 4.0
-
-[node name="PitLord" parent="." instance=ExtResource( 8 )]
-position = Vector2( 972.904, 443.993 )
-idle_time = 5.0
-
-[node name="PhaseManager" parent="PitLord" instance=ExtResource( 9 )]
-patterns = [ ExtResource( 10 ) ]
 
