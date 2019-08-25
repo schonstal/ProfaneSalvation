@@ -12,12 +12,7 @@ var length_was = 0.0
 func _process(delta):
   if length != length_was:
     left.region_rect = Rect2(0, 0, 27, length)
-    left.offset.y = -length / 2
-
     right.region_rect = Rect2(0, 0, 27, length)
-    right.offset.y = -length / 2
-
-    bottom.position.y = left.position.y - length
-    bottom.position.x = left.position.x
+    bottom.position.y = left.position.y + length + 50
 
     length_was = length
