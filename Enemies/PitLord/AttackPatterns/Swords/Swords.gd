@@ -31,6 +31,7 @@ func _ready():
 func _on_WaitTimer_timeout():
   if shots >= max_shots:
     EventBus.emit_signal("boss_pattern_complete")
+    queue_free()
     return
 
   pit_lord.move_to(Vector2(Game.scene.player.position.x, pit_lord.position.y))
