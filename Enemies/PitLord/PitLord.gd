@@ -36,6 +36,8 @@ func _ready():
   modulate = Color(brightness, brightness, brightness, 0)
   idle_timer.start(idle_time)
 
+  EventBus.emit_signal("boss_start", health)
+
 func _on_IdleTimer_timeout():
   fade_in()
 
@@ -103,4 +105,5 @@ func _on_Enemy_hurt(health, max_health):
 
 func _on_Enemy_died():
   EventBus.emit_signal("chapter_complete")
+  EventBus.emit_signal("boss_defeated")
   queue_free()

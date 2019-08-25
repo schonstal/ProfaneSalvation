@@ -8,7 +8,13 @@
 
 [node name="BossHP" type="Node2D"]
 script = ExtResource( 1 )
-bar_length = 575
+bar_length = 375
+
+[node name="FlashTween" type="Tween" parent="."]
+
+[node name="GrowTween" type="Tween" parent="."]
+
+[node name="ShrinkTween" type="Tween" parent="."]
 
 [node name="Back" type="ColorRect" parent="."]
 margin_left = -20.0
@@ -21,21 +27,19 @@ color = Color( 0, 0, 0, 1 )
 margin_left = -20.0
 margin_top = -40.0
 margin_right = 20.0
-margin_bottom = 585.0
+margin_bottom = 385.0
 color = Color( 0.639216, 0.419608, 0.956863, 1 )
 
 [node name="Container" type="Node2D" parent="."]
 script = ExtResource( 2 )
-length = 575
-
-[node name="FlashTween" type="Tween" parent="Container"]
+length = 375
 
 [node name="Left" type="Sprite" parent="Container"]
 position = Vector2( -37, -20 )
 texture = ExtResource( 3 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 27, 575 )
+region_rect = Rect2( 0, 0, 27, 375 )
 
 [node name="Right" type="Sprite" parent="Container"]
 position = Vector2( 35, -20 )
@@ -44,10 +48,10 @@ scale = Vector2( 1, -1 )
 texture = ExtResource( 3 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 27, 575 )
+region_rect = Rect2( 0, 0, 27, 375 )
 
 [node name="Bottom" type="Sprite" parent="Container"]
-position = Vector2( 0, 605 )
+position = Vector2( 0, 405 )
 texture = ExtResource( 4 )
 
 [node name="Top" type="Sprite" parent="Container"]
