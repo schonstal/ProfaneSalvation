@@ -14,7 +14,7 @@ onready var container = $Container
 export var bar_length = 0
 
 var active = false
-var percent = 1.0
+var percent = 0.0
 
 func _ready():
   if Engine.editor_hint:
@@ -54,7 +54,7 @@ func _on_boss_start(max_health):
       self,
       "bar_length",
       0,
-      max_health * 2 + 175,
+      max_health + 75,
       2,
       Tween.TRANS_QUAD,
       Tween.EASE_OUT)
@@ -95,7 +95,7 @@ func _on_boss_defeated():
       "bar_length",
       bar_length,
       0,
-      2,
+      1,
       Tween.TRANS_QUAD,
       Tween.EASE_OUT)
 

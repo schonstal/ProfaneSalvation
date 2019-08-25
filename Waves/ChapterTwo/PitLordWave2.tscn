@@ -10,5 +10,6 @@ complete_time = 10000.0
 
 [node name="PitLord" parent="." instance=ExtResource( 2 )]
 position = Vector2( 960, 300 )
+health = 300
 one_shot = true
 

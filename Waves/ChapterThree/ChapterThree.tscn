@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Waves/Wave.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Waves/ChapterTwo/IntroWave.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Waves/ChapterThree/IntroWave.tscn" type="PackedScene" id=2]
 
 [node name="ChapterThree" type="Node2D"]
 
