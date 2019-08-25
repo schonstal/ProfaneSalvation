@@ -83,7 +83,6 @@ frame = 1
 anims/Idle = SubResource( 1 )
 
 [node name="ChainLinks" type="Sprite" parent="."]
-editor/display_folded = true
 texture = ExtResource( 3 )
 offset = Vector2( 0, -100 )
 hframes = 4
