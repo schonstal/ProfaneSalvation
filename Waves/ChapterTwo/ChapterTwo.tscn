@@ -17,6 +17,6 @@ scene = ExtResource( 3 )
 [node name="FlyWaveOne" parent="." instance=ExtResource( 1 )]
 scene = ExtResource( 4 )
 
-[node name="Wave" parent="." instance=ExtResource( 1 )]
+[node name="Boss" parent="." instance=ExtResource( 1 )]
 scene = ExtResource( 5 )
 

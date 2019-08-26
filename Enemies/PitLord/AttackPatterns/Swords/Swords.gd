@@ -13,7 +13,7 @@ export var bullet_speed = 500
 
 var offset = 0.0
 var shots = 0
-var max_shots = 6
+var max_shots = 4
 
 export(Resource) var bullet_scene = preload("res://Projectiles/PitLordSword/PitLordSword.tscn")
 

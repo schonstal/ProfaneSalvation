@@ -80,6 +80,7 @@ func start_tween():
 func _on_Projectile_died(explosion):
   active = false
   explosion.rotation = projectile.rotation - PI / 2
+  queue_free()
 
 func _on_WaitTimer_timeout():
   if active:
@@ -102,6 +103,9 @@ func _on_InitTimer_timeout():
   start_tween()
 
 func shoot():
+  if !is_instance_valid(projectile):
+    return
+
   projectile.velocity = Vector2(
       cos(offset),
       sin(offset)
