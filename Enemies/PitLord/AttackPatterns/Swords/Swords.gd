@@ -10,10 +10,10 @@ export var distance = 50
 export var offset_increment = 0.1
 export var radius = 220.0
 export var bullet_speed = 500
+export var max_shots = 3
 
 var offset = 0.0
 var shots = 0
-var max_shots = 4
 
 export(Resource) var bullet_scene = preload("res://Projectiles/PitLordSword/PitLordSword.tscn")
 
