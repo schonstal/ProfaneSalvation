@@ -9,7 +9,7 @@
 [node name="PitLordWave" type="Node2D"]
 z_index = -1
 script = ExtResource( 1 )
-complete_time = 10000.0
+complete_time = 5.0
 
 [node name="PitLord" parent="." instance=ExtResource( 2 )]
 position = Vector2( 960, 300 )

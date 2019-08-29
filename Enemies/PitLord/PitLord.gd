@@ -20,6 +20,8 @@ export var one_shot = false
 
 export var brightness = 1.5
 
+var max_health = 50
+
 signal move_completed
 
 func _ready():
@@ -36,6 +38,7 @@ func _ready():
   modulate = Color(brightness, brightness, brightness, 0)
   idle_timer.start(idle_time)
 
+  max_health = health
   EventBus.emit_signal("boss_start", health)
 
 func _on_IdleTimer_timeout():
