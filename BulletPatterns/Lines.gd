@@ -18,16 +18,10 @@ func _ready():
   spawn_timer.connect("timeout", self, "_on_SpawnTimer_timeout")
 
 func _on_SpawnTimer_timeout():
-  for i in range(0, spawn_count):
-    var bullet = bullet_scene.instance()
-    Game.scene.projectiles.call_deferred("add_child", bullet)
-
-    bullet.global_position = global_position + Vector2(
-        cos(TAU * i / spawn_count),
-        sin(TAU * i / spawn_count)
-    ) * 30
-
-    bullet.velocity = Vector2(
-        cos(TAU * i / spawn_count),
-        sin(TAU * i / spawn_count)
-    ) * bullet_speed
+  Util.spawn_full_circle({
+      "position": global_position,
+      "scene": bullet_scene,
+      "count": spawn_count,
+      "radius": 30,
+      "speed": bullet_speed
+    })
