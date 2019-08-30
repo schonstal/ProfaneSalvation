@@ -50,16 +50,12 @@ func die():
     queue_free()
     return
 
-  for i in range(0, bullet_count):
-    var bullet = bullet_scene.instance()
-    Game.scene.projectiles.call_deferred("add_child", bullet)
-    bullet.global_position = enemy.global_position + Vector2(
-        cos(PI * 2 * i / bullet_count),
-        sin(PI * 2 * i / bullet_count)
-    ) * 40
-    bullet.velocity = Vector2(
-        cos(PI * 2 * i / bullet_count),
-        sin(PI * 2 * i / bullet_count)
-    ) * bullet_speed
+  Util.spawn_full_circle({
+      "position": enemy.global_position,
+      "scene": bullet_scene,
+      "count": bullet_count,
+      "radius": 40,
+      "speed": bullet_speed
+    })
 
   queue_free()
