@@ -9,12 +9,10 @@ export(Resource) var bullet_scene = preload("res://Projectiles/Fly/Fly.tscn")
 var spawn_timer:Timer
 
 func _ready():
-  for i in range(0, spawn_count):
-    var bullet = bullet_scene.instance()
-    Game.scene.projectiles.call_deferred("add_child", bullet)
-    bullet.global_position = global_position + Util.radial_vector(
-        TAU * i / spawn_count,
-        rand_range(0, 30)
-    )
+  Util.spawn_full_circle({
+      "position": global_position,
+      "scene": bullet_scene,
+      "count": spawn_count,
+      "radius": 10 })
 
   queue_free()
