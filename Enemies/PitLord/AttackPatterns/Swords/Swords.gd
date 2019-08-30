@@ -43,7 +43,6 @@ func _on_PitLord_move_completed():
 func shoot():
   wait_timer.start()
   offset += offset_increment * TAU
-
   shots += 1
   for i in range(0, bullet_count):
     var bullet = bullet_scene.instance()
