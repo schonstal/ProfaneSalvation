@@ -36,16 +36,11 @@ func _on_SpawnTimer_timeout():
   else:
     offset += offset_increment * TAU
 
-  for i in range(0, bullet_count):
-    var bullet = bullet_scene.instance()
-    Game.scene.projectiles.call_deferred("add_child", bullet)
-
-    bullet.global_position = global_position + Vector2(
-        cos(TAU * i / bullet_count + offset),
-        sin(TAU * i / bullet_count + offset)
-    ) * 30
-
-    bullet.velocity = Vector2(
-        cos(TAU * i / bullet_count + offset),
-        sin(TAU * i / bullet_count + offset)
-    ) * bullet_speed
+  Util.spawn_full_circle({
+      "position": global_position,
+      "scene": bullet_scene,
+      "count": bullet_count,
+      "radius": 30,
+      "speed": bullet_speed,
+      "rotation": offset
+    })
