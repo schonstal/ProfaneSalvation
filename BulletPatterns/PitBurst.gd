@@ -7,18 +7,11 @@ export var spawn_time = 0.1
 export(Resource) var bullet_scene = preload("res://Projectiles/PitLordFireball/PitLordFireball.tscn")
 
 func _ready():
-  for i in range(0, spawn_count):
-    var bullet = bullet_scene.instance()
-    Game.scene.projectiles.call_deferred("add_child", bullet)
+  Util.spawn_full_circle({
+    "position": global_position,
+    "scene": bullet_scene,
+    "count": spawn_count,
+    "radius": 30,
+    "speed": bullet_speed })
 
-    bullet.global_position = global_position + Vector2(
-        cos(TAU * i / spawn_count),
-        sin(TAU * i / spawn_count)
-    ) * 30
-
-    bullet.velocity = Vector2(
-        cos(TAU * i / spawn_count),
-        sin(TAU * i / spawn_count)
-    ) * bullet_speed
-
-    queue_free()
+  queue_free()
