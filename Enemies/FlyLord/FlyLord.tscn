@@ -80,12 +80,13 @@ height = 12.6733
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource( 1 )
+velocity = Vector2( 100, 50 )
 
 [node name="Enemy" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 16
 script = ExtResource( 2 )
-max_health = 10
+max_health = 5
 points = 200
 halos = 4
 explosion_scene = ExtResource( 3 )

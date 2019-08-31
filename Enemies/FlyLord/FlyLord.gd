@@ -10,7 +10,7 @@ var pattern = null
 
 export var velocity = Vector2(0, 0)
 export var acceleration = Vector2(0, 0)
-export var shoot_time = 2
+export var shoot_time = 0.5
 export var shoot_immediately = false
 
 export(Resource) var bullet_pattern = preload("res://BulletPatterns/Flies.tscn")

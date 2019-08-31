@@ -26,5 +26,7 @@ func _ready():
 
     Game.scene.projectiles.call_deferred("add_child", bullet)
 
-  EventBus.emit_signal("boss_pattern_complete")
+  if pit_lord != null:
+    EventBus.emit_signal("boss_pattern_complete")
+
   queue_free()

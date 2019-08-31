@@ -46,6 +46,9 @@ func _process(delta):
     enemy.position.x = randf()
 
 func _on_ShootTimer_timeout():
+  if enemy.health <= 0:
+    return
+
   attacking = true
   enemy.position.y = 0
   enemy.position.x = 0

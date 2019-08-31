@@ -60,6 +60,7 @@ func _on_Body_animation_finished(name):
 
 func _on_enemy_died():
   shut_down()
+  queue_free()
 
 func shut_down():
   active = false
