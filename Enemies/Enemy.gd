@@ -92,7 +92,7 @@ func die():
   alive = false
 
   if !despawned:
-    Game.scene.score(points)
+    Game.scene.increment_score(points)
     explode()
     Game.scene.sound.play(die_sound)
 

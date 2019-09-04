@@ -54,7 +54,7 @@ func game_over():
   Engine.time_scale = 0.1
   MusicPlayer.enable_filter()
 
-func score(points):
+func increment_score(points):
   score += points
 
   if score > Game.high_score:
