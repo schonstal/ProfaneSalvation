@@ -88,7 +88,7 @@ func hurt(damage):
 
   emit_signal("hurt", health, max_health)
 
-func die(killed = true):
+func die():
   alive = false
 
   if !despawned:
@@ -102,7 +102,7 @@ func die(killed = true):
   queue_free()
 
 func spawn_halos():
-  for i in range(0, halos):
+  for _i in range(0, halos):
     var halo = halo_scene.instance()
     var rotation = randf() * TAU
     Game.scene.items.call_deferred("add_child", halo)

@@ -45,5 +45,5 @@ func fade_out():
 
   fade_tween.start()
 
-func _on_FadeTween_tween_completed(object, key):
+func _on_FadeTween_tween_completed(_object, _key):
   emit_signal("fade_finished")

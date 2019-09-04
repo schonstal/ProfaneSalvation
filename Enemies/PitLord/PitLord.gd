@@ -44,10 +44,10 @@ func _ready():
 func _on_IdleTimer_timeout():
   fade_in()
 
-func _on_FadeInTween_tween_completed(object, key):
+func _on_FadeInTween_tween_completed(_object, _key):
   EventBus.emit_signal("boss_pattern_complete")
 
-func _on_FadeTween_tween_completed(object, key):
+func _on_FadeTween_tween_completed(_object, _key):
   collision.disabled = true
   if one_shot:
     queue_free()
@@ -56,7 +56,7 @@ func _on_AnimationPlayer_animation_finished(name):
   if name == "Attack":
     animation.play("Idle")
 
-func _on_MoveTween_tween_completed(object, key):
+func _on_MoveTween_tween_completed(_object, _key):
   emit_signal("move_completed")
 
 func move_to(target, duration = 0.5):
@@ -103,7 +103,7 @@ func fade_out():
 
   fade_tween.start()
 
-func _on_Enemy_hurt(health, max_health):
+func _on_Enemy_hurt(health, _max_health):
   EventBus.emit_signal("boss_hurt", health)
 
 func _on_Enemy_died():

@@ -9,7 +9,7 @@ onready var bottom = $Bottom
 
 var length_was = 0.0
 
-func _process(delta):
+func _process(_delta):
   if length != length_was:
     left.region_rect = Rect2(0, 0, 27, length)
     right.region_rect = Rect2(0, 0, 27, length)

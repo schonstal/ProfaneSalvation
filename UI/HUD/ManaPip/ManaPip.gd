@@ -14,7 +14,7 @@ func _ready():
   bar_length = bar.margin_bottom - bar.margin_top
   shimmer_animation.connect("animation_finished", self, "_on_Shimmer_animation_finished")
 
-func deactivate(flash = false):
+func deactivate():
   bar.margin_top = bar.margin_bottom
   active = false
 
@@ -33,5 +33,5 @@ func update_bar(amount):
 
   bar.margin_top = bar.margin_bottom - bar_length * percent
 
-func _on_Shimmer_animation_finished(name):
+func _on_Shimmer_animation_finished(_name):
   shimmer.visible = false

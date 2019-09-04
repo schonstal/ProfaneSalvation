@@ -26,16 +26,13 @@ func _ready():
   EventBus.connect("boss_start", self, "_on_boss_start")
   EventBus.connect("boss_defeated", self, "_on_boss_defeated")
 
-  flash_tween.connect("tween_completed", self, "_on_FlashTween_tween_completed")
-  grow_tween.connect("tween_completed", self, "_on_GrowTween_tween_completed")
-
-func _process(delta):
+func _process(_delta):
   var fill_length = bar_length + 50
   bar.rect_size.y = percent * fill_length
   back.rect_size.y = fill_length
   container.length = bar_length
 
-func deactivate(flash = false):
+func deactivate():
   bar.margin_top = bar.margin_bottom
   active = false
 
@@ -71,12 +68,6 @@ func _on_boss_start(max_health):
       Tween.EASE_OUT)
 
   flash_tween.start()
-
-func _on_GrowTween_tween_completed(object, key):
-  pass
-
-func _on_FlashTween_tween_completed(object, key):
-  pass
 
 func _on_boss_defeated():
   flash_tween.interpolate_property(

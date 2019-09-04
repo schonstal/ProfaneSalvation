@@ -21,7 +21,7 @@ func _ready():
     timer.start(spawn_offset)
 
 
-func _on_wave_completed(name):
+func _on_wave_completed(_name):
   queue_free()
 
 func _on_Timer_timeout():
