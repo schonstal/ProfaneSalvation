@@ -34,3 +34,6 @@ func random_pattern():
 
 func _on_boss_pattern_complete():
   spawn_pattern()
+
+func _on_PitLord_move_completed():
+  pass
