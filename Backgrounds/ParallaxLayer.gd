@@ -1,6 +1,5 @@
 extends ParallaxLayer
 
-onready var sprite = $Sprite
 export var speed = 2000
 
 func _ready():
