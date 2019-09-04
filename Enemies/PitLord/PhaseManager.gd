@@ -18,8 +18,6 @@ func spawn_pattern():
   # active_pattern.global_position = pit_lord.global_position
   pit_lord.call_deferred("add_child", active_pattern)
 
-  pit_lord.connect("move_completed", self, "_on_PitLord_move_completed")
-
 func random_pattern():
   var new_index = previous_index
 
@@ -34,6 +32,3 @@ func random_pattern():
 
 func _on_boss_pattern_complete():
   spawn_pattern()
-
-func _on_PitLord_move_completed():
-  pass
