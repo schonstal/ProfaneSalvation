@@ -12,21 +12,23 @@ export(Resource) var bullet_scene = preload("res://Projectiles/PitLordSword/Proj
 
 func _ready():
   for i in range(0, bullet_count):
-    var bullet = bullet_scene.instance()
-
-    if i % 2 == 0:
-      bullet.global_position.x = 1
-      bullet.velocity.x = bullet_speed
-    else:
-      bullet.global_position.x = 1919
-      bullet.velocity.x = -bullet_speed
-
-    bullet.global_position.y = (float(i) / bullet_count) * 1080 + 20
-    bullet.velocity.y = 0
-
-    Game.scene.projectiles.call_deferred("add_child", bullet)
+    call_deferred("_spawn_bullet", i)
 
   if pit_lord != null:
     EventBus.emit_signal("boss_pattern_complete")
 
   queue_free()
+
+func _spawn_bullet(i):
+  var bullet = bullet_scene.instance()
+  Game.scene.projectiles.add_child(bullet)
+
+  if i % 2 == 0:
+    bullet.global_position.x = 1
+    bullet.velocity.x = bullet_speed
+  else:
+    bullet.global_position.x = 1919
+    bullet.velocity.x = -bullet_speed
+
+  bullet.global_position.y = (float(i) / bullet_count) * 1080 + 20
+  bullet.velocity.y = 0
