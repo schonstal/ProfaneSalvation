@@ -12,7 +12,6 @@ func initialize():
   # TODO: Load high score
 
 func _ready():
-  initialize()
   randomize()
   Overlay.connect("fade_complete", self, "_on_Overlay_fade_complete")
 
