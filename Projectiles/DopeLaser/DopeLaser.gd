@@ -36,8 +36,6 @@ func _ready():
   if enemy != null:
     enemy.connect("died", self, "_on_enemy_died")
 
-  connect("body_entered", self, "_on_body_enter")
-
   aim_timer.start(aim_time)
 
 func _on_AimTimer_timeout():
