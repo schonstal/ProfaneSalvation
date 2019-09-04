@@ -12,7 +12,7 @@ var items:Node
 var game_over_layer:Node
 var lasers:Node
 
-onready var game_over = false
+onready var is_game_over = false
 
 var game_over_scene = preload("res://UI/GameOver/GameOver.tscn")
 var game_over_node
@@ -45,12 +45,12 @@ func _process(delta):
   if Engine.time_scale > 1:
     Engine.time_scale = 1
 
-  if game_over_node == null && game_over && Engine.time_scale >= 1:
+  if game_over_node == null && is_game_over && Engine.time_scale >= 1:
     game_over_node = game_over_scene.instance()
     game_over_layer.add_child(game_over_node)
 
 func game_over():
-  game_over = true
+  is_game_over = true
   Engine.time_scale = 0.1
   MusicPlayer.enable_filter()
 

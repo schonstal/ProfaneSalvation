@@ -4,7 +4,7 @@ var pause_menu = preload("res://UI/Pause/PauseMenu.tscn")
 var pause_scene
 
 func _input(event):
-  if Game.scene.game_over:
+  if Game.scene.is_game_over:
     return
 
   if event.is_action_pressed("pause"):
