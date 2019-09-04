@@ -86,7 +86,7 @@ func _process(delta):
 
   shoot_time += delta
 
-  handle_attack(delta)
+  handle_attack()
   handle_defend(delta)
 
   if !is_stunned && !attacking:
@@ -161,7 +161,7 @@ func handle_defend(delta):
       shield_failure_sound.play()
       EventBus.emit_signal("shield_failure")
 
-func handle_attack(delta):
+func handle_attack():
   if !attacking && Input.is_action_pressed("attack"):
     attacking = true
     animation.play("ShootStartup")

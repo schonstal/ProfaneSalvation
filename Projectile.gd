@@ -30,7 +30,7 @@ func _physics_process(delta):
   if global_position.x > 2020:
     die()
 
-func _process(delta):
+func _process(_delta):
   if velocity.length_squared() > 0:
     rotation = velocity.angle()
 

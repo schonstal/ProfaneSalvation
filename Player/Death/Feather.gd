@@ -29,7 +29,7 @@ func _ready():
 
   fade_tween.start()
 
-func _on_FadeTween_tween_completed(object, key):
+func _on_FadeTween_tween_completed(_object, _key):
   queue_free()
 
 func _physics_process(delta):

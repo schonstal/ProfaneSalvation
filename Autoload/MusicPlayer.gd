@@ -16,7 +16,7 @@ func _ready():
 
   AudioServer.add_bus_effect(bus_index, bus_effect, effect_index)
 
-func _process(delta):
+func _process(_delta):
   AudioServer.set_bus_volume_db(bus_index, music_volume)
 
 func play_file(audio_file):

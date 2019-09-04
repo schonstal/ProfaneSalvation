@@ -80,7 +80,7 @@ func _process(delta):
     timer = time_per_hit
 
 # Kill particles
-func hurt(damage):
+func hurt(_damage):
   pass
 
 func _on_body_entered(body):

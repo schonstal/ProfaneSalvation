@@ -4,6 +4,7 @@ export var chapter = 0
 
 var waves = []
 var wave_index = 0
+#warning-ignore:unused_class_variable
 var current_wave
 
 var complete_wave = preload("res://Waves/CompleteWave.tscn")

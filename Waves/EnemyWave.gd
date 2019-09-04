@@ -20,7 +20,7 @@ func _process(delta):
   if time > complete_time:
     complete()
 
-func _on_enemy_died(wave, name):
+func _on_enemy_died(wave, _name):
   if wave != self.name:
     return
 

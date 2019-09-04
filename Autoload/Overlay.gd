@@ -19,5 +19,5 @@ func fade(start_color, end_color, duration):
 
   fade_tween.start()
 
-func _on_FadeTween_tween_completed(object, key):
+func _on_FadeTween_tween_completed(_object, _key):
   emit_signal("fade_complete")

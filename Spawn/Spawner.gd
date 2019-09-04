@@ -41,7 +41,7 @@ func _ready():
   EventBus.connect("chapter_complete", self, "_on_chapter_complete")
 
 func _on_chapter_complete():
-  for i in range(0, halos):
+  for _i in range(0, halos):
     var halo = halo_scene.instance()
     var rotation = randf() * TAU
     Game.scene.items.call_deferred("add_child", halo)

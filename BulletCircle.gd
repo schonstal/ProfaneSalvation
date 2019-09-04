@@ -25,15 +25,15 @@ func _init(options):
 func should_continue():
   return index < count
 
-func _iter_init(arg):
+func _iter_init(_arg):
   index = 0
   return should_continue()
 
-func _iter_next(arg):
+func _iter_next(_arg):
   index += 1
   return should_continue()
 
-func _iter_get(arg):
+func _iter_get(_arg):
   var bullet = scene.instance()
   var angle = TAU * index / count + rotation
 

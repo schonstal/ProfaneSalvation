@@ -6,7 +6,7 @@ var scene_instance = null
 func _ready():
   EventBus.connect("wave_completed", self, "_on_wave_completed")
 
-func _on_wave_completed(name):
+func _on_wave_completed(_name):
   pass
 
 func spawn():
