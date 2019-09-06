@@ -7,8 +7,12 @@ var previous_index = -1
 
 onready var pit_lord = $'..'
 
+var phase = 1
+var phase_count = 3.0
+
 func _ready():
   EventBus.connect("boss_pattern_complete", self, "_on_boss_pattern_complete")
+  EventBus.connect("boss_hurt", self, "_on_boss_hurt")
 
 func spawn_pattern():
   if active_pattern != null:
@@ -32,3 +36,7 @@ func random_pattern():
 
 func _on_boss_pattern_complete():
   spawn_pattern()
+
+func _on_boss_hurt(health):
+  if (health < pit_lord.max_health * (phase_count - phase) / phase_count):
+    phase += 1
