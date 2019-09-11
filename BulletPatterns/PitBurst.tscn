@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://BulletPatterns/PitBurst.gd" type="Script" id=1]
+[ext_resource path="res://BulletPatterns/Twist.gd" type="Script" id=1]
+[ext_resource path="res://Projectiles/PitLordFireball/PitLordFireball.tscn" type="PackedScene" id=2]
 
 [node name="PitBurst" type="Node2D"]
 script = ExtResource( 1 )
 spawn_count = 8
 bullet_speed = 400
+duration = 0.2
+bullet_scene = ExtResource( 2 )
 

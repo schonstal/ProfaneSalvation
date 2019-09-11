@@ -6,6 +6,8 @@ export var laser_active_time = 3.0
 export var fade_out = true
 export var shoot_time = 0.5
 export var fade_in = true
+export var bullet_count = 8
+export var bullet_rate = 0.5
 
 onready var enemy = $Enemy
 onready var laser_spawn = $Enemy/LaserSpawn
@@ -63,6 +65,7 @@ func _on_ShootTimer_timeout():
 
   if bullet_pattern != null:
     var pattern = bullet_pattern.instance()
+    pattern.spawn_count = bullet_count
     call_deferred("add_child", pattern)
 
   animation.play("Attack")
