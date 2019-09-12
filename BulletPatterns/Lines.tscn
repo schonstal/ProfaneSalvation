@@ -6,6 +6,7 @@
 [node name="Lines" type="Node2D"]
 script = ExtResource( 1 )
 spawn_count = 8
+spawn_time = 0.2
 rotate = false
 bullet_scene = ExtResource( 2 )
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
 [ext_resource path="res://Spawn/SkullSpawner.tscn" type="PackedScene" id=2]
@@ -6,11 +6,15 @@
 [ext_resource path="res://BulletPatterns/PitBurst.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Spawn/BatSpawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Waves/InfiniteSpawn.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Waves/InfiniteSpawn.gd" type="Script" id=8]
+[ext_resource path="res://Enemies/BallLord/DownRightBall.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies/BallLord/DownLeftBall.tscn" type="PackedScene" id=10]
 
 [node name="SkullTwo" type="Node2D"]
 script = ExtResource( 1 )
-complete_time = 12.0
-enemy_count = 6
+complete_time = 24.0
+enemy_count = 2
 
 [node name="SkullSpawner" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
@@ -52,16 +56,30 @@ position = Vector2( 400, 300 )
 summon_time = 1.5
 
 [node name="Enemy" parent="BatSpawner" instance=ExtResource( 6 )]
-movement = Vector2( 100, -200 )
+movement = Vector2( 50, -100 )
 velocity = Vector2( 0, 0.1 )
-shoot_time = 0.8
+shoot_time = 0.6
 
 [node name="BatSpawner2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1520, 300 )
 summon_time = 1.5
 
 [node name="Enemy" parent="BatSpawner2" instance=ExtResource( 6 )]
-movement = Vector2( -100, -200 )
+movement = Vector2( -50, -100 )
 velocity = Vector2( 0, 0.1 )
-shoot_time = 0.8
+shoot_time = 0.6
+
+[node name="InfiniteSpawn" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 320, 100 )
+script = ExtResource( 8 )
+scene = ExtResource( 9 )
+spawn_rate = 4.0
+spawn_offset = 4.0
+
+[node name="InfiniteSpawn2" type="Node2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1600, 100 )
+script = ExtResource( 8 )
+scene = ExtResource( 10 )
+spawn_rate = 4.0
+spawn_offset = 2.0
 

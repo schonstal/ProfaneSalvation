@@ -11,7 +11,7 @@ complete_time = 5.0
 enemy_count = 4
 
 [node name="SkullSpawner" parent="." instance=ExtResource( 2 )]
-position = Vector2( 860, 100 )
+position = Vector2( 810, 100 )
 summon_time = 1.5
 
 [node name="Enemy" parent="SkullSpawner" instance=ExtResource( 3 )]
@@ -19,7 +19,7 @@ fade_in = false
 bullet_pattern = ExtResource( 4 )
 
 [node name="SkullSpawner2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1060, 100 )
+position = Vector2( 1110, 100 )
 summon_time = 1.5
 
 [node name="Enemy" parent="SkullSpawner2" instance=ExtResource( 3 )]
@@ -27,7 +27,7 @@ fade_in = false
 bullet_pattern = ExtResource( 4 )
 
 [node name="SkullSpawner3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 660, 300 )
+position = Vector2( 560, 300 )
 summon_time = 1.5
 delay = 1.0
 
@@ -36,7 +36,7 @@ fade_in = false
 bullet_pattern = ExtResource( 4 )
 
 [node name="SkullSpawner4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1260, 300 )
+position = Vector2( 1360, 300 )
 summon_time = 1.5
 delay = 1.0
 
@@ -45,7 +45,7 @@ fade_in = false
 bullet_pattern = ExtResource( 4 )
 
 [node name="SkullSpawner5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1460, 500 )
+position = Vector2( 1610, 500 )
 summon_time = 1.5
 delay = 2.0
 
@@ -54,29 +54,11 @@ fade_in = false
 bullet_pattern = ExtResource( 4 )
 
 [node name="SkullSpawner6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 460, 500 )
+position = Vector2( 310, 500 )
 summon_time = 1.5
 delay = 2.0
 
 [node name="Enemy" parent="SkullSpawner6" instance=ExtResource( 3 )]
-fade_in = false
-bullet_pattern = ExtResource( 4 )
-
-[node name="SkullSpawner7" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1660, 700 )
-summon_time = 1.5
-delay = 3.0
-
-[node name="Enemy" parent="SkullSpawner7" instance=ExtResource( 3 )]
-fade_in = false
-bullet_pattern = ExtResource( 4 )
-
-[node name="SkullSpawner8" parent="." instance=ExtResource( 2 )]
-position = Vector2( 260, 700 )
-summon_time = 1.5
-delay = 3.0
-
-[node name="Enemy" parent="SkullSpawner8" instance=ExtResource( 3 )]
 fade_in = false
 bullet_pattern = ExtResource( 4 )
 

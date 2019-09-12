@@ -1,15 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
 [ext_resource path="res://Spawn/BatSpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=3]
 [ext_resource path="res://BulletPatterns/Lines.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Waves/InfiniteSpawn.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemies/BallLord/RightBall.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Enemies/BallLord/LeftBall.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Spawn/SkullSpawner.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Enemies/Skull/Skull.tscn" type="PackedScene" id=9]
-[ext_resource path="res://BulletPatterns/PitBurst.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Spawn/SkullSpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/Skull/Skull.tscn" type="PackedScene" id=6]
+[ext_resource path="res://BulletPatterns/PitBurst.tscn" type="PackedScene" id=7]
 
 [node name="LineBats" type="Node2D"]
 z_index = -1
@@ -52,51 +49,39 @@ movement = Vector2( 0, 100 )
 velocity = Vector2( 0, 0 )
 bullet_pattern = ExtResource( 4 )
 
-[node name="InfiniteSpawn" parent="." instance=ExtResource( 5 )]
-position = Vector2( 320, 500 )
-scene = ExtResource( 6 )
-spawn_rate = 4.0
-spawn_offset = 4.0
-
-[node name="InfiniteSpawn2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1600, 500 )
-scene = ExtResource( 7 )
-spawn_rate = 4.0
-spawn_offset = 2.0
-
-[node name="SkullSpawner" parent="." instance=ExtResource( 8 )]
+[node name="SkullSpawner" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 760, 100 )
 delay = 2.0
 
-[node name="Enemy" parent="SkullSpawner" instance=ExtResource( 9 )]
+[node name="Enemy" parent="SkullSpawner" instance=ExtResource( 6 )]
 fade_in = false
-bullet_pattern = ExtResource( 10 )
+bullet_pattern = ExtResource( 7 )
 
-[node name="SkullSpawner3" parent="." instance=ExtResource( 8 )]
+[node name="SkullSpawner3" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 360, 100 )
 delay = 4.0
 
-[node name="Enemy" parent="SkullSpawner3" instance=ExtResource( 9 )]
+[node name="Enemy" parent="SkullSpawner3" instance=ExtResource( 6 )]
 fade_in = false
-bullet_pattern = ExtResource( 10 )
+bullet_pattern = ExtResource( 7 )
 
-[node name="SkullSpawner2" parent="." instance=ExtResource( 8 )]
+[node name="SkullSpawner2" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 1160, 100 )
 delay = 2.0
 
-[node name="Enemy" parent="SkullSpawner2" instance=ExtResource( 9 )]
+[node name="Enemy" parent="SkullSpawner2" instance=ExtResource( 6 )]
 fade_in = false
-bullet_pattern = ExtResource( 10 )
+bullet_pattern = ExtResource( 7 )
 
-[node name="SkullSpawner4" parent="." instance=ExtResource( 8 )]
+[node name="SkullSpawner4" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 1560, 100 )
 delay = 4.0
 
-[node name="Enemy" parent="SkullSpawner4" instance=ExtResource( 9 )]
+[node name="Enemy" parent="SkullSpawner4" instance=ExtResource( 6 )]
 fade_in = false
-bullet_pattern = ExtResource( 10 )
+bullet_pattern = ExtResource( 7 )
 

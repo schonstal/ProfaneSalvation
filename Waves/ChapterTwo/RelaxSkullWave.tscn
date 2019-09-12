@@ -10,7 +10,7 @@
 [node name="RelaxSkullWave" type="Node2D"]
 z_index = -1
 script = ExtResource( 1 )
-complete_time = 6.0
+complete_time = 8.0
 final = true
 enemy_count = 1
 
@@ -33,11 +33,12 @@ fade_in = false
 bullet_pattern = ExtResource( 4 )
 
 [node name="BatSpawner" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
 position = Vector2( 960, 300 )
 summon_time = 1.5
 
 [node name="Enemy" parent="BatSpawner" instance=ExtResource( 6 )]
 movement = Vector2( 50, 0 )
 velocity = Vector2( 0, 0.1 )
-shoot_time = 0.6
+shoot_time = 0.3
 
