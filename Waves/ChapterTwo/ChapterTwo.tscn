@@ -6,7 +6,7 @@
 [ext_resource path="res://Waves/ChapterTwo/LineBats.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Waves/ChapterTwo/SkullTwo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Waves/ChapterTwo/SkullThree.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Waves/ChapterOne/BallLine.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Waves/ChapterOne/FullBallLine.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Waves/ChapterTwo/RelaxSkullWave.tscn" type="PackedScene" id=8]
 
 [node name="ChapterTwo" type="Node2D"]
