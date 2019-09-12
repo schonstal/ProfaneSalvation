@@ -11,6 +11,7 @@ onready var move_tween = $MoveTween
 onready var animation = $Enemy/Sprite/AnimationPlayer
 onready var enemy = $Enemy
 onready var appear_sprite = $AppearSprite
+onready var sprite = $Enemy/Sprite
 onready var wait_timer
 
 export var idle_time = 2.0
@@ -23,6 +24,8 @@ export var brightness = 1.5
 var max_health = 50
 
 signal move_completed
+
+var shadow_scene = preload("res://Enemies/PitLord/Shadow.tscn")
 
 func _ready():
   move_tween.connect("tween_completed", self, "_on_MoveTween_tween_completed")
