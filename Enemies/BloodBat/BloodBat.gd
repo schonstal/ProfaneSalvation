@@ -19,7 +19,7 @@ export var velocity = Vector2(0, 0)
 export var shoot_time = 0.5
 export var shoot_immediately = false
 
-export(Resource) var bullet_pattern = preload("res://BulletPatterns/Lines.tscn")
+export(Resource) var bullet_pattern = preload("res://Enemies/BloodBat/Lines.tscn")
 export(Resource) var movement_pattern = preload("res://Enemies/Movement/Movement.tscn")
 export(Resource) var attack_sound_scene = preload("res://Enemies/BloodBat/AttackSound.tscn")
 

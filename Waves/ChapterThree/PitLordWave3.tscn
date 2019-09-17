@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/PitLord/PitLord.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/PitLord/PhaseManager.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Enemies/PitLord/AttackPatterns/Swords/Swords.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Enemies/PitLord/AttackPatterns/SideSwords/SideSwords.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/PitLord/AttackPatterns/TwistSwords/TwistSwords.tscn" type="PackedScene" id=4]
 
 [node name="PitLordWave" type="Node2D"]
 z_index = -1
@@ -17,5 +16,5 @@ health = 300
 one_shot = true
 
 [node name="PhaseManager" parent="PitLord" instance=ExtResource( 3 )]
-patterns = [ ExtResource( 4 ), ExtResource( 5 ) ]
+patterns = [ ExtResource( 4 ) ]
 

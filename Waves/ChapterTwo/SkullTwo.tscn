@@ -3,13 +3,14 @@
 [ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
 [ext_resource path="res://Spawn/SkullSpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/Skull/Skull.tscn" type="PackedScene" id=3]
-[ext_resource path="res://BulletPatterns/PitBurst.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/Skull/PitBurst.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Spawn/BatSpawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Waves/InfiniteSpawn.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Waves/InfiniteSpawn.gd" type="Script" id=8]
 [ext_resource path="res://Enemies/BallLord/DownRightBall.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Enemies/BallLord/DownLeftBall.tscn" type="PackedScene" id=10]
+
 
 [node name="SkullTwo" type="Node2D"]
 script = ExtResource( 1 )

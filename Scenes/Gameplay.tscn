@@ -38,7 +38,6 @@ __meta__ = {
 }
 
 [node name="WaveManager" parent="." instance=ExtResource( 4 )]
-chapter = 2
 
 [node name="ChapterOne" parent="WaveManager" instance=ExtResource( 5 )]
 

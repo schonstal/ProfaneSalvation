@@ -3,10 +3,12 @@
 [ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
 [ext_resource path="res://Spawn/BatSpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=3]
-[ext_resource path="res://BulletPatterns/Lines.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/BloodBat/Lines.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Spawn/SkullSpawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/Skull/Skull.tscn" type="PackedScene" id=6]
-[ext_resource path="res://BulletPatterns/PitBurst.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemies/Skull/PitBurst.tscn" type="PackedScene" id=7]
+
+
 
 [node name="LineBats" type="Node2D"]
 z_index = -1
