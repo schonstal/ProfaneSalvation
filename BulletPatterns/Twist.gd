@@ -15,6 +15,8 @@ export(Resource) var bullet_scene = preload("res://Projectiles/Projectile.tscn")
 var spawn_timer:Timer
 var duration_timer:Timer
 
+signal shot
+
 func _ready():
   if duration > 0:
     duration_timer = Timer.new()
@@ -48,6 +50,8 @@ func shoot():
 
   if rotate:
     offset += offset_increment * TAU
+
+  emit_signal("shot")
 
 func _on_SpawnTimer_timeout():
   shoot()

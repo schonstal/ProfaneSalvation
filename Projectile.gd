@@ -3,6 +3,7 @@ extends Area2D
 export var velocity = Vector2(0, -1000)
 
 export var damage = 1
+export var rotate_explosion = false
 
 export(Resource) var explosion_scene = preload("res://Projectiles/BlueFireball/EnemyFireballExplosion/EnemyFireballExplosion.tscn")
 var halo_scene = preload("res://Items/Halo/Halo.tscn")
@@ -14,6 +15,9 @@ func _ready():
   connect("body_entered", self, "_on_body_enter")
   connect("area_entered", self, "_on_body_enter")
   EventBus.connect("chapter_complete", self, "_on_chapter_complete")
+
+  if velocity.length_squared() > 0:
+    rotation = velocity.angle()
 
 func _physics_process(delta):
   position += velocity * delta
@@ -46,6 +50,8 @@ func deflect():
 func die():
   var explosion = explosion_scene.instance()
   explosion.global_position = global_position
+  if rotate_explosion:
+    explosion.rotation = rotation - PI / 2
   Game.scene.explosions.call_deferred("add_child", explosion)
   emit_signal("died", explosion)
   queue_free()

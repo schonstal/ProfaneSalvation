@@ -3,7 +3,6 @@ extends Node2D
 onready var collision = $Enemy/CollisionShape2D
 onready var appear_sound = $AppearSound
 onready var disappear_sound = $DisappearSound
-onready var attack_sound = $AttackSound
 onready var idle_timer = $IdleTimer
 onready var fade_tween = $FadeTween
 onready var fade_in_tween = $FadeInTween
@@ -76,7 +75,6 @@ func move_to(target, duration = 0.5):
 
 func start_attack():
   animation.play("Attack")
-  attack_sound.play()
 
 func fade_in():
   animation.play("Idle")

@@ -15,6 +15,8 @@ export var max_shots = 4
 var offset = 0.0
 var shots = 0
 
+onready var attack_sound = $AttackSound
+
 export(Resource) var bullet_scene = preload("res://Projectiles/PitLordSword/PitLordSword.tscn")
 
 func _ready():
@@ -38,6 +40,7 @@ func _on_WaitTimer_timeout():
 
 func _on_PitLord_move_completed():
   pit_lord.start_attack()
+  attack_sound.play()
   shoot()
 
 func shoot():
