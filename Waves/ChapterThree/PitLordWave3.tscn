@@ -3,7 +3,7 @@
 [ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/PitLord/PitLord.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/PitLord/PhaseManager.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Enemies/PitLord/AttackPatterns/TwistSwords/TwistSwords.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/PitLord/AttackPatterns/SpinSkulls/SpinSkulls.tscn" type="PackedScene" id=4]
 
 [node name="PitLordWave" type="Node2D"]
 z_index = -1

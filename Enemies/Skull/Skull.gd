@@ -2,9 +2,7 @@ extends Node2D
 
 export var bob_amount = 4
 export var bob_frequency = 0.5
-export var laser_active_time = 3.0
 export var fade_out = true
-export var shoot_time = 0.5
 export var fade_in = true
 export var bullet_count = 8
 export var bullet_rate = 0.5
@@ -14,6 +12,9 @@ onready var laser_spawn = $Enemy/LaserSpawn
 onready var animation = $Enemy/Sprite/AnimationPlayer
 onready var shoot_timer = $ShootTimer
 
+var laser_active_time = 1
+var shoot_time = 0.5
+
 var attacking = false
 var bob_time = 0
 
@@ -21,7 +22,7 @@ var laser_scene = preload("res://Projectiles/DopeLaser/DopeLaser.tscn")
 var laser:Node
 var laser_finished = false
 
-export(Resource) var bullet_pattern = null
+export(Resource) var bullet_pattern = preload("res://Enemies/Skull/PitBurst.tscn")
 
 signal died
 

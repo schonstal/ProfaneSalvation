@@ -1,10 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
 [ext_resource path="res://Spawn/SkullSpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/Skull/Skull.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Enemies/Skull/PitBurst.tscn" type="PackedScene" id=4]
-
 
 [node name="SkullThree" type="Node2D"]
 script = ExtResource( 1 )
@@ -17,7 +15,6 @@ summon_time = 1.5
 
 [node name="Enemy" parent="SkullSpawner" instance=ExtResource( 3 )]
 fade_in = false
-bullet_pattern = ExtResource( 4 )
 
 [node name="SkullSpawner2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1110, 100 )
@@ -25,7 +22,6 @@ summon_time = 1.5
 
 [node name="Enemy" parent="SkullSpawner2" instance=ExtResource( 3 )]
 fade_in = false
-bullet_pattern = ExtResource( 4 )
 
 [node name="SkullSpawner3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 560, 300 )
@@ -34,7 +30,6 @@ delay = 1.0
 
 [node name="Enemy" parent="SkullSpawner3" instance=ExtResource( 3 )]
 fade_in = false
-bullet_pattern = ExtResource( 4 )
 
 [node name="SkullSpawner4" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1360, 300 )
@@ -43,7 +38,6 @@ delay = 1.0
 
 [node name="Enemy" parent="SkullSpawner4" instance=ExtResource( 3 )]
 fade_in = false
-bullet_pattern = ExtResource( 4 )
 
 [node name="SkullSpawner5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1610, 500 )
@@ -52,7 +46,6 @@ delay = 2.0
 
 [node name="Enemy" parent="SkullSpawner5" instance=ExtResource( 3 )]
 fade_in = false
-bullet_pattern = ExtResource( 4 )
 
 [node name="SkullSpawner6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 310, 500 )
@@ -61,5 +54,4 @@ delay = 2.0
 
 [node name="Enemy" parent="SkullSpawner6" instance=ExtResource( 3 )]
 fade_in = false
-bullet_pattern = ExtResource( 4 )
 
