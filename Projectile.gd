@@ -15,6 +15,7 @@ func _ready():
   connect("body_entered", self, "_on_body_enter")
   connect("area_entered", self, "_on_body_enter")
   EventBus.connect("chapter_complete", self, "_on_chapter_complete")
+  EventBus.connect("clear_projectiles", self, "_on_clear_projectiles")
 
   if velocity.length_squared() > 0:
     rotation = velocity.angle()
@@ -56,6 +57,9 @@ func die():
   emit_signal("died", explosion)
   queue_free()
 
+func _on_clear_projectiles():
+  die()
+
 func _on_chapter_complete():
   var halo = halo_scene.instance()
   var rotation = randf() * TAU
@@ -66,4 +70,4 @@ func _on_chapter_complete():
       sin(rotation)
   ) * (250 + randf() * 250)
 
-  queue_free()
+  die()

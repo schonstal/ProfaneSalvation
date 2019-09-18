@@ -13,3 +13,4 @@ signal boss_start(hp)
 signal boss_defeated
 
 signal player_defend
+signal clear_projectiles

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Enemies/PitLord/PitLord.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Enemies/PitLord/PitLord_Dissappears.wav" type="AudioStream" id=9]
 [ext_resource path="res://Enemies/PitLord/PitLord_Fire.wav" type="AudioStream" id=10]
 [ext_resource path="res://Enemies/PitLord/PitLordAppear/PitLordAppear.png" type="Texture" id=11]
+[ext_resource path="res://Enemies/PitLord/PhaseManager.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Attack"
@@ -79,6 +80,7 @@ tracks/1/keys = {
 
 [node name="PitLord" type="Node2D"]
 script = ExtResource( 1 )
+health = 600
 
 [node name="Enemy" type="Area2D" parent="."]
 collision_layer = 12
@@ -145,4 +147,6 @@ hframes = 5
 autoplay = "Appear"
 playback_speed = 1.5
 anims/Appear = SubResource( 4 )
+
+[node name="PhaseManager" parent="." instance=ExtResource( 12 )]
 

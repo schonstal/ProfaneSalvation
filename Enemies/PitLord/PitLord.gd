@@ -16,13 +16,14 @@ onready var wait_timer
 export var idle_time = 2.0
 export var fade_duration = 0.3
 export var health = 50
-export var one_shot = false
 
 export var brightness = 1.5
 
 var max_health = 50
 
 signal move_completed
+signal fade_out_completed
+signal fade_in_completed
 
 var shadow_scene = preload("res://Enemies/PitLord/Shadow.tscn")
 
@@ -47,12 +48,11 @@ func _on_IdleTimer_timeout():
   fade_in()
 
 func _on_FadeInTween_tween_completed(_object, _key):
-  EventBus.emit_signal("boss_pattern_complete")
+  emit_signal("fade_in_completed")
 
 func _on_FadeTween_tween_completed(_object, _key):
   collision.disabled = true
-  if one_shot:
-    queue_free()
+  emit_signal("fade_out_completed")
 
 func _on_AnimationPlayer_animation_finished(name):
   if name == "Attack":
