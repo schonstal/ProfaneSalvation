@@ -27,6 +27,7 @@ var is_stunned setget ,get_stunned
 var flash_time = 0
 var flashing = false
 var attacking = false
+var attack_toggled = false
 
 var deflect_buffer = 0
 var deflect_pressed = false
@@ -83,6 +84,9 @@ func _physics_process(delta):
 func _process(delta):
   if dead:
     return
+
+  if Input.is_action_just_pressed("attack_toggle"):
+    attack_toggled = !attack_toggled
 
   shoot_time += delta
 
@@ -162,7 +166,7 @@ func handle_defend(delta):
       EventBus.emit_signal("shield_failure")
 
 func handle_attack():
-  if !attacking && Input.is_action_pressed("attack"):
+  if !attacking && _attack_pressed():
     attacking = true
     animation.play("ShootStartup")
 
@@ -208,6 +212,14 @@ func shoot():
   muzzle_flare.shoot()
   shoot_sound.play()
 
+func _attack_pressed():
+  var button = Input.is_action_pressed("attack")
+
+  if attack_toggled:
+    return !button
+  else:
+    return button
+
 func _on_halo_collected():
   if mana >= max_mana:
     halos = 0
@@ -229,7 +241,7 @@ func _on_SpriteAnimationPlayer_finished(name):
   elif name == "Shoot":
     shoot()
 
-    if Input.is_action_pressed("attack"):
+    if _attack_pressed():
       animation.play("Shoot")
     else:
       animation.play("ShootRecover")
