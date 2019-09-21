@@ -74,13 +74,10 @@ func _on_boss_pattern_complete():
 func _on_boss_hurt(health):
   var percent = float(health) / pit_lord.max_health
 
-  if percent < 0.25 && phase < 4:
+  if percent < 0.33 && phase < 3:
     change_phase(phase_three)
 
-  if percent < 0.5 && phase < 3:
-    change_phase(phase_one)
-
-  if percent < 0.75 && phase < 2:
+  if percent < 0.66 && phase < 2:
     change_phase(phase_two)
 
 func _on_PitLord_fade_in_completed():

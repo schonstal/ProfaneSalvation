@@ -80,14 +80,14 @@ tracks/1/keys = {
 
 [node name="PitLord" type="Node2D"]
 script = ExtResource( 1 )
-health = 600
+health = 400
 
 [node name="Enemy" type="Area2D" parent="."]
 collision_layer = 12
 collision_mask = 18
 script = ExtResource( 2 )
 max_health = 100
-points = 1000
+points = 5000
 stun_time = 0.0
 halos = 50
 max_speed = Vector2( 10000, 10000 )
