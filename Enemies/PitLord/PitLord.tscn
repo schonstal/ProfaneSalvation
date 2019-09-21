@@ -80,7 +80,7 @@ tracks/1/keys = {
 
 [node name="PitLord" type="Node2D"]
 script = ExtResource( 1 )
-health = 400
+health = 500
 
 [node name="Enemy" type="Area2D" parent="."]
 collision_layer = 12
