@@ -198,19 +198,35 @@ func set_iframes(duration = 0.5):
   invulnerable = true
   iframe_timer.start(duration)
 
+
+var off = false
 func shoot():
   if !can_shoot():
     return
 
-  var bullet = bullet_scene.instance()
-  Game.scene.projectiles.call_deferred("add_child", bullet)
-  bullet.global_position = bullet_spawn.global_position
-  bullet.rotation = -PI / 2
+  if Game.scene.gun_level == 0:
+    spawn_bullet(Vector2(0, 0))
+  elif Game.scene.gun_level == 1:
+    spawn_bullet(Vector2(0, -20))
+    spawn_bullet(Vector2(30, 0))
+    spawn_bullet(Vector2(-30, 0))
+  else:
+    spawn_bullet(Vector2(0, -40))
+    spawn_bullet(Vector2(20, -20))
+    spawn_bullet(Vector2(-20, -20))
+    spawn_bullet(Vector2(40, 0))
+    spawn_bullet(Vector2(-40, 0))
 
   shoot_time = 0
 
   muzzle_flare.shoot()
   shoot_sound.play()
+
+func spawn_bullet(offset):
+  var bullet = bullet_scene.instance()
+  Game.scene.projectiles.call_deferred("add_child", bullet)
+  bullet.global_position = bullet_spawn.global_position + offset
+  bullet.rotation = -PI / 2
 
 func _attack_pressed():
   var button = Input.is_action_pressed("attack")
