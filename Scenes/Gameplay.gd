@@ -37,6 +37,7 @@ func _enter_tree():
 
 func _ready():
   MusicPlayer.play_file("res://Music/gameplay.ogg")
+  EventBus.connect("upgrade_collected", self, "_on_upgrade_collected")
   Engine.time_scale = 1
   reset_score()
 
@@ -67,3 +68,7 @@ func reset_score():
 func shake(duration = 0.5, frequency = 60, amplitude = 25):
   if camera != null:
     camera.shake(duration, frequency, amplitude)
+
+func _on_upgrade_collected():
+  gun_level += 1
+  Overlay.fade(Color(0.9, 0.7, 0.2, 0.6), Color(0.9, 0.7, 0.2, 0), 0.3)
