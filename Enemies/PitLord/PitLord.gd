@@ -26,6 +26,7 @@ signal fade_out_completed
 signal fade_in_completed
 
 var shadow_scene = preload("res://Enemies/PitLord/Shadow.tscn")
+var upgrade_scene = preload("res://Items/Upgrade/Upgrade.tscn")
 
 func _ready():
   move_tween.connect("tween_completed", self, "_on_MoveTween_tween_completed")
@@ -111,4 +112,9 @@ func _on_Enemy_hurt(health, _max_health):
 func _on_Enemy_died():
   EventBus.emit_signal("chapter_complete")
   EventBus.emit_signal("boss_defeated")
+
+  var upgrade = upgrade_scene.instance()
+  upgrade.global_position = global_position
+  Game.scene.items.call_deferred("add_child", upgrade)
+
   queue_free()
