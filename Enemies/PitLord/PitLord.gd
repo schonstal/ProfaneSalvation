@@ -27,6 +27,7 @@ signal fade_in_completed
 
 var shadow_scene = preload("res://Enemies/PitLord/Shadow.tscn")
 var upgrade_scene = preload("res://Items/Upgrade/Upgrade.tscn")
+var health_scene = preload("res://Items/Health/HealthPickup.tscn")
 
 func _ready():
   move_tween.connect("tween_completed", self, "_on_MoveTween_tween_completed")
@@ -116,5 +117,10 @@ func _on_Enemy_died():
   var upgrade = upgrade_scene.instance()
   upgrade.global_position = global_position
   Game.scene.items.call_deferred("add_child", upgrade)
+
+  for i in range(0, 2):
+    var health = health_scene.instance()
+    Game.scene.items.call_deferred("add_child", health)
+    health.global_position = Vector2(1920 / 2 - 100 + 100 * i, 100)
 
   queue_free()

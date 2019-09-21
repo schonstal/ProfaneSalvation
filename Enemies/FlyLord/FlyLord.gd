@@ -7,18 +7,22 @@ var shoot_timer:Timer
 
 var started = false
 var pattern = null
+var theta = 0.0
+var original_position = Vector2(0, 0)
 
-export var velocity = Vector2(0, 0)
-export var acceleration = Vector2(0, 0)
-export var shoot_time = 0.5
+export var motion_range = Vector2(100, 50)
+export var shoot_time = 0.7
 export var shoot_immediately = false
+export var cycle_rate = 2.0
 
-export(Resource) var bullet_pattern = preload("res://BulletPatterns/Flies.tscn")
+export(Resource) var bullet_pattern = preload("res://Enemies/FlyLord/Flies.tscn")
 export(Resource) var attack_sound_scene = preload("res://Enemies/FlyLord/AttackSound.tscn")
 
 signal died
 
 func _ready():
+  original_position = position
+
   shoot_timer = Timer.new()
   shoot_timer.set_name("ShootTimer")
   if shoot_immediately:
@@ -35,20 +39,10 @@ func _ready():
   enemy.connect("died", self, "_on_Enemy_died")
 
 func _physics_process(delta):
-  velocity += acceleration * delta
-  global_position += velocity * delta
+  theta += delta * cycle_rate * TAU
 
-  if global_position.y > 1120:
-    die()
-
-  if global_position.y < -100:
-    die()
-
-  if global_position.x > 1920:
-    die()
-
-  if global_position.x < 0:
-    die()
+  position.x = original_position.x + cos(theta / 2) * motion_range.x
+  position.y = original_position.y + sin(theta) * motion_range.y
 
 func die():
   emit_signal("died")
