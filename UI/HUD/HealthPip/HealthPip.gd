@@ -9,8 +9,9 @@ func _ready():
   animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
 
 func activate():
-  animation.play("Fill")
-  active = true
+  if !active:
+    animation.play("Fill")
+    active = true
 
 func deactivate():
   if active:

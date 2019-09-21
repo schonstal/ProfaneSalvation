@@ -61,6 +61,7 @@ func _ready():
   InputMap.action_set_deadzone("ui_right", 0.2)
 
   EventBus.connect("halo_collected", self, "_on_halo_collected")
+  EventBus.connect("health_collected", self, "_on_health_collected")
 
   iframe_timer.connect("timeout", self, "_on_Iframe_timer_timeout")
   animation.connect("animation_finished", self, "_on_SpriteAnimationPlayer_finished")
@@ -123,6 +124,7 @@ func hurt(damage):
   if invulnerable && damage < 100:
     return
 
+  EventBus.emit_signal("clear_projectiles")
   Game.scene.shake(0.25)
   set_iframes(0.5)
 
@@ -235,6 +237,12 @@ func _attack_pressed():
     return !button
   else:
     return button
+
+func _on_health_collected():
+  if health < max_health:
+    health += 1
+
+  Overlay.fade(Color(1, 0.75, 0.75, 0.6), Color(1, 0.75, 0.75, 0), 0.3)
 
 func _on_halo_collected():
   if mana >= max_mana:
