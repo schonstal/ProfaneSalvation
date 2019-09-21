@@ -92,6 +92,7 @@ func fade_in():
   fade_in_tween.start()
 
 func fade_out():
+  move_tween.stop_all()
   disappear_sound.play()
   fade_tween.interpolate_property(
       self,

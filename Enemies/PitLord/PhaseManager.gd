@@ -88,7 +88,7 @@ func _on_PitLord_fade_out_completed():
   wait_timer.start(phase_transition_time)
   if phase == 2:
     pit_lord.global_position = Vector2(1920 / 2, 1080 / 2 - 200)
-  elif phase == 4:
+  elif phase == 3:
     pit_lord.global_position = Vector2(1920 / 2 + 400, 1080 / 2)
   else:
     pit_lord.global_position = Vector2(Game.scene.player.position.x, 300)
