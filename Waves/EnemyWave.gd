@@ -9,6 +9,8 @@ var time = 0.0
 
 export var enemy_count = 0
 
+var health_scene = preload("res://Items/Health/HealthPickup.tscn")
+
 func _ready():
   if enemy_count == 0:
     enemy_count = get_child_count()
@@ -36,5 +38,11 @@ func complete():
 
   if final:
     EventBus.emit_signal("chapter_complete")
+    spawn_health()
   else:
     EventBus.emit_signal("wave_completed", name)
+
+func spawn_health():
+  var health = health_scene.instance()
+  Game.scene.items.call_deferred("add_child", health)
+  health.global_position = Vector2(1920 / 2, 100)
