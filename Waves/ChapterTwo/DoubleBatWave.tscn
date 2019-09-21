@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Spawn/BatSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=3]
+
+[node name="EasyBatWave" type="Node2D"]
+z_index = -1
+script = ExtResource( 1 )
+complete_time = 10.0
+enemy_count = 2
+
+[node name="BatSpawner" parent="." instance=ExtResource( 2 )]
+position = Vector2( 640, 386.339 )
+summon_time = 1.5
+
+[node name="Enemy" parent="BatSpawner" instance=ExtResource( 3 )]
+movement = Vector2( 50, 0 )
+velocity = Vector2( 0, 0 )
+shoot_time = 0.3
+
+[node name="BatSpawner2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1280, 386.339 )
+summon_time = 1.5
+
+[node name="Enemy" parent="BatSpawner2" instance=ExtResource( 3 )]
+movement = Vector2( -50, 0 )
+velocity = Vector2( 0, 0 )
+shoot_time = 0.3
+
