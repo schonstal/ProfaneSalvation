@@ -1,14 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
-[ext_resource path="res://Enemies/FlyLord/FlyLord.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Spawn/FlySpawner.tscn" type="PackedScene" id=2]
 
 [node name="FlyLordWaveTwo" type="Node2D"]
 script = ExtResource( 1 )
 complete_time = 8.0
 enemy_count = 4
 
-[node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 960, 300 )
-cycle_rate = 0.5
+[node name="FlySpawner" parent="." instance=ExtResource( 2 )]
+position = Vector2( 950.042, 336.615 )
 
