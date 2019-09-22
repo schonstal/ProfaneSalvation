@@ -21,7 +21,7 @@ export(Resource) var attack_sound_scene = preload("res://Enemies/FlyLord/AttackS
 signal died
 
 func _ready():
-  original_position = position
+  original_position = global_position
 
   shoot_timer = Timer.new()
   shoot_timer.set_name("ShootTimer")
@@ -41,8 +41,8 @@ func _ready():
 func _physics_process(delta):
   theta += delta * cycle_rate * TAU
 
-  position.x = original_position.x + cos(theta / 2) * motion_range.x
-  position.y = original_position.y + sin(theta) * motion_range.y
+  global_position.x = original_position.x + cos(theta / 2) * motion_range.x
+  global_position.y = original_position.y + sin(theta) * motion_range.y
 
 func die():
   emit_signal("died")
@@ -59,7 +59,7 @@ func _on_ShootTimer_timeout():
 
 func _on_AnimationPlayer_animation_finished(name):
   if name == "AttackStart":
-    if position.y > 0:
+    if global_position.y > 0:
       pattern = bullet_pattern.instance()
       call_deferred("add_child", pattern)
       animation.play("Attack")
