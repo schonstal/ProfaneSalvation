@@ -7,7 +7,7 @@ var shoot_timer:Timer
 
 var started = false
 var pattern = null
-var theta = 0.0
+var theta = PI
 var original_position = Vector2(0, 0)
 
 export var motion_range = Vector2(100, 50)
