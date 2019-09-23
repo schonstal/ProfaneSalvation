@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Spawn/BatSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/BloodBat/Lines.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Spawn/FlySpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/FlyLord/FlyLord.tscn" type="PackedScene" id=6]
+
+[node name="BatsAndFlies" type="Node2D"]
+z_index = -1
+script = ExtResource( 1 )
+complete_time = 20.0
+final = true
+enemy_count = 7
+
+[node name="BatSpawner3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 640, 200 )
+
+[node name="Enemy" parent="BatSpawner3" instance=ExtResource( 3 )]
+movement = Vector2( 0, -100 )
+velocity = Vector2( 0, 0 )
+shoot_time = 0.1
+bullet_pattern = ExtResource( 4 )
+
+[node name="BatSpawner4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 960, 200 )
+
+[node name="Enemy" parent="BatSpawner4" instance=ExtResource( 3 )]
+movement = Vector2( 0, 100 )
+velocity = Vector2( 0, 0 )
+shoot_time = 0.1
+bullet_pattern = ExtResource( 4 )
+
+[node name="BatSpawner6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1280, 200 )
+
+[node name="Enemy" parent="BatSpawner6" instance=ExtResource( 3 )]
+movement = Vector2( 0, 100 )
+velocity = Vector2( 0, 0 )
+shoot_time = 0.1
+bullet_pattern = ExtResource( 4 )
+
+[node name="FlySpawner" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 814.319, 339.263 )
+summon_time = 1.5
+delay = 0.85
+
+[node name="Enemy" parent="FlySpawner" instance=ExtResource( 6 )]
+
+[node name="FlySpawner2" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 1123.15, 481.053 )
+summon_time = 1.5
+delay = 0.8
+
+[node name="Enemy" parent="FlySpawner2" instance=ExtResource( 6 )]
+cycle_rate = -0.3
+
+[node name="FlySpawner3" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 1365.92, 365.495 )
+summon_time = 1.5
+delay = 0.7
+
+[node name="Enemy" parent="FlySpawner3" instance=ExtResource( 6 )]
+cycle_rate = -0.4
+
+[node name="FlySpawner7" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 601.091, 552.763 )
+summon_time = 1.5
+delay = 1.0
+
+[node name="Enemy" parent="FlySpawner7" instance=ExtResource( 6 )]
+cycle_rate = -0.4
+

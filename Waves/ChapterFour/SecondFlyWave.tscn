@@ -13,26 +13,26 @@ enemy_count = 3
 
 [node name="FlySpawner" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
-position = Vector2( 640, 380 )
+position = Vector2( 648.839, 234.165 )
 summon_time = 1.5
-delay = 1.0
+delay = 0.7
 
 [node name="Enemy" parent="FlySpawner" instance=ExtResource( 3 )]
 
 [node name="FlySpawner2" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
-position = Vector2( 1280, 380 )
+position = Vector2( 1330.82, 290.878 )
 summon_time = 1.5
-delay = 1.0
+delay = 0.87
 
 [node name="Enemy" parent="FlySpawner2" instance=ExtResource( 3 )]
 cycle_rate = -0.25
 
 [node name="FlySpawner3" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
-position = Vector2( 960, 200 )
+position = Vector2( 1024.82, 377.507 )
 summon_time = 1.5
-delay = 1.0
+delay = 0.6
 
 [node name="Enemy" parent="FlySpawner3" instance=ExtResource( 3 )]
 cycle_rate = -0.25

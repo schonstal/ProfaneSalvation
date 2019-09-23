@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Spawn/SkullSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/Skull/Skull.tscn" type="PackedScene" id=3]
+
+[node name="LaserWave" type="Node2D"]
+z_index = -1
+script = ExtResource( 1 )
+complete_time = 3.0
+enemy_count = 1
+
+[node name="SkullSpawner" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 348.694, 163.755 )
+summon_time = 1.5
+
+[node name="Enemy" parent="SkullSpawner" instance=ExtResource( 3 )]
+fade_in = false
+
+[node name="SkullSpawner2" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 649.833, 204.317 )
+summon_time = 1.5
+delay = 0.2
+
+[node name="Enemy" parent="SkullSpawner2" instance=ExtResource( 3 )]
+fade_in = false
+
+[node name="SkullSpawner3" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 805.938, 280.523 )
+summon_time = 1.5
+delay = 0.4
+
+[node name="Enemy" parent="SkullSpawner3" instance=ExtResource( 3 )]
+fade_in = false
+
+[node name="SkullSpawner4" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 1300.05, 117.048 )
+summon_time = 1.5
+delay = 0.6
+
+[node name="Enemy" parent="SkullSpawner4" instance=ExtResource( 3 )]
+fade_in = false
+
+[node name="SkullSpawner5" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 1496.72, 355.501 )
+summon_time = 1.5
+delay = 0.8
+
+[node name="Enemy" parent="SkullSpawner5" instance=ExtResource( 3 )]
+fade_in = false
+

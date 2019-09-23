@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Waves/Wave.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Waves/ChapterFour/IntroWave.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Waves/ChapterFour/IntroFlyWave.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Waves/ChapterFour/UnevenBatWave.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Waves/ChapterFour/SecondFlyWave.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Waves/ChapterFour/MoreFlies.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Waves/ChapterFour/LaserWave.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Waves/ChapterFour/SecondLaserWave.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Waves/ChapterFour/BatsAndFlies.tscn" type="PackedScene" id=9]
 
 [node name="ChapterFour" type="Node2D"]
 
@@ -19,4 +23,16 @@ scene = ExtResource( 4 )
 
 [node name="SecondFlyWave" parent="." instance=ExtResource( 1 )]
 scene = ExtResource( 5 )
+
+[node name="MoreFlies" parent="." instance=ExtResource( 1 )]
+scene = ExtResource( 6 )
+
+[node name="LaserWave" parent="." instance=ExtResource( 1 )]
+scene = ExtResource( 7 )
+
+[node name="SecondLaserWave" parent="." instance=ExtResource( 1 )]
+scene = ExtResource( 8 )
+
+[node name="BatsAndFlies" parent="." instance=ExtResource( 1 )]
+scene = ExtResource( 9 )
 

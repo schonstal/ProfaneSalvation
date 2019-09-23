@@ -10,12 +10,14 @@ complete_time = 8.0
 enemy_count = 2
 
 [node name="FlySpawner" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
 position = Vector2( 640, 380 )
 summon_time = 1.5
 
 [node name="Enemy" parent="FlySpawner" instance=ExtResource( 3 )]
 
 [node name="FlySpawner2" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
 position = Vector2( 1280, 380 )
 summon_time = 1.5
 
