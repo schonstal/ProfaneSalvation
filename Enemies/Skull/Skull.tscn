@@ -162,7 +162,7 @@ script = ExtResource( 1 )
 collision_layer = 12
 collision_mask = 18
 script = ExtResource( 2 )
-max_health = 6
+max_health = 8
 halos = 6
 explosion_scene = ExtResource( 3 )
 
