@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Spawn/FlySpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/FlyLord/FlyLord.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Spawn/SkullSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/Skull/Skull.tscn" type="PackedScene" id=5]
+
+[node name="SecondFlyWave" type="Node2D"]
+script = ExtResource( 1 )
+complete_time = 12.0
+enemy_count = 3
+
+[node name="FlySpawner" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 640, 380 )
+summon_time = 1.5
+delay = 1.0
+
+[node name="Enemy" parent="FlySpawner" instance=ExtResource( 3 )]
+
+[node name="FlySpawner2" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 1280, 380 )
+summon_time = 1.5
+delay = 1.0
+
+[node name="Enemy" parent="FlySpawner2" instance=ExtResource( 3 )]
+cycle_rate = -0.25
+
+[node name="FlySpawner3" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 960, 200 )
+summon_time = 1.5
+delay = 1.0
+
+[node name="Enemy" parent="FlySpawner3" instance=ExtResource( 3 )]
+cycle_rate = -0.25
+
+[node name="SkullSpawner" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+position = Vector2( 810, 100 )
+summon_time = 1.5
+
+[node name="Enemy" parent="SkullSpawner" instance=ExtResource( 5 )]
+fade_in = false
+
+[node name="SkullSpawner8" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+position = Vector2( 810, 100 )
+summon_time = 1.5
+delay = 6.0
+
+[node name="Enemy" parent="SkullSpawner8" instance=ExtResource( 5 )]
+fade_in = false
+
+[node name="SkullSpawner3" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+position = Vector2( 480, 100 )
+summon_time = 1.5
+
+[node name="Enemy" parent="SkullSpawner3" instance=ExtResource( 5 )]
+fade_in = false
+
+[node name="SkullSpawner7" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+position = Vector2( 480, 100 )
+summon_time = 1.5
+delay = 6.0
+
+[node name="Enemy" parent="SkullSpawner7" instance=ExtResource( 5 )]
+fade_in = false
+
+[node name="SkullSpawner4" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+position = Vector2( 1440, 100 )
+summon_time = 1.5
+
+[node name="Enemy" parent="SkullSpawner4" instance=ExtResource( 5 )]
+fade_in = false
+
+[node name="SkullSpawner5" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+position = Vector2( 1440, 100 )
+summon_time = 1.5
+delay = 6.0
+
+[node name="Enemy" parent="SkullSpawner5" instance=ExtResource( 5 )]
+fade_in = false
+
+[node name="SkullSpawner2" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+position = Vector2( 1110, 100 )
+summon_time = 1.5
+
+[node name="Enemy" parent="SkullSpawner2" instance=ExtResource( 5 )]
+fade_in = false
+
+[node name="SkullSpawner6" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+position = Vector2( 1110, 100 )
+summon_time = 1.5
+delay = 6.0
+
+[node name="Enemy" parent="SkullSpawner6" instance=ExtResource( 5 )]
+fade_in = false
+

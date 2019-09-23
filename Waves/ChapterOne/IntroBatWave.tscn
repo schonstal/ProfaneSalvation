@@ -20,7 +20,6 @@ velocity = Vector2( 0, 0 )
 shoot_time = 0.175
 
 [node name="BatSpawner2" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 position = Vector2( 1280, 386.339 )
 summon_time = 1.5
 

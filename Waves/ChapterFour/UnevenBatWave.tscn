@@ -7,8 +7,8 @@
 [node name="UnevenBatWave" type="Node2D"]
 z_index = -1
 script = ExtResource( 1 )
-complete_time = 20.0
-enemy_count = 5
+complete_time = 10.0
+enemy_count = 3
 
 [node name="BatSpawner2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 960, 250 )
