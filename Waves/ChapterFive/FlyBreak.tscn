@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Spawn/FlySpawner.tscn" type="PackedScene" id=2]
+
+[node name="FlyBreak" type="Node2D"]
+script = ExtResource( 1 )
+complete_time = 8.0
+enemy_count = 2
+
+[node name="FlySpawner" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1236.25, 259.224 )
+summon_time = 1.5
+
+[node name="FlySpawner2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 618.388, 419.411 )
+summon_time = 1.5
+
+[node name="FlySpawner3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 895.536, 363.473 )
+summon_time = 1.5
+
+[node name="FlySpawner4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1264.22, 485.52 )
+summon_time = 1.5
+

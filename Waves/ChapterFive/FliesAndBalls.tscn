@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Spawn/FlySpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/FlyLord/FlyLord.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Spawn/BallLordSpawner.tscn" type="PackedScene" id=4]
+
+[node name="FliesAndBalls" type="Node2D"]
+script = ExtResource( 1 )
+complete_time = 8.0
+enemy_count = 2
+
+[node name="FlySpawner" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 640, 380 )
+summon_time = 1.5
+
+[node name="Enemy" parent="FlySpawner" instance=ExtResource( 3 )]
+
+[node name="FlySpawner2" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 1280, 380 )
+summon_time = 1.5
+
+[node name="Enemy" parent="FlySpawner2" instance=ExtResource( 3 )]
+
+[node name="BallLordSpawner" parent="." instance=ExtResource( 4 )]
+position = Vector2( 958.413, 162.011 )
+delay = 1.0
+
+[node name="BallLordSpawner4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1098.26, 81.9175 )
+delay = 3.0
+
+[node name="BallLordSpawner3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 489.295, 90.8168 )
+delay = 1.0
+
+[node name="BallLordSpawner5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 693.978, 136.584 )
+delay = 3.0
+
+[node name="BallLordSpawner7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 393.945, 268.802 )
+delay = 5.0
+
+[node name="BallLordSpawner2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1341.08, 108.615 )
+delay = 1.0
+
+[node name="BallLordSpawner8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 816.025, 258.631 )
+delay = 5.0
+
+[node name="BallLordSpawner6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1520.34, 203.965 )
+delay = 3.0
+
+[node name="BallLordSpawner9" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1213.95, 214.135 )
+delay = 5.0
+
