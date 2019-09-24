@@ -80,7 +80,7 @@ height = 12.6733
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource( 1 )
-shoot_time = 0.6
+shoot_time = 0.7
 cycle_rate = 0.25
 
 [node name="Enemy" type="Area2D" parent="."]
