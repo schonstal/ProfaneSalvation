@@ -6,7 +6,7 @@
 
 [node name="SecondFlyWave" type="Node2D"]
 script = ExtResource( 1 )
-complete_time = 10.0
+complete_time = 12.0
 enemy_count = 7
 
 [node name="FlySpawner" parent="." instance=ExtResource( 2 )]
@@ -35,15 +35,6 @@ delay = 0.15
 [node name="Enemy" parent="FlySpawner4" instance=ExtResource( 3 )]
 cycle_rate = 0.35
 
-[node name="FlySpawner5" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
-position = Vector2( 1318.1, 576.662 )
-summon_time = 1.5
-delay = 0.3
-
-[node name="Enemy" parent="FlySpawner5" instance=ExtResource( 3 )]
-cycle_rate = -0.1
-
 [node name="FlySpawner6" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
 position = Vector2( 1091.94, 415.645 )
@@ -64,7 +55,7 @@ cycle_rate = -0.4
 
 [node name="FlySpawner7" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
-position = Vector2( 601.091, 552.763 )
+position = Vector2( 822.336, 412.641 )
 summon_time = 1.5
 delay = 1.0
 
