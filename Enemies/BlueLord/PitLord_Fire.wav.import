@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PitLord_Fire.wav-7e539b91eec898f2618d9a2adb903c99.sample"
+
+[deps]
+
+source_file="res://Enemies/BlueLord/PitLord_Fire.wav"
+dest_files=[ "res://.import/PitLord_Fire.wav-7e539b91eec898f2618d9a2adb903c99.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

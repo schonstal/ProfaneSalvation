@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Blue_Lord_Death.wav-6a520d1d864e708ec936f576f4e2c6c1.sample"
+
+[deps]
+
+source_file="res://Enemies/BlueLord/Blue_Lord_Death.wav"
+dest_files=[ "res://.import/Blue_Lord_Death.wav-6a520d1d864e708ec936f576f4e2c6c1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

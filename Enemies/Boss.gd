@@ -10,6 +10,7 @@ onready var move_tween = $MoveTween
 onready var animation = $Enemy/Sprite/AnimationPlayer
 onready var enemy = $Enemy
 onready var appear_sprite = $AppearSprite
+onready var appear_animation = $AppearSprite/AnimationPlayer
 onready var sprite = $Enemy/Sprite
 onready var wait_timer
 
@@ -25,7 +26,6 @@ signal move_completed
 signal fade_out_completed
 signal fade_in_completed
 
-var shadow_scene = preload("res://Enemies/PitLord/Shadow.tscn")
 var upgrade_scene = preload("res://Items/Upgrade/Upgrade.tscn")
 var health_scene = preload("res://Items/Health/HealthPickup.tscn")
 
@@ -37,7 +37,10 @@ func _ready():
   animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
   enemy.connect("hurt", self, "_on_Enemy_hurt")
   enemy.connect("died", self, "_on_Enemy_died")
-  appear_sprite.modulate = Color(1, 1, 1, 10)
+
+  if appear_sprite != null:
+    appear_sprite.modulate = Color(1, 1, 1, 10)
+
   enemy.health = health
 
   modulate = Color(brightness, brightness, brightness, 0)
@@ -50,6 +53,9 @@ func _on_IdleTimer_timeout():
   fade_in()
 
 func _on_FadeInTween_tween_completed(_object, _key):
+  if appear_sprite != null:
+    appear_animation.play("Appear")
+
   emit_signal("fade_in_completed")
 
 func _on_FadeTween_tween_completed(_object, _key):

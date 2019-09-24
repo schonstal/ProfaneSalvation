@@ -18,7 +18,7 @@ var game_over_scene = preload("res://UI/GameOver/GameOver.tscn")
 var game_over_node
 
 var score = 0
-var gun_level = 0
+var gun_level = 1
 
 func _enter_tree():
   camera = $Camera

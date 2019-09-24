@@ -6,7 +6,8 @@
 [node name="FlyBreak" type="Node2D"]
 script = ExtResource( 1 )
 complete_time = 8.0
-enemy_count = 2
+final = true
+enemy_count = 4
 
 [node name="FlySpawner" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1236.25, 259.224 )

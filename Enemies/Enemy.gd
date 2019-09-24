@@ -84,7 +84,7 @@ func hurt(damage):
   if health <= 0:
     die()
 
-  Game.scene.sound.play(hurt_sound)
+  # Game.scene.sound.play(hurt_sound)
 
   emit_signal("hurt", health, max_health)
 

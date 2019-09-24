@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Purple_Lord_Death.wav-64c797141c6b03a254267245645ca4f9.sample"
+
+[deps]
+
+source_file="res://Enemies/PitLord/Purple_Lord_Death.wav"
+dest_files=[ "res://.import/Purple_Lord_Death.wav-64c797141c6b03a254267245645ca4f9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

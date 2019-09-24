@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/BlueLord/BlueLord.tscn" type="PackedScene" id=2]
+
+[node name="BlueLordWave" type="Node2D"]
+z_index = -1
+script = ExtResource( 1 )
+complete_time = 100000.0
+
+[node name="BlueLord" parent="." instance=ExtResource( 2 )]
+position = Vector2( 960, 300 )
+
