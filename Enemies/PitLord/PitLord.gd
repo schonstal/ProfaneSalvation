@@ -118,6 +118,10 @@ func _on_Enemy_died():
   upgrade.global_position = global_position
   Game.scene.items.call_deferred("add_child", upgrade)
 
+  Engine.time_scale = 0.05
+  Game.scene.shake(0.25)
+  Overlay.fade(Color(1, 1, 1, 0.4), Color(1, 1, 1, 0), 0.3)
+
   for i in range(0, 2):
     var health = health_scene.instance()
     Game.scene.items.call_deferred("add_child", health)
