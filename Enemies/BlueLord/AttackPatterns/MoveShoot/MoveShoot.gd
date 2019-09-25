@@ -9,7 +9,7 @@ export var wait_time = 0.25
 export var bullet_count = 18
 export var distance = 50
 export var offset_increment = 0.1
-export var radius = 30.0
+export var radius = 50.0
 export var bullet_speed = 100
 export var center = Vector2(1920 / 2, 1080 / 2 - 200)
 export var spawn_offset = Vector2(0, -82)
@@ -58,8 +58,6 @@ func _on_ShootTimer_timeout():
   if shots < max_shots:
     shoot()
   else:
-    offset_increment = -offset_increment
-    wait_timer.start()
     EventBus.emit_signal("boss_pattern_complete")
 
 func shoot():
