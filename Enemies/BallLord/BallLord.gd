@@ -7,6 +7,9 @@ export var speed = Vector2(0, 200)
 export var bullet_speed = 500
 export var angular_velocity = 0.5
 
+var velocity
+var acceleration
+
 var disable_bullets = false
 
 signal died
@@ -14,6 +17,10 @@ signal died
 export(Resource) var bullet_scene = preload("res://Projectiles/Projectile.tscn")
 
 func _ready():
+  # Make your APIs consistent, you dingus
+  if velocity != null:
+    speed = velocity
+
   enemy.connect("died", self, "_on_Enemy_died")
   enemy.connect("body_entered", self, "_on_body_entered")
   enemy.velocity.y = speed.y

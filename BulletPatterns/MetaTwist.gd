@@ -8,6 +8,7 @@ export var rotate = true
 export var radius = 30
 export var arc = TAU
 export var offset = 0.0
+export var active = true
 
 export(Resource) var pattern_scene = preload("res://Projectiles/Projectile.tscn")
 
@@ -38,6 +39,9 @@ func _ready():
   shoot()
 
 func shoot():
+  if !active:
+    return
+
   for index in range(0, spawn_count):
     var pattern = pattern_scene.instance()
     var angle = TAU * index / spawn_count + offset

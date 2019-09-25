@@ -10,6 +10,7 @@ export var rotate = true
 export var radius = 30
 export var arc = TAU
 export var offset = 0.0
+export var active = true
 
 export(Resource) var bullet_scene = preload("res://Projectiles/Projectile.tscn")
 
@@ -40,6 +41,9 @@ func _ready():
   shoot()
 
 func shoot():
+  if !active:
+    return
+
   Util.spawn_full_circle({
       "position": global_position,
       "scene": bullet_scene,
