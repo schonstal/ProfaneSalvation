@@ -3,7 +3,7 @@ extends KinematicBody2D
 const UP = Vector2(0, -1)
 const DOWN = Vector2(0, 1)
 
-export var max_speed = 800
+export var max_speed = 600
 export var max_health = 3
 export var max_mana = 2
 export var halos_per_pip = 25
