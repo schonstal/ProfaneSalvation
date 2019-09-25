@@ -19,6 +19,7 @@ export var fade_duration = 0.3
 export var health = 50
 
 export var brightness = 1.5
+export var overlay_on_attack = false
 
 var max_health = 50
 
@@ -38,9 +39,6 @@ func _ready():
   enemy.connect("hurt", self, "_on_Enemy_hurt")
   enemy.connect("died", self, "_on_Enemy_died")
 
-  if appear_sprite != null:
-    appear_sprite.modulate = Color(1, 1, 1, 10)
-
   enemy.health = health
 
   modulate = Color(brightness, brightness, brightness, 0)
@@ -54,6 +52,7 @@ func _on_IdleTimer_timeout():
 
 func _on_FadeInTween_tween_completed(_object, _key):
   if appear_sprite != null:
+    appear_sprite.modulate = Color(1, 1, 1, 10)
     appear_animation.play("Appear")
 
   emit_signal("fade_in_completed")
@@ -82,7 +81,11 @@ func move_to(target, duration = 0.5):
   move_tween.start()
 
 func start_attack():
-  animation.play("Attack")
+  if overlay_on_attack:
+    appear_sprite.modulate = Color(1, 1, 1, 1)
+    appear_animation.play("Appear")
+  else:
+    animation.play("Attack")
 
 func fade_in():
   animation.play("Idle")

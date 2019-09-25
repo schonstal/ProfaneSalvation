@@ -5,6 +5,7 @@ var rotation = 0.0
 var count = 0
 var index = 0
 var speed
+var acceleration
 
 var scene
 
@@ -21,6 +22,9 @@ func _init(options):
 
   if options.has("rotation"):
     self.rotation = options["rotation"]
+
+  if options.has("acceleration"):
+    self.acceleration = options["acceleration"]
 
 func should_continue():
   return index < count
@@ -43,6 +47,9 @@ func _iter_get(_arg):
 
   if speed != null:
     bullet.velocity = Vector2(cos(angle), sin(angle)) * speed
+
+  if acceleration != null:
+    bullet.acceleration = Vector2(cos(angle), sin(angle)) * acceleration
 
   Game.scene.projectiles.call_deferred("add_child", bullet)
 

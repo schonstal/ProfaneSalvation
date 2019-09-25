@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Enemies/Boss.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Enemies/PitLord/PitLord_Fire.wav" type="AudioStream" id=10]
 [ext_resource path="res://Enemies/BlueLord/Sprite/BlueLordAttack1_6x1.png" type="Texture" id=11]
 [ext_resource path="res://Enemies/PitLord/PhaseManager.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Enemies/BlueLord/PhaseManager.gd" type="Script" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Attack"
@@ -139,6 +140,7 @@ stream = ExtResource( 10 )
 [node name="MoveTween" type="Tween" parent="."]
 
 [node name="AppearSprite" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 0, -96.0651 )
 texture = ExtResource( 11 )
 hframes = 6
@@ -150,4 +152,5 @@ playback_speed = 1.5
 anims/Appear = SubResource( 4 )
 
 [node name="PhaseManager" parent="." instance=ExtResource( 12 )]
+script = ExtResource( 13 )
 

@@ -1,6 +1,7 @@
 extends Area2D
 
 export var velocity = Vector2(0, -1000)
+export var acceleration = Vector2(0, 0)
 
 export var damage = 1
 export var rotate_explosion = false
@@ -21,6 +22,7 @@ func _ready():
     rotation = velocity.angle()
 
 func _physics_process(delta):
+  velocity += acceleration * delta
   position += velocity * delta
 
   if global_position.y < -100:
