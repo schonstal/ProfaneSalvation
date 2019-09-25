@@ -26,7 +26,6 @@ summon_time = 1.5
 delay = 0.87
 
 [node name="Enemy" parent="FlySpawner2" instance=ExtResource( 3 )]
-cycle_rate = -0.25
 
 [node name="FlySpawner3" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
@@ -35,7 +34,6 @@ summon_time = 1.5
 delay = 0.6
 
 [node name="Enemy" parent="FlySpawner3" instance=ExtResource( 3 )]
-cycle_rate = -0.25
 
 [node name="SkullSpawner" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
