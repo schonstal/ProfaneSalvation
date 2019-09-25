@@ -2,8 +2,6 @@ extends Node2D
 
 export var spawn_count = 6
 export var offset_increment = 0.1
-export var bullet_speed = 250
-export var bullet_acceleration = 0
 export var spawn_time = 0.1
 export var duration = 0.0
 export var rotate = true
@@ -11,7 +9,7 @@ export var radius = 30
 export var arc = TAU
 export var offset = 0.0
 
-export(Resource) var bullet_scene = preload("res://Projectiles/Projectile.tscn")
+export(Resource) var pattern_scene = preload("res://Projectiles/Projectile.tscn")
 
 var spawn_timer:Timer
 var duration_timer:Timer
@@ -40,16 +38,17 @@ func _ready():
   shoot()
 
 func shoot():
-  Util.spawn_full_circle({
-      "position": global_position,
-      "scene": bullet_scene,
-      "count": spawn_count,
-      "radius": radius,
-      "speed": bullet_speed,
-      "acceleration": bullet_acceleration,
-      "rotation": offset,
-      "arc": arc
-    })
+  for index in range(0, spawn_count):
+    var pattern = pattern_scene.instance()
+    var angle = TAU * index / spawn_count + offset
+
+    pattern.global_position = position + \
+        Vector2(cos(angle), sin(angle)) * \
+        radius
+
+    pattern.offset = offset + index
+
+    call_deferred("add_child", pattern)
 
   if rotate:
     offset += offset_increment * TAU

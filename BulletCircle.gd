@@ -4,6 +4,7 @@ var radius = 0.0
 var rotation = 0.0
 var count = 0
 var index = 0
+var arc = TAU
 var speed
 var acceleration
 
@@ -26,6 +27,9 @@ func _init(options):
   if options.has("acceleration"):
     self.acceleration = options["acceleration"]
 
+  if options.has("arc"):
+    self.arc = options["arc"]
+
 func should_continue():
   return index < count
 
@@ -39,7 +43,7 @@ func _iter_next(_arg):
 
 func _iter_get(_arg):
   var bullet = scene.instance()
-  var angle = TAU * index / count + rotation
+  var angle = arc * index / count + rotation
 
   bullet.global_position = position + \
       Vector2(cos(angle), sin(angle)) * \
