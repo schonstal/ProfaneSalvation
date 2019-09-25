@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Enemies/BloodBat/Enemy_Bat_Fire.wav" type="AudioStream" id=1]
+[ext_resource path="res://Enemies/FlyLord/FlylordFire.wav" type="AudioStream" id=1]
 
 [node name="AttackSound" type="AudioStreamPlayer"]
 stream = ExtResource( 1 )
