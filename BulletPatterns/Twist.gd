@@ -10,6 +10,7 @@ export var rotate = true
 export var radius = 30
 export var arc = TAU
 export var offset = 0.0
+export var speed_increment = 0
 export var active = true
 
 export(Resource) var bullet_scene = preload("res://Projectiles/Projectile.tscn")
@@ -54,6 +55,8 @@ func shoot():
       "rotation": offset,
       "arc": arc
     })
+
+  bullet_speed += speed_increment
 
   if rotate:
     offset += offset_increment * TAU
