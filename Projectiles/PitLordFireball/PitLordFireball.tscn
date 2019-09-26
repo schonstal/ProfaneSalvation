@@ -22,7 +22,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 15.0
+radius = 12.0
 
 [node name="PitLordFireball" type="Area2D"]
 rotation = 1.5708

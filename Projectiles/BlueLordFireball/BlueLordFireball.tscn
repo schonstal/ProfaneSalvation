@@ -22,7 +22,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 15.0
+radius = 11.9464
 
 [node name="PitLordFireball" type="Area2D"]
 rotation = 1.5708
@@ -43,6 +43,5 @@ autoplay = "Flash"
 anims/Flash = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 2 )
 
