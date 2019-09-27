@@ -1,7 +1,45 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Enemies/BlueLord/AttackPatterns/MoveShoot/MoveShoot.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/RedLord/AttackPatterns/MoveShoot/MoveShoot.gd" type="Script" id=1]
+[ext_resource path="res://BulletPatterns/Twist.gd" type="Script" id=2]
+[ext_resource path="res://Projectiles/BatFireball/BatFireball.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Projectiles/BlueFireball/BossFireball.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Projectiles/PitLordFireball/PitLordFireball.tscn" type="PackedScene" id=5]
 
 [node name="MoveShoot" type="Node2D"]
 script = ExtResource( 1 )
+upgrade_time = 10.0
+
+[node name="Twist" type="Node2D" parent="."]
+position = Vector2( 0, -50 )
+script = ExtResource( 2 )
+spawn_count = 8
+bullet_speed = 0
+bullet_acceleration = 100
+spawn_time = 10000.0
+rotate = false
+radius = 10
+arc = 3.142
+offset = 0.196
+stacks = 6
+bullet_scene = ExtResource( 3 )
+
+[node name="BlueTwist" type="Node2D" parent="."]
+script = ExtResource( 2 )
+bullet_speed = 150
+spawn_time = 0.5
+radius = 100
+arc = 6.283
+active = false
+bullet_scene = ExtResource( 4 )
+
+[node name="PurpleTwist" type="Node2D" parent="."]
+position = Vector2( 0, -50 )
+script = ExtResource( 2 )
+offset_increment = 0.05
+bullet_speed = 300
+radius = 20
+arc = 6.283
+active = false
+bullet_scene = ExtResource( 5 )
 

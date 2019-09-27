@@ -1,10 +1,10 @@
 extends Node2D
 
 export(Array, Resource) var phases = [
+    preload("res://Enemies/RedLord/AttackPatterns/MoveShoot/MoveShoot.tscn"),
     preload("res://Enemies/BlueLord/AttackPatterns/SpiralBalls/SpiralBalls.tscn"),
     preload("res://Enemies/BlueLord/AttackPatterns/MoveTwist/MoveTwist.tscn"),
-    preload("res://Enemies/BlueLord/AttackPatterns/BallSpin/BallSpin.tscn"),
-    preload("res://Enemies/BlueLord/AttackPatterns/MoveShoot/MoveShoot.tscn")
+    preload("res://Enemies/BlueLord/AttackPatterns/BallSpin/BallSpin.tscn")
   ]
 
 export var phase_transition_time = 1.0

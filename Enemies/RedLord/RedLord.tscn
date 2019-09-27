@@ -105,6 +105,7 @@ float_amount = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy/Sprite"]
 autoplay = "Idle"
+playback_speed = 1.5
 anims/Attack = SubResource( 1 )
 anims/Idle = SubResource( 2 )
 

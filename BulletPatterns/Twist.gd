@@ -13,6 +13,8 @@ export var offset = 0.0
 export var speed_increment = 0
 export var active = true
 export var stacks = 1
+export var stack_acceleration = 50
+export var stack_speed = 0
 
 export(Resource) var bullet_scene = preload("res://Projectiles/Projectile.tscn")
 
@@ -52,8 +54,8 @@ func shoot():
         "scene": bullet_scene,
         "count": spawn_count,
         "radius": radius,
-        "speed": bullet_speed,
-        "acceleration": bullet_acceleration + i * 50,
+        "speed": bullet_speed + i * stack_speed,
+        "acceleration": bullet_acceleration + i * stack_acceleration,
         "rotation": offset,
         "arc": arc
       })
