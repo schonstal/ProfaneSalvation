@@ -9,5 +9,5 @@ script = ExtResource( 1 )
 complete_time = 100000.0
 
 [node name="RedLord" parent="." instance=ExtResource( 2 )]
-position = Vector2( 960, 300 )
+position = Vector2( 960, 240 )
 

@@ -15,8 +15,6 @@ func shoot():
 
     spawn_chain(x_position, -100, PI - rand_range(-PI / 8, PI / 8))
 
-  chain_count += 1
-
 func spawn_chain(x, y, rotation):
   var chain = chain_scene.instance()
   chain.global_position.x = x

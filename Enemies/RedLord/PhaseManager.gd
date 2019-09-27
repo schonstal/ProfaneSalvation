@@ -1,10 +1,10 @@
 extends Node2D
 
 export(Array, Resource) var phases = [
-    preload("res://Enemies/RedLord/AttackPatterns/TripleShoot/TripleShoot.tscn"),
+    preload("res://Enemies/RedLord/AttackPatterns/MoveShoot/MoveShoot.tscn"),
     preload("res://Enemies/RedLord/AttackPatterns/TwistShoot/TwistShoot.tscn"),
     preload("res://Enemies/RedLord/AttackPatterns/Inverted/Inverted.tscn"),
-    preload("res://Enemies/RedLord/AttackPatterns/MoveShoot/MoveShoot.tscn")
+    preload("res://Enemies/RedLord/AttackPatterns/TripleShoot/TripleShoot.tscn")
   ]
 
 export var phase_transition_time = 2.0
@@ -72,11 +72,11 @@ func _on_RedLord_fade_in_completed():
 func _on_RedLord_fade_out_completed():
   wait_timer.start(phase_transition_time)
   if phase == 1:
-    red_lord.global_position = Vector2(1920 / 2 - 200, 1080 / 2 - 200)
+    red_lord.global_position = Vector2(1920 / 2, 1080 / 2 - 150)
   if phase == 2:
-    red_lord.global_position = Vector2(1920 / 2 + 200, 1080 / 2 - 200)
-  elif phase == 3:
     red_lord.global_position = Vector2(1920 / 2, 1080 / 2 - 200)
+  elif phase == 3:
+    red_lord.global_position = Vector2(1920 / 2, 1080 / 2 - 300)
 
 func _on_WaitTimer_timeout():
   red_lord.fade_in()
