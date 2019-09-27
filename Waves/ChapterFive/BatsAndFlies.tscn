@@ -12,9 +12,9 @@
 [node name="BatsAndFlies" type="Node2D"]
 z_index = -1
 script = ExtResource( 1 )
-complete_time = 16.0
+complete_time = 14.0
 final = true
-enemy_count = 8
+enemy_count = 7
 
 [node name="BatSpawner" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
