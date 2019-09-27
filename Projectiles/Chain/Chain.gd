@@ -41,14 +41,15 @@ func _ready():
     shoot_tween.connect("tween_completed", self, "_on_ShootTween_tween_completed")
     connect("body_entered", self, "_on_body_entered")
 
-    duration_timer = Timer.new()
-    duration_timer.set_name("WaitTimer")
-    duration_timer.wait_time = duration
-    duration_timer.one_shot = true
-    duration_timer.start()
-    add_child(duration_timer)
+    if duration > 0:
+      duration_timer = Timer.new()
+      duration_timer.set_name("WaitTimer")
+      duration_timer.wait_time = duration
+      duration_timer.one_shot = true
+      duration_timer.start()
+      add_child(duration_timer)
 
-    duration_timer.connect("timeout", self, "_on_DurationTimer_timeout")
+      duration_timer.connect("timeout", self, "_on_DurationTimer_timeout")
 
     if daddy != null:
       daddy.connect("died", self, "_on_parent_died")
@@ -59,10 +60,10 @@ func _ready():
 func _process(delta):
   if Engine.editor_hint:
     distance = length
-
-  if Game.scene != null && Game.scene.player != null:
+  elif Game.scene != null && Game.scene.player != null:
     if overlaps_body(Game.scene.player):
       Game.scene.player.hurt(1)
+
   update_size()
 
 func update_size():
