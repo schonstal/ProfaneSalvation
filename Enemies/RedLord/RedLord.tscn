@@ -1,0 +1,147 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Enemies/Boss.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://Enemies/BlueLord/BlueLordDeath/BlueLordDeath.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/BlueLord/Blue_Lord_Death.wav" type="AudioStream" id=4]
+[ext_resource path="res://Enemies/RedLord/Red_Lord_Death.wav" type="AudioStream" id=5]
+[ext_resource path="res://Enemies/RedLord/Sprite/RedLord0_7x1.png" type="Texture" id=6]
+[ext_resource path="res://Enemies/PitLord/Rubble.gd" type="Script" id=7]
+[ext_resource path="res://Enemies/RedLord/Red_Lord_Appears.wav" type="AudioStream" id=8]
+[ext_resource path="res://Enemies/RedLord/Red_Lord_Dissappears.wav" type="AudioStream" id=9]
+[ext_resource path="res://Enemies/BlueLord/Blue_Lord_Appears.wav" type="AudioStream" id=10]
+[ext_resource path="res://Enemies/RedLord/PhaseManager.tscn" type="PackedScene" id=11]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Attack"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 64.2251
+height = 187.18
+
+[sub_resource type="Animation" id=4]
+resource_name = "Appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="RedLord" type="Node2D"]
+script = ExtResource( 1 )
+health = 2500
+index = 2
+
+[node name="Enemy" type="Area2D" parent="."]
+collision_layer = 12
+collision_mask = 18
+script = ExtResource( 2 )
+max_health = 100
+points = 5000
+stun_time = 0.0
+halos = 50
+max_speed = Vector2( 10000, 10000 )
+halo_force = 2000
+explosion_scene = ExtResource( 3 )
+hurt_sound = ExtResource( 4 )
+die_sound = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Enemy"]
+texture = ExtResource( 6 )
+hframes = 7
+frame = 6
+script = ExtResource( 7 )
+float_speed = 2
+float_amount = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy/Sprite"]
+autoplay = "Idle"
+anims/Attack = SubResource( 1 )
+anims/Idle = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+visible = false
+position = Vector2( -1.25896, 0.035778 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="FadeTween" type="Tween" parent="."]
+
+[node name="FadeInTween" type="Tween" parent="."]
+
+[node name="AppearSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="DisappearSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="IdleTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="MoveTween" type="Tween" parent="."]
+
+[node name="AppearSprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -96.0651 )
+hframes = 6
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AppearSprite"]
+autoplay = "Appear"
+playback_speed = 1.5
+anims/Appear = SubResource( 4 )
+
+[node name="PhaseManager" parent="." instance=ExtResource( 11 )]
+

@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Enemies/BlueLord/AttackPatterns/SpiralBalls/SpiralBalls.gd" type="Script" id=1]
+[ext_resource path="res://Waves/InfiniteSpawn.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/BallLord/TrackBall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://BulletPatterns/Twist.gd" type="Script" id=4]
+[ext_resource path="res://Projectiles/BlueLordFireball/BlueLordFireball.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Projectiles/PitLordFireball/PitLordFireball.tscn" type="PackedScene" id=6]
+
+[node name="SpiralBalls" type="Node2D"]
+position = Vector2( 0, -82 )
+script = ExtResource( 1 )
+activate_time = 6.0
+
+[node name="InfiniteSpawn" parent="." instance=ExtResource( 2 )]
+position = Vector2( 400, 0 )
+scene = ExtResource( 3 )
+spawn_rate = 4.0
+spawn_offset = 14.0
+
+[node name="InfiniteSpawn2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -400, 0 )
+scene = ExtResource( 3 )
+spawn_rate = 4.0
+spawn_offset = 12.0
+
+[node name="BlueSpiral" type="Node2D" parent="."]
+script = ExtResource( 4 )
+spawn_count = 3
+bullet_acceleration = 50
+spawn_time = 0.05
+radius = 50
+bullet_scene = ExtResource( 5 )
+
+[node name="PurpleSpiral" type="Node2D" parent="."]
+script = ExtResource( 4 )
+spawn_count = 3
+offset_increment = -0.1
+bullet_speed = 400
+bullet_acceleration = 50
+radius = 50
+active = false
+bullet_scene = ExtResource( 6 )
+

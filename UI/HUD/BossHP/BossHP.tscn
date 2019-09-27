@@ -29,7 +29,7 @@ texture = ExtResource( 2 )
 margin_left = -20.0
 margin_top = -60.0
 margin_right = 20.0
-margin_bottom = 365.0
+margin_bottom = 790.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Bar" type="ColorRect" parent="."]
@@ -42,14 +42,14 @@ color = Color( 0.596078, 0.25098, 0.878431, 1 )
 [node name="PurpleContainer" type="Node2D" parent="."]
 visible = false
 script = ExtResource( 3 )
-length = 375
+length = 800
 
 [node name="Left" type="Sprite" parent="PurpleContainer"]
 position = Vector2( -37, -40 )
 texture = ExtResource( 4 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 27, 375 )
+region_rect = Rect2( 0, 0, 27, 800 )
 
 [node name="Right" type="Sprite" parent="PurpleContainer"]
 position = Vector2( 35, -40 )
@@ -58,10 +58,10 @@ scale = Vector2( 1, -1 )
 texture = ExtResource( 4 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 27, 375 )
+region_rect = Rect2( 0, 0, 27, 800 )
 
 [node name="Bottom" type="Sprite" parent="PurpleContainer"]
-position = Vector2( 0, 405 )
+position = Vector2( 0, 810 )
 texture = ExtResource( 5 )
 
 [node name="Top" type="Sprite" parent="PurpleContainer"]
@@ -99,7 +99,6 @@ position = Vector2( 0, -92 )
 texture = ExtResource( 8 )
 
 [node name="RedContainer" type="Node2D" parent="."]
-visible = false
 script = ExtResource( 3 )
 length = 375
 
@@ -120,9 +119,9 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 27, 375 )
 
 [node name="Bottom" type="Sprite" parent="RedContainer"]
-position = Vector2( 0, 380 )
+position = Vector2( 0, 385 )
 texture = ExtResource( 9 )
-offset = Vector2( -1, -4 )
+offset = Vector2( -1, -8 )
 
 [node name="Top" type="Sprite" parent="RedContainer"]
 position = Vector2( 0, -92 )

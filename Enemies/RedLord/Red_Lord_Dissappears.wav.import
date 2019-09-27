@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Red_Lord_Dissappears.wav-3c04376f745bc8c9db8063b8f90298bd.sample"
+
+[deps]
+
+source_file="res://Enemies/RedLord/Red_Lord_Dissappears.wav"
+dest_files=[ "res://.import/Red_Lord_Dissappears.wav-3c04376f745bc8c9db8063b8f90298bd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://BulletPatterns/Twist.gd" type="Script" id=1]
+[ext_resource path="res://Projectiles/BatFireball/BatFireball.tscn" type="PackedScene" id=2]
+
+[node name="RedLines" type="Node2D"]
+script = ExtResource( 1 )
+spawn_count = 3
+spawn_time = 0.15
+duration = 0.3
+rotate = false
+bullet_scene = ExtResource( 2 )
+

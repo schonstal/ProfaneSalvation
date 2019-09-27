@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Enemies/BlueLord/AttackPatterns/BallSpin/BallSpin.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/BlueLord/AttackPatterns/BallSpin/BlueTwist.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Projectiles/PitLordFireball/PitLordFireball.tscn" type="PackedScene" id=3]
+[ext_resource path="res://BulletPatterns/MetaTwist.gd" type="Script" id=4]
+[ext_resource path="res://Enemies/BlueLord/AttackPatterns/BallSpin/RedLines.tscn" type="PackedScene" id=5]
+
+[node name="BallSpin" type="Node2D"]
+script = ExtResource( 1 )
+activate_time = 7.0
+
+[node name="BlueTwist" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -82 )
+spawn_count = 3
+bullet_speed = 200
+spawn_time = 0.15
+
+[node name="PurpleTwist" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -82 )
+spawn_count = 3
+offset_increment = -0.05
+bullet_speed = 225
+active = false
+bullet_scene = ExtResource( 3 )
+
+[node name="MetaTwist" type="Node2D" parent="."]
+position = Vector2( 0, -42 )
+script = ExtResource( 4 )
+spawn_count = 1
+spawn_time = 0.5
+radius = 0
+active = false
+pattern_scene = ExtResource( 5 )
+
