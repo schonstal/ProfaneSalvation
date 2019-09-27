@@ -12,6 +12,7 @@ position = Vector2( 56, -100 )
 script = ExtResource( 2 )
 spawn_count = 3
 offset_increment = 0.025
+spawn_time = 0.15
 radius = 70
 bullet_scene = ExtResource( 3 )
 
@@ -20,6 +21,7 @@ position = Vector2( 56, -100 )
 script = ExtResource( 2 )
 spawn_count = 3
 offset_increment = -0.025
+spawn_time = 0.15
 radius = 70
 bullet_scene = ExtResource( 3 )
 
