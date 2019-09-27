@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Enemies/Boss.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Enemies/RedLord/Red_Lord_Dissappears.wav" type="AudioStream" id=9]
 [ext_resource path="res://Enemies/BlueLord/Blue_Lord_Appears.wav" type="AudioStream" id=10]
 [ext_resource path="res://Enemies/RedLord/PhaseManager.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Enemies/RedLord/Chains.gd" type="Script" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Attack"
@@ -78,7 +79,7 @@ tracks/1/keys = {
 
 [node name="RedLord" type="Node2D"]
 script = ExtResource( 1 )
-health = 2500
+health = 2200
 index = 2
 
 [node name="Enemy" type="Area2D" parent="."]
@@ -145,4 +146,7 @@ playback_speed = 1.5
 anims/Appear = SubResource( 4 )
 
 [node name="PhaseManager" parent="." instance=ExtResource( 11 )]
+
+[node name="Chains" type="Node2D" parent="PhaseManager"]
+script = ExtResource( 12 )
 
