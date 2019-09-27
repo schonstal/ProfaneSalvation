@@ -12,6 +12,7 @@ export var arc = TAU
 export var offset = 0.0
 export var speed_increment = 0
 export var active = true
+export var stacks = 1
 
 export(Resource) var bullet_scene = preload("res://Projectiles/Projectile.tscn")
 
@@ -45,16 +46,17 @@ func shoot():
   if !active:
     return
 
-  Util.spawn_full_circle({
-      "position": global_position,
-      "scene": bullet_scene,
-      "count": spawn_count,
-      "radius": radius,
-      "speed": bullet_speed,
-      "acceleration": bullet_acceleration,
-      "rotation": offset,
-      "arc": arc
-    })
+  for i in range(0, stacks):
+    Util.spawn_full_circle({
+        "position": global_position,
+        "scene": bullet_scene,
+        "count": spawn_count,
+        "radius": radius,
+        "speed": bullet_speed,
+        "acceleration": bullet_acceleration + i * 50,
+        "rotation": offset,
+        "arc": arc
+      })
 
   bullet_speed += speed_increment
 
