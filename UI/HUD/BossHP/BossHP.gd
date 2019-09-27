@@ -18,6 +18,7 @@ var colors = [
   ]
 
 export var bar_length = 700
+onready var original_bar_length = bar_length
 
 var length_scale = 1
 var active = false
@@ -67,7 +68,7 @@ func _on_boss_start(max_health, index):
       self,
       "bar_length",
       0,
-      bar_length,
+      original_bar_length,
       2,
       Tween.TRANS_QUAD,
       Tween.EASE_OUT)
