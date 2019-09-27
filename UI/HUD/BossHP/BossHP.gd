@@ -1,4 +1,4 @@
-tool
+tool  
 extends Node2D
 
 onready var flash_tween = $FlashTween
@@ -9,10 +9,17 @@ onready var bar = $Bar
 onready var back = $Back
 onready var max_amount = 100
 
-onready var container = $Container
+onready var container = $PurpleContainer
+onready var containers = [$PurpleContainer, $BlueContainer, $RedContainer]
+var colors = [
+    Color(0.6, 0.25, 0.89, 1),
+    Color(0.35, 0.38, 0.96, 1),
+    Color(1, 0.29, 0.38, 1)
+  ]
 
-export var bar_length = 0
+export var bar_length = 700
 
+var length_scale = 1
 var active = false
 var percent = 0.0
 
@@ -25,12 +32,14 @@ func _ready():
   EventBus.connect("boss_hurt", self, "_on_boss_hurt")
   EventBus.connect("boss_start", self, "_on_boss_start")
   EventBus.connect("boss_defeated", self, "_on_boss_defeated")
+  shrink_tween.connect("tween_completed", self, "_on_ShrinkTween_tween_completed")
 
 func _process(_delta):
   var fill_length = bar_length + 50
-  bar.rect_size.y = percent * fill_length
-  back.rect_size.y = fill_length
-  container.length = bar_length
+  if bar != null:
+    bar.rect_size.y = percent * fill_length
+    back.rect_size.y = fill_length
+    container.length = bar_length
 
 func deactivate():
   bar.margin_top = bar.margin_bottom
@@ -42,7 +51,14 @@ func update_bar(amount):
 func _on_boss_hurt(health):
   update_bar(health)
 
-func _on_boss_start(max_health):
+func _on_boss_start(max_health, index):
+  for c in containers:
+    c.visible = false
+
+  container = containers[index]
+  container.visible = true
+  bar.color = colors[index]
+
   visible = true
   percent = 1.0
   max_amount = max_health
@@ -51,7 +67,7 @@ func _on_boss_start(max_health):
       self,
       "bar_length",
       0,
-      max_health + 75,
+      bar_length,
       2,
       Tween.TRANS_QUAD,
       Tween.EASE_OUT)
@@ -92,3 +108,14 @@ func _on_boss_defeated():
 
   shrink_tween.start()
 
+func _on_ShrinkTween_tween_completed(_object, _key):
+  flash_tween.interpolate_property(
+      self,
+      "modulate",
+      Color(1, 1, 1, 1),
+      Color(1, 1, 1, 0),
+      0.5,
+      Tween.TRANS_QUART,
+      Tween.EASE_OUT)
+
+  flash_tween.start()

@@ -17,6 +17,7 @@ onready var wait_timer
 export var idle_time = 2.0
 export var fade_duration = 0.3
 export var health = 50
+export var index = 0
 
 export var brightness = 1.5
 export var overlay_on_attack = false
@@ -45,7 +46,7 @@ func _ready():
   idle_timer.start(idle_time)
 
   max_health = health
-  EventBus.emit_signal("boss_start", health)
+  EventBus.emit_signal("boss_start", health, index)
 
 func _on_IdleTimer_timeout():
   fade_in()

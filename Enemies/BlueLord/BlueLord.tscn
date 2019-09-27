@@ -81,6 +81,7 @@ tracks/1/keys = {
 [node name="BlueLord" type="Node2D"]
 script = ExtResource( 1 )
 health = 1600
+index = 1
 overlay_on_attack = true
 
 [node name="Enemy" type="Area2D" parent="."]
