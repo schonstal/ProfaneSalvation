@@ -1,8 +1,8 @@
 extends Node2D
 
 export(Array, Resource) var phases = [
+    preload("res://Enemies/RedLord/AttackPatterns/Inverted/Inverted.tscn"),
     preload("res://Enemies/RedLord/AttackPatterns/TwistShoot/TwistShoot.tscn"),
-    preload("res://Enemies/RedLord/AttackPatterns/MoveShoot/MoveShoot.tscn"),
     preload("res://Enemies/RedLord/AttackPatterns/MoveShoot/MoveShoot.tscn"),
     preload("res://Enemies/RedLord/AttackPatterns/MoveShoot/MoveShoot.tscn")
   ]

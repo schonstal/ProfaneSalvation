@@ -4,6 +4,8 @@ onready var fade_tween = $FadeTween
 onready var sprite = $'..'
 
 func _ready():
+  sprite.modulate = Color(1, 1, 1, 0)
+
   fade_tween.interpolate_property(
       sprite,
       "modulate",

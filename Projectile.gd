@@ -25,7 +25,7 @@ func _physics_process(delta):
   velocity += acceleration * delta
   position += velocity * delta
 
-  if global_position.y < -100:
+  if global_position.y < -400:
     die()
 
   if global_position.y > 1200:
