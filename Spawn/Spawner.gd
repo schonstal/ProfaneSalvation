@@ -2,6 +2,7 @@ extends Node2D
 
 export var summon_time = 2.0
 export var delay = 0.0
+export var color = Color(0.88, 0.22, 0.88, 1)
 
 export(Resource) var spawn_scene
 export(Resource) var enemy_scene
@@ -20,6 +21,7 @@ var halos = 6
 var finished = false
 
 func _ready():
+  summon_circle.target_color = color
   # Editor only
   if placeholder != null:
     placeholder.queue_free()

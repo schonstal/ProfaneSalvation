@@ -6,6 +6,7 @@
 [ext_resource path="res://Enemies/BallLord/BallLord/BallLordBite_1.png" type="Texture" id=4]
 
 [node name="BallLordSpawner" instance=ExtResource( 1 )]
+color = Color( 0.266667, 0.545098, 0.666667, 1 )
 spawn_scene = ExtResource( 2 )
 enemy_scene = ExtResource( 3 )
 

@@ -25,7 +25,7 @@ var despawned = false
 
 var halo_scene = preload("res://Items/Halo/Halo.tscn")
 export(Resource) var explosion_scene = preload("res://Enemies/Explosion/Explosion.tscn")
-export(Resource) var hurt_sound = preload("res://Enemies/EnemyHurt.wav")
+export(Resource) var hurt_sound = preload("res://Enemies/Enemy_Hit_Subtle.wav")
 export(Resource) var die_sound = preload("res://Enemies/EnemyDeath.wav")
 
 signal died
@@ -84,7 +84,7 @@ func hurt(damage):
   if health <= 0:
     die()
 
-  # Game.scene.sound.play(hurt_sound)
+  Game.scene.sound.play(hurt_sound, "enemy_hurt")
 
   emit_signal("hurt", health, max_health)
 

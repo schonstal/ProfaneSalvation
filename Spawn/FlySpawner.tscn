@@ -6,6 +6,7 @@
 [ext_resource path="res://Enemies/FlyLord/Sprite/FlyLord_1.png" type="Texture" id=4]
 
 [node name="FlySpawner" instance=ExtResource( 1 )]
+color = Color( 0.027451, 0.509804, 0.933333, 1 )
 spawn_scene = ExtResource( 2 )
 enemy_scene = ExtResource( 3 )
 

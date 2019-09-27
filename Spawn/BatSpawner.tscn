@@ -5,6 +5,7 @@
 [ext_resource path="res://Enemies/BloodBat/BloodBatFly/1BlooBatFly_3.png" type="Texture" id=3]
 
 [node name="BatSpawner" instance=ExtResource( 1 )]
+color = Color( 0.905882, 0.0627451, 0.341176, 1 )
 enemy_scene = ExtResource( 2 )
 
 [node name="Placeholder" type="Sprite" parent="." index="4"]

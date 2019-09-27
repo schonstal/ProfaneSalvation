@@ -6,6 +6,7 @@
 [ext_resource path="res://Enemies/Skull/SkullAttack/SkullAttack_1.png" type="Texture" id=4]
 
 [node name="SkullSpawner" instance=ExtResource( 1 )]
+color = Color( 0.470588, 0.109804, 0.67451, 1 )
 spawn_scene = ExtResource( 2 )
 enemy_scene = ExtResource( 3 )
 

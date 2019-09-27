@@ -11,9 +11,11 @@ export var fade_duration = 0.5
 
 signal fade_finished
 
+var target_color = Color(1, 1, 1, 1)
+
 func _ready():
   fade_tween.connect("tween_completed", self, "_on_FadeTween_tween_completed")
-  modulate = Color(1, 1, 1, 0)
+  modulate = Color(target_color.r, target_color.g, target_color.b, 0)
 
 func _process(delta):
   theta += delta * angular_velocity * TAU
@@ -25,8 +27,8 @@ func fade_in():
   fade_tween.interpolate_property(
       self,
       "modulate",
-      Color(1, 1, 1, 0),
-      Color(1, 1, 1, 1),
+      Color(target_color.r, target_color.g, target_color.b, 0),
+      target_color,
       fade_duration,
       Tween.TRANS_QUART,
       Tween.EASE_OUT)
@@ -37,8 +39,8 @@ func fade_out():
   fade_tween.interpolate_property(
       self,
       "modulate",
-      Color(1, 1, 1, 1),
-      Color(1, 1, 1, 0),
+      target_color,
+      Color(target_color.r, target_color.g, target_color.b, 0),
       fade_duration,
       Tween.TRANS_QUART,
       Tween.EASE_OUT)
