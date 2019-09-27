@@ -1,6 +1,7 @@
 extends Node2D
 
 export(Array, Resource) var phases = [
+    preload("res://Enemies/BlueLord/AttackPatterns/SpiralBalls/SpiralBalls.tscn"),
     preload("res://Enemies/BlueLord/AttackPatterns/MoveTwist/MoveTwist.tscn"),
     preload("res://Enemies/BlueLord/AttackPatterns/BallSpin/BallSpin.tscn"),
     preload("res://Enemies/BlueLord/AttackPatterns/MoveShoot/MoveShoot.tscn")
@@ -52,10 +53,13 @@ func _on_boss_pattern_complete():
 func _on_boss_hurt(health):
   var percent = float(health) / blue_lord.max_health
 
-  if percent < 0.33 && phase < 2:
+  if percent < 0.25 && phase < 3:
+    change_phase(3)
+
+  if percent < 0.50 && phase < 2:
     change_phase(2)
 
-  if percent < 0.66 && phase < 1:
+  if percent < 0.75 && phase < 1:
     change_phase(1)
 
 func _on_BlueLord_fade_in_completed():
@@ -63,13 +67,17 @@ func _on_BlueLord_fade_in_completed():
   spawn_pattern()
 
 func _on_BlueLord_fade_out_completed():
+  print("why")
   wait_timer.start(phase_transition_time)
+  if phase == 1:
+    print("1")
+    blue_lord.global_position = Vector2(1920 / 2 - 200, 1080 / 2 - 200)
   if phase == 2:
-    blue_lord.global_position = Vector2(1920 / 2, 1080 / 2 - 200)
+    print("2")
+    blue_lord.global_position = Vector2(1920 / 2 + 200, 1080 / 2 - 200)
   elif phase == 3:
-    blue_lord.global_position = Vector2(1920 / 2 + 400, 1080 / 2)
-  else:
-    blue_lord.global_position = Vector2(Game.scene.player.position.x, 300)
+    print("3")
+    blue_lord.global_position = Vector2(1920 / 2, 1080 / 2 - 200)
 
 func _on_WaitTimer_timeout():
   blue_lord.fade_in()

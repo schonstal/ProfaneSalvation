@@ -40,7 +40,7 @@ func _on_SpawnTimer_timeout():
       "position": global_position,
       "scene": bullet_scene,
       "count": bullet_count,
-      "radius": 30,
+      "radius": 50,
       "speed": bullet_speed,
       "rotation": offset
     })

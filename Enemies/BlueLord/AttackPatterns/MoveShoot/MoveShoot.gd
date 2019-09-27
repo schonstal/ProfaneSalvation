@@ -13,16 +13,22 @@ export var radius = 50.0
 export var bullet_speed = 100
 export var center = Vector2(1920 / 2, 1080 / 2 - 200)
 export var spawn_offset = Vector2(0, -82)
+export var upgrade_count = 6
 
 var offset = 0.0
 var shots = 0
-var max_shots = 6
+var max_shots = 2
 var shoot_time = 0.02
+var count = 0
+var speed_increment = 300
 
 export(Resource) var blue_bullet_scene = preload("res://Projectiles/BlueFireball/EnemyFireball.tscn")
 export(Resource) var purple_bullet_scene = preload("res://Projectiles/PitLordFireball/PitLordFireball.tscn")
 export(Resource) var red_bullet_scene = preload("res://Projectiles/BatFireball/BatFireball.tscn")
-var bullet_scenes = [blue_bullet_scene, purple_bullet_scene, red_bullet_scene]
+
+var strong_bullet_scenes = [blue_bullet_scene, purple_bullet_scene, red_bullet_scene]
+var weak_bullet_scenes = [blue_bullet_scene, purple_bullet_scene]
+var bullet_scenes = [blue_bullet_scene]
 
 func _ready():
   wait_timer = Timer.new()
@@ -58,7 +64,16 @@ func _on_ShootTimer_timeout():
   if shots < max_shots:
     shoot()
   else:
-    EventBus.emit_signal("boss_pattern_complete")
+    count += 1
+    if count >= 8:
+      bullet_scenes = strong_bullet_scenes
+      speed_increment = 100
+      max_shots = 6
+    elif count >= 4:
+      bullet_scenes = weak_bullet_scenes
+      speed_increment = 200
+      max_shots = 4
+    wait_timer.start()
 
 func shoot():
   offset += offset_increment * TAU
@@ -66,12 +81,12 @@ func shoot():
 
   Util.spawn_full_circle({
       "position": global_position + spawn_offset,
-      "scene": bullet_scenes[shots % 3],
+      "scene": bullet_scenes[shots % bullet_scenes.size()],
       "count": bullet_count,
       "radius": radius,
       "speed": bullet_speed,
       "rotation": offset,
-      "acceleration": 50 + shots * 100
+      "acceleration": 50 + shots * speed_increment
     })
 
   shoot_timer.start()
