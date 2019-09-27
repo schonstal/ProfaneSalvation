@@ -1,9 +1,9 @@
 extends Node2D
 
 export(Array, Resource) var phases = [
-    preload("res://Enemies/RedLord/AttackPatterns/Inverted/Inverted.tscn"),
+    preload("res://Enemies/RedLord/AttackPatterns/TripleShoot/TripleShoot.tscn"),
     preload("res://Enemies/RedLord/AttackPatterns/TwistShoot/TwistShoot.tscn"),
-    preload("res://Enemies/RedLord/AttackPatterns/MoveShoot/MoveShoot.tscn"),
+    preload("res://Enemies/RedLord/AttackPatterns/Inverted/Inverted.tscn"),
     preload("res://Enemies/RedLord/AttackPatterns/MoveShoot/MoveShoot.tscn")
   ]
 
@@ -44,7 +44,6 @@ func change_phase(index):
   if active_pattern != null && is_instance_valid(active_pattern):
     active_pattern.queue_free()
 
-  EventBus.emit_signal("clear_projectiles")
   chains.shoot()
   active = false
   phase = index

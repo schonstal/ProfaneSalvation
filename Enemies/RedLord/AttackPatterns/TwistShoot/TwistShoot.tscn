@@ -6,6 +6,7 @@
 
 [node name="TwistShoot" type="Node2D"]
 script = ExtResource( 1 )
+upgrade_time = 5.0
 angular_velocity = 0.3
 
 [node name="Twist" type="Node2D" parent="."]

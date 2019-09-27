@@ -1,19 +1,18 @@
 extends Node2D
 
 onready var red_lord = $'..'
-onready var twist = $Twist
-onready var blue_twist = $BlueTwist
 
 var wait_timer:Timer
 var upgrade_timer:Timer
 
-export var wait_time = 6.0
+onready var twist = $Twist
+onready var purple_twist = $PurpleTwist
+
+export var wait_time = 1.0
 export var upgrade_time = 6.0
-export var center = Vector2(1920 / 2, 1080 / 2 - 200)
 export var distance = 50
 
-var point_index = 0
-var level = 0
+export var center = Vector2(1920 / 2, 1080 / 2 - 300)
 
 func _ready():
   wait_timer = Timer.new()
@@ -24,7 +23,7 @@ func _ready():
   add_child(wait_timer)
 
   upgrade_timer = Timer.new()
-  upgrade_timer.set_name("UpgradeTimer")
+  upgrade_timer.set_name("WaitTimer")
   upgrade_timer.wait_time = upgrade_time
   upgrade_timer.one_shot = true
   upgrade_timer.start()
@@ -35,17 +34,15 @@ func _ready():
   red_lord.connect("move_completed", self, "_on_RedLord_move_completed")
   red_lord.start_attack()
 
-  twist.global_position = center
-  red_lord.global_position = center
-
-func _process(delta):
-  twist.global_position = center
-
 func _on_WaitTimer_timeout():
-  wait_timer.start()
+  var direction = Vector2(rand_range(-1, 1), rand_range(-1, 1))
+  direction = direction.normalized()
+
+  red_lord.move_to(center + distance * direction, 1)
 
 func _on_UpgradeTimer_timeout():
-  blue_twist.active = true
+  purple_twist.active = true
 
 func _on_RedLord_move_completed():
-  pass
+  red_lord.start_attack()
+  wait_timer.start()

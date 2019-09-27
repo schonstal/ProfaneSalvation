@@ -95,6 +95,7 @@ func _on_clear_projectiles():
 func _on_body_entered(body):
   if body.has_method("hurt"):
     body.hurt(1)
+    die()
 
 func die():
   var explosion = explosion_scene.instance()
