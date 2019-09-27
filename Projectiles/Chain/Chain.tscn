@@ -69,7 +69,7 @@ extents = Vector2( 8, 175 )
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 1 )
-length = 200.0
+length = 50.0
 
 [node name="ChainBlade" type="Sprite" parent="."]
 editor/display_folded = true
