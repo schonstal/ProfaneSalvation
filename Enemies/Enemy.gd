@@ -119,7 +119,7 @@ func explode():
   Game.scene.explosions.add_child(explosion)
 
 func flash():
-  modulate = Color(0, 0, 0, 1)
+  modulate = Color(8, 8, 8, 1)
   flashed = false
   flash_timer.start(flash_time)
 
@@ -134,7 +134,7 @@ func _on_Flash_timer_timeout():
   if flashed:
     modulate = Color(1, 1, 1, 1)
   else:
-    modulate = Color(8, 8, 8, 1)
+    modulate = Color(0, 0, 0, 1)
     flashed = true
     flash_timer.start(flash_time)
 
