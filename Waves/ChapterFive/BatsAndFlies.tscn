@@ -1,0 +1,110 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Spawn/BatSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/BloodBat/BrutalTwist.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/BloodBat/Lines.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Spawn/SkullSpawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/Skull/Skull.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Spawn/FlySpawner.tscn" type="PackedScene" id=8]
+
+[node name="BatsAndFlies" type="Node2D"]
+z_index = -1
+script = ExtResource( 1 )
+complete_time = 16.0
+final = true
+enemy_count = 8
+
+[node name="BatSpawner" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 960, 200 )
+summon_time = 1.5
+delay = 4.0
+
+[node name="Enemy" parent="BatSpawner" instance=ExtResource( 3 )]
+movement = Vector2( 0, 0 )
+velocity = Vector2( 0, 0 )
+bullet_pattern = ExtResource( 4 )
+
+[node name="BatSpawner2" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 760, 200 )
+summon_time = 1.5
+delay = 4.0
+
+[node name="Enemy" parent="BatSpawner2" instance=ExtResource( 3 )]
+movement = Vector2( 200, 100 )
+velocity = Vector2( 0, 0 )
+shoot_time = 0.3
+bullet_pattern = ExtResource( 5 )
+
+[node name="BatSpawner3" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 1160, 200 )
+summon_time = 1.5
+delay = 4.0
+
+[node name="Enemy" parent="BatSpawner3" instance=ExtResource( 3 )]
+movement = Vector2( -200, -100 )
+velocity = Vector2( 0, 0 )
+shoot_time = 0.3
+bullet_pattern = ExtResource( 4 )
+
+[node name="SkullSpawner" parent="." instance=ExtResource( 6 )]
+editor/display_folded = true
+position = Vector2( 420, 253.315 )
+delay = 2.0
+
+[node name="Enemy" parent="SkullSpawner" instance=ExtResource( 7 )]
+fade_in = false
+
+[node name="SkullSpawner4" parent="." instance=ExtResource( 6 )]
+editor/display_folded = true
+position = Vector2( 570, 350 )
+delay = 4.0
+
+[node name="Enemy" parent="SkullSpawner4" instance=ExtResource( 7 )]
+fade_in = false
+
+[node name="SkullSpawner2" parent="." instance=ExtResource( 6 )]
+editor/display_folded = true
+position = Vector2( 1500, 253.315 )
+delay = 2.0
+
+[node name="Enemy" parent="SkullSpawner2" instance=ExtResource( 7 )]
+fade_in = false
+
+[node name="SkullSpawner3" parent="." instance=ExtResource( 6 )]
+editor/display_folded = true
+position = Vector2( 1350, 350 )
+delay = 4.0
+
+[node name="Enemy" parent="SkullSpawner3" instance=ExtResource( 7 )]
+fade_in = false
+
+[node name="FlySpawner" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1142.32, 413.619 )
+summon_time = 1.5
+delay = 1.0
+
+[node name="FlySpawner2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1021.39, 582.049 )
+summon_time = 1.5
+delay = 1.0
+
+[node name="FlySpawner3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 944.736, 412.539 )
+summon_time = 1.5
+delay = 1.0
+
+[node name="FlySpawner5" parent="." instance=ExtResource( 8 )]
+position = Vector2( 781.704, 375.83 )
+summon_time = 1.5
+delay = 1.0
+
+[node name="FlySpawner4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 833.528, 528.065 )
+summon_time = 1.5
+delay = 1.0
+

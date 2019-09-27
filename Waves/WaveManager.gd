@@ -16,6 +16,13 @@ func _ready():
   load_chapter(chapter)
 
 func _on_wave_completed(name):
+  if chapter >= 6:
+    MusicPlayer.play_file("res://Music/red.ogg")
+  elif chapter >= 3:
+    MusicPlayer.play_file("res://Music/blue.ogg")
+  else:
+    MusicPlayer.play_file("res://Music/gameplay.ogg")
+
   print(name, " completed")
   wave_index += 1
 

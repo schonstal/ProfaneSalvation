@@ -1,27 +1,69 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
 [ext_resource path="res://Spawn/FlySpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Spawn/BallLordSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Spawn/Spawner.gd" type="Script" id=4]
+[ext_resource path="res://Enemies/BallLord/BallLordSpawn.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/BallLord/BallLord.tscn" type="PackedScene" id=6]
 
 [node name="FlyBreak" type="Node2D"]
 script = ExtResource( 1 )
-complete_time = 8.0
-final = true
+complete_time = 6.0
 enemy_count = 4
 
 [node name="FlySpawner" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1236.25, 259.224 )
 summon_time = 1.5
+delay = 1.1
 
 [node name="FlySpawner2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 618.388, 419.411 )
 summon_time = 1.5
+delay = 1.05
 
 [node name="FlySpawner3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 895.536, 363.473 )
 summon_time = 1.5
+delay = 1.3
 
 [node name="FlySpawner4" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1264.22, 485.52 )
 summon_time = 1.5
+delay = 1.0
+
+[node name="BallLordSpawner" type="Node2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 320, 100 )
+script = ExtResource( 4 )
+summon_time = 1.0
+spawn_scene = ExtResource( 5 )
+enemy_scene = ExtResource( 6 )
+
+[node name="BallLordSpawner8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1600, 100 )
+delay = 0.7
+
+[node name="BallLordSpawner2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 503, 100 )
+delay = 0.1
+
+[node name="BallLordSpawner3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 686, 100 )
+delay = 0.2
+
+[node name="BallLordSpawner4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 869, 100 )
+delay = 0.3
+
+[node name="BallLordSpawner5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1052, 100 )
+delay = 0.4
+
+[node name="BallLordSpawner6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1235, 100 )
+delay = 0.5
+
+[node name="BallLordSpawner7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1418, 100 )
+delay = 0.6
 
