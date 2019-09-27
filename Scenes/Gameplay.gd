@@ -36,7 +36,6 @@ func _enter_tree():
   Game.initialize()
 
 func _ready():
-  MusicPlayer.play_file("res://Music/gameplay.ogg")
   EventBus.connect("upgrade_collected", self, "_on_upgrade_collected")
   Engine.time_scale = 1
   reset_score()
