@@ -63,7 +63,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 8, 625 )
+extents = Vector2( 8, 275 )
 
 [node name="Chain" type="Area2D"]
 z_index = -2
@@ -71,12 +71,12 @@ z_as_relative = false
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 1 )
-length = 50.0
+length = 250.0
 shoot_duration = 1.0
 
 [node name="ChainBlade" type="Sprite" parent="."]
 editor/display_folded = true
-position = Vector2( 0, -50 )
+position = Vector2( 0, -250 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -31 )
 hframes = 4
@@ -87,7 +87,7 @@ anims/Idle = SubResource( 1 )
 
 [node name="ChainLinks" type="Sprite" parent="."]
 texture = ExtResource( 3 )
-offset = Vector2( 0, -25 )
+offset = Vector2( 0, -125 )
 hframes = 4
 frame = 1
 region_enabled = true
@@ -99,6 +99,6 @@ anims/Idle = SubResource( 2 )
 [node name="ShootTween" type="Tween" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -125 )
+position = Vector2( 0, -150 )
 shape = SubResource( 3 )
 
