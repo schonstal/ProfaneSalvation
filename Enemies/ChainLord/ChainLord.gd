@@ -27,5 +27,6 @@ func _on_AnimationPlayer_animation_finished(name):
     queue_free()
 
 func _on_Enemy_died():
+  EventBus.emit_signal("enemy_died", enemy.wave_name, name)
   emit_signal("died")
   queue_free()

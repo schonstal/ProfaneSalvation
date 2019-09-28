@@ -8,7 +8,7 @@ export var angular_velocity = 0.0
 export var shoot_delay = 0.1
 
 var distance = 0.0
-var distance_was = 0.0
+var distance_was = 1000.0
 var alternate = false
 
 var duration_timer:Timer
@@ -72,6 +72,7 @@ func _ready():
 
     EventBus.connect("clear_projectiles", self, "_on_clear_projectiles")
     update_size()
+    collision.shape.extents.y = 0
 
 func _process(delta):
   update_size()

@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Spawn/ChainSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/ChainLord/ChainLord.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Projectiles/Chain/Chain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Waves/InfiniteSpawn.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/BallLord/TrackBall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Spawn/BatSpawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/BloodBat/BrutalTwist.tscn" type="PackedScene" id=9]
+
+[node name="CrossedChainWave" type="Node2D"]
+z_index = -1
+script = ExtResource( 1 )
+complete_time = 20.0
+enemy_count = 5
+
+[node name="ChainSpawner" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 1420, 200 )
+
+[node name="Enemy" parent="ChainSpawner" instance=ExtResource( 3 )]
+
+[node name="Chain" parent="ChainSpawner/Enemy" instance=ExtResource( 4 )]
+rotation = 4.18879
+length = 1500.0
+
+[node name="ChainSpawner2" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 500, 200 )
+
+[node name="Enemy" parent="ChainSpawner2" instance=ExtResource( 3 )]
+
+[node name="Chain" parent="ChainSpawner2/Enemy" instance=ExtResource( 4 )]
+rotation = 2.0944
+length = 1500.0
+
+[node name="ChainSpawner3" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 960, 460 )
+
+[node name="Enemy" parent="ChainSpawner3" instance=ExtResource( 3 )]
+
+[node name="Chain" parent="ChainSpawner3/Enemy" instance=ExtResource( 4 )]
+angular_velocity = 0.15
+
+[node name="InfiniteSpawn" parent="." instance=ExtResource( 5 )]
+position = Vector2( 320, 500 )
+scene = ExtResource( 6 )
+spawn_rate = 4.0
+
+[node name="InfiniteSpawn2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1600, 500 )
+scene = ExtResource( 6 )
+spawn_rate = 4.0
+spawn_offset = 2.0
+
+[node name="BatSpawner" parent="." instance=ExtResource( 7 )]
+editor/display_folded = true
+position = Vector2( 760, 100 )
+summon_time = 1.5
+delay = 3.0
+
+[node name="Enemy" parent="BatSpawner" instance=ExtResource( 8 )]
+movement = Vector2( 50, 0.001 )
+velocity = Vector2( 0, 0.001 )
+shoot_time = 0.3
+bullet_pattern = ExtResource( 9 )
+
+[node name="BatSpawner2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1160, 100 )
+summon_time = 1.5
+delay = 3.0
+
+[node name="Enemy" parent="BatSpawner2" instance=ExtResource( 8 )]
+movement = Vector2( -50, 0.001 )
+velocity = Vector2( 0, 0.001 )
+shoot_time = 0.3
+bullet_pattern = ExtResource( 9 )
+

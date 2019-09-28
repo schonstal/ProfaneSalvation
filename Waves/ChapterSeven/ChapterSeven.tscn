@@ -1,10 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Waves/Wave.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Waves/ChapterSeven/IntroWave.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Waves/ChapterSeven/DoubleChainWave.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Waves/ChapterSeven/TripleChainWave.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Waves/ChapterSeven/CrossedChainWave.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Waves/ChapterSeven/DoubleCrossedChainWave.tscn" type="PackedScene" id=6]
 
 [node name="ChapterSeven" type="Node2D"]
 
 [node name="IntroWave" parent="." instance=ExtResource( 1 )]
 scene = ExtResource( 2 )
+
+[node name="DoubleChainWave" parent="." instance=ExtResource( 1 )]
+scene = ExtResource( 3 )
+
+[node name="TripleChainWave" parent="." instance=ExtResource( 1 )]
+scene = ExtResource( 4 )
+
+[node name="CrossedChainWave" parent="." instance=ExtResource( 1 )]
+scene = ExtResource( 5 )
+
+[node name="DoubleCrossedChainWave" parent="." instance=ExtResource( 1 )]
+scene = ExtResource( 6 )
 

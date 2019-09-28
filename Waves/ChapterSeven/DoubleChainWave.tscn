@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Spawn/ChainSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/ChainLord/ChainLord.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Projectiles/Chain/Chain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Spawn/BatSpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/BloodBat/BloodBat.tscn" type="PackedScene" id=6]
+
+[node name="DoubleChainWave" type="Node2D"]
+z_index = -1
+script = ExtResource( 1 )
+complete_time = 12.0
+enemy_count = 5
+
+[node name="ChainSpawner" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 640, 380 )
+
+[node name="Enemy" parent="ChainSpawner" instance=ExtResource( 3 )]
+editor/display_folded = true
+
+[node name="Chain" parent="ChainSpawner/Enemy" instance=ExtResource( 4 )]
+rotation = 3.14159
+length = 500.0
+angular_velocity = -0.1
+
+[node name="ChainSpawner2" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 1280, 380 )
+
+[node name="Enemy" parent="ChainSpawner2" instance=ExtResource( 3 )]
+
+[node name="Chain" parent="ChainSpawner2/Enemy" instance=ExtResource( 4 )]
+rotation = 3.14159
+length = 500.0
+angular_velocity = 0.1
+
+[node name="BatSpawner" parent="." instance=ExtResource( 5 )]
+position = Vector2( 960, 200 )
+summon_time = 1.5
+delay = 2.0
+
+[node name="Enemy" parent="BatSpawner" instance=ExtResource( 6 )]
+movement = Vector2( 0, 50 )
+velocity = Vector2( 0, 0.1 )
+shoot_time = 0.3
+
+[node name="BatSpawner2" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 480, 200 )
+summon_time = 1.5
+delay = 3.0
+
+[node name="Enemy" parent="BatSpawner2" instance=ExtResource( 6 )]
+movement = Vector2( 50, 0 )
+velocity = Vector2( 0, 0.1 )
+shoot_time = 0.3
+
+[node name="BatSpawner3" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 1440, 200 )
+summon_time = 1.5
+delay = 3.0
+
+[node name="Enemy" parent="BatSpawner3" instance=ExtResource( 6 )]
+movement = Vector2( -50, 0 )
+velocity = Vector2( 0, 0.1 )
+shoot_time = 0.3
+
