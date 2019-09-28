@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Spawn/FlySpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/FlyLord/FlyLord.tscn" type="PackedScene" id=3]
+
+[node name="MoreFlies" type="Node2D"]
+script = ExtResource( 1 )
+complete_time = 12.0
+enemy_count = 6
+
+[node name="FlySpawner" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 802.247, 132.943 )
+summon_time = 1.5
+delay = 0.85
+
+[node name="Enemy" parent="FlySpawner" instance=ExtResource( 3 )]
+
+[node name="FlySpawner2" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 1352.52, 298.877 )
+summon_time = 1.5
+delay = 0.8
+
+[node name="Enemy" parent="FlySpawner2" instance=ExtResource( 3 )]
+
+[node name="FlySpawner4" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 1094.4, 195.629 )
+summon_time = 1.5
+delay = 0.15
+
+[node name="Enemy" parent="FlySpawner4" instance=ExtResource( 3 )]
+
+[node name="FlySpawner6" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 1091.94, 415.645 )
+summon_time = 1.5
+delay = 0.4
+
+[node name="Enemy" parent="FlySpawner6" instance=ExtResource( 3 )]
+
+[node name="FlySpawner3" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 620.757, 279.894 )
+summon_time = 1.5
+delay = 0.7
+
+[node name="Enemy" parent="FlySpawner3" instance=ExtResource( 3 )]
+
+[node name="FlySpawner7" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 822.336, 412.641 )
+summon_time = 1.5
+delay = 1.0
+
+[node name="Enemy" parent="FlySpawner7" instance=ExtResource( 3 )]
+

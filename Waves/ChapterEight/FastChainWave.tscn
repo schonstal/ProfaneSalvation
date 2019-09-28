@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Spawn/ChainSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/ChainLord/ChainLord.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Projectiles/Chain/Chain.tscn" type="PackedScene" id=4]
+
+[node name="FastChainWave" type="Node2D"]
+z_index = -1
+script = ExtResource( 1 )
+complete_time = 4.0
+enemy_count = 3
+
+[node name="ChainSpawner" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1140, 380 )
+
+[node name="Enemy" parent="ChainSpawner" instance=ExtResource( 3 )]
+
+[node name="Chain" parent="ChainSpawner/Enemy" instance=ExtResource( 4 )]
+rotation = 3.14159
+length = 500.0
+angular_velocity = -0.2
+
+[node name="ChainSpawner2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 840, 380 )
+
+[node name="Enemy" parent="ChainSpawner2" instance=ExtResource( 3 )]
+
+[node name="Chain" parent="ChainSpawner2/Enemy" instance=ExtResource( 4 )]
+rotation = 3.14159
+length = 500.0
+angular_velocity = 0.2
+
+[node name="ChainSpawner3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 990, 300 )
+
+[node name="Enemy" parent="ChainSpawner3" instance=ExtResource( 3 )]
+
+[node name="Chain" parent="ChainSpawner3/Enemy" instance=ExtResource( 4 )]
+length = 500.0
+angular_velocity = 0.2
+

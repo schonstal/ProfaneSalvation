@@ -18,7 +18,6 @@ var game_over_scene = preload("res://UI/GameOver/GameOver.tscn")
 var game_over_node
 
 var score = 0
-var gun_level = 2
 
 func _enter_tree():
   camera = $Camera
@@ -69,5 +68,5 @@ func shake(duration = 0.5, frequency = 60, amplitude = 25):
     camera.shake(duration, frequency, amplitude)
 
 func _on_upgrade_collected():
-  gun_level += 1
+  Game.gun_level += 1
   Overlay.fade(Color(0.9, 0.7, 0.2, 0.6), Color(0.9, 0.7, 0.2, 0), 0.3)

@@ -206,9 +206,9 @@ func shoot():
   if !can_shoot():
     return
 
-  if Game.scene.gun_level == 0:
+  if Game.gun_level == 0:
     spawn_bullet(Vector2(0, 0))
-  elif Game.scene.gun_level == 1:
+  elif Game.gun_level == 1:
     spawn_bullet(Vector2(0, -20))
     spawn_bullet(Vector2(30, 0))
     spawn_bullet(Vector2(-30, 0))

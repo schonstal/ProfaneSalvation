@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/Gameplay.gd" type="Script" id=1]
 [ext_resource path="res://Util/Screen.gd" type="Script" id=2]
@@ -13,10 +13,11 @@
 [ext_resource path="res://Waves/ChapterSeven/ChapterSeven.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Waves/ChapterEight/ChapterEight.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Waves/ChapterNine/ChapterNine.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Util/SoundManager.gd" type="Script" id=14]
-[ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=15]
-[ext_resource path="res://UI/HUD/HUD.tscn" type="PackedScene" id=16]
-[ext_resource path="res://UI/Pause/Pause.gd" type="Script" id=17]
+[ext_resource path="res://Waves/Salvation/Salvation.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Util/SoundManager.gd" type="Script" id=15]
+[ext_resource path="res://Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=16]
+[ext_resource path="res://UI/HUD/HUD.tscn" type="PackedScene" id=17]
+[ext_resource path="res://UI/Pause/Pause.gd" type="Script" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 273.197, 1454.69 )
@@ -44,7 +45,6 @@ __meta__ = {
 }
 
 [node name="WaveManager" parent="." instance=ExtResource( 4 )]
-chapter = 6
 
 [node name="ChapterOne" parent="WaveManager" instance=ExtResource( 5 )]
 
@@ -63,6 +63,8 @@ chapter = 6
 [node name="ChapterEight" parent="WaveManager" instance=ExtResource( 12 )]
 
 [node name="ChapterNine" parent="WaveManager" instance=ExtResource( 13 )]
+
+[node name="Salvation" parent="WaveManager" instance=ExtResource( 14 )]
 
 [node name="Lasers" type="Node2D" parent="."]
 __meta__ = {
@@ -91,7 +93,7 @@ __meta__ = {
 }
 
 [node name="Sound" type="Node" parent="."]
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 
 [node name="Walls" type="Node2D" parent="."]
 editor/display_folded = true
@@ -128,14 +130,14 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
 shape = SubResource( 1 )
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 15 )]
+[node name="ParallaxBackground" parent="." instance=ExtResource( 16 )]
 position = Vector2( -7.22644, 11.438 )
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 editor/display_folded = true
 layer = 3
 
-[node name="HUD" parent="HUDLayer" instance=ExtResource( 16 )]
+[node name="HUD" parent="HUDLayer" instance=ExtResource( 17 )]
 
 [node name="GameOverLayer" type="CanvasLayer" parent="."]
 layer = 10
@@ -149,7 +151,7 @@ pause_mode = 2
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 17 )
+script = ExtResource( 18 )
 
 [node name="Overlay" type="ColorRect" parent="PauseLayer/Pause"]
 anchor_right = 1.0

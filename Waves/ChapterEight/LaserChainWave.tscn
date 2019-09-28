@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://Spawn/ChainSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/ChainLord/ChainLord.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Projectiles/Chain/Chain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Spawn/SkullSpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/Skull/Skull.tscn" type="PackedScene" id=6]
+
+[node name="LaserChainWave" type="Node2D"]
+z_index = -1
+script = ExtResource( 1 )
+complete_time = 6.0
+enemy_count = 5
+
+[node name="ChainSpawner" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1594.17, 271.194 )
+delay = 2.0
+
+[node name="Enemy" parent="ChainSpawner" instance=ExtResource( 3 )]
+
+[node name="Chain" parent="ChainSpawner/Enemy" instance=ExtResource( 4 )]
+rotation = 4.18879
+length = 1200.0
+
+[node name="ChainSpawner4" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 1459.01, 840.589 )
+delay = 2.0
+
+[node name="Enemy" parent="ChainSpawner4" instance=ExtResource( 3 )]
+
+[node name="Chain" parent="ChainSpawner4/Enemy" instance=ExtResource( 4 )]
+rotation = -0.785398
+length = 1500.0
+
+[node name="ChainSpawner5" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 830.946, 877.457 )
+delay = 2.0
+
+[node name="Enemy" parent="ChainSpawner5" instance=ExtResource( 3 )]
+
+[node name="Chain" parent="ChainSpawner5/Enemy" instance=ExtResource( 4 )]
+rotation = 0.785398
+length = 1500.0
+
+[node name="ChainSpawner3" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 871.007, 558.899 )
+delay = 2.0
+
+[node name="Enemy" parent="ChainSpawner3" instance=ExtResource( 3 )]
+
+[node name="Chain" parent="ChainSpawner3/Enemy" instance=ExtResource( 4 )]
+length = 400.0
+angular_velocity = 0.2
+
+[node name="ChainSpawner8" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( 1089.68, 752.14 )
+delay = 2.0
+
+[node name="Enemy" parent="ChainSpawner8" instance=ExtResource( 3 )]
+
+[node name="Chain" parent="ChainSpawner8/Enemy" instance=ExtResource( 4 )]
+length = 400.0
+angular_velocity = -0.2
+
+[node name="SkullSpawner" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 640, 385 )
+summon_time = 1.5
+
+[node name="Enemy" parent="SkullSpawner" instance=ExtResource( 6 )]
+fade_in = false
+
+[node name="SkullSpawner3" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 840, 250 )
+summon_time = 1.5
+
+[node name="Enemy" parent="SkullSpawner3" instance=ExtResource( 6 )]
+fade_in = false
+
+[node name="SkullSpawner4" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 1080, 250 )
+summon_time = 1.5
+delay = 4.0
+
+[node name="Enemy" parent="SkullSpawner4" instance=ExtResource( 6 )]
+fade_in = false
+
+[node name="SkullSpawner2" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 1280, 385 )
+summon_time = 1.5
+delay = 4.0
+
+[node name="Enemy" parent="SkullSpawner2" instance=ExtResource( 6 )]
+fade_in = false
+

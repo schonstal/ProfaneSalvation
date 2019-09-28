@@ -6,6 +6,8 @@ var scene:Node
 #warning-ignore:unused_class_variable
 var high_score = 0
 var target_scene
+var wave = 0
+var gun_level = 0
 
 func initialize():
   scene = $'../World'

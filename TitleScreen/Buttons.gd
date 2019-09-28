@@ -12,6 +12,8 @@ func _ready():
   MusicPlayer.play_file("res://Music/menu.ogg")
 
 func _on_NewGameButton_pressed():
+  Game.wave = 0
+  Game.gun_level = 0
   MusicPlayer.stop()
   Game.change_scene("res://Scenes/Gameplay.tscn")
 
