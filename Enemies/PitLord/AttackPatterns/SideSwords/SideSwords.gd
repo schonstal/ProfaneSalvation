@@ -2,13 +2,13 @@ extends Node2D
 
 var wait_timer:Timer
 
-export var bullet_count = 20
-export var bullet_speed = 500
+@export var bullet_count = 20
+@export var bullet_speed = 500
 var shots = 0
 
-onready var pit_lord = $'..'
+@onready var pit_lord = $'..'
 
-export(Resource) var bullet_scene = preload("res://Projectiles/PitLordSword/Projectile.tscn")
+@export var bullet_scene: Resource = preload("res://Projectiles/PitLordSword/Projectile.tscn")
 
 func _ready():
   for i in range(0, bullet_count):
@@ -20,7 +20,7 @@ func _ready():
   queue_free()
 
 func _spawn_bullet(i):
-  var bullet = bullet_scene.instance()
+  var bullet = bullet_scene.instantiate()
   Game.scene.projectiles.add_child(bullet)
 
   if i % 2 == 0:

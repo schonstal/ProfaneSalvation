@@ -4,9 +4,9 @@
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Enemies/ChainLord/Explosion/ChainLordDeath.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/ChainLord/SawBlades.gd" type="Script" id=4]
-[ext_resource path="res://Enemies/ChainLord/Sprite/ChainLordSawBladeDark.png" type="Texture" id=5]
-[ext_resource path="res://Enemies/ChainLord/Sprite/ChainLordSawBlade.png" type="Texture" id=6]
-[ext_resource path="res://Enemies/ChainLord/Sprite/ChainLordIdle_1_4x1.png" type="Texture" id=7]
+[ext_resource path="res://Enemies/ChainLord/Sprite2D/ChainLordSawBladeDark.png" type="Texture2D" id=5]
+[ext_resource path="res://Enemies/ChainLord/Sprite2D/ChainLordSawBlade.png" type="Texture2D" id=6]
+[ext_resource path="res://Enemies/ChainLord/Sprite2D/ChainLordIdle_1_4x1.png" type="Texture2D" id=7]
 
 [sub_resource type="Animation" id=1]
 length = 0.4
@@ -18,8 +18,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
 }
@@ -46,18 +46,18 @@ position = Vector2( 1.2563, 36.4465 )
 [node name="SawBlades" type="Node2D" parent="Enemy"]
 script = ExtResource( 4 )
 
-[node name="Back" type="Sprite" parent="Enemy/SawBlades"]
+[node name="Back" type="Sprite2D" parent="Enemy/SawBlades"]
 texture = ExtResource( 5 )
 
-[node name="Front" type="Sprite" parent="Enemy/SawBlades"]
+[node name="Front" type="Sprite2D" parent="Enemy/SawBlades"]
 texture = ExtResource( 6 )
 
-[node name="Sprite" type="Sprite" parent="Enemy"]
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 texture = ExtResource( 7 )
 hframes = 4
 frame = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy/Sprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy/Sprite2D"]
 autoplay = "Idle"
 anims/Idle = SubResource( 1 )
 

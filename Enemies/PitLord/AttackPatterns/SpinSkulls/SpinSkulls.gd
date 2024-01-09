@@ -1,14 +1,14 @@
 extends Node2D
 
-onready var pit_lord = $'..'
+@onready var pit_lord = $'..'
 
 var wait_timer:Timer
 
-export var center = Vector2(1920 / 2, 1080 / 2)
-export var radius = 400
-export var angular_velocity = 0.7
-export var spawn_time = 2
-export(Resource) var skull_scene = preload("res://Spawn/SkullSpawner.tscn")
+@export var center = Vector2(1920 / 2, 1080 / 2)
+@export var radius = 400
+@export var angular_velocity = 0.7
+@export var spawn_time = 2
+@export var skull_scene: Resource = preload("res://Spawn/SkullSpawner.tscn")
 
 var theta = 0
 
@@ -19,8 +19,8 @@ func _ready():
   wait_timer.start()
   add_child(wait_timer)
 
-  wait_timer.connect("timeout", self, "_on_WaitTimer_timeout")
-  pit_lord.connect("move_completed", self, "_on_PitLord_move_completed")
+  wait_timer.connect("timeout", Callable(self, "_on_WaitTimer_timeout"))
+  pit_lord.connect("move_completed", Callable(self, "_on_PitLord_move_completed"))
 
 func _physics_process(delta):
   theta += delta * angular_velocity

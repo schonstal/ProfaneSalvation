@@ -1,23 +1,23 @@
 extends Node2D
 
-onready var pit_lord = $'..'
+@onready var pit_lord = $'..'
 
 var wait_timer:Timer
 
-export var wait_time = 0.75
-export var bullet_count = 7
-export var distance = 50
-export var offset_increment = 0.1
-export var radius = 220.0
-export var bullet_speed = 500
-export var max_shots = 3
+@export var wait_time = 0.75
+@export var bullet_count = 7
+@export var distance = 50
+@export var offset_increment = 0.1
+@export var radius = 220.0
+@export var bullet_speed = 500
+@export var max_shots = 3
 
 var offset = 0.0
 var shots = 0
 
-onready var attack_sound = $AttackSound
+@onready var attack_sound = $AttackSound
 
-export(Resource) var bullet_scene = preload("res://Projectiles/PitLordSword/PitLordSword.tscn")
+@export var bullet_scene: Resource = preload("res://Projectiles/PitLordSword/PitLordSword.tscn")
 
 func _ready():
   wait_timer = Timer.new()
@@ -27,8 +27,8 @@ func _ready():
   wait_timer.start()
   add_child(wait_timer)
 
-  wait_timer.connect("timeout", self, "_on_WaitTimer_timeout")
-  pit_lord.connect("move_completed", self, "_on_PitLord_move_completed")
+  wait_timer.connect("timeout", Callable(self, "_on_WaitTimer_timeout"))
+  pit_lord.connect("move_completed", Callable(self, "_on_PitLord_move_completed"))
 
 func _on_WaitTimer_timeout():
   if shots >= max_shots:
@@ -48,7 +48,7 @@ func shoot():
   offset += offset_increment * TAU
   shots += 1
   for i in range(0, bullet_count):
-    var bullet = bullet_scene.instance()
+    var bullet = bullet_scene.instantiate()
     bullet.global_position = global_position
     bullet.offset = (i + 1.5) * -PI / (bullet_count + 2)
     bullet.delay = i * 0.025

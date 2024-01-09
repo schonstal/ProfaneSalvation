@@ -1,15 +1,15 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 const UP = Vector2(0, -1)
 const DOWN = Vector2(0, 1)
 
-export var max_speed = 600
-export var max_health = 3
-export var max_mana = 2
-export var halos_per_pip = 25
-export var shoot_rate = 0.2
-export var deflect_buffer_time = 0.2
-export var flash_interval = 0.04
+@export var max_speed = 600
+@export var max_health = 3
+@export var max_mana = 2
+@export var halos_per_pip = 25
+@export var shoot_rate = 0.2
+@export var deflect_buffer_time = 0.2
+@export var flash_interval = 0.04
 
 var dead = false
 
@@ -22,7 +22,7 @@ var mana = 1
 var halos = 0
 
 var stun_count = 0
-var is_stunned setget ,get_stunned
+var is_stunned : get = get_stunned
 
 var flash_time = 0
 var flashing = false
@@ -35,18 +35,18 @@ var deflecting = false
 
 var shoot_time = 0
 
-onready var iframe_timer = $IframeTimer
-onready var sprite = $Sprite
-onready var hitbox = $CollisionShape2D
-onready var bullet_spawn = $BulletSpawn
-onready var hit_indicator = $HitIndicator
-onready var animation = $'Sprite/AnimationPlayer'
-onready var wings_animation = $'Wings/AnimationPlayer'
-onready var muzzle_flare = $MuzzleFlare
-onready var shoot_sound = $ShootSound
-onready var shield_failure_sound = $ShieldFailure
-onready var shield_full_sound = $ShieldFull
-onready var laser = $Laser
+@onready var iframe_timer = $IframeTimer
+@onready var sprite = $Sprite2D
+@onready var hitbox = $CollisionShape2D
+@onready var bullet_spawn = $BulletSpawn
+@onready var hit_indicator = $HitIndicator
+@onready var animation = $'Sprite2D/AnimationPlayer'
+@onready var wings_animation = $'Wings/AnimationPlayer'
+@onready var muzzle_flare = $MuzzleFlare
+@onready var shoot_sound = $ShootSound
+@onready var shield_failure_sound = $ShieldFailure
+@onready var shield_full_sound = $ShieldFull
+@onready var laser = $Laser
 
 var death_scene = preload("res://Player/Death/Death.tscn")
 var bullet_scene = preload("res://Projectiles/AngelSword/AngelSword.tscn")
@@ -60,12 +60,12 @@ func _ready():
   InputMap.action_set_deadzone("ui_left", 0.2)
   InputMap.action_set_deadzone("ui_right", 0.2)
 
-  EventBus.connect("halo_collected", self, "_on_halo_collected")
-  EventBus.connect("health_collected", self, "_on_health_collected")
+  EventBus.connect("halo_collected", Callable(self, "_on_halo_collected"))
+  EventBus.connect("health_collected", Callable(self, "_on_health_collected"))
 
-  iframe_timer.connect("timeout", self, "_on_Iframe_timer_timeout")
-  animation.connect("animation_finished", self, "_on_SpriteAnimationPlayer_finished")
-  laser.connect("attack_finished", self, "_on_Laser_attack_finished")
+  iframe_timer.connect("timeout", Callable(self, "_on_Iframe_timer_timeout"))
+  animation.connect("animation_finished", Callable(self, "_on_SpriteAnimationPlayer_finished"))
+  laser.connect("attack_finished", Callable(self, "_on_Laser_attack_finished"))
 
 func _physics_process(delta):
   if dead:
@@ -80,7 +80,10 @@ func _physics_process(delta):
   velocity.y = min(velocity.y, max_speed)
   velocity.y = max(velocity.y, -max_speed)
 
-  velocity = move_and_slide(velocity, UP)
+  set_velocity(velocity)
+  set_up_direction(UP)
+  move_and_slide()
+  velocity = velocity
 
 func _process(delta):
   if dead:
@@ -107,18 +110,18 @@ func update_flash(delta):
       flash_time = flash_interval
       flashing = !flashing
       if flashing:
-        $Sprite.modulate = Color(1, 1, 1, 0.1)
+        $Sprite2D.modulate = Color(1, 1, 1, 0.1)
       else:
-        $Sprite.modulate = Color(1, 1, 1, 1)
+        $Sprite2D.modulate = Color(1, 1, 1, 1)
 
   else:
     flash_time = 0
 
     if flashing:
-      $Sprite.modulate = Color(1, 1, 1, 1)
+      $Sprite2D.modulate = Color(1, 1, 1, 1)
       flashing = false
 
-  $Wings.modulate = $Sprite.modulate
+  $Wings.modulate = $Sprite2D.modulate
 
 func hurt(damage):
   if invulnerable && damage < 100:
@@ -140,7 +143,7 @@ func hurt(damage):
   emit_signal("hurt", health)
 
 func die():
-  var death_node = death_scene.instance()
+  var death_node = death_scene.instantiate()
   Game.scene.particles.add_child(death_node)
   dead = true
   Game.scene.remove_child(self)
@@ -225,7 +228,7 @@ func shoot():
   shoot_sound.play()
 
 func spawn_bullet(offset):
-  var bullet = bullet_scene.instance()
+  var bullet = bullet_scene.instantiate()
   Game.scene.projectiles.call_deferred("add_child", bullet)
   bullet.global_position = bullet_spawn.global_position + offset
   bullet.rotation = -PI / 2

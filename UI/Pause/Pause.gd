@@ -20,7 +20,7 @@ func pause():
   visible = true
 
   if pause_scene == null:
-    pause_scene = pause_menu.instance()
+    pause_scene = pause_menu.instantiate()
     add_child(pause_scene)
 
   MusicPlayer.enable_filter()

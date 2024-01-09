@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/PitLord_Death.wav-3e3c9af4e8d30870b264ffd5912beb1a.sample"
+type="AudioStreamWAV"
+uid="uid://crogq33symtup"
+path="res://.godot/imported/PitLord_Death.wav-3e3c9af4e8d30870b264ffd5912beb1a.sample"
 
 [deps]
 
 source_file="res://Enemies/PitLord/PitLord_Death.wav"
-dest_files=[ "res://.import/PitLord_Death.wav-3e3c9af4e8d30870b264ffd5912beb1a.sample" ]
+dest_files=["res://.godot/imported/PitLord_Death.wav-3e3c9af4e8d30870b264ffd5912beb1a.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

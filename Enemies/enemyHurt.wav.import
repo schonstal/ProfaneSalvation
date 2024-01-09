@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/EnemyHurt.wav-c039a1290a6ed605bf7c7bdd9484e5f4.sample"
+type="AudioStreamWAV"
+uid="uid://bwmqtermd6b0y"
+path="res://.godot/imported/enemyHurt.wav-694b4e9f379f396b32f5293abf6ba87e.sample"
 
 [deps]
 
-source_file="res://Enemies/EnemyHurt.wav"
-dest_files=[ "res://.import/EnemyHurt.wav-c039a1290a6ed605bf7c7bdd9484e5f4.sample" ]
+source_file="res://Enemies/enemyHurt.wav"
+dest_files=["res://.godot/imported/enemyHurt.wav-694b4e9f379f396b32f5293abf6ba87e.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

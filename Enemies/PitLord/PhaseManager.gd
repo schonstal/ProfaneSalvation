@@ -1,19 +1,19 @@
 extends Node2D
 
-export(Array, Resource) var phase_one = [
+@export var phase_one = [ # (Array, Resource)
     preload("res://Enemies/PitLord/AttackPatterns/SideSwords/SideSwords.tscn"),
     preload("res://Enemies/PitLord/AttackPatterns/Swords/Swords.tscn")
   ]
 
-export(Array, Resource) var phase_two = [
+@export var phase_two = [ # (Array, Resource)
     preload("res://Enemies/PitLord/AttackPatterns/TwistSwords/TwistSwords.tscn")
   ]
 
-export(Array, Resource) var phase_three = [
+@export var phase_three = [ # (Array, Resource)
     preload("res://Enemies/PitLord/AttackPatterns/SpinSkulls/SpinSkulls.tscn")
   ]
 
-export var phase_transition_time = 1.0
+@export var phase_transition_time = 1.0
 
 var patterns = []
 
@@ -23,14 +23,14 @@ var phase = 1
 var active = true
 var wait_timer:Timer
 
-onready var pit_lord = $'..'
+@onready var pit_lord = $'..'
 
 func _ready():
-  EventBus.connect("boss_pattern_complete", self, "_on_boss_pattern_complete")
-  EventBus.connect("boss_hurt", self, "_on_boss_hurt")
+  EventBus.connect("boss_pattern_complete", Callable(self, "_on_boss_pattern_complete"))
+  EventBus.connect("boss_hurt", Callable(self, "_on_boss_hurt"))
 
-  pit_lord.connect("fade_in_completed", self, "_on_PitLord_fade_in_completed")
-  pit_lord.connect("fade_out_completed", self, "_on_PitLord_fade_out_completed")
+  pit_lord.connect("fade_in_completed", Callable(self, "_on_PitLord_fade_in_completed"))
+  pit_lord.connect("fade_out_completed", Callable(self, "_on_PitLord_fade_out_completed"))
 
   wait_timer = Timer.new()
   wait_timer.set_name("WaitTimer")
@@ -38,7 +38,7 @@ func _ready():
   wait_timer.one_shot = true
   add_child(wait_timer)
 
-  wait_timer.connect("timeout", self, "_on_WaitTimer_timeout")
+  wait_timer.connect("timeout", Callable(self, "_on_WaitTimer_timeout"))
 
   patterns = phase_one
 
@@ -46,7 +46,7 @@ func spawn_pattern():
   if active_pattern != null && is_instance_valid(active_pattern):
     active_pattern.queue_free()
 
-  active_pattern = next_pattern().instance()
+  active_pattern = next_pattern().instantiate()
   pit_lord.call_deferred("add_child", active_pattern)
 
 func next_pattern():

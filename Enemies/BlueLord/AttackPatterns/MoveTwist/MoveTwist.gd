@@ -1,21 +1,21 @@
 extends Node2D
 
-onready var blue_lord = $'..'
+@onready var blue_lord = $'..'
 
 var wait_timer:Timer
 var activate_timer:Timer
 
-export var activate_time = 6.0
-export var wait_time = 3.0
-export var distance = 50
-export var center = Vector2(1920 / 2 - 200, 1080 / 2 - 200)
-export var spawn_offset = Vector2(0, -82)
+@export var activate_time = 6.0
+@export var wait_time = 3.0
+@export var distance = 50
+@export var center = Vector2(1920 / 2 - 200, 1080 / 2 - 200)
+@export var spawn_offset = Vector2(0, -82)
 
 var offset = 0.0
 
-onready var flies = $Flies
+@onready var flies = $Flies
 
-export(Resource) var pattern_scene = preload("res://Enemies/BlueLord/AttackPatterns/MoveTwist/AcceleratingTwist.tscn")
+@export var pattern_scene: Resource = preload("res://Enemies/BlueLord/AttackPatterns/MoveTwist/AcceleratingTwist.tscn")
 
 func _ready():
   wait_timer = Timer.new()
@@ -32,12 +32,12 @@ func _ready():
   activate_timer.start()
   add_child(activate_timer)
 
-  wait_timer.connect("timeout", self, "_on_WaitTimer_timeout")
-  activate_timer.connect("timeout", self, "_on_ActivateTimer_timeout")
-  blue_lord.connect("move_completed", self, "_on_BlueLord_move_completed")
+  wait_timer.connect("timeout", Callable(self, "_on_WaitTimer_timeout"))
+  activate_timer.connect("timeout", Callable(self, "_on_ActivateTimer_timeout"))
+  blue_lord.connect("move_completed", Callable(self, "_on_BlueLord_move_completed"))
 
 func _on_WaitTimer_timeout():
-  var direction = Vector2(rand_range(-1, 1), rand_range(-1, 1))
+  var direction = Vector2(randf_range(-1, 1), randf_range(-1, 1))
   direction = direction.normalized()
 
   blue_lord.move_to(center + distance * direction, 1)
@@ -50,6 +50,6 @@ func _on_BlueLord_move_completed():
   shoot()
 
 func shoot():
-  var pattern = pattern_scene.instance()
+  var pattern = pattern_scene.instantiate()
   call_deferred("add_child", pattern)
   wait_timer.start()

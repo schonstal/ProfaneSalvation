@@ -5,7 +5,7 @@
 [ext_resource path="res://Enemies/BlueLord/BlueLordDeath/BlueLordDeath.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/BlueLord/Blue_Lord_Death.wav" type="AudioStream" id=4]
 [ext_resource path="res://Enemies/RedLord/Red_Lord_Death.wav" type="AudioStream" id=5]
-[ext_resource path="res://Enemies/RedLord/Sprite/RedLord0_7x1.png" type="Texture" id=6]
+[ext_resource path="res://Enemies/RedLord/Sprite2D/RedLord0_7x1.png" type="Texture2D" id=6]
 [ext_resource path="res://Enemies/PitLord/Rubble.gd" type="Script" id=7]
 [ext_resource path="res://Enemies/RedLord/Red_Lord_Appears.wav" type="AudioStream" id=8]
 [ext_resource path="res://Enemies/RedLord/Red_Lord_Dissappears.wav" type="AudioStream" id=9]
@@ -23,8 +23,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
@@ -39,8 +39,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ 0 ]
 }
@@ -59,8 +59,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4 ]
 }
@@ -71,8 +71,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -96,7 +96,7 @@ explosion_scene = ExtResource( 3 )
 hurt_sound = ExtResource( 4 )
 die_sound = ExtResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="Enemy"]
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 texture = ExtResource( 6 )
 hframes = 7
 frame = 6
@@ -104,7 +104,7 @@ script = ExtResource( 7 )
 float_speed = 2
 float_amount = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy/Sprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy/Sprite2D"]
 autoplay = "Idle"
 playback_speed = 1.5
 anims/Attack = SubResource( 1 )
@@ -134,7 +134,7 @@ stream = ExtResource( 10 )
 
 [node name="MoveTween" type="Tween" parent="."]
 
-[node name="AppearSprite" type="Sprite" parent="."]
+[node name="AppearSprite" type="Sprite2D" parent="."]
 visible = false
 position = Vector2( 0, -96.0651 )
 hframes = 6

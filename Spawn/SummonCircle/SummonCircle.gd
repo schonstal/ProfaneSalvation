@@ -1,20 +1,20 @@
 extends Node2D
 
-onready var summon_circle_small = $SummonCircleSmall
-onready var summon_circle_big = $SummonCircleBig
-onready var fade_tween = $FadeTween
+@onready var summon_circle_small = $SummonCircleSmall
+@onready var summon_circle_big = $SummonCircleBig
+@onready var fade_tween = $FadeTween
 
 var theta = 0
 
-export var angular_velocity = 1.5
-export var fade_duration = 0.5
+@export var angular_velocity = 1.5
+@export var fade_duration = 0.5
 
 signal fade_finished
 
 var target_color = Color(1, 1, 1, 1)
 
 func _ready():
-  fade_tween.connect("tween_completed", self, "_on_FadeTween_tween_completed")
+  fade_tween.connect("tween_completed", Callable(self, "_on_FadeTween_tween_completed"))
   modulate = Color(target_color.r, target_color.g, target_color.b, 0)
 
 func _process(delta):

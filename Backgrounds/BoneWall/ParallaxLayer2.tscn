@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Backgrounds/ParallaxLayer.gd" type="Script" id=1]
-[ext_resource path="res://Backgrounds/BoneWall/BoneWallDarker.png" type="Texture" id=2]
+[ext_resource path="res://Backgrounds/BoneWall/BoneWallDarker.png" type="Texture2D" id=2]
 
 [node name="ParallaxLayer2" type="ParallaxLayer"]
 editor/display_folded = true
@@ -12,37 +12,37 @@ __meta__ = {
 }
 speed = 1500
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2( 120, 0 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="BoneWallDarker5" type="Sprite" parent="."]
+[node name="BoneWallDarker5" type="Sprite2D" parent="."]
 position = Vector2( 1800, 0 )
 scale = Vector2( -0.8, 0.8 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="BoneWallDarker2" type="Sprite" parent="."]
+[node name="BoneWallDarker2" type="Sprite2D" parent="."]
 position = Vector2( 120, 384 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="BoneWallDarker4" type="Sprite" parent="."]
+[node name="BoneWallDarker4" type="Sprite2D" parent="."]
 position = Vector2( 1800, 384 )
 scale = Vector2( -0.8, 0.8 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="BoneWallDarker3" type="Sprite" parent="."]
+[node name="BoneWallDarker3" type="Sprite2D" parent="."]
 position = Vector2( 120, 768 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="BoneWallDarker6" type="Sprite" parent="."]
+[node name="BoneWallDarker6" type="Sprite2D" parent="."]
 position = Vector2( 1800, 768 )
 scale = Vector2( -0.8, 0.8 )
 texture = ExtResource( 2 )

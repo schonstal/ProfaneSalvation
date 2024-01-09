@@ -1,9 +1,9 @@
 extends Node2D
 
-onready var audio = $AudioStreamPlayer
+@onready var audio = $AudioStreamPlayer
 
 func _ready():
-  audio.connect("finished", self, "_on_AudioStreamPlayer_finished")
+  audio.connect("finished", Callable(self, "_on_AudioStreamPlayer_finished"))
 
   global_position = Game.scene.player.global_position
   scale = Game.scene.player.scale

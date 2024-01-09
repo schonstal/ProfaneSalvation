@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/FlylordFire.wav-c7b1b2be0110b13091bb679e1ebfe87c.sample"
+type="AudioStreamWAV"
+uid="uid://bg7a5l1ynejfp"
+path="res://.godot/imported/FlylordFire.wav-c7b1b2be0110b13091bb679e1ebfe87c.sample"
 
 [deps]
 
 source_file="res://Enemies/FlyLord/FlylordFire.wav"
-dest_files=[ "res://.import/FlylordFire.wav-c7b1b2be0110b13091bb679e1ebfe87c.sample" ]
+dest_files=["res://.godot/imported/FlylordFire.wav-c7b1b2be0110b13091bb679e1ebfe87c.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

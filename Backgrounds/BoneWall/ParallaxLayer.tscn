@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Backgrounds/ParallaxLayer.gd" type="Script" id=1]
-[ext_resource path="res://Backgrounds/BoneWall/BoneWall.png" type="Texture" id=2]
+[ext_resource path="res://Backgrounds/BoneWall/BoneWall.png" type="Texture2D" id=2]
 
 [node name="ParallaxLayer" type="ParallaxLayer"]
 editor/display_folded = true
@@ -12,38 +12,38 @@ __meta__ = {
 }
 speed = 3000
 
-[node name="BoneWall" type="Sprite" parent="."]
+[node name="BoneWall" type="Sprite2D" parent="."]
 position = Vector2( 0, 481 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="BoneWall2" type="Sprite" parent="."]
+[node name="BoneWall2" type="Sprite2D" parent="."]
 position = Vector2( 0, 962 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource( 2 )
 centered = false
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BoneWall3" type="Sprite" parent="."]
+[node name="BoneWall3" type="Sprite2D" parent="."]
 position = Vector2( 1920.1, 481 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="BoneWall4" type="Sprite" parent="."]
+[node name="BoneWall4" type="Sprite2D" parent="."]
 position = Vector2( 1920, 962 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="Sprite2" type="Sprite2D" parent="."]
 position = Vector2( 1920, 0 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )

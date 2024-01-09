@@ -1,8 +1,8 @@
 extends Node2D
 
 func _ready():
-  Game.scene.player.connect("mana_spent", self, "_on_Player_mana_spent")
-  EventBus.connect("halo_collected", self, "_on_halo_collected")
+  Game.scene.player.connect("mana_spent", Callable(self, "_on_Player_mana_spent"))
+  EventBus.connect("halo_collected", Callable(self, "_on_halo_collected"))
 
   var children = get_children()
 

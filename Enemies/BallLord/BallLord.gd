@@ -1,11 +1,11 @@
 extends Node2D
 
-onready var enemy = $Enemy
+@onready var enemy = $Enemy
 
-export var bullet_count = 12
-export var speed = Vector2(0, 200)
-export var bullet_speed = 500
-export var angular_velocity = 0.5
+@export var bullet_count = 12
+@export var speed = Vector2(0, 200)
+@export var bullet_speed = 500
+@export var angular_velocity = 0.5
 
 var velocity
 var acceleration
@@ -14,18 +14,18 @@ var disable_bullets = false
 
 signal died
 
-export(Resource) var bullet_scene = preload("res://Projectiles/Projectile.tscn")
+@export var bullet_scene: Resource = preload("res://Projectiles/Projectile.tscn")
 
 func _ready():
   # Make your APIs consistent, you dingus
   if velocity != null:
     speed = velocity
 
-  enemy.connect("died", self, "_on_Enemy_died")
-  enemy.connect("body_entered", self, "_on_body_entered")
+  enemy.connect("died", Callable(self, "_on_Enemy_died"))
+  enemy.connect("body_entered", Callable(self, "_on_body_entered"))
   enemy.velocity.y = speed.y
   enemy.velocity.x = speed.x
-  EventBus.connect("chapter_complete", self, "_on_chapter_complete")
+  EventBus.connect("chapter_complete", Callable(self, "_on_chapter_complete"))
 
 func _on_chapter_complete():
   disable_bullets = true

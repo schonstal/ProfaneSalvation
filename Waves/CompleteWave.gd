@@ -2,7 +2,7 @@ extends Node2D
 
 var completed = false
 
-export var complete_time = 1.0
+@export var complete_time = 1.0
 var time = 0.0
 
 signal wave_completed

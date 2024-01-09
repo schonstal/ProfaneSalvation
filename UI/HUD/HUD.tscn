@@ -3,19 +3,19 @@
 [ext_resource path="res://UI/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://UI/HUD/Container.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/HUD/BossHP/BossHP.tscn" type="PackedScene" id=3]
-[ext_resource path="res://UI/HUD/HaloIcon.png" type="Texture" id=4]
+[ext_resource path="res://UI/HUD/HaloIcon.png" type="Texture2D" id=4]
 [ext_resource path="res://UI/Score.gd" type="Script" id=5]
 
-[sub_resource type="DynamicFontData" id=1]
+[sub_resource type="FontFile" id=1]
 font_path = "res://UI/Fonts/Pirata_One/PirataOne-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="FontFile" id=2]
 size = 48
 font_data = SubResource( 1 )
 
 [node name="HUD" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
@@ -27,27 +27,27 @@ __meta__ = {
 position = Vector2( 1800, 200 )
 
 [node name="Points" type="Control" parent="."]
-margin_left = 5.0
-margin_right = 65.475
-margin_bottom = 42.7541
+offset_left = 5.0
+offset_right = 65.475
+offset_bottom = 42.7541
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Points"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="Points/HBoxContainer"]
-margin_right = 35.0
-margin_bottom = 63.0
+offset_right = 35.0
+offset_bottom = 63.0
 texture = ExtResource( 4 )
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="Points/HBoxContainer"]
-margin_left = 39.0
-margin_right = 60.0
-margin_bottom = 63.0
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color_shadow = Color( 0.235294, 0.105882, 0.00392157, 1 )
-custom_constants/shadow_offset_y = 3
+offset_left = 39.0
+offset_right = 60.0
+offset_bottom = 63.0
+theme_override_fonts/font = SubResource( 2 )
+theme_override_colors/font_shadow_color = Color( 0.235294, 0.105882, 0.00392157, 1 )
+theme_override_constants/shadow_offset_y = 3
 text = "0"
 script = ExtResource( 5 )
 

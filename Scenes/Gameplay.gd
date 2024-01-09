@@ -12,7 +12,7 @@ var items:Node
 var game_over_layer:Node
 var lasers:Node
 
-onready var is_game_over = false
+@onready var is_game_over = false
 
 var game_over_scene = preload("res://UI/GameOver/GameOver.tscn")
 var game_over_node
@@ -20,7 +20,7 @@ var game_over_node
 var score = 0
 
 func _enter_tree():
-  camera = $Camera
+  camera = $Camera3D
   player = $Player
   explosions = $Explosions
   sound = $Sound
@@ -35,7 +35,7 @@ func _enter_tree():
   Game.initialize()
 
 func _ready():
-  EventBus.connect("upgrade_collected", self, "_on_upgrade_collected")
+  EventBus.connect("upgrade_collected", Callable(self, "_on_upgrade_collected"))
   Engine.time_scale = 1
   reset_score()
 
@@ -46,7 +46,7 @@ func _process(delta):
     Engine.time_scale = 1
 
   if game_over_node == null && is_game_over && Engine.time_scale >= 1:
-    game_over_node = game_over_scene.instance()
+    game_over_node = game_over_scene.instantiate()
     game_over_layer.add_child(game_over_node)
 
 func game_over():

@@ -1,8 +1,8 @@
 extends Node2D
 
-export var radius = 50
-export var offset = 0
-export var speed = 600
+@export var radius = 50
+@export var offset = 0
+@export var speed = 600
 
 var duration = 0.2
 var delay = 0.0
@@ -16,10 +16,10 @@ var direction = Vector2(0, 0)
 var aim_time = 0
 var aim_limit = 0.5
 
-onready var projectile = $Projectile
-onready var move_tween = $MoveTween
-onready var fade_tween = $FadeTween
-onready var animation = $Projectile/Sprite/AnimationPlayer
+@onready var projectile = $Projectile
+@onready var move_tween = $MoveTween
+@onready var fade_tween = $FadeTween
+@onready var animation = $Projectile/Sprite2D/AnimationPlayer
 
 func _ready():
   modulate =  Color(1, 1, 1, 0)
@@ -39,12 +39,12 @@ func _ready():
     init_timer.start()
     add_child(init_timer)
 
-    init_timer.connect("timeout", self, "_on_InitTimer_timeout")
+    init_timer.connect("timeout", Callable(self, "_on_InitTimer_timeout"))
   else:
     start_tween()
 
-  wait_timer.connect("timeout", self, "_on_WaitTimer_timeout")
-  projectile.connect("died", self, "_on_Projectile_died")
+  wait_timer.connect("timeout", Callable(self, "_on_WaitTimer_timeout"))
+  projectile.connect("died", Callable(self, "_on_Projectile_died"))
 
   direction =  Vector2(
       cos(offset),

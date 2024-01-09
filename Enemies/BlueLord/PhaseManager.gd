@@ -1,27 +1,27 @@
 extends Node2D
 
-export(Array, Resource) var phases = [
+@export var phases = [ # (Array, Resource)
     preload("res://Enemies/BlueLord/AttackPatterns/SpiralBalls/SpiralBalls.tscn"),
     preload("res://Enemies/BlueLord/AttackPatterns/MoveTwist/MoveTwist.tscn"),
     preload("res://Enemies/BlueLord/AttackPatterns/BallSpin/BallSpin.tscn"),
     preload("res://Enemies/BlueLord/AttackPatterns/MoveShoot/MoveShoot.tscn")
   ]
 
-export var phase_transition_time = 1.0
+@export var phase_transition_time = 1.0
 
 var active_pattern = null
 var phase = 0
 var active = true
 var wait_timer:Timer
 
-onready var blue_lord = $'..'
+@onready var blue_lord = $'..'
 
 func _ready():
-  EventBus.connect("boss_pattern_complete", self, "_on_boss_pattern_complete")
-  EventBus.connect("boss_hurt", self, "_on_boss_hurt")
+  EventBus.connect("boss_pattern_complete", Callable(self, "_on_boss_pattern_complete"))
+  EventBus.connect("boss_hurt", Callable(self, "_on_boss_hurt"))
 
-  blue_lord.connect("fade_in_completed", self, "_on_BlueLord_fade_in_completed")
-  blue_lord.connect("fade_out_completed", self, "_on_BlueLord_fade_out_completed")
+  blue_lord.connect("fade_in_completed", Callable(self, "_on_BlueLord_fade_in_completed"))
+  blue_lord.connect("fade_out_completed", Callable(self, "_on_BlueLord_fade_out_completed"))
 
   wait_timer = Timer.new()
   wait_timer.set_name("WaitTimer")
@@ -29,13 +29,13 @@ func _ready():
   wait_timer.one_shot = true
   add_child(wait_timer)
 
-  wait_timer.connect("timeout", self, "_on_WaitTimer_timeout")
+  wait_timer.connect("timeout", Callable(self, "_on_WaitTimer_timeout"))
 
 func spawn_pattern():
   if active_pattern != null && is_instance_valid(active_pattern):
     active_pattern.queue_free()
 
-  active_pattern = phases[phase].instance()
+  active_pattern = phases[phase].instantiate()
   blue_lord.call_deferred("add_child", active_pattern)
 
 func change_phase(index):

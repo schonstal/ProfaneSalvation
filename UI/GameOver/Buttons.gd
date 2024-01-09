@@ -1,16 +1,16 @@
 extends VBoxContainer
 
-onready var try_again = $TryAgainButton
-onready var exit = $ExitButton
+@onready var try_again = $TryAgainButton
+@onready var exit = $ExitButton
 
 func _ready():
   try_again.initialize_focus()
-  try_again.connect("pressed", self, "_on_TryAgainButton_pressed")
+  try_again.connect("pressed", Callable(self, "_on_TryAgainButton_pressed"))
 
-  exit.connect("pressed", self, "_on_ExitButton_pressed")
+  exit.connect("pressed", Callable(self, "_on_ExitButton_pressed"))
 
 func _on_TryAgainButton_pressed():
   Game.reset()
 
 func _on_ExitButton_pressed():
-  Game.change_scene("res://TitleScreen/TitleScreen.tscn")
+  Game.change_scene_to_file("res://TitleScreen/TitleScreen.tscn")

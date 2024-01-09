@@ -1,27 +1,27 @@
 extends Node2D
 
-onready var sprite = $Sprite
-onready var animation = $Sprite/AnimationPlayer
-onready var area = $Area2D
-onready var collision = $Area2D/CollisionShape2D
-onready var buffer = $InputBuffer
-onready var halo_sprite = $Halo/Halo
-onready var fade_tween = $FadeTween
-onready var reveal_tween = $FadeTween
-onready var shield_timer = $ShieldTimer
+@onready var sprite = $Sprite2D
+@onready var animation = $Sprite2D/AnimationPlayer
+@onready var area = $Area2D
+@onready var collision = $Area2D/CollisionShape2D
+@onready var buffer = $InputBuffer
+@onready var halo_sprite = $Halo/Halo
+@onready var fade_tween = $FadeTween
+@onready var reveal_tween = $FadeTween
+@onready var shield_timer = $ShieldTimer
 
 var deflecting = false
 var deflect_attempt = false
 
-export var fade_duration = 0.5
-export var active_time = 0.5
+@export var fade_duration = 0.5
+@export var active_time = 0.5
 
 func _ready():
-  area.connect("area_entered", self, "_on_Area2D_area_entered")
-  animation.connect("animation_finished", self, "_on_SpriteAnimationPlayer_finished")
-  buffer.connect("timeout", self, "_on_InputBuffer_timeout")
-  fade_tween.connect("tween_completed", self, "_on_FadeTween_tween_completed")
-  shield_timer.connect("timeout", self, "_on_ShieldTimer_timeout")
+  area.connect("area_entered", Callable(self, "_on_Area2D_area_entered"))
+  animation.connect("animation_finished", Callable(self, "_on_SpriteAnimationPlayer_finished"))
+  buffer.connect("timeout", Callable(self, "_on_InputBuffer_timeout"))
+  fade_tween.connect("tween_completed", Callable(self, "_on_FadeTween_tween_completed"))
+  shield_timer.connect("timeout", Callable(self, "_on_ShieldTimer_timeout"))
 
   halo_sprite.modulate = Color(1, 1, 1, 0)
   collision.disabled = true

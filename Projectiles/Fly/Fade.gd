@@ -1,7 +1,7 @@
 extends Node2D
 
-onready var fade_tween = $FadeTween
-onready var sprite = $'..'
+@onready var fade_tween = $FadeTween
+@onready var sprite = $'..'
 
 func _ready():
   sprite.modulate = Color(1, 1, 1, 0)

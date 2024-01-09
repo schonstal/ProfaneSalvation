@@ -1,13 +1,13 @@
 extends VBoxContainer
 
-onready var new_game = $NewGameButton
-onready var quit = $QuitButton
+@onready var new_game = $NewGameButton
+@onready var quit = $QuitButton
 
 func _ready():
   new_game.initialize_focus()
 
-  new_game.connect("pressed", self, "_on_NewGameButton_pressed")
-  quit.connect("pressed", self, "_on_QuitButton_pressed")
+  new_game.connect("pressed", Callable(self, "_on_NewGameButton_pressed"))
+  quit.connect("pressed", Callable(self, "_on_QuitButton_pressed"))
 
   MusicPlayer.play_file("res://Music/menu.ogg")
 
@@ -15,7 +15,7 @@ func _on_NewGameButton_pressed():
   Game.wave = 0
   Game.gun_level = 0
   MusicPlayer.stop()
-  Game.change_scene("res://Scenes/Gameplay.tscn")
+  Game.change_scene_to_file("res://Scenes/Gameplay.tscn")
 
 func _on_QuitButton_pressed():
   get_tree().quit()

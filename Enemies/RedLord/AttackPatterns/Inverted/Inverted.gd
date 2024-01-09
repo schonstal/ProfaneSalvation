@@ -1,16 +1,16 @@
 extends Node2D
 
-onready var red_lord = $'..'
-onready var twist = $Twist
-onready var blue_twist = $BlueTwist
+@onready var red_lord = $'..'
+@onready var twist = $Twist
+@onready var blue_twist = $BlueTwist
 
 var wait_timer:Timer
 var upgrade_timer:Timer
 
-export var wait_time = 6.0
-export var upgrade_time = 6.0
-export var center = Vector2(1920 / 2, 1080 / 2 - 200)
-export var distance = 50
+@export var wait_time = 6.0
+@export var upgrade_time = 6.0
+@export var center = Vector2(1920 / 2, 1080 / 2 - 200)
+@export var distance = 50
 
 var point_index = 0
 var level = 0
@@ -30,9 +30,9 @@ func _ready():
   upgrade_timer.start()
   add_child(upgrade_timer)
 
-  upgrade_timer.connect("timeout", self, "_on_UpgradeTimer_timeout")
-  wait_timer.connect("timeout", self, "_on_WaitTimer_timeout")
-  red_lord.connect("move_completed", self, "_on_RedLord_move_completed")
+  upgrade_timer.connect("timeout", Callable(self, "_on_UpgradeTimer_timeout"))
+  wait_timer.connect("timeout", Callable(self, "_on_WaitTimer_timeout"))
+  red_lord.connect("move_completed", Callable(self, "_on_RedLord_move_completed"))
   red_lord.start_attack()
 
   twist.global_position = center

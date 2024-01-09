@@ -1,19 +1,19 @@
 extends Area2D
 
-onready var aim_timer = $AimTimer
-onready var active_timer = $ActiveTimer
-onready var animation = $Body/AnimationPlayer
-onready var ring_animation = $Body/Ring/AnimationPlayer
+@onready var aim_timer = $AimTimer
+@onready var active_timer = $ActiveTimer
+@onready var animation = $Body/AnimationPlayer
+@onready var ring_animation = $Body/Ring/AnimationPlayer
 
 var enemy = null
 var active = true
 var player_laser = false
 
-export var aim_time = 0.25
-export var active_time = 3.0
+@export var aim_time = 0.25
+@export var active_time = 3.0
 
-export(Resource) var charge_up_sound = preload("res://Projectiles/DopeLaser/ChargeUpSound.tscn")
-export(Resource) var shut_down_sound = preload("res://Projectiles/DopeLaser/ShutDownSound.tscn")
+@export var charge_up_sound: Resource = preload("res://Projectiles/DopeLaser/ChargeUpSound.tscn")
+@export var shut_down_sound: Resource = preload("res://Projectiles/DopeLaser/ShutDownSound.tscn")
 
 signal attack_finished
 
@@ -23,18 +23,18 @@ var time_per_hit = 0.05
 var timer = 0
 
 func _ready():
-  aim_timer.connect("timeout", self, "_on_AimTimer_timeout")
-  active_timer.connect("timeout", self, "_on_ActiveTimer_timeout")
-  animation.connect("animation_finished", self, "_on_Body_animation_finished")
+  aim_timer.connect("timeout", Callable(self, "_on_AimTimer_timeout"))
+  active_timer.connect("timeout", Callable(self, "_on_ActiveTimer_timeout"))
+  animation.connect("animation_finished", Callable(self, "_on_Body_animation_finished"))
 
-  connect("body_entered", self, "_on_body_entered")
-  connect("area_entered", self, "_on_body_entered")
+  connect("body_entered", Callable(self, "_on_body_entered"))
+  connect("area_entered", Callable(self, "_on_body_entered"))
 
-  connect("body_exited", self, "_on_body_exited")
-  connect("area_exited", self, "_on_body_exited")
+  connect("body_exited", Callable(self, "_on_body_exited"))
+  connect("area_exited", Callable(self, "_on_body_exited"))
 
   if enemy != null:
-    enemy.connect("died", self, "_on_enemy_died")
+    enemy.connect("died", Callable(self, "_on_enemy_died"))
 
   aim_timer.start(aim_time)
 

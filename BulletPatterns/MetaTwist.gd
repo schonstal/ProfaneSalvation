@@ -1,16 +1,16 @@
 extends Node2D
 
-export var spawn_count = 6
-export var offset_increment = 0.1
-export var spawn_time = 0.1
-export var duration = 0.0
-export var rotate = true
-export var radius = 30
-export var arc = TAU
-export var offset = 0.0
-export var active = true
+@export var spawn_count = 6
+@export var offset_increment = 0.1
+@export var spawn_time = 0.1
+@export var duration = 0.0
+@export var rotate = true
+@export var radius = 30
+@export var arc = TAU
+@export var offset = 0.0
+@export var active = true
 
-export(Resource) var pattern_scene = preload("res://Projectiles/Projectile.tscn")
+@export var pattern_scene: Resource = preload("res://Projectiles/Projectile.tscn")
 
 var spawn_timer:Timer
 var duration_timer:Timer
@@ -26,7 +26,7 @@ func _ready():
     duration_timer.start()
     add_child(duration_timer)
 
-    duration_timer.connect("timeout", self, "_on_DurationTimer_timeout")
+    duration_timer.connect("timeout", Callable(self, "_on_DurationTimer_timeout"))
 
   spawn_timer = Timer.new()
   spawn_timer.set_name("SpawnTimer")
@@ -34,7 +34,7 @@ func _ready():
   spawn_timer.start()
   add_child(spawn_timer)
 
-  spawn_timer.connect("timeout", self, "_on_SpawnTimer_timeout")
+  spawn_timer.connect("timeout", Callable(self, "_on_SpawnTimer_timeout"))
 
   shoot()
 
@@ -43,7 +43,7 @@ func shoot():
     return
 
   for index in range(0, spawn_count):
-    var pattern = pattern_scene.instance()
+    var pattern = pattern_scene.instantiate()
     var angle = TAU * index / spawn_count + offset
 
     pattern.global_position = position + \

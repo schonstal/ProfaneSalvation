@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Bat_Appears.wav-0ea48f58098215c50112ec8abec068d1.sample"
+type="AudioStreamWAV"
+uid="uid://ceo3aalqlput7"
+path="res://.godot/imported/Bat_Appears.wav-0ea48f58098215c50112ec8abec068d1.sample"
 
 [deps]
 
 source_file="res://Spawn/Bat_Appears.wav"
-dest_files=[ "res://.import/Bat_Appears.wav-0ea48f58098215c50112ec8abec068d1.sample" ]
+dest_files=["res://.godot/imported/Bat_Appears.wav-0ea48f58098215c50112ec8abec068d1.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

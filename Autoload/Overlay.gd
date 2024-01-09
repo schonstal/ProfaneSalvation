@@ -1,11 +1,11 @@
 extends Control
 
 signal fade_complete
-onready var fade_tween = $Tween
-onready var rect = $CanvasLayer/ColorRect
+@onready var fade_tween = $Tween
+@onready var rect = $CanvasLayer/ColorRect
 
 func _ready():
-  fade_tween.connect("tween_completed", self, "_on_FadeTween_tween_completed")
+  fade_tween.connect("tween_completed", Callable(self, "_on_FadeTween_tween_completed"))
 
 func fade(start_color, end_color, duration):
   fade_tween.interpolate_property(

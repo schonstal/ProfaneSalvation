@@ -1,10 +1,10 @@
 extends Node2D
 
-export var spawn_count = 2
-export var bullet_speed = 250
-export var spawn_time = 0.1
+@export var spawn_count = 2
+@export var bullet_speed = 250
+@export var spawn_time = 0.1
 
-export(Resource) var bullet_scene = preload("res://Projectiles/Fly/Fly.tscn")
+@export var bullet_scene: Resource = preload("res://Projectiles/Fly/Fly.tscn")
 
 var spawn_timer:Timer
 

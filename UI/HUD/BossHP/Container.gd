@@ -1,11 +1,11 @@
-tool
+@tool
 extends Node2D
 
-export var length = 500.0
+@export var length = 500.0
 
-onready var left = $Left
-onready var right = $Right
-onready var bottom = $Bottom
+@onready var left = $Left
+@onready var right = $Right
+@onready var bottom = $Bottom
 
 var length_was = 0.0
 

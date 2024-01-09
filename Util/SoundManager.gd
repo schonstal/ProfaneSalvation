@@ -1,6 +1,6 @@
 extends Node
 
-onready var player_scene = preload("res://Util/SoundEffect.tscn")
+@onready var player_scene = preload("res://Util/SoundEffect.tscn")
 
 var streams = {}
 
@@ -9,9 +9,9 @@ func play(stream, name = null):
     streams[name].seek(0)
     return
 
-  var player = player_scene.instance()
+  var player = player_scene.instantiate()
   player.stream = stream
-  player.connect("finished", self, "_on_finished", [name, player])
+  player.connect("finished", Callable(self, "_on_finished").bind(name, player))
 
   if name:
     streams[name] = player
@@ -24,8 +24,8 @@ func play_scene(scene, name = null):
     streams[name].seek(0)
     return
 
-  var player = scene.instance()
-  player.connect("finished", self, "_on_finished", [name, player])
+  var player = scene.instantiate()
+  player.connect("finished", Callable(self, "_on_finished").bind(name, player))
 
   if name:
     streams[name] = player

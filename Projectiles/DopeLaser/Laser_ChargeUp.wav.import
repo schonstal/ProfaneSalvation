@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Laser_ChargeUp.wav-62a09f9d7f87eee88a5eda2836daf0cf.sample"
+type="AudioStreamWAV"
+uid="uid://cpbwa302nj4qt"
+path="res://.godot/imported/Laser_ChargeUp.wav-62a09f9d7f87eee88a5eda2836daf0cf.sample"
 
 [deps]
 
 source_file="res://Projectiles/DopeLaser/Laser_ChargeUp.wav"
-dest_files=[ "res://.import/Laser_ChargeUp.wav-62a09f9d7f87eee88a5eda2836daf0cf.sample" ]
+dest_files=["res://.godot/imported/Laser_ChargeUp.wav-62a09f9d7f87eee88a5eda2836daf0cf.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

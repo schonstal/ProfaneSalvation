@@ -1,9 +1,9 @@
-extends Sprite
+extends Sprite2D
 
-onready var flash_tween = $FlashTween
+@onready var flash_tween = $FlashTween
 
 func _ready():
-  EventBus.connect("shield_failure", self, "_on_shield_fauilure")
+  EventBus.connect("shield_failure", Callable(self, "_on_shield_fauilure"))
 
 func flash():
   flash_tween.interpolate_property(

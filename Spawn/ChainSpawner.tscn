@@ -3,14 +3,14 @@
 [ext_resource path="res://Spawn/Spawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/ChainLord/ChainLordSpawn.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/ChainLord/ChainLord.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Enemies/ChainLord/Sprite/ChainLordIdle_1.png" type="Texture" id=4]
+[ext_resource path="res://Enemies/ChainLord/Sprite2D/ChainLordIdle_1.png" type="Texture2D" id=4]
 
 [node name="ChainSpawner" instance=ExtResource( 1 )]
 color = Color( 0.866667, 0.180392, 0.129412, 1 )
 spawn_scene = ExtResource( 2 )
 enemy_scene = ExtResource( 3 )
 
-[node name="Placeholder" type="Sprite" parent="." index="4"]
+[node name="Placeholder" type="Sprite2D" parent="." index="4"]
 modulate = Color( 1, 1, 1, 0.701961 )
 texture = ExtResource( 4 )
 

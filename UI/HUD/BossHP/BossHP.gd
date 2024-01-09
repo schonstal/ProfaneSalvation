@@ -1,49 +1,49 @@
 tool  
 extends Node2D
 
-onready var flash_tween = $FlashTween
-onready var grow_tween = $GrowTween
-onready var shrink_tween = $ShrinkTween
+@onready var flash_tween = $FlashTween
+@onready var grow_tween = $GrowTween
+@onready var shrink_tween = $ShrinkTween
 
-onready var bar = $Bar
-onready var back = $Back
-onready var max_amount = 100
+@onready var bar = $Bar
+@onready var back = $Back
+@onready var max_amount = 100
 
-onready var container = $PurpleContainer
-onready var containers = [$PurpleContainer, $BlueContainer, $RedContainer]
+@onready var container = $PurpleContainer
+@onready var containers = [$PurpleContainer, $BlueContainer, $RedContainer]
 var colors = [
     Color(0.6, 0.25, 0.89, 1),
     Color(0.35, 0.38, 0.96, 1),
     Color(1, 0.29, 0.38, 1)
   ]
 
-export var bar_length = 700
-onready var original_bar_length = bar_length
+@export var bar_length = 700
+@onready var original_bar_length = bar_length
 
 var length_scale = 1
 var active = false
 var percent = 0.0
 
 func _ready():
-  if Engine.editor_hint:
+  if Engine.is_editor_hint():
     return
 
   visible = false
 
-  EventBus.connect("boss_hurt", self, "_on_boss_hurt")
-  EventBus.connect("boss_start", self, "_on_boss_start")
-  EventBus.connect("boss_defeated", self, "_on_boss_defeated")
-  shrink_tween.connect("tween_completed", self, "_on_ShrinkTween_tween_completed")
+  EventBus.connect("boss_hurt", Callable(self, "_on_boss_hurt"))
+  EventBus.connect("boss_start", Callable(self, "_on_boss_start"))
+  EventBus.connect("boss_defeated", Callable(self, "_on_boss_defeated"))
+  shrink_tween.connect("tween_completed", Callable(self, "_on_ShrinkTween_tween_completed"))
 
 func _process(_delta):
   var fill_length = bar_length + 50
   if bar != null:
-    bar.rect_size.y = percent * fill_length
-    back.rect_size.y = fill_length
+    bar.size.y = percent * fill_length
+    back.size.y = fill_length
     container.length = bar_length
 
 func deactivate():
-  bar.margin_top = bar.margin_bottom
+  bar.offset_top = bar.offset_bottom
   active = false
 
 func update_bar(amount):

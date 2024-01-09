@@ -1,7 +1,7 @@
 extends Node2D
 
-onready var enemy = $Enemy
-onready var animation = $Enemy/Sprite/AnimationPlayer
+@onready var enemy = $Enemy
+@onready var animation = $Enemy/Sprite2D/AnimationPlayer
 
 var shoot_timer:Timer
 
@@ -13,15 +13,15 @@ var flying = true
 var pattern = null
 var full_period = false
 
-export var period = 2.0
-export var movement = Vector2(100, 100)
-export var velocity = Vector2(0, 0)
-export var shoot_time = 0.5
-export var shoot_immediately = false
+@export var period = 2.0
+@export var movement = Vector2(100, 100)
+@export var velocity = Vector2(0, 0)
+@export var shoot_time = 0.5
+@export var shoot_immediately = false
 
-export(Resource) var bullet_pattern = preload("res://Enemies/BloodBat/Lines.tscn")
-export(Resource) var movement_pattern = preload("res://Enemies/Movement/Movement.tscn")
-export(Resource) var attack_sound_scene = preload("res://Enemies/BloodBat/AttackSound.tscn")
+@export var bullet_pattern: Resource = preload("res://Enemies/BloodBat/Lines.tscn")
+@export var movement_pattern: Resource = preload("res://Enemies/Movement/Movement.tscn")
+@export var attack_sound_scene: Resource = preload("res://Enemies/BloodBat/AttackSound.tscn")
 
 signal died
 
@@ -36,10 +36,10 @@ func _ready():
   shoot_timer.start()
   add_child(shoot_timer)
 
-  shoot_timer.connect("timeout", self, "_on_ShootTimer_timeout")
-  animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
+  shoot_timer.connect("timeout", Callable(self, "_on_ShootTimer_timeout"))
+  animation.connect("animation_finished", Callable(self, "_on_AnimationPlayer_animation_finished"))
 
-  enemy.connect("died", self, "_on_Enemy_died")
+  enemy.connect("died", Callable(self, "_on_Enemy_died"))
   original_position = global_position
 
 func _physics_process(delta):
@@ -85,7 +85,7 @@ func _on_AnimationPlayer_animation_finished(name):
     Game.scene.sound.play_scene(attack_sound_scene, "bat_attack")
     animation.play("Attack")
     if position.y > 0:
-      pattern = bullet_pattern.instance()
+      pattern = bullet_pattern.instantiate()
       call_deferred("add_child", pattern)
 
     shoot_timer.start(shoot_time)

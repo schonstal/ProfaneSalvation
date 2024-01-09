@@ -1,13 +1,13 @@
 extends Node2D
 
-onready var enemy = $Enemy
-onready var animation = $Enemy/Sprite/AnimationPlayer
+@onready var enemy = $Enemy
+@onready var animation = $Enemy/Sprite2D/AnimationPlayer
 
 signal died
 
 func _ready():
-  enemy.connect("died", self, "_on_Enemy_died")
-  animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
+  enemy.connect("died", Callable(self, "_on_Enemy_died"))
+  animation.connect("animation_finished", Callable(self, "_on_AnimationPlayer_animation_finished"))
 
 func _process(delta):
   enemy.global_rotation = 0

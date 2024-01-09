@@ -1,16 +1,16 @@
 extends Node2D
 
-export var bob_amount = 4
-export var bob_frequency = 0.5
-export var fade_out = true
-export var fade_in = true
-export var bullet_count = 8
-export var bullet_rate = 0.5
+@export var bob_amount = 4
+@export var bob_frequency = 0.5
+@export var fade_out = true
+@export var fade_in = true
+@export var bullet_count = 8
+@export var bullet_rate = 0.5
 
-onready var enemy = $Enemy
-onready var laser_spawn = $Enemy/LaserSpawn
-onready var animation = $Enemy/Sprite/AnimationPlayer
-onready var shoot_timer = $ShootTimer
+@onready var enemy = $Enemy
+@onready var laser_spawn = $Enemy/LaserSpawn
+@onready var animation = $Enemy/Sprite2D/AnimationPlayer
+@onready var shoot_timer = $ShootTimer
 
 var laser_active_time = 1
 var shoot_time = 0.5
@@ -22,14 +22,14 @@ var laser_scene = preload("res://Projectiles/DopeLaser/DopeLaser.tscn")
 var laser:Node
 var laser_finished = false
 
-export(Resource) var bullet_pattern = preload("res://Enemies/Skull/PitBurst.tscn")
+@export var bullet_pattern: Resource = preload("res://Enemies/Skull/PitBurst.tscn")
 
 signal died
 
 func _ready():
-  enemy.connect("died", self, "_on_Enemy_died")
-  animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
-  shoot_timer.connect("timeout", self, "_on_ShootTimer_timeout")
+  enemy.connect("died", Callable(self, "_on_Enemy_died"))
+  animation.connect("animation_finished", Callable(self, "_on_AnimationPlayer_animation_finished"))
+  shoot_timer.connect("timeout", Callable(self, "_on_ShootTimer_timeout"))
 
   shoot_timer.start(shoot_time)
 
@@ -56,16 +56,16 @@ func _on_ShootTimer_timeout():
   enemy.position.y = 0
   enemy.position.x = 0
 
-  laser = laser_scene.instance()
+  laser = laser_scene.instantiate()
   laser.global_position = laser_spawn.global_position
   laser.rotation = rotation
   laser.active_time = laser_active_time
   laser.enemy = self
-  laser.connect("attack_finished", self, "_on_attack_finished")
+  laser.connect("attack_finished", Callable(self, "_on_attack_finished"))
   Game.scene.lasers.call_deferred("add_child", laser)
 
   if bullet_pattern != null:
-    var pattern = bullet_pattern.instance()
+    var pattern = bullet_pattern.instantiate()
     pattern.spawn_count = bullet_count
     call_deferred("add_child", pattern)
 

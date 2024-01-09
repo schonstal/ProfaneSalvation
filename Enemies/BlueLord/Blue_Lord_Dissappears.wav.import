@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Blue_Lord_Dissappears.wav-e33f00868b7d5c3fd1857668a29f645c.sample"
+type="AudioStreamWAV"
+uid="uid://d3bo644ssyb4w"
+path="res://.godot/imported/Blue_Lord_Dissappears.wav-e33f00868b7d5c3fd1857668a29f645c.sample"
 
 [deps]
 
 source_file="res://Enemies/BlueLord/Blue_Lord_Dissappears.wav"
-dest_files=[ "res://.import/Blue_Lord_Dissappears.wav-e33f00868b7d5c3fd1857668a29f645c.sample" ]
+dest_files=["res://.godot/imported/Blue_Lord_Dissappears.wav-e33f00868b7d5c3fd1857668a29f645c.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

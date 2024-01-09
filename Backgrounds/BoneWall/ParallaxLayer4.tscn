@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Backgrounds/ParallaxLayer.gd" type="Script" id=1]
-[ext_resource path="res://Backgrounds/BoneWall/Background.png" type="Texture" id=2]
+[ext_resource path="res://Backgrounds/BoneWall/Background.png" type="Texture2D" id=2]
 
 [node name="ParallaxLayer4" type="ParallaxLayer"]
 motion_mirroring = Vector2( 0, 1080 )
@@ -11,7 +11,7 @@ __meta__ = {
 }
 speed = 375
 
-[node name="Background" type="Sprite" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource( 2 )
 centered = false
 

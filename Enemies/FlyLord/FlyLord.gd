@@ -1,7 +1,7 @@
 extends Node2D
 
-onready var enemy = $Enemy
-onready var animation = $Enemy/Sprite/AnimationPlayer
+@onready var enemy = $Enemy
+@onready var animation = $Enemy/Sprite2D/AnimationPlayer
 
 var shoot_timer:Timer
 
@@ -10,14 +10,14 @@ var pattern = null
 var theta = Vector2(PI / 2, 0)
 var original_position = Vector2(0, 0)
 
-export var motion_range = Vector2(100, 50)
-export var shoot_time = 0.7
-export var shoot_immediately = false
+@export var motion_range = Vector2(100, 50)
+@export var shoot_time = 0.7
+@export var shoot_immediately = false
 
-onready var cycle_rate = Vector2(rand_range(-0.2, 0.2), rand_range(-0.2, 0.2))
+@onready var cycle_rate = Vector2(randf_range(-0.2, 0.2), randf_range(-0.2, 0.2))
 
-export(Resource) var bullet_pattern = preload("res://Enemies/FlyLord/Flies.tscn")
-export(Resource) var attack_sound_scene = preload("res://Enemies/FlyLord/AttackSound.tscn")
+@export var bullet_pattern: Resource = preload("res://Enemies/FlyLord/Flies.tscn")
+@export var attack_sound_scene: Resource = preload("res://Enemies/FlyLord/AttackSound.tscn")
 
 signal died
 
@@ -34,10 +34,10 @@ func _ready():
   shoot_timer.start()
   add_child(shoot_timer)
 
-  shoot_timer.connect("timeout", self, "_on_ShootTimer_timeout")
-  animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
+  shoot_timer.connect("timeout", Callable(self, "_on_ShootTimer_timeout"))
+  animation.connect("animation_finished", Callable(self, "_on_AnimationPlayer_animation_finished"))
 
-  enemy.connect("died", self, "_on_Enemy_died")
+  enemy.connect("died", Callable(self, "_on_Enemy_died"))
 
 func _physics_process(delta):
   global_position.x = original_position.x + cos(theta.x) * motion_range.x
@@ -61,7 +61,7 @@ func _on_ShootTimer_timeout():
 func _on_AnimationPlayer_animation_finished(name):
   if name == "AttackStart":
     if global_position.y > 0:
-      pattern = bullet_pattern.instance()
+      pattern = bullet_pattern.instantiate()
       call_deferred("add_child", pattern)
       animation.play("Attack")
 

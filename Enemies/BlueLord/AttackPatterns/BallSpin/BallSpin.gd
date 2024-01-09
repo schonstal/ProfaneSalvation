@@ -1,16 +1,16 @@
 extends Node2D
 
-onready var blue_lord = $'..'
-onready var patterns = [
+@onready var blue_lord = $'..'
+@onready var patterns = [
     $BlueTwist,
     $PurpleTwist,
     $MetaTwist
   ]
 
-export var wait_time = 2.0
-export var activate_time = 3.0
-export var distance = 50
-export var center = Vector2(1920 / 2 + 200, 1080 / 2 - 200)
+@export var wait_time = 2.0
+@export var activate_time = 3.0
+@export var distance = 50
+@export var center = Vector2(1920 / 2 + 200, 1080 / 2 - 200)
 
 var wait_timer:Timer
 var activate_timer:Timer
@@ -33,9 +33,9 @@ func _ready():
   activate_timer.start()
   add_child(activate_timer)
 
-  wait_timer.connect("timeout", self, "_on_WaitTimer_timeout")
-  activate_timer.connect("timeout", self, "_on_ActivateTimer_timeout")
-  blue_lord.connect("move_completed", self, "_on_BlueLord_move_completed")
+  wait_timer.connect("timeout", Callable(self, "_on_WaitTimer_timeout"))
+  activate_timer.connect("timeout", Callable(self, "_on_ActivateTimer_timeout"))
+  blue_lord.connect("move_completed", Callable(self, "_on_BlueLord_move_completed"))
 
 func _on_BlueLord_move_completed():
   blue_lord.start_attack()
@@ -53,7 +53,7 @@ func _on_ActivateTimer_timeout():
     activate_timer.start()
 
 func move():
-  var direction = Vector2(rand_range(-1, 1), rand_range(-1, 1))
+  var direction = Vector2(randf_range(-1, 1), randf_range(-1, 1))
   direction = direction.normalized()
 
   blue_lord.move_to(center + distance * direction, 1)

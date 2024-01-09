@@ -1,9 +1,9 @@
-extends Sprite
+extends Sprite2D
 
-onready var animation = $AnimationPlayer
+@onready var animation = $AnimationPlayer
 
 func _ready():
-  animation.connect("animation_finished", self, "_on_AnimationPlayer_finished")
+  animation.connect("animation_finished", Callable(self, "_on_AnimationPlayer_finished"))
 
 func shoot():
   visible = true

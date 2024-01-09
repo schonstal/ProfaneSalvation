@@ -2,13 +2,13 @@ extends Area2D
 
 const UP = Vector2(0, -1)
 
-export var max_health = 2
-export var points = 100
-export var flash_time = 0.05
-export var stun_time = 0.5
-export var halos = 2
-export var max_speed = Vector2(200, 200)
-export var halo_force = 400
+@export var max_health = 2
+@export var points = 100
+@export var flash_time = 0.05
+@export var stun_time = 0.5
+@export var halos = 2
+@export var max_speed = Vector2(200, 200)
+@export var halo_force = 400
 
 var alive = true
 var health = 100
@@ -24,9 +24,9 @@ var wave_name = ""
 var despawned = false
 
 var halo_scene = preload("res://Items/Halo/Halo.tscn")
-export(Resource) var explosion_scene = preload("res://Enemies/Explosion/Explosion.tscn")
-export(Resource) var hurt_sound = preload("res://Enemies/Enemy_Hit_Subtle.wav")
-export(Resource) var die_sound = preload("res://Enemies/EnemyDeath.wav")
+@export var explosion_scene: Resource = preload("res://Enemies/Explosion/Explosion.tscn")
+@export var hurt_sound: Resource = preload("res://Enemies/Enemy_Hit_Subtle.wav")
+@export var die_sound: Resource = preload("res://Enemies/EnemyDeath.wav")
 
 signal died
 signal hurt(health, max_health)
@@ -52,17 +52,17 @@ func _ready():
 
   flash_timer = Timer.new()
   flash_timer.one_shot = true
-  flash_timer.connect("timeout", self, "_on_Flash_timer_timeout")
+  flash_timer.connect("timeout", Callable(self, "_on_Flash_timer_timeout"))
   flash_timer.set_name("FlashTimer")
   add_child(flash_timer)
 
   stun_timer = Timer.new()
   stun_timer.one_shot = true
-  stun_timer.connect("timeout", self, "_on_Stun_timer_timeout")
+  stun_timer.connect("timeout", Callable(self, "_on_Stun_timer_timeout"))
   stun_timer.set_name("StunTimer")
   add_child(stun_timer)
 
-  EventBus.connect("chapter_complete", self, "_on_chapter_complete")
+  EventBus.connect("chapter_complete", Callable(self, "_on_chapter_complete"))
 
   wave_name = Game.scene.wave_manager.current_wave
 
@@ -103,7 +103,7 @@ func die():
 
 func spawn_halos():
   for _i in range(0, halos):
-    var halo = halo_scene.instance()
+    var halo = halo_scene.instantiate()
     var rotation = randf() * TAU
     Game.scene.items.call_deferred("add_child", halo)
     halo.global_position = global_position
@@ -113,7 +113,7 @@ func spawn_halos():
     ) * (250 + randf() * halo_force)
 
 func explode():
-  var explosion = explosion_scene.instance()
+  var explosion = explosion_scene.instantiate()
   explosion.global_position = global_position
   explosion.rotation = rotation
   Game.scene.explosions.add_child(explosion)

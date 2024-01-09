@@ -1,11 +1,11 @@
 extends Node2D
 
-onready var timer = $Timer
-onready var enemy = $Enemy
+@onready var timer = $Timer
+@onready var enemy = $Enemy
 
-export var bullet_count = 24
-export var offset_increment = 0.1
-export var cluster_size = 6
+@export var bullet_count = 24
+@export var offset_increment = 0.1
+@export var cluster_size = 6
 
 var started = false
 var offset = 0
@@ -14,11 +14,11 @@ var spawn = true
 
 signal died
 
-export(Resource) var bullet_scene = preload("res://Projectiles/Projectile.tscn")
+@export var bullet_scene: Resource = preload("res://Projectiles/Projectile.tscn")
 
 func _ready():
-  timer.connect("timeout", self, "_on_Timer_timeout")
-  enemy.connect("died", self, "_on_Enemy_died")
+  timer.connect("timeout", Callable(self, "_on_Timer_timeout"))
+  enemy.connect("died", Callable(self, "_on_Enemy_died"))
 
 func _on_Timer_timeout():
   if cluster_count >= cluster_size:

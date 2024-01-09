@@ -1,7 +1,7 @@
 extends Node2D
 
-export var despawn_chance = 0.3
-onready var wave = $'..'
+@export var despawn_chance = 0.3
+@onready var wave = $'..'
 
 func _ready():
   for ball in get_children():

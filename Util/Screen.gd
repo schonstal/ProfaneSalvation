@@ -31,9 +31,9 @@ func _process(delta):
     var intensity = _amplitude * (1 - ((_duration - _timer) / _duration))
 
     # Noise calculation logic from http://jonny.morrill.me/blog/view/14
-    var new_x = rand_range(-1.0, 1.0)
+    var new_x = randf_range(-1.0, 1.0)
     var x_component = intensity * (_previous_x + (delta * (new_x - _previous_x)))
-    var new_y = rand_range(-1.0, 1.0)
+    var new_y = randf_range(-1.0, 1.0)
     var y_component = intensity * (_previous_y + (delta * (new_y - _previous_y)))
 
     _previous_x = new_x
@@ -59,8 +59,8 @@ func shake(duration, frequency, amplitude):
   _timer = duration
   _period_in_ms = 1.0 / frequency
   _amplitude = amplitude
-  _previous_x = rand_range(-1.0, 1.0)
-  _previous_y = rand_range(-1.0, 1.0)
+  _previous_x = randf_range(-1.0, 1.0)
+  _previous_y = randf_range(-1.0, 1.0)
   _finished = false
 
   # Reset previous offset, if any.

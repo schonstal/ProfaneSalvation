@@ -1,9 +1,9 @@
-extends Sprite
+extends Sprite2D
 
-export var angular_velocity = 1.0
-export var fade_duration = 5
+@export var angular_velocity = 1.0
+@export var fade_duration = 5
 
-onready var fade_tween = $FadeTween
+@onready var fade_tween = $FadeTween
 
 var velocity = Vector2(0, 0)
 
@@ -16,7 +16,7 @@ func _ready():
   var angle = randf() * TAU
   velocity = Vector2(cos(angle), sin(angle)) * (randf() * 200 + 50)
 
-  fade_tween.connect("tween_completed", self, "_on_FadeTween_tween_completed")
+  fade_tween.connect("tween_completed", Callable(self, "_on_FadeTween_tween_completed"))
 
   fade_tween.interpolate_property(
       self,

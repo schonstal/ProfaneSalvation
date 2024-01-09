@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Red_Lord_Dissappears.wav-3c04376f745bc8c9db8063b8f90298bd.sample"
+type="AudioStreamWAV"
+uid="uid://cbv2bwru7dwod"
+path="res://.godot/imported/Red_Lord_Dissappears.wav-3c04376f745bc8c9db8063b8f90298bd.sample"
 
 [deps]
 
 source_file="res://Enemies/RedLord/Red_Lord_Dissappears.wav"
-dest_files=[ "res://.import/Red_Lord_Dissappears.wav-3c04376f745bc8c9db8063b8f90298bd.sample" ]
+dest_files=["res://.godot/imported/Red_Lord_Dissappears.wav-3c04376f745bc8c9db8063b8f90298bd.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

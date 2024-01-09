@@ -1,22 +1,22 @@
 extends VBoxContainer
 
-onready var try_again = $TryAgainButton
-onready var exit = $ExitButton
-onready var yes = $YesButton
-onready var no = $NoButton
-onready var label = $Label
-onready var score = $Score
+@onready var try_again = $TryAgainButton
+@onready var exit = $ExitButton
+@onready var yes = $YesButton
+@onready var no = $NoButton
+@onready var label = $Label
+@onready var score = $Score
 
 var label_text = ""
 
 func _ready():
   try_again.initialize_focus()
 
-  try_again.connect("pressed", self, "_on_TryAgainButton_pressed")
-  exit.connect("pressed", self, "_on_ExitButton_pressed")
+  try_again.connect("pressed", Callable(self, "_on_TryAgainButton_pressed"))
+  exit.connect("pressed", Callable(self, "_on_ExitButton_pressed"))
 
-  yes.connect("pressed", self, "_on_YesButton_pressed")
-  no.connect("pressed", self, "_on_NoButton_pressed")
+  yes.connect("pressed", Callable(self, "_on_YesButton_pressed"))
+  no.connect("pressed", Callable(self, "_on_NoButton_pressed"))
 
   label_text = label.text
 
@@ -36,7 +36,7 @@ func _on_ExitButton_pressed():
   no.initialize_focus()
 
 func _on_YesButton_pressed():
-  Game.change_scene("res://TitleScreen/TitleScreen.tscn")
+  Game.change_scene_to_file("res://TitleScreen/TitleScreen.tscn")
 
 func _on_NoButton_pressed():
   try_again.visible = true

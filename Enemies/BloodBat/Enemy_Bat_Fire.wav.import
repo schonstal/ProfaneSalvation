@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Enemy_Bat_Fire.wav-385b7098dc651949b42b54c95534f131.sample"
+type="AudioStreamWAV"
+uid="uid://p08bh3f5h6fe"
+path="res://.godot/imported/Enemy_Bat_Fire.wav-385b7098dc651949b42b54c95534f131.sample"
 
 [deps]
 
 source_file="res://Enemies/BloodBat/Enemy_Bat_Fire.wav"
-dest_files=[ "res://.import/Enemy_Bat_Fire.wav-385b7098dc651949b42b54c95534f131.sample" ]
+dest_files=["res://.godot/imported/Enemy_Bat_Fire.wav-385b7098dc651949b42b54c95534f131.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

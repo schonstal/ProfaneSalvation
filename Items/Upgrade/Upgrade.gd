@@ -2,24 +2,24 @@ extends Area2D
 
 const UP = Vector2(0, -1)
 
-onready var sprite = $Sprite
-onready var animation = $Sprite/AnimationPlayer
+@onready var sprite = $Sprite2D
+@onready var animation = $Sprite2D/AnimationPlayer
 
-export var speed = 600
-export var angular_velocity = 0.5
-export var target_velocity = Vector2(0, 100)
-export var points = 1000
-export var wait_time = 1.0
+@export var speed = 600
+@export var angular_velocity = 0.5
+@export var target_velocity = Vector2(0, 100)
+@export var points = 1000
+@export var wait_time = 1.0
 
 var velocity = Vector2(0, 50)
 var wait_timer = 0
 
 signal died
 
-export(Resource) var collect_sound = preload("res://Items/Upgrade/CollectSound.tscn")
+@export var collect_sound: Resource = preload("res://Items/Upgrade/CollectSound.tscn")
 
 func _ready():
-  connect("body_entered", self, "_on_body_entered")
+  connect("body_entered", Callable(self, "_on_body_entered"))
   rotation = randf() * PI * 2
 
 func _process(delta):

@@ -3,14 +3,14 @@
 [ext_resource path="res://Spawn/Spawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/FlyLord/FlySpawn.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/FlyLord/FlyLord.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Enemies/FlyLord/Sprite/FlyLord_1.png" type="Texture" id=4]
+[ext_resource path="res://Enemies/FlyLord/Sprite2D/FlyLord_1.png" type="Texture2D" id=4]
 
 [node name="FlySpawner" instance=ExtResource( 1 )]
 color = Color( 0.027451, 0.509804, 0.933333, 1 )
 spawn_scene = ExtResource( 2 )
 enemy_scene = ExtResource( 3 )
 
-[node name="Placeholder" type="Sprite" parent="." index="4"]
+[node name="Placeholder" type="Sprite2D" parent="." index="4"]
 modulate = Color( 1, 1, 1, 0.701961 )
 texture = ExtResource( 4 )
 

@@ -1,9 +1,9 @@
 extends Node2D
 
-export(Resource) var feather_scene
-export var feather_count = 24
+@export var feather_scene: Resource
+@export var feather_count = 24
 
-onready var feathers = $Feathers
+@onready var feathers = $Feathers
 
 func _ready():
   global_position = Game.scene.player.global_position
@@ -11,7 +11,7 @@ func _ready():
   rotation_degrees = Game.scene.player.rotation_degrees
 
   for i in range(0, feather_count):
-    var feather = feather_scene.instance()
+    var feather = feather_scene.instantiate()
     feathers.call_deferred("add_child", feather)
     feather.position = Vector2(
         cos(PI * 2 * i / feather_count),

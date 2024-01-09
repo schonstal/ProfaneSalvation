@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Cursor_Click.wav-8b83fadf1e2ef9756d0be9c881004bce.sample"
+type="AudioStreamWAV"
+uid="uid://dtgjpkcb5oqnl"
+path="res://.godot/imported/Cursor_Click.wav-8b83fadf1e2ef9756d0be9c881004bce.sample"
 
 [deps]
 
 source_file="res://UI/Cursor_Click.wav"
-dest_files=[ "res://.import/Cursor_Click.wav-8b83fadf1e2ef9756d0be9c881004bce.sample" ]
+dest_files=["res://.godot/imported/Cursor_Click.wav-8b83fadf1e2ef9756d0be9c881004bce.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

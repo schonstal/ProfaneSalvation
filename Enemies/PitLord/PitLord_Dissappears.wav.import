@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/PitLord_Dissappears.wav-ba57e2162372c61f3eb477918bbfa0ad.sample"
+type="AudioStreamWAV"
+uid="uid://bkvyovusoccs8"
+path="res://.godot/imported/PitLord_Dissappears.wav-ba57e2162372c61f3eb477918bbfa0ad.sample"
 
 [deps]
 
 source_file="res://Enemies/PitLord/PitLord_Dissappears.wav"
-dest_files=[ "res://.import/PitLord_Dissappears.wav-ba57e2162372c61f3eb477918bbfa0ad.sample" ]
+dest_files=["res://.godot/imported/PitLord_Dissappears.wav-ba57e2162372c61f3eb477918bbfa0ad.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

@@ -6,7 +6,7 @@ var effect_index = 0
 var music_volume = 0
 var current_file = ""
 
-onready var fade_tween = $FadeTween
+@onready var fade_tween = $FadeTween
 
 func _ready():
   bus_index = AudioServer.get_bus_index("Music")
@@ -15,7 +15,7 @@ func _ready():
   bus_effect.cutoff_hz = 22000
 
   AudioServer.add_bus_effect(bus_index, bus_effect, effect_index)
-  EventBus.connect("boss_defeated", self, "_on_boss_defeated")
+  EventBus.connect("boss_defeated", Callable(self, "_on_boss_defeated"))
 
 func _process(_delta):
   AudioServer.set_bus_volume_db(bus_index, music_volume)

@@ -1,6 +1,6 @@
 extends Node2D
 
-export var angular_velocity = 1.0
+@export var angular_velocity = 1.0
 var theta = 0
 
 var die_timer:Timer
@@ -13,7 +13,7 @@ func _ready():
   die_timer.start()
   add_child(die_timer)
 
-  die_timer.connect("timeout", self, "_on_DieTimer_timeout")
+  die_timer.connect("timeout", Callable(self, "_on_DieTimer_timeout"))
 
 func _on_DieTimer_timeout():
   queue_free()

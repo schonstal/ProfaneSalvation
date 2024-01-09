@@ -1,51 +1,45 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://ey1imvamxpgl"]
 
-[ext_resource path="res://TitleScreen/logo.png" type="Texture" id=1]
-[ext_resource path="res://TitleScreen/Buttons.gd" type="Script" id=2]
-[ext_resource path="res://UI/Buttons/NewGameButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://UI/Buttons/QuitButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://TitleScreen/Background.tscn" type="PackedScene" id=5]
+[ext_resource type="Texture2D" uid="uid://b1ebd5vf2aw18" path="res://TitleScreen/logo.png" id="1"]
+[ext_resource type="Script" path="res://TitleScreen/Buttons.gd" id="2"]
+[ext_resource type="PackedScene" path="res://UI/Buttons/NewGameButton.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://UI/Buttons/QuitButton.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://TitleScreen/Background.tscn" id="5"]
 
 [node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Menu" type="VBoxContainer" parent="CanvasLayer"]
-margin_left = 219.0
-margin_top = 20.0
-margin_right = 1701.0
-margin_bottom = 1120.0
+offset_left = 219.0
+offset_top = 20.0
+offset_right = 1701.0
+offset_bottom = 1120.0
 
 [node name="Logo" type="TextureRect" parent="CanvasLayer/Menu"]
-margin_right = 1482.0
-margin_bottom = 712.0
+layout_mode = 2
 size_flags_stretch_ratio = 0.0
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 stretch_mode = 4
 
 [node name="CenterRow" type="HBoxContainer" parent="CanvasLayer/Menu"]
-margin_top = 716.0
-margin_right = 1482.0
-margin_bottom = 1040.0
+layout_mode = 2
 size_flags_vertical = 0
 
 [node name="Buttons" type="VBoxContainer" parent="CanvasLayer/Menu/CenterRow"]
-margin_right = 1482.0
-margin_bottom = 324.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[node name="NewGameButton" parent="CanvasLayer/Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
-margin_right = 1482.0
-margin_bottom = 160.0
+[node name="NewGameButton" parent="CanvasLayer/Menu/CenterRow/Buttons" instance=ExtResource("3")]
+layout_mode = 2
 
-[node name="QuitButton" parent="CanvasLayer/Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
-margin_top = 164.0
-margin_right = 1482.0
-margin_bottom = 324.0
+[node name="QuitButton" parent="CanvasLayer/Menu/CenterRow/Buttons" instance=ExtResource("4")]
+layout_mode = 2
 
-[node name="Background" parent="." instance=ExtResource( 5 )]
-
+[node name="Background" parent="." instance=ExtResource("5")]

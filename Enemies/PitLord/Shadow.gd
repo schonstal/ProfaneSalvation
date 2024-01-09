@@ -1,4 +1,4 @@
-extends Sprite
+extends Sprite2D
 
 const DURATION = 0.25
 var alpha = 0.5

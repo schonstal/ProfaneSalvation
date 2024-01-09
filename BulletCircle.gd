@@ -42,7 +42,7 @@ func _iter_next(_arg):
   return should_continue()
 
 func _iter_get(_arg):
-  var bullet = scene.instance()
+  var bullet = scene.instantiate()
   var angle = arc * index / count + rotation
 
   bullet.global_position = position + \

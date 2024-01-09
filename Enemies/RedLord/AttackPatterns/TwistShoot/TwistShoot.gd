@@ -1,17 +1,17 @@
 extends Node2D
 
-onready var red_lord = $'..'
+@onready var red_lord = $'..'
 
 var wait_timer:Timer
 var upgrade_timer:Timer
 
-export var wait_time = 1.0
-export var upgrade_time = 6.0
-export var center = Vector2(1920 / 2, 1080 / 2 - 200)
-export var angular_velocity = 1.0
-export var radius = 50
+@export var wait_time = 1.0
+@export var upgrade_time = 6.0
+@export var center = Vector2(1920 / 2, 1080 / 2 - 200)
+@export var angular_velocity = 1.0
+@export var radius = 50
 
-export(Resource) var chains_scene = preload("res://Enemies/RedLord/AttackPatterns/TwistShoot/Chains.tscn")
+@export var chains_scene: Resource = preload("res://Enemies/RedLord/AttackPatterns/TwistShoot/Chains.tscn")
 
 var theta = 0
 
@@ -33,9 +33,9 @@ func _ready():
   upgrade_timer.start()
   add_child(upgrade_timer)
 
-  upgrade_timer.connect("timeout", self, "_on_UpgradeTimer_timeout")
-  wait_timer.connect("timeout", self, "_on_WaitTimer_timeout")
-  red_lord.connect("move_completed", self, "_on_RedLord_move_completed")
+  upgrade_timer.connect("timeout", Callable(self, "_on_UpgradeTimer_timeout"))
+  wait_timer.connect("timeout", Callable(self, "_on_WaitTimer_timeout"))
+  red_lord.connect("move_completed", Callable(self, "_on_RedLord_move_completed"))
   red_lord.start_attack()
 
 func _process(delta):
@@ -48,7 +48,7 @@ func _on_WaitTimer_timeout():
 func _on_UpgradeTimer_timeout():
   red_lord.start_attack()
 
-  var chains = chains_scene.instance()
+  var chains = chains_scene.instantiate()
   call_deferred("add_child", chains)
   chains.position = Vector2(0, 0)
 

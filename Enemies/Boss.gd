@@ -1,26 +1,26 @@
 extends Node2D
 
-onready var collision = $Enemy/CollisionShape2D
-onready var appear_sound = $AppearSound
-onready var disappear_sound = $DisappearSound
-onready var idle_timer = $IdleTimer
-onready var fade_tween = $FadeTween
-onready var fade_in_tween = $FadeInTween
-onready var move_tween = $MoveTween
-onready var animation = $Enemy/Sprite/AnimationPlayer
-onready var enemy = $Enemy
-onready var appear_sprite = $AppearSprite
-onready var appear_animation = $AppearSprite/AnimationPlayer
-onready var sprite = $Enemy/Sprite
-onready var wait_timer
+@onready var collision = $Enemy/CollisionShape2D
+@onready var appear_sound = $AppearSound
+@onready var disappear_sound = $DisappearSound
+@onready var idle_timer = $IdleTimer
+@onready var fade_tween = $FadeTween
+@onready var fade_in_tween = $FadeInTween
+@onready var move_tween = $MoveTween
+@onready var animation = $Enemy/Sprite2D/AnimationPlayer
+@onready var enemy = $Enemy
+@onready var appear_sprite = $AppearSprite
+@onready var appear_animation = $AppearSprite/AnimationPlayer
+@onready var sprite = $Enemy/Sprite2D
+@onready var wait_timer
 
-export var idle_time = 2.0
-export var fade_duration = 0.3
-export var health = 50
-export var index = 0
+@export var idle_time = 2.0
+@export var fade_duration = 0.3
+@export var health = 50
+@export var index = 0
 
-export var brightness = 1.5
-export var overlay_on_attack = false
+@export var brightness = 1.5
+@export var overlay_on_attack = false
 
 var max_health = 50
 
@@ -32,13 +32,13 @@ var upgrade_scene = preload("res://Items/Upgrade/Upgrade.tscn")
 var health_scene = preload("res://Items/Health/HealthPickup.tscn")
 
 func _ready():
-  move_tween.connect("tween_completed", self, "_on_MoveTween_tween_completed")
-  fade_tween.connect("tween_completed", self, "_on_FadeTween_tween_completed")
-  fade_in_tween.connect("tween_completed", self, "_on_FadeInTween_tween_completed")
-  idle_timer.connect("timeout", self, "_on_IdleTimer_timeout")
-  animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
-  enemy.connect("hurt", self, "_on_Enemy_hurt")
-  enemy.connect("died", self, "_on_Enemy_died")
+  move_tween.connect("tween_completed", Callable(self, "_on_MoveTween_tween_completed"))
+  fade_tween.connect("tween_completed", Callable(self, "_on_FadeTween_tween_completed"))
+  fade_in_tween.connect("tween_completed", Callable(self, "_on_FadeInTween_tween_completed"))
+  idle_timer.connect("timeout", Callable(self, "_on_IdleTimer_timeout"))
+  animation.connect("animation_finished", Callable(self, "_on_AnimationPlayer_animation_finished"))
+  enemy.connect("hurt", Callable(self, "_on_Enemy_hurt"))
+  enemy.connect("died", Callable(self, "_on_Enemy_died"))
 
   enemy.health = health
 
@@ -124,7 +124,7 @@ func _on_Enemy_died():
   EventBus.emit_signal("chapter_complete")
   EventBus.emit_signal("boss_defeated")
 
-  var upgrade = upgrade_scene.instance()
+  var upgrade = upgrade_scene.instantiate()
   upgrade.global_position = global_position
   Game.scene.items.call_deferred("add_child", upgrade)
 
@@ -133,7 +133,7 @@ func _on_Enemy_died():
   Overlay.fade(Color(1, 1, 1, 0.4), Color(1, 1, 1, 0), 0.3)
 
   for i in range(0, 2):
-    var health = health_scene.instance()
+    var health = health_scene.instantiate()
     Game.scene.items.call_deferred("add_child", health)
     health.global_position = Vector2(1920 / 2 - 100 + 100 * i, 100)
 

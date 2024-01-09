@@ -1,11 +1,11 @@
-tool
+@tool
 extends Area2D
 
-export var length = 500.0
-export var shoot_duration = 0.5
-export var duration = 0.0
-export var angular_velocity = 0.0
-export var shoot_delay = 0.1
+@export var length = 500.0
+@export var shoot_duration = 0.5
+@export var duration = 0.0
+@export var angular_velocity = 0.0
+@export var shoot_delay = 0.1
 
 var distance = 0.0
 var distance_was = 1000.0
@@ -15,19 +15,19 @@ var duration_timer:Timer
 var shoot_timer:Timer
 var shot = false
 
-onready var chain_links = $ChainLinks
-onready var chain_blade = $ChainBlade
-onready var link_animation = $ChainLinks/AnimationPlayer
-onready var blade_animation = $ChainBlade/AnimationPlayer
+@onready var chain_links = $ChainLinks
+@onready var chain_blade = $ChainBlade
+@onready var link_animation = $ChainLinks/AnimationPlayer
+@onready var blade_animation = $ChainBlade/AnimationPlayer
 
-onready var collision = $CollisionShape2D
-onready var shoot_tween = $ShootTween
-onready var daddy = $'..'
+@onready var collision = $CollisionShape2D
+@onready var shoot_tween = $ShootTween
+@onready var daddy = $'..'
 
-export(Resource) var explosion_scene = preload("res://Projectiles/Chain/ChainExplosion.tscn")
+@export var explosion_scene: Resource = preload("res://Projectiles/Chain/ChainExplosion.tscn")
 
 func _ready():
-  if !Engine.editor_hint:
+  if !Engine.is_editor_hint():
     print("hello")
     link_animation.play("Idle")
     blade_animation.play("Idle")
@@ -52,10 +52,10 @@ func _ready():
       shoot_timer.start()
       add_child(shoot_timer)
 
-      shoot_timer.connect("timeout", self, "_on_ShootTimer_timeout")
+      shoot_timer.connect("timeout", Callable(self, "_on_ShootTimer_timeout"))
 
-    shoot_tween.connect("tween_completed", self, "_on_ShootTween_tween_completed")
-    connect("body_entered", self, "_on_body_entered")
+    shoot_tween.connect("tween_completed", Callable(self, "_on_ShootTween_tween_completed"))
+    connect("body_entered", Callable(self, "_on_body_entered"))
 
     if duration > 0:
       duration_timer = Timer.new()
@@ -65,25 +65,25 @@ func _ready():
       duration_timer.start()
       add_child(duration_timer)
 
-      duration_timer.connect("timeout", self, "_on_DurationTimer_timeout")
+      duration_timer.connect("timeout", Callable(self, "_on_DurationTimer_timeout"))
 
     if daddy != null:
-      daddy.connect("died", self, "_on_parent_died")
+      daddy.connect("died", Callable(self, "_on_parent_died"))
 
-    EventBus.connect("clear_projectiles", self, "_on_clear_projectiles")
+    EventBus.connect("clear_projectiles", Callable(self, "_on_clear_projectiles"))
     update_size()
     collision.shape.extents.y = 0
 
 func _process(delta):
   update_size()
 
-  if Engine.editor_hint:
+  if Engine.is_editor_hint():
     distance = length
   elif Game.scene != null && Game.scene.player != null:
     if overlaps_body(Game.scene.player):
       Game.scene.player.hurt(1)
 
-  if !Engine.editor_hint && shot:
+  if !Engine.is_editor_hint() && shot:
     global_rotation += delta * angular_velocity * TAU
 
 func update_size():
@@ -129,7 +129,7 @@ func _on_body_entered(body):
     die()
 
 func die():
-  var explosion = explosion_scene.instance()
+  var explosion = explosion_scene.instantiate()
   explosion.global_position = global_position
   explosion.global_rotation = global_rotation
   explosion.region_rect = Rect2(0, 0, 198, distance)

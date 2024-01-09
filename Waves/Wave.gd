@@ -1,10 +1,10 @@
 extends Node2D
 
-export(Resource) var scene
+@export var scene: Resource
 var scene_instance = null
 
 func _ready():
-  EventBus.connect("wave_completed", self, "_on_wave_completed")
+  EventBus.connect("wave_completed", Callable(self, "_on_wave_completed"))
 
 func _on_wave_completed(_name):
   pass

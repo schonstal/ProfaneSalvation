@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Collect.wav-d6bf062bb62e00c54436a4b2099e66af.sample"
+type="AudioStreamWAV"
+uid="uid://v7a0v1kr61wo"
+path="res://.godot/imported/Collect.wav-d6bf062bb62e00c54436a4b2099e66af.sample"
 
 [deps]
 
 source_file="res://Items/Halo/Collect.wav"
-dest_files=[ "res://.import/Collect.wav-d6bf062bb62e00c54436a4b2099e66af.sample" ]
+dest_files=["res://.godot/imported/Collect.wav-d6bf062bb62e00c54436a4b2099e66af.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

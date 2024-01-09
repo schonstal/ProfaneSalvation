@@ -1,19 +1,19 @@
 extends Node2D
 
-export var summon_time = 2.0
-export var delay = 0.0
-export var color = Color(0.88, 0.22, 0.88, 1)
+@export var summon_time = 2.0
+@export var delay = 0.0
+@export var color = Color(0.88, 0.22, 0.88, 1)
 
-export(Resource) var spawn_scene
-export(Resource) var enemy_scene
+@export var spawn_scene: Resource
+@export var enemy_scene: Resource
 
-onready var summon_timer = $SummonTimer
-onready var delay_timer = $DelayTimer
-onready var summon_circle = $SummonCircle
-onready var black_hole = $BlackHole
-onready var black_hole_animation = $BlackHole/AnimationPlayer
-onready var placeholder = $Placeholder
-onready var enemy = $Enemy
+@onready var summon_timer = $SummonTimer
+@onready var delay_timer = $DelayTimer
+@onready var summon_circle = $SummonCircle
+@onready var black_hole = $BlackHole
+@onready var black_hole_animation = $BlackHole/AnimationPlayer
+@onready var placeholder = $Placeholder
+@onready var enemy = $Enemy
 
 var halo_scene = preload("res://Items/Halo/Halo.tscn")
 var halos = 6
@@ -29,22 +29,22 @@ func _ready():
   if enemy != null:
     remove_child(enemy)
 
-  summon_timer.connect("timeout", self, "_on_SummonTimer_timeout")
-  black_hole_animation.connect("animation_finished", self, "_on_BlackHole_animation_finished")
+  summon_timer.connect("timeout", Callable(self, "_on_SummonTimer_timeout"))
+  black_hole_animation.connect("animation_finished", Callable(self, "_on_BlackHole_animation_finished"))
 
   if delay == 0:
     begin()
   else:
-    delay_timer.connect("timeout", self, "_on_DelayTimer_timeout")
+    delay_timer.connect("timeout", Callable(self, "_on_DelayTimer_timeout"))
     delay_timer.start(delay)
 
-  summon_circle.connect("fade_finished", self, "_on_SummonCircle_fade_finished")
+  summon_circle.connect("fade_finished", Callable(self, "_on_SummonCircle_fade_finished"))
 
-  EventBus.connect("chapter_complete", self, "_on_chapter_complete")
+  EventBus.connect("chapter_complete", Callable(self, "_on_chapter_complete"))
 
 func _on_chapter_complete():
   for _i in range(0, halos):
-    var halo = halo_scene.instance()
+    var halo = halo_scene.instantiate()
     var rotation = randf() * TAU
     Game.scene.items.call_deferred("add_child", halo)
     halo.global_position = global_position
@@ -75,8 +75,8 @@ func _on_BlackHole_animation_finished(name):
     black_hole_animation.play("Fade")
 
     if spawn_scene != null:
-      var scene = spawn_scene.instance()
-      scene.connect("spawn", self, "_on_spawn")
+      var scene = spawn_scene.instantiate()
+      scene.connect("spawn", Callable(self, "_on_spawn"))
 
       scene.global_position = global_position
       Game.scene.current_wave.call_deferred('add_child', scene)
@@ -91,7 +91,7 @@ func _on_spawn():
     Game.scene.current_wave.add_child(enemy)
     enemy.global_position = global_position
   elif enemy_scene != null:
-    var enemy = enemy_scene.instance()
+    var enemy = enemy_scene.instantiate()
     enemy.global_position = global_position
     Game.scene.current_wave.call_deferred('add_child', enemy)
   else:

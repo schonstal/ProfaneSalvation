@@ -8,8 +8,8 @@ var current_wave
 var complete_wave = preload("res://Waves/CompleteWave.tscn")
 
 func _ready():
-  EventBus.connect("wave_completed", self, "_on_wave_completed")
-  EventBus.connect("chapter_complete", self, "_on_chapter_complete")
+  EventBus.connect("wave_completed", Callable(self, "_on_wave_completed"))
+  EventBus.connect("chapter_complete", Callable(self, "_on_chapter_complete"))
 
   load_chapter(Game.wave)
 

@@ -1,6 +1,6 @@
 extends ParallaxLayer
 
-export var speed = 2000
+@export var speed = 2000
 
 func _ready():
   #self.motion_mirroring = Vector2(0, sprite.texture.get_size().rotated(sprite.global_rotation).y)

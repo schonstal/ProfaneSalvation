@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Red_Lord_Death.wav-3b003953762fa2c6093928749916d000.sample"
+type="AudioStreamWAV"
+uid="uid://dgddcaaybaghr"
+path="res://.godot/imported/Red_Lord_Death.wav-3b003953762fa2c6093928749916d000.sample"
 
 [deps]
 
 source_file="res://Enemies/RedLord/Red_Lord_Death.wav"
-dest_files=[ "res://.import/Red_Lord_Death.wav-3b003953762fa2c6093928749916d000.sample" ]
+dest_files=["res://.godot/imported/Red_Lord_Death.wav-3b003953762fa2c6093928749916d000.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

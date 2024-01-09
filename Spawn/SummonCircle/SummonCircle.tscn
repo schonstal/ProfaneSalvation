@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Spawn/SummonCircle/SummonCircle.gd" type="Script" id=1]
-[ext_resource path="res://Spawn/SummonCircle/SummonCircleBig.png" type="Texture" id=2]
-[ext_resource path="res://Spawn/SummonCircle/SummonCircleSmall.png" type="Texture" id=3]
+[ext_resource path="res://Spawn/SummonCircle/SummonCircleBig.png" type="Texture2D" id=2]
+[ext_resource path="res://Spawn/SummonCircle/SummonCircleSmall.png" type="Texture2D" id=3]
 [ext_resource path="res://Spawn/Summoning_Circle_2.wav" type="AudioStream" id=4]
 
 [sub_resource type="CanvasItemMaterial" id=1]
@@ -15,12 +15,12 @@ blend_mode = 1
 script = ExtResource( 1 )
 angular_velocity = 0.5
 
-[node name="SummonCircleBig" type="Sprite" parent="."]
+[node name="SummonCircleBig" type="Sprite2D" parent="."]
 material = SubResource( 1 )
 texture = ExtResource( 2 )
 offset = Vector2( 1, 1 )
 
-[node name="SummonCircleSmall" type="Sprite" parent="."]
+[node name="SummonCircleSmall" type="Sprite2D" parent="."]
 material = SubResource( 2 )
 position = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )

@@ -1,10 +1,10 @@
-extends Sprite
+extends Sprite2D
 
 var original_position = Vector2()
 var theta = 0
 
-export var float_speed = 1
-export var float_amount = 20
+@export var float_speed = 1
+@export var float_amount = 20
 
 func _ready():
   original_position = position

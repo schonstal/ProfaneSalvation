@@ -1,12 +1,12 @@
-extends Sprite
+extends Sprite2D
 
 var active = true
 
-onready var animation = $AnimationPlayer
+@onready var animation = $AnimationPlayer
 
 func _ready():
   animation.play("Fill")
-  animation.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
+  animation.connect("animation_finished", Callable(self, "_on_AnimationPlayer_animation_finished"))
 
 func activate():
   if !active:

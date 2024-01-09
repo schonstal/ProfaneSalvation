@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Player/Shield.gd" type="Script" id=1]
 [ext_resource path="res://Player/HitIndicator/HitIndicator.gd" type="Script" id=2]
-[ext_resource path="res://Player/Sprite/Deflect/DeflectHalo.png" type="Texture" id=3]
-[ext_resource path="res://Player/Sprite/Deflect/Deflect.png" type="Texture" id=4]
+[ext_resource path="res://Player/Sprite2D/Deflect/DeflectHalo.png" type="Texture2D" id=3]
+[ext_resource path="res://Player/Sprite2D/Deflect/Deflect.png" type="Texture2D" id=4]
 
 [sub_resource type="Animation" id=1]
 length = 0.5
@@ -14,8 +14,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4 ]
 }
@@ -30,8 +30,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 1,
 "values": [ 7, 8, 9 ]
 }
@@ -50,18 +50,18 @@ editor/display_folded = true
 script = ExtResource( 2 )
 angular_velocity = -1.0
 
-[node name="Halo" type="Sprite" parent="Halo"]
+[node name="Halo" type="Sprite2D" parent="Halo"]
 position = Vector2( -0.294281, 2.20721 )
 texture = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 editor/display_folded = true
 visible = false
 texture = ExtResource( 4 )
 hframes = 5
 frame = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 anims/Deflect = SubResource( 1 )
 anims/DeflectRecover = SubResource( 2 )
 
