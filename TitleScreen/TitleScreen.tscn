@@ -86,6 +86,8 @@ stretch_mode = 3
 
 [node name="Button" type="Button" parent="CanvasLayer/Menu/Buttons/NewGame"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../Quit/Button")
+focus_neighbor_bottom = NodePath("../../Quit/Button")
 text = "New Game"
 
 [node name="SwordRight" type="TextureRect" parent="CanvasLayer/Menu/Buttons/NewGame"]
@@ -108,6 +110,8 @@ stretch_mode = 3
 
 [node name="Button" type="Button" parent="CanvasLayer/Menu/Buttons/Quit"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../NewGame/Button")
+focus_neighbor_bottom = NodePath("../../NewGame/Button")
 text = "Quit
 "
 

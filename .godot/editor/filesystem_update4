@@ -8,3 +8,5 @@ res://TitleScreen/Buttons.gd
 res://UI/Selector.tscn
 res://TitleScreen/NewGame.gd
 res://TitleScreen/TitleButton.gd
+res://Autoload/Overlay.gd
+res://Autoload/Overlay.tscn
