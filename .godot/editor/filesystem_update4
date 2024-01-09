@@ -1,3 +1,10 @@
 res://TitleScreen/TitleScreen.tscn
 res://UI/Fonts/Pirata_One-128.tres
+res://UI/Buttons/MenuButton.gd
+res://UI/Buttons/NewGameButton.tscn
 res://UI/Fonts/Pirata.tres
+res://UI/Buttons/QuitButton.tscn
+res://TitleScreen/Buttons.gd
+res://UI/Selector.tscn
+res://TitleScreen/NewGame.gd
+res://TitleScreen/TitleButton.gd

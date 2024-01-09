@@ -1,8 +1,8 @@
 extends Button
 
-@onready var selectors = $Selectors
-@onready var selector_left = $Selectors/Left
-@onready var selector_right = $Selectors/Right
+@onready var swords = $Swords
+@onready var sword_left = $Swords/Left
+@onready var sword_right = $Swords/Right
 @onready var label = $Label
 
 @onready var focus_sound = $Focus
@@ -10,24 +10,15 @@ extends Button
 var play_focus_sound = true
 
 func _ready():
-  self.connect("focus_entered", Callable(self, "_on_focus_entered"))
-  self.connect("focus_exited", Callable(self, "_on_focus_exited"))
-  self.connect("mouse_entered", Callable(self, "_on_mouse_entered"))
-  self.connect("pressed", Callable(self, "_on_pressed"))
+  self.connect("focus_entered", _on_focus_entered)
+  self.connect("focus_exited", _on_focus_exited)
+  self.connect("mouse_entered", _on_mouse_entered)
+  self.connect("pressed", _on_pressed)
 
-  var font = label.get_font("font")
-
-  var text_size = font.get_string_size(label.text)
-  var text_width = text_size.x + 150
-
-  selector_left.position.x = (size.x - text_width) / 2
-  selector_right.position.x = (size.x + text_width) / 2
-
-  selector_left.position.y = size.y / 2
-  selector_right.position.y = size.y / 2
+  var text_width = 200
 
 func _on_focus_entered():
-  selectors.visible = true
+  swords.visible = true
 
   if play_focus_sound:
     focus_sound.play()
@@ -35,7 +26,7 @@ func _on_focus_entered():
   play_focus_sound = true
 
 func _on_focus_exited():
-  selectors.visible = false
+  swords.visible = false
 
 func _on_mouse_entered():
   grab_focus()

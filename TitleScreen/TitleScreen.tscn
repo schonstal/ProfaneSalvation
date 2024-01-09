@@ -1,16 +1,54 @@
-[gd_scene load_steps=6 format=3 uid="uid://ey1imvamxpgl"]
+[gd_scene load_steps=19 format=3 uid="uid://ey1imvamxpgl"]
 
 [ext_resource type="Texture2D" uid="uid://b1ebd5vf2aw18" path="res://TitleScreen/logo.png" id="1"]
 [ext_resource type="Script" path="res://TitleScreen/Buttons.gd" id="2"]
-[ext_resource type="PackedScene" path="res://UI/Buttons/NewGameButton.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://UI/Buttons/QuitButton.tscn" id="4"]
+[ext_resource type="FontFile" uid="uid://c8kuyyospj2jp" path="res://UI/Fonts/Pirata.tres" id="2_ox1jb"]
+[ext_resource type="Script" path="res://TitleScreen/TitleButton.gd" id="4_7g5wr"]
+[ext_resource type="Texture2D" uid="uid://djjj1kxftcnod" path="res://Projectiles/AngelSword/AngelSword_1.png" id="4_usyuy"]
 [ext_resource type="PackedScene" path="res://TitleScreen/Background.tscn" id="5"]
+[ext_resource type="Texture2D" uid="uid://c2rprsvea0gg5" path="res://Projectiles/AngelSword/AngelSword_2.png" id="5_xccio"]
+[ext_resource type="Texture2D" uid="uid://c0bsxb2sl2jg3" path="res://Projectiles/AngelSword/AngelSword_3.png" id="6_bvh81"]
+[ext_resource type="Texture2D" uid="uid://cw0stn1ytckc0" path="res://Projectiles/AngelSword/AngelSword_4.png" id="7_un852"]
+[ext_resource type="AudioStream" uid="uid://csty7iumujvbh" path="res://UI/Cursor_Move.wav" id="10_xa3xw"]
+[ext_resource type="AudioStream" uid="uid://dtgjpkcb5oqnl" path="res://UI/Cursor_Click.wav" id="11_axrbo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dccyn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_itxlr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hbua7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p71l6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8t7se"]
+
+[sub_resource type="Theme" id="Theme_r8ci0"]
+default_font = ExtResource("2_ox1jb")
+default_font_size = 64
+Button/styles/disabled = SubResource("StyleBoxEmpty_dccyn")
+Button/styles/focus = SubResource("StyleBoxEmpty_itxlr")
+Button/styles/hover = SubResource("StyleBoxEmpty_hbua7")
+Button/styles/normal = SubResource("StyleBoxEmpty_p71l6")
+Button/styles/pressed = SubResource("StyleBoxEmpty_8t7se")
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_p8sby"]
+frames = 4
+speed_scale = 5.0
+frame_0/texture = ExtResource("4_usyuy")
+frame_1/texture = ExtResource("5_xccio")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("6_bvh81")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("7_un852")
+frame_3/duration = 1.0
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -26,20 +64,66 @@ size_flags_stretch_ratio = 0.0
 texture = ExtResource("1")
 stretch_mode = 4
 
-[node name="CenterRow" type="HBoxContainer" parent="CanvasLayer/Menu"]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Buttons" type="VBoxContainer" parent="CanvasLayer/Menu/CenterRow"]
+[node name="Buttons" type="VBoxContainer" parent="CanvasLayer/Menu"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
+theme = SubResource("Theme_r8ci0")
+alignment = 1
 script = ExtResource("2")
 
-[node name="NewGameButton" parent="CanvasLayer/Menu/CenterRow/Buttons" instance=ExtResource("3")]
+[node name="NewGame" type="HBoxContainer" parent="CanvasLayer/Menu/Buttons"]
 layout_mode = 2
+alignment = 1
+script = ExtResource("4_7g5wr")
+play_focus_sound = false
 
-[node name="QuitButton" parent="CanvasLayer/Menu/CenterRow/Buttons" instance=ExtResource("4")]
+[node name="SwordLeft" type="TextureRect" parent="CanvasLayer/Menu/Buttons/NewGame"]
+visible = false
 layout_mode = 2
+texture = SubResource("AnimatedTexture_p8sby")
+stretch_mode = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/Menu/Buttons/NewGame"]
+layout_mode = 2
+text = "New Game"
+
+[node name="SwordRight" type="TextureRect" parent="CanvasLayer/Menu/Buttons/NewGame"]
+visible = false
+layout_mode = 2
+texture = SubResource("AnimatedTexture_p8sby")
+stretch_mode = 3
+flip_h = true
+
+[node name="Quit" type="HBoxContainer" parent="CanvasLayer/Menu/Buttons"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("4_7g5wr")
+
+[node name="SwordLeft" type="TextureRect" parent="CanvasLayer/Menu/Buttons/Quit"]
+visible = false
+layout_mode = 2
+texture = SubResource("AnimatedTexture_p8sby")
+stretch_mode = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/Menu/Buttons/Quit"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="SwordRight" type="TextureRect" parent="CanvasLayer/Menu/Buttons/Quit"]
+visible = false
+layout_mode = 2
+texture = SubResource("AnimatedTexture_p8sby")
+stretch_mode = 3
+flip_h = true
 
 [node name="Background" parent="." instance=ExtResource("5")]
+
+[node name="FocusSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("10_xa3xw")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("11_axrbo")
