@@ -1,4 +1,3 @@
-tool  
 extends Node2D
 
 @onready var flash_tween = $FlashTween

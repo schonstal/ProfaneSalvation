@@ -13,7 +13,6 @@ const DOWN = Vector2(0, 1)
 
 var dead = false
 
-var velocity = Vector2()
 var acceleration = Vector2()
 
 var invulnerable = false
@@ -51,7 +50,7 @@ var shoot_time = 0
 var death_scene = preload("res://Player/Death/Death.tscn")
 var bullet_scene = preload("res://Projectiles/AngelSword/AngelSword.tscn")
 
-signal hurt(health)
+signal damaged(health)
 signal mana_spent(mana)
 
 func _ready():
@@ -140,7 +139,7 @@ func hurt(damage):
 
   Overlay.fade(Color(1, 1, 1, 0.4), Color(1, 1, 1, 0), 0.3)
 
-  emit_signal("hurt", health)
+  damaged.emit(health)
 
 func die():
   var death_node = death_scene.instantiate()

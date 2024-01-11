@@ -36,16 +36,7 @@ func enable_filter():
   bus_effect.cutoff_hz = 200
 
 func fade(start_volume_db, end_volume_db, duration):
-  fade_tween.interpolate_property(
-      self,
-      "music_volume",
-      start_volume_db,
-      end_volume_db,
-      duration,
-      Tween.TRANS_QUAD,
-      Tween.EASE_IN)
-
-  fade_tween.start()
+  music_volume = end_volume_db
 
 func _on_boss_defeated():
   self.stop()

@@ -32,13 +32,13 @@ var upgrade_scene = preload("res://Items/Upgrade/Upgrade.tscn")
 var health_scene = preload("res://Items/Health/HealthPickup.tscn")
 
 func _ready():
-  move_tween.connect("tween_completed", Callable(self, "_on_MoveTween_tween_completed"))
-  fade_tween.connect("tween_completed", Callable(self, "_on_FadeTween_tween_completed"))
-  fade_in_tween.connect("tween_completed", Callable(self, "_on_FadeInTween_tween_completed"))
-  idle_timer.connect("timeout", Callable(self, "_on_IdleTimer_timeout"))
-  animation.connect("animation_finished", Callable(self, "_on_AnimationPlayer_animation_finished"))
-  enemy.connect("hurt", Callable(self, "_on_Enemy_hurt"))
-  enemy.connect("died", Callable(self, "_on_Enemy_died"))
+  move_tween.tween_completed.connect(_on_MoveTween_tween_completed)
+  fade_tween.tween_completed.connect(_on_FadeTween_tween_completed)
+  fade_in_tween.tween_completed.connect(_on_FadeInTween_tween_completed)
+  idle_timer.timeout.connect(_on_IdleTimer_timeout)
+  animation.animation_finished.connect(_on_AnimationPlayer_animation_finished)
+  enemy.damaged.connect(_on_Enemy_hurt)
+  enemy.died.connect(_on_Enemy_died)
 
   enemy.health = health
 

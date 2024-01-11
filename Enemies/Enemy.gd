@@ -29,7 +29,7 @@ var halo_scene = preload("res://Items/Halo/Halo.tscn")
 @export var die_sound: Resource = preload("res://Enemies/EnemyDeath.wav")
 
 signal died
-signal hurt(health, max_health)
+signal damaged(health, max_health)
 
 func _physics_process(delta):
   velocity.y += acceleration.y * delta
@@ -86,7 +86,7 @@ func hurt(damage):
 
   Game.scene.sound.play(hurt_sound, "enemy_hurt")
 
-  emit_signal("hurt", health, max_health)
+  damaged.emit(health, max_health)
 
 func die():
   alive = false

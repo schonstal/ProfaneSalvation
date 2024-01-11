@@ -6,8 +6,6 @@ extends Node2D
 @export var enemy_scene: Resource
 
 @onready var placeholder = $Placeholder
-@onready var fade_tween = $FadeTween
-@onready var flash_tween = $FadeTween
 
 var flashed = false
 var flash_timer:Timer
@@ -24,18 +22,7 @@ func _ready():
 
   spawn_timer.start(spawn_time)
 
-  placeholder.modulate = Color(100, 100, 100, 0.5)
-
-  fade_tween.interpolate_property(
-      placeholder,
-      "modulate",
-      Color(100, 100, 100, 1),
-      Color(10, 10, 10, 0.5),
-      spawn_time,
-      Tween.TRANS_QUART,
-      Tween.EASE_IN)
-
-  fade_tween.start()
+  placeholder.modulate = Color(10, 10, 10, 0.5)
 
 func _on_Spawn_timer_timeout():
   emit_signal("spawn")
